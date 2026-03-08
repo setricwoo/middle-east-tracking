@@ -262,10 +262,67 @@
                 width: 100%;
                 border-left: none;
                 border-top: 1px solid #e2e8f0;
-                max-height: 50vh;
+                max-height: none;
+                padding: 8px;
             }
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            /* 移动端：简化图例面板为一行 */
+            .map-legend-panel {
+                position: relative;
+                bottom: auto;
+                left: auto;
+                max-width: none;
+                width: 100%;
+                padding: 8px 12px;
+                margin-top: 8px;
+                border-radius: 8px;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 8px;
+            }
+            .map-legend-panel h4 {
+                font-size: 0.75rem;
+                margin: 0;
+                padding: 0;
+                border: none;
+                margin-right: 8px;
+            }
+            .map-legend-panel .legend-row {
+                display: inline-flex;
+                margin: 0;
+                font-size: 0.65rem;
+                white-space: nowrap;
+            }
+            .map-legend-panel .legend-symbol {
+                width: 16px;
+                height: 16px;
+            }
+            .map-legend-panel .legend-note {
+                display: none; /* 移动端隐藏详细说明 */
+            }
+            /* 移动端：简化侧边栏内容 */
+            .sidebar .legend-section:nth-child(1),
+            .sidebar .legend-section:nth-child(2),
+            .sidebar .legend-section:nth-child(3),
+            .sidebar .legend-section:nth-child(4) {
+                display: none; /* 隐藏详细统计数据 */
+            }
+            .sidebar .legend-section:nth-child(5) {
+                margin-bottom: 8px;
+            }
+            .sidebar .legend-section h3 {
+                font-size: 0.85rem;
+            }
+            .filter-bar {
+                margin-top: 8px;
+                gap: 4px;
+            }
+            .filter-btn {
+                font-size: 0.7rem;
+                padding: 4px 8px;
             }
         }
         
@@ -1427,66 +1484,83 @@
         drawAll();
         createCountryList();
         
-        // 添加左侧地图图例
+        // 添加地图图例 - 根据屏幕尺寸选择简化或详细版本
         const legendDiv = document.createElement('div');
         legendDiv.className = 'map-legend-panel';
-        legendDiv.innerHTML = `
-            <h4>📖 图例说明</h4>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-circle" style="width: 20px; height: 20px; border-color: #3b82f6; background: rgba(59,130,246,0.3);"></div>
+        
+        // 检测是否为移动端（屏幕宽度小于768px）
+        const isMobile = window.innerWidth < 768;
+        
+        if (isMobile) {
+            // 移动端：简化版本 - 放在地图下方一行
+            legendDiv.innerHTML = `
+                <h4>📖 图例</h4>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-circle" style="width: 12px; height: 12px; border-color: #3b82f6; background: rgba(59,130,246,0.3);"></div></span><span>圆圈=产能</span></div>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #dc2626; height: 3px;"></div></span><span>红线=经霍尔木兹</span></div>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #059669; height: 2px;"></div></span><span>绿线=绕过</span></div>
+                <div class="legend-row"><span class="legend-symbol"><span style="font-size: 1rem;">📊</span></span><span>点击查看动态</span></div>
+            `;
+        } else {
+            // PC端：详细版本 - 左下角面板
+            legendDiv.innerHTML = `
+                <h4>📖 图例说明</h4>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-circle" style="width: 20px; height: 20px; border-color: #3b82f6; background: rgba(59,130,246,0.3);"></div>
+                    </div>
+                    <span>国家圆圈：潜在产能</span>
                 </div>
-                <span>国家圆圈：潜在产能</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-circle" style="width: 16px; height: 16px; background: #3b82f6; opacity: 0.6;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-circle" style="width: 16px; height: 16px; background: #3b82f6; opacity: 0.6;"></div>
+                    </div>
+                    <span>填充扇形：实际产量</span>
                 </div>
-                <span>填充扇形：实际产量</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-circle" style="width: 10px; height: 10px; background: #3b82f6; opacity: 0.9;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-circle" style="width: 10px; height: 10px; background: #3b82f6; opacity: 0.9;"></div>
+                    </div>
+                    <span>内层扇形：出口量</span>
                 </div>
-                <span>内层扇形：出口量</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-line" style="background: #dc2626; height: 4px;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-line" style="background: #dc2626; height: 4px;"></div>
+                    </div>
+                    <span>红色粗线：经霍尔木兹出口</span>
                 </div>
-                <span>红色粗线：经霍尔木兹出口</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-line" style="background: #059669; height: 3px;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-line" style="background: #059669; height: 3px;"></div>
+                    </div>
+                    <span>绿色虚线：绕过霍尔木兹</span>
                 </div>
-                <span>绿色虚线：绕过霍尔木兹</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-dot" style="background: #dc2626;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-dot" style="background: #dc2626;"></div>
+                    </div>
+                    <span>红色圆点：经霍尔木兹港口</span>
                 </div>
-                <span>红色圆点：经霍尔木兹港口</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <div class="legend-dot" style="background: #059669;"></div>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <div class="legend-dot" style="background: #059669;"></div>
+                    </div>
+                    <span>绿色圆点：绕过霍尔木兹港口</span>
                 </div>
-                <span>绿色圆点：绕过霍尔木兹港口</span>
-            </div>
-            <div class="legend-row">
-                <div class="legend-symbol">
-                    <span style="font-size: 1.2rem;">📊</span>
+                <div class="legend-row">
+                    <div class="legend-symbol">
+                        <span style="font-size: 1.2rem;">📊</span>
+                    </div>
+                    <span>最新动态图标（可点击）</span>
                 </div>
-                <span>最新动态图标（可点击）</span>
-            </div>
-            <div class="legend-note">
-                <strong>数字单位说明：</strong><br>
-                • 圆圈中心数字：实际产量（百万桶/日）<br>
-                • 线条粗细：出口流量大小<br>
-                • 📊 最新动态：点击可查看原油生产、基础设施、储油最新信息
-            </div>
-        `;
+                <div class="legend-note">
+                    <strong>数字单位说明：</strong><br>
+                    • 圆圈中心数字：实际产量（百万桶/日）<br>
+                    • 线条粗细：出口流量大小<br>
+                    • 📊 最新动态：点击可查看原油生产、基础设施、储油最新信息
+                </div>
+            `;
+        }
+        
         document.getElementById('map').appendChild(legendDiv);
 
         // 图例
