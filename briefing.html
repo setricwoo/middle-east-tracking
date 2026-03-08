@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - 美以伊冲突每日简报</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8;}
+        .header{background:#fff;padding:0;box-shadow:0 1px 3px rgba(0,0,0,0.1);border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100;}
+        .header-main{display:flex;justify-content:space-between;align-items:center;padding:12px 24px;max-width:1200px;margin:0 auto;}
+        .header-left{display:flex;align-items:center;gap:12px;}
+        .header-icon{font-size:1.8rem;color:#1e40af;}
+        .header h1{font-size:1.3rem;color:#1e40af;font-weight:600;}
+        .header-center{display:flex;gap:4px;background:#e2e8f0;padding:4px;border-radius:8px;}
+        .nav-btn{padding:8px 16px;border:none;background:transparent;color:#475569;border-radius:6px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+        .nav-btn:hover{background:rgba(255,255,255,0.5);color:#1e40af;}
+        .nav-btn.active{background:#fff;color:#1e40af;font-weight:600;}
+        .header-right{font-size:0.8rem;color:#94a3b8;background:#f1f5f9;padding:6px 12px;border-radius:6px;}
+        .container{max-width:900px;margin:0 auto;padding:24px 20px;}
+        .briefing-header{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1px solid #f59e0b;border-radius:12px;padding:24px;margin-bottom:24px;}
+        .briefing-header h2{color:#92400e;font-size:1.4rem;margin-bottom:12px;}
+        .briefing-header .summary{color:#78350f;font-size:0.95rem;line-height:1.8;}
+        .section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e2e8f0;}
+        .section h3{color:#1e40af;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
+        .section h4{color:#334155;font-size:1rem;margin:20px 0 12px 0;}
+        .section p{color:#475569;font-size:0.95rem;margin-bottom:12px;text-align:justify;}
+        .section ul{padding-left:20px;margin-bottom:12px;}
+        .section li{color:#475569;font-size:0.95rem;margin-bottom:8px;}
+        .highlight-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:16px;border-radius:0 8px 8px 0;margin:16px 0;}
+        .highlight-box.critical{background:#fef2f2;border-left-color:#dc2626;}
+        .highlight-box.warning{background:#fffbeb;border-left-color:#f59e0b;}
+        .highlight-box h5{color:#1e40af;font-size:0.95rem;margin-bottom:10px;}
+        .highlight-box.critical h5{color:#dc2626;}
+        .highlight-box.warning h5{color:#b45309;}
+        
+        /* 时间线两列布局 */
+        .timeline-two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+        .timeline-col{position:relative;padding-left:20px;}
+        .timeline-col::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:#e2e8f0;}
+        .timeline-item{position:relative;margin-bottom:16px;padding-left:16px;}
+        .timeline-item::before{content:'';position:absolute;left:-18px;top:6px;width:10px;height:10px;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 0 0 2px #3b82f6;}
+        .timeline-item.critical::before{background:#dc2626;box-shadow:0 0 0 2px #dc2626;}
+        .timeline-time{font-size:0.8rem;color:#64748b;margin-bottom:4px;font-weight:500;}
+        .timeline-content{color:#334155;font-size:0.9rem;line-height:1.6;}
+        
+        /* 市场数据网格 */
+        .market-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0;}
+        .market-card{background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0;}
+        .market-card h5{color:#1e40af;font-size:0.9rem;margin-bottom:8px;}
+        .market-card p{color:#475569;font-size:0.85rem;margin:0;}
+        
+        .news-list{display:flex;flex-direction:column;gap:12px;}
+        .news-item{display:block;padding:16px;background:#f8fafc;border-radius:8px;text-decoration:none;color:inherit;border:1px solid #e2e8f0;transition:all 0.2s;}
+        .news-item:hover{background:#eff6ff;border-color:#3b82f6;}
+        .news-title{font-weight:600;color:#1e40af;margin-bottom:6px;font-size:0.95rem;}
+        .news-source{font-size:0.8rem;color:#64748b;}
+        .news-summary{font-size:0.85rem;color:#475569;margin-top:8px;padding-top:8px;border-top:1px dashed #e2e8f0;}
+        .footer{text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid #e2e8f0;margin-top:40px;}
+        
+        @media (max-width: 768px) {
+            .timeline-two-col{grid-template-columns:1fr;}
+            .market-grid{grid-template-columns:1fr;}
+        }
+        
+        /* 移动端适配优化 */
+        @media (max-width: 1024px) {
+            .header-main {
+                padding: 10px 16px;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .header h1 {
+                font-size: 1.1rem;
+            }
+            .header-center {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 5px;
+            }
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            .header-right {
+                font-size: 0.75rem;
+                padding: 4px 8px;
+            }
+            .container {
+                padding: 16px 12px;
+            }
+            .briefing-header {
+                padding: 16px;
+            }
+            .briefing-header h2 {
+                font-size: 1.2rem;
+            }
+            .briefing-header .summary {
+                font-size: 0.9rem;
+            }
+            .section {
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+            .section h3 {
+                font-size: 1.05rem;
+            }
+            .section h4 {
+                font-size: 0.95rem;
+            }
+            .section p, .section li {
+                font-size: 0.9rem;
+            }
+            .highlight-box {
+                padding: 12px;
+            }
+            .highlight-box h5 {
+                font-size: 0.9rem;
+            }
+            .market-card {
+                padding: 12px;
+            }
+            .news-item {
+                padding: 12px;
+            }
+            .news-title {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .header-icon {
+                font-size: 1.4rem;
+            }
+            .header h1 {
+                font-size: 0.95rem;
+            }
+            .header-center {
+                gap: 2px;
+                padding: 3px;
+            }
+            .nav-btn {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+                gap: 3px;
+            }
+            .header-right {
+                font-size: 0.7rem;
+            }
+            .briefing-header {
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .briefing-header h2 {
+                font-size: 1.1rem;
+            }
+            .briefing-header .summary {
+                font-size: 0.85rem;
+                line-height: 1.7;
+            }
+            .section {
+                padding: 14px;
+                border-radius: 10px;
+            }
+            .section h3 {
+                font-size: 1rem;
+                padding-bottom: 8px;
+            }
+            .section h4 {
+                font-size: 0.9rem;
+                margin: 16px 0 10px 0;
+            }
+            .section p, .section li {
+                font-size: 0.85rem;
+                line-height: 1.7;
+            }
+            .highlight-box {
+                padding: 10px;
+                margin: 12px 0;
+            }
+            .highlight-box h5 {
+                font-size: 0.85rem;
+                margin-bottom: 6px;
+            }
+            .timeline-col {
+                padding-left: 16px;
+            }
+            .timeline-item {
+                margin-bottom: 12px;
+                padding-left: 14px;
+            }
+            .timeline-time {
+                font-size: 0.75rem;
+            }
+            .timeline-content {
+                font-size: 0.85rem;
+            }
+            .market-grid {
+                gap: 12px;
+            }
+            .market-card h5 {
+                font-size: 0.85rem;
+            }
+            .market-card p {
+                font-size: 0.8rem;
+            }
+            .news-item {
+                padding: 12px;
+            }
+            .news-title {
+                font-size: 0.9rem;
+            }
+            .news-source {
+                font-size: 0.75rem;
+            }
+            .news-summary {
+                font-size: 0.8rem;
+            }
+            .footer {
+                padding: 16px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-main {
+                padding: 8px 10px;
+            }
+            .header h1 {
+                font-size: 0.85rem;
+            }
+            .nav-btn {
+                padding: 4px 6px;
+                font-size: 0.7rem;
+            }
+            .container {
+                padding: 12px 10px;
+            }
+            .briefing-header h2 {
+                font-size: 1rem;
+            }
+            .section h3 {
+                font-size: 0.95rem;
+            }
+            .highlight-box {
+                border-left-width: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <span class="header-icon">🌐</span>
+                <h1>【华泰固收】中东地缘跟踪</h1>
+            </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="briefing.html" class="nav-btn active">📰 美以伊冲突每日简报</a>
+                <a href="tracking.html" class="nav-btn">⚡ 霍尔木兹海峡跟踪</a>
+            </div>
+            <div class="header-right">更新时间: 2026年03月09日</div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="briefing-header">
+            <h2>📰 美以伊冲突每日简报 (2026年03月09日)</h2>
+            <p class="summary">美以伊冲突进入第10天，霍尔木兹海峡封锁第8天。过去36小时内，伊朗持续对沙特、阿联酋、卡塔尔等海湾国家发动无人机和导弹袭击，针对能源设施和美军基地；美以联军转向打击伊朗德黑兰油库和导弹生产设施，伊朗导弹攻击频率下降90%。布伦特原油突破90美元并继续上涨，全球能源供应面临严重中断风险，市场恐慌情绪加剧。</p>
+        </div>
+
+        <div class="section">
+            <h3>📍 冲突最新进展</h3>
+            <div class="highlight-box military"><h5>美以联军打击伊朗能源与国防工业设施</h5><p>3月7日晚间至3月8日凌晨，美以联军对伊朗西部、中部和西南部目标发动新一轮大规模空袭，包括德黑兰周边Shahran油库、Tehran炼油厂以及Esfahan省空军基地（当地时间3月7日22:00-3月8日04:00）。出动F-35隐身战机、巡航导弹和无人机群，打击超过300个目标。卫星图像显示多处油库起火，炼油产能损失估计15-20万桶/日。美中央司令部表示，此阶段重点摧毁伊朗导弹生产设施和国防工业基础，已实现伊朗上空空中优势，伊朗弹道导弹攻击减少90%。此举标志冲突从防空压制向经济基础设施和长期作战能力削弱升级，旨在加速伊朗财政崩溃和政权内部压力。</p></div><div class="highlight-box military"><h5>伊朗对海湾国家持续导弹与无人机袭击</h5><p>3月7日15:00至3月8日08:00，伊朗无视总统Pezeshkian 3月7日声明（仅针对攻击来源国），继续向沙特、阿联酋、卡塔尔、巴林发射导弹和无人机。沙特防空部队拦截8架无人机和1枚弹道导弹，一枚导弹落入无人区，另一疑似无人机袭击Aramco Berri油田。阿联酋报告121架无人机和16枚导弹袭击，部分击中迪拜国际机场周边。卡塔尔拦截10架无人机中的9架。巴林报告无人机击中水淡化厂和民用建筑。伊朗硬派对Pezeshkian '道歉'言论强烈不满，称其'软弱'，凸显伊朗领导层内部分裂。此轮袭击旨在施压海湾国家减少对美支持，但也加剧地区外溢风险。</p></div><div class="highlight-box damage"><h5>霍尔木兹海峡封锁持续，通航量骤降</h5><p>自3月2日起封锁进入第8天，过去36小时内海峡通航量维持低位，较正常下降80%以上。伊朗革命卫队高级官员重申'任何试图通过的船只将被击沉'，多家航运公司取消通过计划，保险费飙升。滞留油轮超过数十艘，部分转向好望角绕行，增加6000海里航程和30-40%运费。全球约2000万桶/日石油和3000万吨/年LNG运输受阻，亚洲国家（中国、日本、韩国）供应压力最大。此封锁可持续性取决于伊朗导弹库存和美海军干预强度，目前市场隐含中断持续数周。</p></div><div class="highlight-box statements"><h5>伊朗国内领导层动态与硬派不满</h5><p>3月7日，伊朗总统Pezeshkian发表讲话，向海湾国家道歉并称领导委员会下令武装部队仅针对攻击来源国，但随后在X平台澄清仅针对美设施（与事实不符）。硬派议员Hamid Rasaei称其'不可接受'，敦促专家会议尽快选新最高领袖。多名IRGC高级指挥官不满，内部传闻显示对领导委员会不满加剧。IRGC成员从黎巴嫩撤离数十人，显示伊朗对真主党全面动员信心不足。此内部分裂可能影响决策一致性，但政权生存优先仍占主导。</p></div><div class="highlight-box statements"><h5>各方官方最新表态与外交斡旋</h5><p>3月8日，伊朗外长Araghchi表示'自信能对抗美地面入侵'，拒绝与美谈判或停火。伊朗总统Pezeshkian重申不屈服美以压力。美国国防部长Hegseth表示将继续扩大进攻行动，直至摧毁伊朗导弹能力。以色列总参谋长Zamir称进入'下一阶段'，针对伊朗政权基础。沙特私下警告伊朗停止袭击，否则可能反击。中国和欧盟呼吁克制，但未见实质调解进展。联合国安理会紧急会议无果。</p></div><div class="highlight-box military"><h5>代理人网络活动减弱</h5><p>过去36小时，真主党仅声称7次袭击以色列北部和黎南部目标，规模有限。胡塞武装红海行动未见升级。伊拉克民兵声称27次无人机/导弹袭击美基地，但多数被拦截。IRGC从黎巴嫩撤离显示伊朗代理人网络响应能力受限，部分因以色列压力和黎巴嫩国内反对。</p></div>
+            <h4>各方最新表态</h4><ul><li><strong>🇺🇸 美国：</strong>维持空中优势，继续扩大打击伊朗国防工业和能源设施，目标防止伊朗拥核并重塑中东秩序；拒绝谈判，除非伊朗无条件投降。</li><li><strong>🇮🇱 以色列：</strong>进入下一阶段打击，重点消除伊朗导弹威胁和政权基础；视伊朗为生存威胁，寻求扩大战略纵深。</li><li><strong>🇮🇷 伊朗：</strong>政权生存优先，坚持导弹反击和海峡封锁，拒绝屈服；内部硬派主导，总统温和表态遭反弹。</li><li><strong>🌍 国际社会：</strong>沙特等海湾国家警告伊朗停止袭击，否则可能反击；中国关注能源安全但避免卷入；欧盟内部分裂。</li></ul>
+        </div>
+
+        <div class="section">
+            <h3>⏱️ 关键时间线</h3>
+            
+        <div class="timeline-two-col">
+            <div class="timeline-col"><div class="timeline-item critical"><div class="timeline-time">2026-02-28</div><div class="timeline-content">美以发起Operation Epic Fury，近900次打击杀死最高领袖Khamenei等多名高层</div></div><div class="timeline-item critical"><div class="timeline-time">2026-03-02</div><div class="timeline-content">伊朗宣布封锁霍尔木兹海峡，袭击试图通过船只</div></div><div class="timeline-item critical"><div class="timeline-time">2026-03-05</div><div class="timeline-content">美以进入第二阶段，打击伊朗导弹生产设施，实现空中优势</div></div></div>
+            <div class="timeline-col"><div class="timeline-item normal"><div class="timeline-time">2026-03-06</div><div class="timeline-content">伊朗导弹攻击减少90%，但继续袭击海湾国家</div></div><div class="timeline-item critical"><div class="timeline-time">2026-03-07</div><div class="timeline-content">Pezeshkian下令暂停对非来源国袭击，但继续发生；美以打击伊朗油库</div></div><div class="timeline-item critical"><div class="timeline-time">2026-03-08</div><div class="timeline-content">伊朗袭击沙特油田、阿联酋机场等，硬派不满总统表态</div></div></div>
+        </div>
+    
+        </div>
+
+        <div class="section">
+            <h3>🔍 深度分析</h3>
+            <h4>🌍 地缘政治深度分析</h4><p>美伊冲突根源于1953年政变、1979年革命、伊核协议破裂及核问题核心矛盾（伊朗浓缩铀丰度接近武器级，突破时间缩短至数周）。伊朗代理人模式（真主党、胡塞、伊拉克民兵）旨在不对称威慑，但当前美以空中优势已削弱其有效性。关键变量包括伊朗导弹库存（估3000-5000枚，短中远程分类，消耗速度快于生产）；海峡封锁可持续性（经济成本高、国际孤立加剧、军事上难抵美海军）；第三方介入（真主党全面动员概率低，因黎巴嫩内部压力）。美国意图防止伊朗拥核、重塑亲美秩序；以色列视伊朗为生存威胁；伊朗以政权生存和什叶派影响力为底线。历史对照：2003伊拉克战争美低估抵抗，2011利比亚干预后乱局；当前误判风险为美以高估伊朗崩溃速度、伊朗高估国际干预。最坏情景：海峡中断6个月+、伊朗内战或核设施泄漏。外交上，中国能源关切但克制；欧盟分裂；海湾国家左右为难。</p><h4>🔮 后续进展预判</h4><p>基准情景（市场主流）：冲突持续数周至数月，美以逐步削弱伊朗导弹与经济能力，伊朗反击渐弱，海峡部分恢复；油价维持高位但不无限上涨。乐观情景：若伊朗内部压力导致求和信号（如最高领袖继任者明确或国内抗议升级），外交突破可能出现，但当前无积极信号。悲观情景：若伊朗导弹袭击造成以色列大规模平民伤亡或美军地面调动，升级至全面战争，第三方介入概率上升。期货定价隐含基准情景，期权skew反映尾部风险。降级信号：海峡通航>50%、伊朗求和、美以暂停48小时；升级信号：美地面部队调动、伊朗退出NPT；转折信号：伊朗领导层健康传闻或沙伊秘密接触。</p><h4>💥 全球经济影响</h4><p>霍尔木兹日运2000万桶油（全球海运35%）、LNG 3000万吨/年；绕行好望角增6000海里、运费涨30-40%、延时12-15天。若中断1月，全球缺口4.5亿桶（5天消费）。长期风险溢价推油价中枢至75-80美元。通胀传导：油价涨→运输/制造成本升→消费品涨，滞后1-6月；央行陷困境（美联储通胀vs放缓）。供应链：上海-鹿特丹运费涨50%，亚洲制造业能源成本占15-20%，航空/化工/物流受重创。中国影响：日进口1100万桶，每涨10美元年增400亿美元；CPI推升1.5个百分点；人民币贬值压力、外储年额外支出1200亿美元；一带一路项目保险飙升、中伊合作受阻。</p><div class="highlight-box"><h5>💡 投资策略建议</h5><p>固收：缩短久期至3-7年，减配长端美债和高收益债，增配投资级和避险德债/日债；新兴债限投资级。美10年收益率4.0%以下减仓、4.5%以上加仓，止损5.0%。大宗：原油Brent 90-110区间分批建多（初始30%仓位，突破85加至50%，止损75）；黄金目标3000-3200，配置10-15%；天然气套利TTF-Henry Hub价差。外汇：看空EUR/USD至1.05、看多USD/JPY至155、USD/CNY至7.35；避险CHF/JPY各5%。综合：风险:避险40:60，现金20%；VIX>40降风险资产至30%，油价<80增至50%。对冲：VIX/原油看涨/看跌期权。</p></div>
+            <h4>📌 关键关注要点</h4><ul><li>霍尔木兹通航恢复程度</li><li>伊朗导弹库存消耗与生产能力</li><li>美以是否扩大地面行动</li><li>伊朗领导层继任与内部稳定</li><li>海湾国家是否直接反击</li><li>中国/欧盟外交斡旋信号</li><li>油价风险溢价变化与期权skew</li></ul>
+        </div>
+
+        <div class="section">
+            <h3>📊 市场影响分析</h3>
+            <div class="market-grid"><div class="market-card"><h5>🛢️ 原油</h5><p>布伦特原油：约93美元/桶（3月6日收92.69美元，涨8.52%；日内波动大，较上周涨约20%+）；WTI原油：约90.90美元/桶（涨12.21%）。来源：ICE/NYMEX，最新可用数据。</p></div><div class="market-card"><h5>📈 股市</h5><p>美股：标普500下跌（受油价上涨通胀担忧）；欧洲斯托克600、DAX下跌；亚洲日经、恒生、上证承压（收盘数据）。</p></div><div class="market-card"><h5>📉 债市</h5><p>美10年期国债收益率上升（避险需求与通胀预期冲突）；德国10年期收益率走高；黄金上涨作为避险。</p></div><div class="market-card"><h5>💱 外汇</h5><p>美元指数（DXY）走强；欧元/美元下跌；美元/日元上涨；新兴货币如里拉贬值。</p></div><div class="market-card"><h5>⚡ 波动率</h5><p>VIX恐慌指数大幅上升；OVX原油波动率激增。</p></div></div>
+            <div class="highlight-box"><h5>🏦 投行观点汇总</h5><p>高盛：风险溢价约14美元/桶，若霍尔木兹中断4周；Q2 Brent目标76美元，但若持续中断可能超100美元；建议买入原油看涨期权，警告长期中断风险。摩根士丹利：Q2上调至80美元（此前62.5美元）；预计短期80-90美元区间，关注中断持续性；交易建议建多头头寸。摩根大通：警告供应损失超300-400万桶/日；短期可能达100-120美元；建议能源股配置，但警惕回落。花旗：短期Brent 80-90美元区间，20%概率达120美元；推荐买入远月合约。美银：类似高盛，强调风险溢价上升；建议减持高收益债，增配黄金和能源。近几日共识：冲突持续导致油价中枢上移，但若快速降级则回落；交易建议多原油/黄金、对冲通胀。</p></div>
+        </div>
+
+        <div class="section">
+            <h3>📰 最新新闻</h3>
+            <div class="news-list"><a href="https://www.aljazeera.com/video/newsfeed/2026/3/8/iran-will-not-bow-to-us-and-israeli-pressure-pezeshkian-says" target="_blank" class="news-item"><div class="news-title">Iran will not 'bow' to US and Israeli pressure, Pezeshkian says</div><div class="news-source">Al Jazeera · 2026年03月09日</div><div class="news-summary">伊朗总统重申不屈服美以压力，冲突持续升级。</div></a><a href="https://www.nbcnews.com/world/iran/iran-foreign-minister-interview-rcna261920" target="_blank" class="news-item"><div class="news-title">Iran is 'confident' it could counter a U.S. ground invasion</div><div class="news-source">NBC News · 2026年03月09日</div><div class="news-summary">伊朗外长称准备应对美地面入侵，无意谈判。</div></a><a href="https://understandingwar.org/research/middle-east/iran-update-evening-special-report-march-6-2026" target="_blank" class="news-item"><div class="news-title">Iran Update Evening Special Report, March 6, 2026</div><div class="news-source">Institute for the Study of War · 2026年03月09日</div><div class="news-summary">美以打击伊朗导弹基础设施，伊朗报复下降。</div></a><a href="https://www.aljazeera.com/news/2026/3/7/iranian-missiles-intercepted-over-saudi-jordan-drones-launched-at-qatar" target="_blank" class="news-item"><div class="news-title">Iranian missiles intercepted over Saudi Arabia, Qatar, UAE</div><div class="news-source">Al Jazeera · 2026年03月09日</div><div class="news-summary">伊朗导弹袭击海湾国家，多国拦截。</div></a><a href="https://www.reuters.com/world/middle-east/saudi-has-told-iran-not-attack-it-warns-possible-retaliation-sources-say-2026-03-07" target="_blank" class="news-item"><div class="news-title">Saudi Arabia has told Iran to stop attacks</div><div class="news-source">Reuters · 2026年03月09日</div><div class="news-summary">沙特警告伊朗停止袭击，否则可能反击。</div></a></div>
+        </div>
+
+        <div class="footer">数据来源：路透社、彭博社、半岛电视台、财联社、新华社等 | 仅供参考，不构成投资建议</div>
+    </div>
+</body>
+</html>

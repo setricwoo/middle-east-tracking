@@ -1,0 +1,5 @@
+{
+    "grok_api_key": "sk-9XSaf4XwU4DefoKqpuZWVZ5OrZbzmw6YsksHaqo7VcDw3ZF1",
+    "grok_api_base": "https://api.vectorengine.ai",
+    "grok_model": "grok-4.2"
+}
