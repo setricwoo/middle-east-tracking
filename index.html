@@ -590,6 +590,15 @@
             cursor: pointer;
             transition: transform 0.2s;
             z-index: 1000;
+            position: relative;
+        }
+        
+        .country-marker {
+            z-index: 1000 !important;
+        }
+        
+        .country-marker .leaflet-marker-icon {
+            z-index: 1000 !important;
         }
         
         .storage-control:hover {
@@ -1288,7 +1297,8 @@
                         iconSize: [size + 100, size + 35], 
                         iconAnchor: [r, r],
                         className: 'country-marker'
-                    })
+                    }),
+                    zIndexOffset: 1000
                 }).addTo(map);
                 
                 const popupContent = `
