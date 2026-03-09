@@ -230,31 +230,39 @@
         /* 移动端适配 */
         @media (max-width: 768px) {
             .header-main {
-                padding: 8px 12px;
-                flex-wrap: nowrap;
+                padding: 8px 10px;
+                flex-wrap: wrap;
                 gap: 6px;
             }
             .header-left {
                 flex-shrink: 0;
             }
+            .header-icon {
+                font-size: 1.4rem;
+            }
             .header h1 {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
+                max-width: 100px;
+                line-height: 1.2;
             }
             .header-center {
                 order: 3;
                 width: 100%;
                 justify-content: center;
-                margin-top: 5px;
-                gap: 2px;
+                margin-top: 6px;
+                gap: 4px;
+                padding: 0 4px;
             }
             .nav-btn {
-                padding: 4px 6px;
-                font-size: 0.7rem;
+                padding: 5px 8px;
+                font-size: 0.65rem;
                 gap: 2px;
+                white-space: nowrap;
+                flex-shrink: 0;
             }
             .header-right {
-                font-size: 0.65rem;
-                padding: 3px 6px;
+                font-size: 0.6rem;
+                padding: 2px 6px;
                 flex-shrink: 0;
             }
             .container {
@@ -398,17 +406,84 @@
             }
             .storage-modal {
                 align-items: flex-start;
-                padding-top: 60px;
+                padding-top: 40px;
             }
             .storage-modal-content {
-                width: 92%;
+                width: 94%;
                 padding: 16px;
                 margin: 0 auto;
-                max-height: 75vh;
+                max-height: 80vh;
                 border-radius: 12px;
             }
             .storage-header h2 {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+            .storage-header {
+                gap: 8px;
+                margin-bottom: 12px;
+                padding-bottom: 12px;
+            }
+            .storage-header span {
+                font-size: 1.5rem;
+            }
+            .close-modal-btn {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            #map {
+                height: 40vh;
+                min-height: 280px;
+            }
+            .sidebar {
+                max-height: 45vh;
+                overflow-y: auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-main {
+                padding: 6px 8px;
+            }
+            .header h1 {
+                font-size: 0.7rem;
+            }
+            .header-center {
+                margin-top: 4px;
+                gap: 2px;
+            }
+            .nav-btn {
+                padding: 3px 5px;
+                font-size: 0.55rem;
+            }
+            .header-right {
+                font-size: 0.55rem;
+                padding: 2px 4px;
+            }
+            .storage-modal {
+                padding-top: 30px;
+            }
+            .storage-modal-content {
+                width: 96%;
+                padding: 14px;
+                max-height: 85vh;
+            }
+            #map {
+                height: 35vh;
+                min-height: 240px;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+            .stat-box {
+                padding: 8px 4px;
+            }
+            .stat-box .number {
+                font-size: 0.9rem;
+            }
+            .filter-btn {
+                font-size: 0.6rem;
+                padding: 3px 6px;
             }
         }
         
