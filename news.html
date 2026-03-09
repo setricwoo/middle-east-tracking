@@ -267,13 +267,20 @@
         
         /* 移动端 */
         @media (max-width: 768px) {
-            .header-main { padding: 8px 12px; }
-            .header h1 { font-size: 0.9rem; }
-            .header-center { order: 3; width: 100%; justify-content: center; }
-            .nav-btn { padding: 5px 10px; font-size: 0.75rem; }
+            .header-main { flex-wrap: wrap; padding: 8px 12px; gap: 8px; }
+            .header h1 { font-size: 0.85rem; }
+            .header-center { order: 3; width: 100%; justify-content: center; gap: 2px; }
+            .nav-btn { padding: 4px 8px; font-size: 0.7rem; }
+            .header-right { font-size: 0.7rem; padding: 2px 6px; }
             .container { padding: 10px 12px; }
-            .news-title { font-size: 0.95rem; }
-            .source-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .news-item { padding: 12px; }
+            .news-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .news-title { font-size: 0.95rem; line-height: 1.4; }
+            .news-time { margin-left: 0; font-size: 0.7rem; }
+            .news-summary { font-size: 0.85rem; }
+            .news-meta { flex-wrap: wrap; gap: 8px; }
+            .news-tag { font-size: 0.7rem; padding: 2px 8px; }
+            .cls-badge { font-size: 0.65rem; }
         }
     </style>
 </head>
