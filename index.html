@@ -1199,7 +1199,8 @@
             const storage = country.storage;
             const hasUpdate = storage.updates && storage.updates.length > 0;
             
-            return '<div class="storage-control" onclick="showStorageModal(' + "'" + country.name + "'" + ')" style="display: flex; align-items: center; gap: 8px; pointer-events: auto; cursor: pointer;">' +
+            const countryName = country.name;
+            return '<div class="storage-control" onclick="event.stopPropagation(); showStorageModal(' + "'" + countryName + "'" + ');" style="display: flex; align-items: center; gap: 8px; pointer-events: auto; cursor: pointer;">' +
                    '<div style="background: #3b82f6; color: white; border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; font-size: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.35); border: 2px solid #fff;\">📊</div>' +
                    '<div style="background: rgba(255,255,255,0.95); padding: 6px 12px; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); border: 1px solid #3b82f6; font-size: 0.8rem; white-space: nowrap;">' +
                    '<span style="color: #64748b;">最新动态</span>' +
@@ -1208,6 +1209,9 @@
 
         // 显示储油弹窗
         function showStorageModal(countryName) {
+            // 阻止事件冒泡
+            if (event) event.stopPropagation();
+            
             const country = countries.find(c => c.name === countryName);
             if (!country || !country.storage) return;
             
@@ -1259,6 +1263,8 @@
         function closeStorageModal() {
             const modal = document.getElementById('storage-modal');
             if (modal) modal.remove();
+            // 关闭所有 marker 的 popup
+            map.closePopup();
         }
 
         // 绘制所有图层
@@ -1321,7 +1327,7 @@
                         <div style="font-size: 0.8rem; color: #64748b; margin-bottom: 10px;">
                             经霍尔木兹: ${country.hormuzExports} | 绕过: ${country.bypassExports}
                         </div>
-                        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 10px; border-radius: 8px; font-size: 0.8rem; border: 1px solid #bfdbfe; cursor: pointer;" onclick="showStorageModal('${country.name}')">
+                        <div style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); padding: 10px; border-radius: 8px; font-size: 0.8rem; border: 1px solid #bfdbfe; cursor: pointer;" onclick="event.stopPropagation(); showStorageModal('${country.name}');">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
                                 <div style="display: flex; align-items: center; gap: 6px;">
                                     <span>📢</span>
@@ -1486,7 +1492,7 @@
                             <div style="font-weight: 700; color: #1e40af;">${s.production}</div>
                             <div style="font-size: 0.6rem; color: #64748b;">产量(万桶/日)</div>
                         </div>
-                        <div style="text-align: center; padding: 5px; background: #dcfce7; border-radius: 4px; cursor: pointer;" onclick="showStorageModal('${country.name}')">
+                        <div style="text-align: center; padding: 5px; background: #dcfce7; border-radius: 4px; cursor: pointer;" onclick="event.stopPropagation(); showStorageModal('${country.name}');">
                             <div style="font-weight: 700; color: #166534;">${s.exports}</div>
                             <div style="font-size: 0.6rem; color: #15803d;">出口(万桶/日)</div>
                         </div>
