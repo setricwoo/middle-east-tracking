@@ -1005,6 +1005,13 @@
             .chart-grid {
                 grid-template-columns: 1fr;
             }
+            .chart-container {
+                height: 280px;
+            }
+            .chart-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
         }
         
         @media (max-width: 640px) {
@@ -1750,6 +1757,9 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                layout: {
+                    padding: window.innerWidth < 768 ? {left: 5, right: 5, top: 10, bottom: 5} : {left: 10, right: 10, top: 10, bottom: 10}
+                },
                 interaction: {
                     mode: 'index',
                     intersect: false,
@@ -1797,9 +1807,9 @@
                             display: false
                         },
                         ticks: {
-                            maxTicksLimit: 15,
+                            maxTicksLimit: window.innerWidth < 768 ? 8 : 15,
                             font: {
-                                size: 10
+                                size: window.innerWidth < 768 ? 9 : 10
                             }
                         }
                     },
@@ -1812,13 +1822,20 @@
                             color: 'rgba(0, 0, 0, 0.05)'
                         },
                         ticks: {
+                            maxTicksLimit: window.innerWidth < 768 ? 5 : 8,
+                            font: {
+                                size: window.innerWidth < 768 ? 9 : 11
+                            },
                             callback: function(value) {
-                                return value + ' 艘';
+                                return window.innerWidth < 768 ? value : value + ' 艘';
                             }
                         },
                         title: {
-                            display: true,
-                            text: '艘次'
+                            display: window.innerWidth >= 768,
+                            text: '艘次',
+                            font: {
+                                size: 11
+                            }
                         }
                     },
                     y1: {
@@ -1830,13 +1847,20 @@
                             drawOnChartArea: false
                         },
                         ticks: {
+                            maxTicksLimit: window.innerWidth < 768 ? 5 : 8,
+                            font: {
+                                size: window.innerWidth < 768 ? 9 : 11
+                            },
                             callback: function(value) {
-                                return value + ' 万吨';
+                                return window.innerWidth < 768 ? value : value + ' 万吨';
                             }
                         },
                         title: {
-                            display: true,
-                            text: '万吨'
+                            display: window.innerWidth >= 768,
+                            text: '万吨',
+                            font: {
+                                size: 11
+                            }
                         }
                     }
                 },
