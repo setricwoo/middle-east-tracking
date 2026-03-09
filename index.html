@@ -266,9 +266,9 @@
                 padding: 0 4px;
             }
             .nav-btn {
-                padding: 5px 8px;
-                font-size: 0.65rem;
-                gap: 2px;
+                padding: 6px 10px;
+                font-size: 0.75rem;
+                gap: 3px;
                 white-space: nowrap;
                 flex-shrink: 0;
             }
@@ -469,9 +469,9 @@
                 gap: 2px;
             }
             .nav-btn {
-                padding: 3px 4px;
-                font-size: 0.55rem;
-                gap: 1px;
+                padding: 4px 6px;
+                font-size: 0.7rem;
+                gap: 2px;
             }
             .header-right {
                 font-size: 0.55rem;
@@ -546,6 +546,21 @@
             }
             .leaflet-control {
                 margin: 0 !important;
+            }
+            /* 移动端隐藏地图上的2025年出口概况控件 */
+            .leaflet-bottom.leaflet-left .leaflet-control {
+                display: none !important;
+            }
+            /* 移动端显示侧边栏的出口概况 */
+            .mobile-export-summary {
+                display: block !important;
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 1px solid #e2e8f0;
+            }
+            .mobile-export-summary h3 {
+                font-size: 0.85rem;
+                margin-bottom: 8px;
             }
         }
         
@@ -991,6 +1006,20 @@
                     点击地图图标查看最新动态详情
                 </div>
                 <div id="country-list"></div>
+            </div>
+            
+            <!-- 移动端专用：2025年出口概况（地图上的控件在移动端隐藏，这里显示） -->
+            <div class="mobile-export-summary" style="display: none;">
+                <h3>📊 2025年出口概况</h3>
+                <div style="font-size: 0.8rem; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <div style="margin-bottom: 6px; color: #475569;">🇸🇦 沙特: 7.48 = 霍尔木兹5.5 + 绕过1.98</div>
+                    <div style="margin-bottom: 6px; color: #475569;">🇮🇶 伊拉克: 3.4 (全部经霍尔木兹)</div>
+                    <div style="margin-bottom: 6px; color: #475569;">🇦🇪 阿联酋: 2.8 = 霍尔木兹1.7 + 绕过1.1</div>
+                    <div style="color: #64748b; font-size: 0.72rem; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0;">
+                        <strong>线条:</strong> 流量越大越粗<br>
+                        红色=经霍尔木兹 | 绿色=绕过
+                    </div>
+                </div>
             </div>
         </div>
     </div>
