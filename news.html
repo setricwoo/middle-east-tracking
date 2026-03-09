@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - 实时新闻</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        /* 头部导航 */
+        .header {
+            background: #fff;
+            padding: 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { font-size: 1.8rem; color: #1e40af; }
+        
+        .header h1 {
+            font-size: 1.2rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .header-center {
+            display: flex;
+            gap: 4px;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 8px;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #475569;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        
+        .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
+        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 600; }
+        
+        .header-right {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        /* 状态栏 */
+        .status-bar {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        
+        .status-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .status-label {
+            font-size: 0.75rem;
+            color: #92400e;
+            text-transform: uppercase;
+        }
+        
+        .status-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #78350f;
+        }
+        
+        .update-time {
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+        
+        /* 筛选栏 */
+        .filter-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        
+        .filter-row:last-child { margin-bottom: 0; }
+        
+        .filter-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+            min-width: 50px;
+        }
+        
+        .filter-btn {
+            padding: 6px 14px;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
+        }
+        
+        /* 新闻列表 */
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .news-item {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .news-item:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.15);
+        }
+        
+        .news-item.energy { border-left: 4px solid #f59e0b; }
+        .news-item.military { border-left: 4px solid #ef4444; }
+        .news-item.diplomacy { border-left: 4px solid #10b981; }
+        .news-item.shipping { border-left: 4px solid #8b5cf6; }
+        .news-item.market { border-left: 4px solid #3b82f6; }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e40af;
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .news-time {
+            font-size: 0.8rem;
+            color: #64748b;
+            white-space: nowrap;
+        }
+        
+        .news-summary {
+            font-size: 0.95rem;
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .news-source {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .source-tag {
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .source-tag.cls { background: #fee2e2; color: #dc2626; }
+        .source-tag.jin10 { background: #fef3c7; color: #b45309; }
+        .source-tag.sina { background: #dbeafe; color: #1e40af; }
+        .source-tag.wallstreet { background: #f3e8ff; color: #7c3aed; }
+        .source-tag.21cbh { background: #d1fae5; color: #047857; }
+        
+        .category-tag {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .category-tag.energy { background: #fef3c7; color: #92400e; }
+        .category-tag.military { background: #fee2e2; color: #991b1b; }
+        .category-tag.diplomacy { background: #d1fae5; color: #065f46; }
+        .category-tag.shipping { background: #f3e8ff; color: #6b21a8; }
+        .category-tag.market { background: #dbeafe; color: #1e40af; }
+        
+        /* 空状态 */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #64748b;
+        }
+        
+        .empty-icon { font-size: 3rem; margin-bottom: 16px; }
+        
+        /* 移动端 */
+        @media (max-width: 768px) {
+            .header-main { padding: 10px 16px; }
+            .header h1 { font-size: 1rem; }
+            .header-center { order: 3; width: 100%; justify-content: center; }
+            .nav-btn { padding: 6px 12px; font-size: 0.8rem; }
+            .status-bar { flex-direction: column; align-items: flex-start; }
+            .status-left { gap: 16px; }
+            .news-title { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <span class="header-icon">🌍</span>
+                <h1>【华泰固收】中东地缘跟踪</h1>
+            </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="briefing.html" class="nav-btn">📰 每日简报</a>
+                <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
+                <a href="news.html" class="nav-btn active">🔴 实时新闻</a>
+            </div>
+            <div class="header-right" id="update-time">
+                更新时间: --
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 状态栏 -->
+        <div class="status-bar">
+            <div class="status-left">
+                <div class="status-item">
+                    <span class="status-label">新闻总数</span>
+                    <span class="status-value" id="total-count">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">分类</span>
+                    <span class="update-time">军事/能源/航运/外交/金融</span>
+                </div>
+            </div>
+            <div class="update-time" id="last-update">
+                最后更新: --
+            </div>
+        </div>
+
+        <!-- 筛选栏 -->
+        <div class="filter-section">
+            <div class="filter-row">
+                <span class="filter-label">来源:</span>
+                <button class="filter-btn active" data-filter="all">全部</button>
+                <button class="filter-btn" data-filter="cls">财联社</button>
+                <button class="filter-btn" data-filter="jin10">金十</button>
+                <button class="filter-btn" data-filter="sina">新浪财经</button>
+                <button class="filter-btn" data-filter="wallstreet">华尔街见闻</button>
+                <button class="filter-btn" data-filter="21cbh">21财经</button>
+            </div>
+            <div class="filter-row">
+                <span class="filter-label">分类:</span>
+                <button class="filter-btn active" data-category="all">全部</button>
+                <button class="filter-btn" data-category="military">军事动态</button>
+                <button class="filter-btn" data-category="energy">能源市场</button>
+                <button class="filter-btn" data-category="shipping">航运通道</button>
+                <button class="filter-btn" data-category="diplomacy">外交斡旋</button>
+                <button class="filter-btn" data-category="market">金融市场</button>
+            </div>
+        </div>
+
+        <!-- 新闻列表 -->
+        <div id="news-container" class="news-list">
+            <div class="empty-state">
+                <div class="empty-icon">📭</div>
+                <p>正在加载新闻...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 新闻数据（手动更新此JSON）
+        const NEWS_DATA = {
+            "updateTime": "2026-03-09 14:30",
+            "news": [
+                {
+                    "id": "1",
+                    "title": "美油暴涨22%突破111美元，霍尔木兹海峡近乎停航引发连锁减产",
+                    "summary": "3月9日亚市早盘，美油主力合约一度大涨22%，最高报111美元/桶。霍尔木兹海峡近乎停航引发中东产油国连锁减产反应，阿联酋宣布调整近海生产水平，科威特减产幅度预计扩大至30万桶/日。",
+                    "source": "sina",
+                    "sourceName": "新浪财经",
+                    "category": "energy",
+                    "time": "10分钟前",
+                    "url": "https://finance.sina.com.cn/..."
+                },
+                {
+                    "id": "2", 
+                    "title": "以色列国防军：将继续追究哈梅内伊继任者责任",
+                    "summary": "以色列国防军8日称，以色列将继续追究哈梅内伊继任者和任何试图任命他的人的责任，将继续视哈梅内伊继任者为目标。伊朗专家会议已就新的最高领袖人选作出最终决定。",
+                    "source": "cls",
+                    "sourceName": "财联社",
+                    "category": "military",
+                    "time": "30分钟前",
+                    "url": "https://www.cls.cn/..."
+                },
+                {
+                    "id": "3",
+                    "title": "伊拉克石油产量暴跌60%，从430万桶/日降至170万桶",
+                    "summary": "受美以对伊朗军事打击影响，伊拉克缺乏足够的油轮装载本国原油，其石油产量暴跌约60%。摩根大通警告一旦全面停产，油价或暴涨30美元。",
+                    "source": "jin10",
+                    "sourceName": "金十数据",
+                    "category": "energy",
+                    "time": "1小时前",
+                    "url": "https://www.jin10.com/..."
+                },
+                {
+                    "id": "4",
+                    "title": "特朗普：油价将在战争结束后大幅回落，这是一次小规模行动",
+                    "summary": "美国总统特朗普表示，油价将在战争结束后大幅回落。他将此次冲突定性为“一次小规模行动”，并称“可能还会持续一段时间”。美国能源部长称一艘大型油轮已通过霍尔木兹海峡。",
+                    "source": "wallstreet",
+                    "sourceName": "华尔街见闻",
+                    "category": "diplomacy",
+                    "time": "2小时前",
+                    "url": "https://wallstreetcn.com/..."
+                },
+                {
+                    "id": "5",
+                    "title": "韩国政府考虑近30年来首次实施石油价格管控",
+                    "summary": "鉴于中东冲突升级引发能源价格上涨的担忧，韩国政府正考虑近30年来首次实施石油价格管控体系，审视引入油价上限的可行性。",
+                    "source": "21cbh",
+                    "sourceName": "21财经",
+                    "category": "market",
+                    "time": "3小时前",
+                    "url": "https://www.21cbh.com/..."
+                },
+                {
+                    "id": "6",
+                    "title": "霍尔木兹海峡航运保险费率飙升，40尺柜附加费约3000美元",
+                    "summary": "CMA、HPL、中谷物流、海丰等船司宣布对中东航线加征高额战争风险附加费，40尺柜约为3000美元左右。MSC、MSK、COSCO等主流班轮公司已暂停中东航线订舱。",
+                    "source": "cls",
+                    "sourceName": "财联社",
+                    "category": "shipping",
+                    "time": "4小时前",
+                    "url": "https://www.cls.cn/..."
+                }
+            ]
+        };
+
+        // 当前筛选
+        let currentFilter = 'all';
+        let currentCategory = 'all';
+
+        // 初始化
+        function init() {
+            renderNews();
+            updateStats();
+            setupFilters();
+            
+            // 更新头部时间
+            document.getElementById('update-time').textContent = 
+                '更新时间: ' + NEWS_DATA.updateTime;
+            document.getElementById('last-update').textContent = 
+                '最后更新: ' + NEWS_DATA.updateTime;
+        }
+
+        // 渲染新闻
+        function renderNews() {
+            const container = document.getElementById('news-container');
+            let filtered = NEWS_DATA.news;
+            
+            // 来源筛选
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(n => n.source === currentFilter);
+            }
+            
+            // 分类筛选
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(n => n.category === currentCategory);
+            }
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <p>暂无此类新闻</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = filtered.map(news => `
+                <a href="${news.url}" target="_blank" class="news-item ${news.category}">
+                    <div class="news-header">
+                        <div class="news-title">${escapeHtml(news.title)}</div>
+                        <div class="news-time">${news.time}</div>
+                    </div>
+                    <div class="news-summary">${escapeHtml(news.summary)}</div>
+                    <div class="news-meta">
+                        <div class="news-source">
+                            <span class="source-tag ${news.source}">${news.sourceName}</span>
+                        </div>
+                        <span class="category-tag ${news.category}">${getCategoryName(news.category)}</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // 更新统计
+        function updateStats() {
+            document.getElementById('total-count').textContent = NEWS_DATA.news.length;
+        }
+
+        // 设置筛选
+        function setupFilters() {
+            // 来源筛选
+            document.querySelectorAll('[data-filter]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('[data-filter]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    renderNews();
+                });
+            });
+            
+            // 分类筛选
+            document.querySelectorAll('[data-category]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('[data-category]').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.dataset.category;
+                    renderNews();
+                });
+            });
+        }
+
+        // 工具函数
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function getCategoryName(cat) {
+            const names = {
+                'military': '军事动态',
+                'energy': '能源市场',
+                'shipping': '航运通道',
+                'diplomacy': '外交斡旋',
+                'market': '金融市场'
+            };
+            return names[cat] || '其他';
+        }
+
+        // 启动
+        init();
+    </script>
+</body>
+</html>
