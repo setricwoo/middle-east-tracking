@@ -950,14 +950,7 @@
                 <div id="country-list"></div>
             </div>
             
-            <div class="filter-bar" style="margin-top: 12px;">
-                <button class="filter-btn active" onclick="filterMap('all')">全部</button>
-                <button class="filter-btn" onclick="filterMap('capacity')">产能</button>
-                <button class="filter-btn" onclick="filterMap('flows')">流向</button>
-                <button class="filter-btn" onclick="filterMap('pipelines')">管道</button>
-            </div>
-            
-            <div class="filter-bar toggle-bar" style="margin-top: 8px; gap: 8px;">
+            <div class="filter-bar toggle-bar" style="margin-top: 12px; gap: 8px;">
                 <button id="toggle-ports-btn" class="filter-btn toggle-btn" onclick="togglePorts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">⛳ 查看港口</button>
                 <button id="toggle-pipelines-btn" class="filter-btn toggle-btn" onclick="togglePipelines()" style="background: #f3e8ff; color: #7c3aed; border: 1px solid #c4b5fd;">🛣️ 查看管道</button>
             </div>
@@ -1488,6 +1481,7 @@
                 const color = port.hormuz ? '#dc2626' : '#059669';
                 const size = port.throughput > 2 ? 12 : port.throughput > 0.5 ? 8 : 6;
                 
+                // 港口圆点（默认显示）
                 const circle = L.circleMarker([port.lat, port.lng], {
                     radius: size,
                     fillColor: color,
@@ -1497,7 +1491,9 @@
                 }).addTo(map);
                 
                 circle._portId = index;
+                allLayers.push(circle);
                 
+                // 港口文字标签（默认不显示，点击按钮切换）
                 const label = L.marker([port.lat, port.lng], {
                     icon: L.divIcon({
                         html: `<div id="port-label-${index}" style="
@@ -1550,8 +1546,8 @@
                     if (el) el.style.zIndex = 9999;
                 });
                 
-                // 港口图层存储到 portLayers，默认不显示
-                portLayers.push(circle, label);
+                // 港口文字标签存储到 portLayers，默认不显示
+                portLayers.push(label);
             });
             
             // 3. 绘制出口流向
@@ -1576,17 +1572,21 @@
                 allLayers.push(line);
             });
             
-            // 4. 绘制管道（默认不显示）
+            // 4. 绘制管道
             pipelines.forEach(pipe => {
                 const coords = [pipe.from, ...pipe.via, pipe.to];
                 
+                // 管道线路（默认显示）
                 const line = L.polyline(coords, {
                     color: pipe.color,
                     weight: 4,
                     opacity: 0.85,
                     dashArray: pipe.current > 0 ? null : "12, 6"
-                });
+                }).addTo(map);
                 
+                allLayers.push(line);
+                
+                // 管道文字标签（默认不显示，点击按钮切换）
                 const midPoint = pipe.via[0] || [(pipe.from[0] + pipe.to[0]) / 2, (pipe.from[1] + pipe.to[1]) / 2];
                 const label = L.marker(midPoint, {
                     icon: L.divIcon({
@@ -1608,8 +1608,8 @@
                 
                 line.bindPopup(`<div style="min-width: 180px;"><h3 style="color: ${pipe.color}; font-size: 0.9rem;">${pipe.name}</h3><p style="font-size: 0.8rem;">能力: ${pipe.capacity} 百万桶/日<br>使用: ${pipe.current > 0 ? pipe.current + ' 百万桶/日' : '停用'}</p></div>`);
                 
-                // 管道图层存储到 pipelineLayers，默认不显示
-                pipelineLayers.push(line, label);
+                // 管道文字标签存储到 pipelineLayers，默认不显示
+                pipelineLayers.push(label);
             });
         }
 
