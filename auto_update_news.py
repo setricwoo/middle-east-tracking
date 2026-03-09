@@ -1,25 +1,45 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 自动更新实时新闻网页并上传至GitHub
 每小时执行一次
 """
 import subprocess
 import sys
+import os
 import time
 from datetime import datetime
+
+# 设置工作目录
+os.chdir(r'D:\python_code\海湾以来-最新')
 
 def run_command(cmd, timeout=180):
     """运行命令并返回结果"""
     try:
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=timeout)
+        # 使用UTF-8编码
+        result = subprocess.run(
+            cmd, 
+            shell=True, 
+            capture_output=True, 
+            text=True, 
+            timeout=timeout,
+            encoding='utf-8',
+            errors='ignore'
+        )
         return result.returncode == 0, result.stdout, result.stderr
     except subprocess.TimeoutExpired:
         return False, "", "Command timeout"
+    except Exception as e:
+        return False, "", str(e)
 
 def log_message(msg):
-    """打印日志"""
+    """打印并记录日志"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{timestamp}] {msg}")
+    log_line = f"[{timestamp}] {msg}"
+    print(log_line)
+    # 同时写入日志文件
+    with open('auto_update_log.txt', 'a', encoding='utf-8') as f:
+        f.write(log_line + '\n')
 
 def main():
     log_message("="*60)
@@ -32,11 +52,9 @@ def main():
     if success:
         log_message("[成功] 新闻爬虫执行完成")
         # 显示爬取的新闻数量
-        if "成功爬取" in stdout:
-            for line in stdout.split('\n'):
-                if "成功爬取" in line:
-                    log_message(f"[信息] {line.strip()}")
-                    break
+        for line in stdout.split('\n'):
+            if '成功爬取' in line or 'news.html' in line:
+                log_message(f"[信息] {line.strip()}")
     else:
         log_message(f"[失败] 新闻爬虫执行失败: {stderr}")
         return False
@@ -65,7 +83,7 @@ def main():
     
     # 4. Git commit
     log_message("[步骤4] 提交变更...")
-    commit_msg = f"自动更新实时新闻 - {datetime.now().strftime('%Y年%m月%d日 %H:%M')}"
+    commit_msg = f"自动更新实时新闻 - {datetime.now().strftime('%Y-%m-%d %H:%M')}"
     success, stdout, stderr = run_command(f'git commit -m "{commit_msg}"')
     if not success:
         log_message(f"[失败] Git commit失败: {stderr}")
