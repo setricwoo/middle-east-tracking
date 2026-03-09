@@ -205,6 +205,18 @@
             margin-bottom: 10px;
             flex-wrap: wrap;
         }
+        .toggle-bar {
+            margin-top: 8px;
+            gap: 8px;
+        }
+        .toggle-btn {
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .toggle-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
         .filter-btn {
             padding: 5px 10px;
             border: 1px solid #cbd5e1;
@@ -484,6 +496,13 @@
             .filter-btn {
                 font-size: 0.6rem;
                 padding: 3px 6px;
+            }
+            .toggle-bar {
+                gap: 6px !important;
+            }
+            .toggle-btn {
+                font-size: 0.6rem !important;
+                padding: 4px 8px !important;
             }
         }
         
@@ -937,6 +956,11 @@
                 <button class="filter-btn" onclick="filterMap('flows')">流向</button>
                 <button class="filter-btn" onclick="filterMap('pipelines')">管道</button>
             </div>
+            
+            <div class="filter-bar toggle-bar" style="margin-top: 8px; gap: 8px;">
+                <button id="toggle-ports-btn" class="filter-btn toggle-btn" onclick="togglePorts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">⛳ 查看港口</button>
+                <button id="toggle-pipelines-btn" class="filter-btn toggle-btn" onclick="togglePipelines()" style="background: #f3e8ff; color: #7c3aed; border: 1px solid #c4b5fd;">🛣️ 查看管道</button>
+            </div>
         </div>
     </div>
 
@@ -1342,10 +1366,52 @@
             map.closePopup();
         }
 
+        // 港口和管道图层组
+        let portLayers = [];
+        let pipelineLayers = [];
+        let portsVisible = false;
+        let pipelinesVisible = false;
+
+        // 切换港口显示
+        function togglePorts() {
+            portsVisible = !portsVisible;
+            const btn = document.getElementById('toggle-ports-btn');
+            if (portsVisible) {
+                portLayers.forEach(l => l.addTo(map));
+                btn.classList.add('active');
+                btn.style.background = '#0369a1';
+                btn.style.color = '#fff';
+            } else {
+                portLayers.forEach(l => map.removeLayer(l));
+                btn.classList.remove('active');
+                btn.style.background = '#e0f2fe';
+                btn.style.color = '#0369a1';
+            }
+        }
+
+        // 切换管道显示
+        function togglePipelines() {
+            pipelinesVisible = !pipelinesVisible;
+            const btn = document.getElementById('toggle-pipelines-btn');
+            if (pipelinesVisible) {
+                pipelineLayers.forEach(l => l.addTo(map));
+                btn.classList.add('active');
+                btn.style.background = '#7c3aed';
+                btn.style.color = '#fff';
+            } else {
+                pipelineLayers.forEach(l => map.removeLayer(l));
+                btn.classList.remove('active');
+                btn.style.background = '#f3e8ff';
+                btn.style.color = '#7c3aed';
+            }
+        }
+
         // 绘制所有图层
         function drawAll() {
             allLayers.forEach(l => map.removeLayer(l));
             allLayers = [];
+            portLayers = [];
+            pipelineLayers = [];
             
             // 1. 绘制国家产能圈和储油控件
             countries.forEach(country => {
@@ -1484,7 +1550,8 @@
                     if (el) el.style.zIndex = 9999;
                 });
                 
-                allLayers.push(circle, label);
+                // 港口图层存储到 portLayers，默认不显示
+                portLayers.push(circle, label);
             });
             
             // 3. 绘制出口流向
@@ -1509,7 +1576,7 @@
                 allLayers.push(line);
             });
             
-            // 4. 绘制管道
+            // 4. 绘制管道（默认不显示）
             pipelines.forEach(pipe => {
                 const coords = [pipe.from, ...pipe.via, pipe.to];
                 
@@ -1518,7 +1585,7 @@
                     weight: 4,
                     opacity: 0.85,
                     dashArray: pipe.current > 0 ? null : "12, 6"
-                }).addTo(map);
+                });
                 
                 const midPoint = pipe.via[0] || [(pipe.from[0] + pipe.to[0]) / 2, (pipe.from[1] + pipe.to[1]) / 2];
                 const label = L.marker(midPoint, {
@@ -1537,11 +1604,12 @@
                         iconSize: [160, 34],
                         iconAnchor: [80, 17]
                     })
-                }).addTo(map);
+                });
                 
                 line.bindPopup(`<div style="min-width: 180px;"><h3 style="color: ${pipe.color}; font-size: 0.9rem;">${pipe.name}</h3><p style="font-size: 0.8rem;">能力: ${pipe.capacity} 百万桶/日<br>使用: ${pipe.current > 0 ? pipe.current + ' 百万桶/日' : '停用'}</p></div>`);
                 
-                allLayers.push(line, label);
+                // 管道图层存储到 pipelineLayers，默认不显示
+                pipelineLayers.push(line, label);
             });
         }
 
@@ -1582,13 +1650,38 @@
             });
         }
 
+        // 重置港口和管道按钮状态
+        function resetToggleButtons() {
+            portsVisible = false;
+            pipelinesVisible = false;
+            const portsBtn = document.getElementById('toggle-ports-btn');
+            const pipelinesBtn = document.getElementById('toggle-pipelines-btn');
+            if (portsBtn) {
+                portsBtn.classList.remove('active');
+                portsBtn.style.background = '#e0f2fe';
+                portsBtn.style.color = '#0369a1';
+            }
+            if (pipelinesBtn) {
+                pipelinesBtn.classList.remove('active');
+                pipelinesBtn.style.background = '#f3e8ff';
+                pipelinesBtn.style.color = '#7c3aed';
+            }
+        }
+
         // 筛选
         function filterMap(type) {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             
             allLayers.forEach(l => map.removeLayer(l));
+            portLayers.forEach(l => map.removeLayer(l));
+            pipelineLayers.forEach(l => map.removeLayer(l));
             allLayers = [];
+            portLayers = [];
+            pipelineLayers = [];
+            
+            // 重置港口和管道按钮
+            resetToggleButtons();
             
             if (type === 'all') {
                 drawAll();
