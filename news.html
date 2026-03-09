@@ -72,8 +72,12 @@
         .nav-btn.active { background: #fff; color: #1e40af; font-weight: 600; }
         
         .header-right {
-            font-size: 0.75rem;
-            color: #64748b;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
         }
         
         .container {
@@ -265,11 +269,12 @@
         
         /* 移动端 */
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 12px; gap: 8px; }
-            .header h1 { font-size: 0.9rem; }
+            .header-main { flex-wrap: nowrap; padding: 8px 12px; gap: 6px; }
+            .header-left { flex-shrink: 0; }
+            .header h1 { font-size: 0.8rem; }
             .header-center { order: 3; width: 100%; justify-content: center; gap: 2px; }
-            .nav-btn { padding: 5px 8px; font-size: 0.75rem; gap: 3px; }
-            .header-right { font-size: 0.7rem; padding: 4px 8px; }
+            .nav-btn { padding: 4px 6px; font-size: 0.7rem; gap: 2px; }
+            .header-right { font-size: 0.65rem; padding: 3px 6px; flex-shrink: 0; }
             .container { padding: 8px 12px; }
             .news-item { padding: 12px; margin-bottom: 8px; }
             .news-header { flex-direction: column; align-items: flex-start; gap: 4px; }
