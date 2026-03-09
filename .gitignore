@@ -38,7 +38,6 @@ generate_briefing.py
 playwright_browser.py
 screenshot_map.py
 update_briefing_full.py
-update_briefing_grok.py
 update_briefing_simple.py
 update_daily_briefing.py
 历史.csv
