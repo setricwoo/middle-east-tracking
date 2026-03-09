@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 >nul
 echo ========================================
-echo 设置每20分钟自动更新任务
+echo 设置每小时自动更新任务
 echo ========================================
 
 set "taskName=MiddleEast_News_AutoUpdate"
@@ -12,9 +12,9 @@ set "pythonPath=python"
 echo [信息] 删除已存在的任务...
 schtasks /Delete /TN "%taskName%" /F >nul 2>&1
 
-:: 创建新的每20分钟任务
+:: 创建新的每小时任务
 echo [信息] 创建新任务...
-schtasks /Create /TN "%taskName%" /TR "%pythonPath% %scriptPath%" /SC MINUTE /MO 20 /RU "%USERNAME%" /RL LIMITED /F
+schtasks /Create /TN "%taskName%" /TR "%pythonPath% %scriptPath%" /SC HOURLY /MO 1 /RU "%USERNAME%" /RL LIMITED /F
 
 if %errorlevel% equ 0 (
     echo.
@@ -23,7 +23,7 @@ if %errorlevel% equ 0 (
     echo ========================================
     echo [任务名称] %taskName%
     echo [执行命令] %pythonPath% %scriptPath%
-    echo [执行频率] 每20分钟一次
+    echo [执行频率] 每小时一次
     echo.
     echo [管理命令]
     echo - 查看任务: schtasks /Query /TN "%taskName%"
