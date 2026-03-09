@@ -1249,7 +1249,7 @@
                 <a href="news.html" class="nav-btn">🔴 实时新闻</a>
             </div>
             <div class="header-right">
-                更新时间: 2026年3月9日
+                更新时间: 2026年3月10日
             </div>
         </div>
     </div>
@@ -1438,21 +1438,29 @@
                         <span class="badge info">部署中</span>
                         <div>
                             <div style="font-weight: 600;">福特号航母战斗群</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">红海区域执行任务</div>
+                            <div style="font-size: 0.8rem; color: #64748b;">已通过苏伊士运河进入红海</div>
                         </div>
                     </div>
                     <div class="status-indicator">
-                        <span class="badge info">待命</span>
+                        <span class="badge info">前往途中</span>
+                        <div>
+                            <div style="font-weight: 600;">布什号航母打击群</div>
+                            <div style="font-size: 0.8rem; color: #64748b;">已完成预演，即将横跨大西洋</div>
+                        </div>
+                    </div>
+                    <div class="status-indicator">
+                        <span class="badge warning">待命</span>
                         <div>
                             <div style="font-weight: 600;">第五舰队</div>
-                            <div style="font-size: 0.8rem; color: #64748b;">巴林基地</div>
+                            <div style="font-size: 0.8rem; color: #64748b;">巴林基地（护航计划面临舰艇不足困境）</div>
                         </div>
                     </div>
                 </div>
                 
                 <h4 style="color: #334155; margin-bottom: 12px;">伊朗海军动态</h4>
                 <ul style="padding-left: 20px; color: #475569; font-size: 0.9rem;">
-                    <li style="margin-bottom: 8px;">IRGC声称完全控制海峡，十多艘油轮被击中</li>
+                    <li style="margin-bottom: 8px;">IRGC声称完全控制海峡，实施"选择性封锁"：美以欧船只禁行，中俄船只可通行</li>
+                    <li style="margin-bottom: 8px;">3月7日：革命卫队使用自杀式无人机击中马绍尔群岛旗油轮"路易斯·P"号</li>
                     <li style="margin-bottom: 8px;">美军称已摧毁17艘伊朗舰艇及一艘潜艇</li>
                     <li style="margin-bottom: 8px;">伊朗警告：海峡处于战争状态，任何船只都可能被击中</li>
                     <li>GPS干扰严重影响导航</li>
@@ -1500,9 +1508,9 @@
                 </table>
                 
                 <div style="background: #fef3c7; padding: 16px; border-radius: 8px; margin-bottom: 16px;">
-                    <div style="font-weight: 600; color: #92400e; margin-bottom: 8px;">⚠️ 战争险费率</div>
+                    <div style="font-weight: 600; color: #92400e; margin-bottom: 8px;">⚠️ 战争险费率飙升</div>
                     <div style="font-size: 0.9rem; color: #78350f;">
-                        战争险费率飙升至六年新高，日租金近80万美元，一周跳涨4倍
+                        战争险费率从船壳价值的0.2%飙升至1%-3%，涨幅5-10倍。VLCC单航次保费增加约100万美元，多家国际保赔协会撤保。美国政府宣布200亿美元再保险计划。
                     </div>
                 </div>
                 
@@ -1832,7 +1840,7 @@
             {date: '2026-03-06', ships: 6, dwt: 87868},
             {date: '2026-03-07', ships: 8, dwt: 328203},
             {date: '2026-03-08', ships: 3, dwt: 110800},
-            {date: '2026-03-09', ships: 8, dwt: 485000}
+            {date: '2026-03-09', ships: 2, dwt: 118500}
         ];
 
         const labels = realData.map(d => {
@@ -1853,7 +1861,7 @@
                         borderColor: 'rgba(59, 130, 246, 1)',
                         backgroundColor: 'rgba(59, 130, 246, 0.1)',
                         borderWidth: 2,
-                        pointRadius: 3,
+                        pointRadius: window.innerWidth < 768 ? 0 : 3,
                         pointBackgroundColor: 'rgba(59, 130, 246, 1)',
                         yAxisID: 'y',
                         tension: 0.3
@@ -1864,7 +1872,7 @@
                         borderColor: 'rgba(16, 185, 129, 1)',
                         backgroundColor: 'rgba(16, 185, 129, 0.1)',
                         borderWidth: 2,
-                        pointRadius: 3,
+                        pointRadius: window.innerWidth < 768 ? 0 : 3,
                         pointBackgroundColor: 'rgba(16, 185, 129, 1)',
                         yAxisID: 'y1',
                         tension: 0.3
