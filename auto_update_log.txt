@@ -238,3 +238,7 @@
 [2026-03-10 06:59:51] [失败] 推送失败: fatal: unable to access 'https://github.com/setricwoo/middle-east-tracking.git/': Recv failure: Connection was reset
 
 [2026-03-10 06:59:51] [等待] 20分钟后重试...
+[2026-03-10 07:19:51] [步骤5] 推送到GitHub (尝试 3/3)...
+[2026-03-10 07:20:12] [失败] 推送失败: fatal: unable to access 'https://github.com/setricwoo/middle-east-tracking.git/': Failed to connect to github.com port 443 after 21073 ms: Could not connect to server
+
+[2026-03-10 07:20:12] [错误] 已达到最大重试次数，推送失败
