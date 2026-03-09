@@ -275,33 +275,43 @@
                 left: auto;
                 max-width: none;
                 width: 100%;
-                padding: 8px 12px;
-                margin-top: 8px;
-                border-radius: 8px;
+                padding: 6px 8px;
+                margin-top: 6px;
+                border-radius: 6px;
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                gap: 8px;
+                gap: 6px;
+                font-size: 0.6rem;
             }
             .map-legend-panel h4 {
-                font-size: 0.75rem;
-                margin: 0;
-                padding: 0;
-                border: none;
-                margin-right: 8px;
+                display: none; /* 移动端隐藏"图例"标题 */
             }
             .map-legend-panel .legend-row {
                 display: inline-flex;
                 margin: 0;
-                font-size: 0.65rem;
+                font-size: 0.6rem;
                 white-space: nowrap;
+                align-items: center;
+                gap: 3px;
             }
             .map-legend-panel .legend-symbol {
-                width: 16px;
-                height: 16px;
+                width: 12px;
+                height: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             .map-legend-panel .legend-note {
                 display: none; /* 移动端隐藏详细说明 */
+            }
+            .map-legend-panel .legend-circle {
+                width: 10px !important;
+                height: 10px !important;
+            }
+            .map-legend-panel .legend-line {
+                width: 12px !important;
+                height: 2px !important;
             }
             /* 移动端：简化侧边栏内容 */
             .sidebar .legend-section:nth-child(1),
@@ -1492,13 +1502,13 @@
         const isMobile = window.innerWidth < 768;
         
         if (isMobile) {
-            // 移动端：简化版本 - 放在地图下方一行
+            // 移动端：简化版本 - 放在地图下方一行，带单位
             legendDiv.innerHTML = `
-                <h4>📖 图例</h4>
-                <div class="legend-row"><span class="legend-symbol"><div class="legend-circle" style="width: 12px; height: 12px; border-color: #3b82f6; background: rgba(59,130,246,0.3);"></div></span><span>圆圈=产能</span></div>
-                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #dc2626; height: 3px;"></div></span><span>红线=经霍尔木兹</span></div>
-                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #059669; height: 2px;"></div></span><span>绿线=绕过</span></div>
-                <div class="legend-row"><span class="legend-symbol"><span style="font-size: 1rem;">📊</span></span><span>点击查看动态</span></div>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-circle" style="width: 10px; height: 10px; border: 1.5px solid #3b82f6; background: rgba(59,130,246,0.3);"></div></span><span>圆圈(产能)</span></div>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #dc2626; height: 2px;"></div></span><span>红线(经海峡)</span></div>
+                <div class="legend-row"><span class="legend-symbol"><div class="legend-line" style="background: #059669; height: 2px;"></div></span><span>绿线(绕过)</span></div>
+                <div class="legend-row"><span class="legend-symbol"><span style="font-size: 0.85rem;">📊</span></span><span>点击查动态</span></div>
+                <div class="legend-row" style="margin-left: auto; color: #94a3b8; font-size: 0.55rem;">单位：百万桶/日</div>
             `;
         } else {
             // PC端：详细版本 - 左下角面板
