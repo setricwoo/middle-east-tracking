@@ -504,6 +504,14 @@
                 font-size: 0.6rem !important;
                 padding: 4px 8px !important;
             }
+            /* 地图上的按钮移动端适配 */
+            .map-toggle-buttons {
+                gap: 6px !important;
+            }
+            .map-toggle-buttons button {
+                padding: 6px 10px !important;
+                font-size: 0.7rem !important;
+            }
         }
         
         /* 储油设施弹窗样式 */
@@ -949,11 +957,6 @@
                 </div>
                 <div id="country-list"></div>
             </div>
-            
-            <div class="filter-bar toggle-bar" style="margin-top: 12px; gap: 8px;">
-                <button id="toggle-ports-btn" class="filter-btn toggle-btn" onclick="togglePorts()" style="background: #e0f2fe; color: #0369a1; border: 1px solid #7dd3fc;">⛳ 查看港口</button>
-                <button id="toggle-pipelines-btn" class="filter-btn toggle-btn" onclick="togglePipelines()" style="background: #f3e8ff; color: #7c3aed; border: 1px solid #c4b5fd;">🛣️ 查看管道</button>
-            </div>
         </div>
     </div>
 
@@ -1368,34 +1371,42 @@
         // 切换港口显示
         function togglePorts() {
             portsVisible = !portsVisible;
-            const btn = document.getElementById('toggle-ports-btn');
+            const btn = document.getElementById('map-toggle-ports-btn');
             if (portsVisible) {
                 portLayers.forEach(l => l.addTo(map));
-                btn.classList.add('active');
-                btn.style.background = '#0369a1';
-                btn.style.color = '#fff';
+                if (btn) {
+                    btn.classList.add('active');
+                    btn.style.background = '#0369a1';
+                    btn.style.color = '#fff';
+                }
             } else {
                 portLayers.forEach(l => map.removeLayer(l));
-                btn.classList.remove('active');
-                btn.style.background = '#e0f2fe';
-                btn.style.color = '#0369a1';
+                if (btn) {
+                    btn.classList.remove('active');
+                    btn.style.background = '#e0f2fe';
+                    btn.style.color = '#0369a1';
+                }
             }
         }
 
         // 切换管道显示
         function togglePipelines() {
             pipelinesVisible = !pipelinesVisible;
-            const btn = document.getElementById('toggle-pipelines-btn');
+            const btn = document.getElementById('map-toggle-pipelines-btn');
             if (pipelinesVisible) {
                 pipelineLayers.forEach(l => l.addTo(map));
-                btn.classList.add('active');
-                btn.style.background = '#7c3aed';
-                btn.style.color = '#fff';
+                if (btn) {
+                    btn.classList.add('active');
+                    btn.style.background = '#7c3aed';
+                    btn.style.color = '#fff';
+                }
             } else {
                 pipelineLayers.forEach(l => map.removeLayer(l));
-                btn.classList.remove('active');
-                btn.style.background = '#f3e8ff';
-                btn.style.color = '#7c3aed';
+                if (btn) {
+                    btn.classList.remove('active');
+                    btn.style.background = '#f3e8ff';
+                    btn.style.color = '#7c3aed';
+                }
             }
         }
 
@@ -1513,7 +1524,7 @@
                         iconAnchor: [50, -size-3],
                         className: ''
                     })
-                }).addTo(map);
+                });
                 
                 label._portId = index;
                 label._isLabel = true;
@@ -1654,8 +1665,8 @@
         function resetToggleButtons() {
             portsVisible = false;
             pipelinesVisible = false;
-            const portsBtn = document.getElementById('toggle-ports-btn');
-            const pipelinesBtn = document.getElementById('toggle-pipelines-btn');
+            const portsBtn = document.getElementById('map-toggle-ports-btn');
+            const pipelinesBtn = document.getElementById('map-toggle-pipelines-btn');
             if (portsBtn) {
                 portsBtn.classList.remove('active');
                 portsBtn.style.background = '#e0f2fe';
@@ -1666,6 +1677,9 @@
                 pipelinesBtn.style.background = '#f3e8ff';
                 pipelinesBtn.style.color = '#7c3aed';
             }
+            // 隐藏所有港口和管道标签
+            portLayers.forEach(l => map.removeLayer(l));
+            pipelineLayers.forEach(l => map.removeLayer(l));
         }
 
         // 筛选
@@ -1814,6 +1828,78 @@
             return div;
         };
         legendControl.addTo(map);
+
+        // 地图上的切换按钮控件
+        const toggleButtonsControl = L.control({position: 'topright'});
+        toggleButtonsControl.onAdd = function() {
+            const div = L.DomUtil.create('div', 'map-toggle-buttons');
+            div.style.cssText = 'display: flex; flex-direction: column; gap: 8px;';
+            div.innerHTML = `
+                <button id="map-toggle-ports-btn" style="
+                    background: #e0f2fe;
+                    color: #0369a1;
+                    border: 1px solid #7dd3fc;
+                    padding: 8px 14px;
+                    border-radius: 8px;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                    white-space: nowrap;
+                    transition: all 0.2s;
+                " onmouseover="this.style.background='#bae6fd'" onmouseout="if(!this.classList.contains('active')) this.style.background='#e0f2fe'">⛳ 查看港口</button>
+                <button id="map-toggle-pipelines-btn" style="
+                    background: #f3e8ff;
+                    color: #7c3aed;
+                    border: 1px solid #c4b5fd;
+                    padding: 8px 14px;
+                    border-radius: 8px;
+                    font-size: 0.85rem;
+                    font-weight: 500;
+                    cursor: pointer;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                    white-space: nowrap;
+                    transition: all 0.2s;
+                " onmouseover="this.style.background='#ddd6fe'" onmouseout="if(!this.classList.contains('active')) this.style.background='#f3e8ff'">🛣️ 查看管道</button>
+            `;
+            
+            // 添加点击事件
+            setTimeout(() => {
+                const portsBtn = div.querySelector('#map-toggle-ports-btn');
+                const pipelinesBtn = div.querySelector('#map-toggle-pipelines-btn');
+                
+                portsBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    togglePorts();
+                    if (portsVisible) {
+                        this.classList.add('active');
+                        this.style.background = '#0369a1';
+                        this.style.color = '#fff';
+                    } else {
+                        this.classList.remove('active');
+                        this.style.background = '#e0f2fe';
+                        this.style.color = '#0369a1';
+                    }
+                });
+                
+                pipelinesBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    togglePipelines();
+                    if (pipelinesVisible) {
+                        this.classList.add('active');
+                        this.style.background = '#7c3aed';
+                        this.style.color = '#fff';
+                    } else {
+                        this.classList.remove('active');
+                        this.style.background = '#f3e8ff';
+                        this.style.color = '#7c3aed';
+                    }
+                });
+            }, 0);
+            
+            return div;
+        };
+        toggleButtonsControl.addTo(map);
     </script>
 </body>
 </html>
