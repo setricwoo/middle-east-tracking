@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(python screenshot_map.py)",
+      "Bash(ls -la \"d:/python_code/海湾以来-最新/\"*.png)",
+      "Bash(python update_briefing.py)"
+    ]
+  }
+}

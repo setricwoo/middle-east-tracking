@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "name": "middle-east-news-tracker",
+  "builds": [
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/update-news",
+      "schedule": "*/10 * * * *"
+    }
+  ],
+  "env": {
+    "KIMI_API_KEY": "@kimi-api-key"
+  }
+}

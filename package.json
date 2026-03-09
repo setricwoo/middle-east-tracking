@@ -1,0 +1,16 @@
+{
+  "name": "middle-east-news-tracker",
+  "version": "1.0.0",
+  "description": "实时中东新闻追踪系统",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/kv": "^1.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "vercel": "^33.0.0"
+  }
+}
