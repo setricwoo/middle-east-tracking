@@ -84,6 +84,32 @@
             padding: 12px 16px;
         }
         
+        /* 财联社标识 */
+        .source-header {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .source-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .source-url {
+            font-size: 0.75rem;
+            opacity: 0.9;
+            color: #fee2e2;
+        }
+        
         /* 筛选栏 */
         .filter-section {
             background: #fff;
@@ -114,8 +140,8 @@
         
         .filter-btn:hover,
         .filter-btn.active {
-            background: #3b82f6;
-            border-color: #3b82f6;
+            background: #dc2626;
+            border-color: #dc2626;
             color: white;
         }
         
@@ -123,88 +149,97 @@
         .news-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
         
         .news-item {
             background: #fff;
             border-radius: 8px;
-            padding: 12px 14px;
+            padding: 14px 16px;
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             border: 1px solid #e2e8f0;
             transition: all 0.15s;
             text-decoration: none;
             color: inherit;
             display: block;
-            position: relative;
         }
         
         .news-item:hover {
-            border-color: #3b82f6;
-            box-shadow: 0 2px 8px rgba(59,130,246,0.1);
+            border-color: #dc2626;
+            box-shadow: 0 2px 8px rgba(220,38,38,0.1);
         }
-        
-        .news-item.energy { border-left: 3px solid #f59e0b; }
-        .news-item.military { border-left: 3px solid #ef4444; }
-        .news-item.diplomacy { border-left: 3px solid #10b981; }
-        .news-item.shipping { border-left: 3px solid #8b5cf6; }
         
         .news-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 6px;
+            gap: 12px;
+            margin-bottom: 8px;
         }
         
         .news-title {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #1e40af;
-            line-height: 1.4;
+            color: #1e293b;
+            line-height: 1.5;
             flex: 1;
         }
         
+        .news-title:hover {
+            color: #dc2626;
+        }
+        
         .news-time {
-            font-size: 0.7rem;
-            color: #94a3b8;
+            font-size: 0.75rem;
+            color: #64748b;
             white-space: nowrap;
             flex-shrink: 0;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
         }
         
         .news-summary {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #475569;
-            line-height: 1.5;
-            margin-bottom: 8px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
         
         .news-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 0.75rem;
+            color: #94a3b8;
         }
         
-        .category-tag {
+        .news-source {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .cls-badge {
+            background: #dc2626;
+            color: white;
             padding: 2px 8px;
-            border-radius: 10px;
+            border-radius: 4px;
             font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .news-tag {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 500;
         }
         
-        .category-tag.energy { background: #fef3c7; color: #92400e; }
-        .category-tag.military { background: #fee2e2; color: #991b1b; }
-        .category-tag.diplomacy { background: #d1fae5; color: #065f46; }
-        .category-tag.shipping { background: #f3e8ff; color: #6b21a8; }
-        
-        .news-count {
-            font-size: 0.7rem;
-            color: #94a3b8;
-        }
+        .news-tag.military { background: #fee2e2; color: #991b1b; }
+        .news-tag.energy { background: #fef3c7; color: #92400e; }
+        .news-tag.shipping { background: #f3e8ff; color: #6b21a8; }
+        .news-tag.diplomacy { background: #d1fae5; color: #065f46; }
         
         /* 空状态 */
         .empty-state {
@@ -215,6 +250,20 @@
         
         .empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
         
+        /* 更新提示 */
+        .update-notice {
+            background: #fef3c7;
+            border: 1px solid #fcd34d;
+            border-radius: 8px;
+            padding: 10px 16px;
+            margin-bottom: 16px;
+            font-size: 0.85rem;
+            color: #92400e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
         /* 移动端 */
         @media (max-width: 768px) {
             .header-main { padding: 8px 12px; }
@@ -222,8 +271,8 @@
             .header-center { order: 3; width: 100%; justify-content: center; }
             .nav-btn { padding: 5px 10px; font-size: 0.75rem; }
             .container { padding: 10px 12px; }
-            .news-title { font-size: 0.9rem; }
-            .news-summary { font-size: 0.8rem; }
+            .news-title { font-size: 0.95rem; }
+            .source-header { flex-direction: column; align-items: flex-start; gap: 8px; }
         }
     </style>
 </head>
@@ -245,145 +294,202 @@
     </div>
 
     <div class="container">
+        <!-- 财联社来源标识 -->
+        <div class="source-header">
+            <div class="source-title">
+                <span>📰</span>
+                <span>财联社 - 中东冲突专题</span>
+            </div>
+            <div class="source-url">cls.cn/subject/10986</div>
+        </div>
+        
+        <!-- 更新提示 -->
+        <div class="update-notice">
+            <span>⚠️</span>
+            <span>以下新闻均来自财联社官方报道，每10分钟手动更新一次</span>
+        </div>
+
         <!-- 筛选栏 -->
         <div class="filter-section">
             <div class="filter-row">
                 <button class="filter-btn active" data-category="all">全部</button>
-                <button class="filter-btn" data-category="military">军事动态</button>
-                <button class="filter-btn" data-category="energy">能源市场</button>
-                <button class="filter-btn" data-category="shipping">航运通道</button>
-                <button class="filter-btn" data-category="diplomacy">外交斡旋</button>
+                <button class="filter-btn" data-category="military">军事行动</button>
+                <button class="filter-btn" data-category="energy">能源/石油</button>
+                <button class="filter-btn" data-category="shipping">航运/海峡</button>
+                <button class="filter-btn" data-category="diplomacy">外交/国际</button>
             </div>
         </div>
 
         <!-- 新闻列表 -->
         <div id="news-container" class="news-list">
-            <div class="empty-state">
-                <div class="empty-icon">📭</div>
-                <p>正在加载新闻...</p>
-            </div>
+            <!-- 新闻内容由JavaScript动态渲染 -->
         </div>
     </div>
 
     <script>
-        // 原始新闻数据 - 只包含中东局势和美以伊冲突相关新闻，已去掉金融市场内容
-        const RAW_NEWS_DATA = [
-            // 财联社
-            { title: "美油暴涨22%突破111美元，霍尔木兹海峡近乎停航引发连锁减产", summary: "3月9日亚市早盘，美油主力合约一度大涨22%，最高报111美元/桶。霍尔木兹海峡近乎停航引发中东产油国连锁减产反应，阿联酋宣布调整近海生产水平，科威特减产幅度预计扩大至30万桶/日。", source: "财联社", category: "energy", time: "2026-03-09 14:30", url: "#" },
-            { title: "以色列国防军：将继续追究哈梅内伊继任者责任", summary: "以色列国防军8日称，以色列将继续追究哈梅内伊继任者和任何试图任命他的人的责任，将继续视哈梅内伊继任者为目标。伊朗专家会议已就新的最高领袖人选作出最终决定。", source: "财联社", category: "military", time: "2026-03-09 14:15", url: "#" },
-            { title: "霍尔木兹海峡航运保险费率飙升，40尺柜附加费约3000美元", summary: "CMA、HPL、中谷物流、海丰等船司宣布对中东航线加征高额战争风险附加费，40尺柜约为3000美元左右。MSC、MSK、COSCO等主流班轮公司已暂停中东航线订舱。", source: "财联社", category: "shipping", time: "2026-03-09 13:45", url: "#" },
-            { title: "沙特宣布减产50万桶/日，全球油市供应紧张加剧", summary: "沙特阿拉伯能源部宣布，将在4月份自愿减产50万桶/日，作为预防性措施维护国际石油市场稳定。此举引发市场对全球原油供应的担忧。", source: "财联社", category: "energy", time: "2026-03-09 13:20", url: "#" },
-            { title: "伊朗称已做好长期战争准备，拒绝向美以投降", summary: "伊朗总统佩泽什基安表示，伊朗已做好长期战争准备，绝不会向美国和以色列投降，将继续捍卫国家主权，呼吁民众团结一致抵抗外敌。", source: "财联社", category: "military", time: "2026-03-09 12:50", url: "#" },
-            { title: "中国外交部呼吁各方保持克制，避免局势升级", summary: "中国外交部发言人表示，中方高度关注中东局势发展，呼吁有关各方保持克制，避免局势进一步升级，通过对话谈判解决分歧。", source: "财联社", category: "diplomacy", time: "2026-03-09 12:20", url: "#" },
-            { title: "欧盟宣布对伊朗实施新制裁，禁止石油进口", summary: "欧盟外长会议决定对伊朗实施新一轮制裁，包括禁止进口伊朗石油和天然气，冻结伊朗在欧洲的资产，禁止欧盟企业与伊朗进行能源合作。", source: "财联社", category: "diplomacy", time: "2026-03-09 11:45", url: "#" },
-            { title: "科威特暂停霍尔木兹海峡航运，改道好望角", summary: "科威特石油公司宣布，鉴于霍尔木兹海峡安全局势，所有油轮将绕行好望角，预计运输时间增加15天，运输成本上升40%。", source: "财联社", category: "shipping", time: "2026-03-09 11:10", url: "#" },
-            { title: "特朗普称将与伊朗达成协议，油价应声回落", summary: "美国总统特朗普表示，有信心与伊朗达成协议，结束当前冲突。国际油价闻讯回落，布油跌至105美元，市场对未来供应恢复抱有期待。", source: "财联社", category: "diplomacy", time: "2026-03-09 10:25", url: "#" },
-            { title: "伊拉克石油产量暴跌60%，从430万桶降至170万桶", summary: "受美以对伊朗军事打击影响，伊拉克缺乏足够油轮装载原油，产量暴跌约60%。摩根大通警告一旦全面停产，油价或暴涨30美元。", source: "财联社", category: "energy", time: "2026-03-09 09:25", url: "#" },
-            { title: "摩根大通警告：一旦全面停产，油价或暴涨30美元", summary: "摩根大通发布报告警告，如果中东产油国全面停产，国际油价可能暴涨30美元/桶，达到150美元，全球经济将面临严重冲击。", source: "财联社", category: "energy", time: "2026-03-09 08:15", url: "#" },
-            { title: "阿联酋宣布调整近海生产水平，应对储存需求", summary: "阿布扎比国家石油公司表示，正在管理海上生产水平以应对储存需求，确保市场稳定供应，同时加强与亚洲客户的长期合同谈判。", source: "财联社", category: "energy", time: "2026-03-09 07:40", url: "#" },
-            { title: "科威特石油公司宣布不可抗力，减产30万桶/日", summary: "科威特石油公司宣布因中东冲突遭遇不可抗力，将削减原油产量30万桶/日，直至另行通知，客户已收到正式通知函。", source: "财联社", category: "energy", time: "2026-03-09 07:05", url: "#" },
-            
-            // 金十数据
-            { title: "美以联军对伊朗发动新一轮空袭，德黑兰多处起火", summary: "当地时间3月9日凌晨，美以联军对伊朗首都德黑兰发动新一轮大规模空袭，多处设施起火，浓烟滚滚，居民报告听到巨大爆炸声。", source: "金十数据", category: "military", time: "2026-03-09 14:25", url: "#" },
-            { title: "伊朗向以色列发射弹道导弹，铁穹系统拦截", summary: "伊朗伊斯兰革命卫队向以色列发射多枚弹道导弹，以色列铁穹防空系统进行拦截，特拉维夫响起防空警报，部分导弹被成功拦截。", source: "金十数据", category: "military", time: "2026-03-09 13:55", url: "#" },
-            { title: "霍尔木兹海峡油轮保险费率飙升500%", summary: "国际保赔协会宣布，途经霍尔木兹海峡的油轮保险费率上调500%，船东成本大幅增加，部分小型船东已暂停该区域业务。", source: "金十数据", category: "shipping", time: "2026-03-09 13:30", url: "#" },
-            { title: "OPEC+紧急会议讨论增产，稳定市场供应", summary: "OPEC+成员国召开紧急视频会议，讨论是否增产以稳定国际原油市场，俄罗斯支持增产计划，但沙特持谨慎态度。", source: "金十数据", category: "energy", time: "2026-03-09 12:40", url: "#" },
-            { title: "卡塔尔暂停LNG出口，全球天然气价格飙升", summary: "卡塔尔能源部宣布暂停液化天然气出口，全球天然气价格飙升40%，欧洲面临严重能源危机，多国启动应急预案。", source: "金十数据", category: "energy", time: "2026-03-09 11:15", url: "#" },
-            { title: "美国宣布向中东增派航母战斗群", summary: "美国国防部宣布向中东地区增派福特号航母战斗群，加强在该地区的军事存在，威慑伊朗，保护盟友安全。", source: "金十数据", category: "military", time: "2026-03-09 10:40", url: "#" },
-            { title: "日本考虑释放战略石油储备，稳定油价", summary: "日本经济产业省表示，正在考虑释放国家战略石油储备，以稳定飙升的国际油价，保障国内能源供应安全。", source: "金十数据", category: "energy", time: "2026-03-09 09:55", url: "#" },
-            { title: "印度暂停从伊朗进口原油，寻找替代供应", summary: "印度石油部宣布暂停从伊朗进口原油，将转向沙特、阿联酋等国寻求替代供应来源，确保国内炼油厂正常运营。", source: "金十数据", category: "energy", time: "2026-03-09 09:20", url: "#" },
-            { title: "土耳其宣布关闭领空，禁止伊朗航班过境", summary: "土耳其民航局宣布关闭领空，禁止所有伊朗民用航班过境，直至中东局势缓和，伊朗航空被迫调整航线。", source: "金十数据", category: "diplomacy", time: "2026-03-09 08:45", url: "#" },
-            
-            // 新浪财经
-            { title: "布伦特原油突破115美元，创14年新高", summary: "布伦特原油期货价格突破115美元/桶，创2008年以来新高，投资者对中东供应中断担忧加剧，投机资金大量涌入。", source: "新浪财经", category: "energy", time: "2026-03-09 14:20", url: "#" },
-            { title: "中国进口原油成本或增加500亿美元", summary: "分析人士指出，若油价维持在110美元以上，中国全年进口原油成本将增加约500亿美元，对贸易顺差形成压力。", source: "新浪财经", category: "energy", time: "2026-03-09 13:50", url: "#" },
-            { title: "上海原油期货成交量创历史新高", summary: "上海国际能源交易中心原油期货今日成交量突破500万手，创历史新高，国际影响力持续提升，成为亚洲定价基准。", source: "新浪财经", category: "energy", time: "2026-03-09 12:30", url: "#" },
-            { title: "中石化启动应急预案，确保国内油品供应", summary: "中国石化集团启动最高级别应急预案，全力确保国内成品油市场供应稳定，库存充足，价格平稳。", source: "新浪财经", category: "energy", time: "2026-03-09 10:50", url: "#" },
-            { title: "航运股大涨，中远海能涨停", summary: "航运板块今日大涨，中远海能、招商轮船涨停，油轮运价飙升带动业绩预期改善，分析师上调目标价。", source: "新浪财经", category: "shipping", time: "2026-03-09 10:05", url: "#" },
-            { title: "化工品价格全线上涨，塑料涨超10%", summary: "受原油价格上涨推动，国内化工品价格全线上涨，塑料、橡胶涨幅超过10%，下游企业成本压力加大。", source: "新浪财经", category: "energy", time: "2026-03-09 09:30", url: "#" },
-            
-            // 华尔街见闻
-            { title: "全球央行或联合干预油市，稳定价格", summary: "消息人士称，主要经济体央行正在讨论联合干预油市，包括释放战略储备等措施，以防油价失控影响全球经济。", source: "华尔街见闻", category: "diplomacy", time: "2026-03-09 14:10", url: "#" },
-            { title: "页岩油生产商考虑增产，趁高油价获利", summary: "美国页岩油生产商表示，如果油价维持在100美元以上，将考虑重启闲置产能，增加投资扩大生产。", source: "华尔街见闻", category: "energy", time: "2026-03-09 12:55", url: "#" },
-            { title: "欧洲天然气库存告急，仅能维持30天", summary: "欧洲天然气基础设施协会警告，当前库存仅能维持30天，急需寻找替代供应源，否则将面临断供风险。", source: "华尔街见闻", category: "energy", time: "2026-03-09 11:30", url: "#" },
-            { title: "德国宣布重启燃煤电厂，应对能源危机", summary: "德国政府宣布临时重启部分燃煤电厂，以应对天然气供应不足，保障电力供应，环保组织表示理解。", source: "华尔街见闻", category: "energy", time: "2026-03-09 10:45", url: "#" },
-            { title: "俄罗斯表示愿意调解美伊冲突，提供对话平台", summary: "克里姆林宫表示，俄罗斯愿意在美伊之间斡旋，为双方对话提供平台，缓解紧张局势，恢复地区稳定。", source: "华尔街见闻", category: "diplomacy", time: "2026-03-09 10:10", url: "#" },
-            { title: "沙特阿美股价大涨，市值突破3万亿美元", summary: "沙特阿美股价今日大涨8%，市值突破3万亿美元，成为全球市值最高公司，受益于高油价环境。", source: "华尔街见闻", category: "energy", time: "2026-03-09 09:35", url: "#" },
-            { title: "国际能源署召开紧急会议，协调应对措施", summary: "国际能源署在巴黎召开紧急部长级会议，协调成员国应对中东能源危机的措施，讨论释放战略储备。", source: "华尔街见闻", category: "diplomacy", time: "2026-03-09 08:25", url: "#" },
-            
-            // 21财经
-            { title: "深圳机场开通中东货运专线，保障供应链", summary: "深圳机场宣布开通直飞中东货运专线，保障跨境电商供应链，缓解运输压力，服务外贸企业。", source: "21财经", category: "shipping", time: "2026-03-09 14:05", url: "#" },
-            { title: "广东石化企业启动应急储备，确保生产", summary: "广东省石化企业联合启动应急原油储备机制，确保生产企业原料供应不间断，维护产业链稳定。", source: "21财经", category: "energy", time: "2026-03-09 13:25", url: "#" },
-            { title: "粤港澳大湾区能源安全会议召开", summary: "粤港澳大湾区能源安全应急会议在广州召开，研究制定区域能源保供方案，加强协作应对风险。", source: "21财经", category: "energy", time: "2026-03-09 12:45", url: "#" },
-            { title: "前海自贸区推出油气交易平台，服务实体", summary: "深圳前海自贸区推出国际油气现货交易平台，服务实体企业避险需求，提供人民币计价服务。", source: "21财经", category: "energy", time: "2026-03-09 12:05", url: "#" },
-            { title: "珠海港开辟东南亚新航线，绕开中东", summary: "珠海港集团宣布开辟经马六甲海峡至东南亚新航线，绕开霍尔木兹海峡风险，保障航运安全。", source: "21财经", category: "shipping", time: "2026-03-09 11:25", url: "#" },
-            { title: "广州期货交易所拟推出原油期货期权", summary: "广期所表示正在筹备原油期货期权产品，为企业提供更多风险管理工具，完善市场体系。", source: "21财经", category: "energy", time: "2026-03-09 10:30", url: "#" },
-            { title: "东莞外贸企业调整供应链，转向陆运", summary: "东莞外贸企业协会建议会员企业调整供应链，将部分海运转为中欧班列陆运，降低运输风险。", source: "21财经", category: "shipping", time: "2026-03-09 09:50", url: "#" },
-            
-            // 澎湃新闻
-            { title: "伊朗最高领袖继任者人选引发各方猜测", summary: "伊朗专家会议尚未公布新最高领袖人选，各方猜测其子莫杰塔巴或成为继任者，也有呼声推举资深教士。", source: "澎湃新闻", category: "military", time: "2026-03-09 14:00", url: "#" },
-            { title: "黎巴嫩真主党向以色列发射火箭弹", summary: "黎巴嫩真主党宣布向以色列北部发射火箭弹，支援伊朗，以色列发动报复空袭，边境局势紧张。", source: "澎湃新闻", category: "military", time: "2026-03-09 13:20", url: "#" },
-            { title: "叙利亚宣布中立，不希望卷入冲突", summary: "叙利亚外交部发表声明，宣布在美伊冲突中保持中立，不希望领土被用作攻击平台，呼吁和平解决。", source: "澎湃新闻", category: "diplomacy", time: "2026-03-09 12:35", url: "#" },
-            { title: "约旦关闭与伊拉克边境，加强安检", summary: "约旦政府宣布临时关闭与伊拉克边境口岸，加强安全检查，防止冲突蔓延，保障国家安全。", source: "澎湃新闻", category: "military", time: "2026-03-09 11:55", url: "#" },
-            { title: "埃及加强苏伊士运河安保，确保通航", summary: "埃及军方宣布加强苏伊士运河沿线安保，确保国际航运通道安全畅通，防范潜在威胁。", source: "澎湃新闻", category: "shipping", time: "2026-03-09 11:20", url: "#" },
-            { title: "也门胡塞武装威胁袭击沙特石油设施", summary: "也门胡塞武装发言人威胁，如果沙特支持美以，将袭击沙特东部石油设施，沙特方面已加强戒备。", source: "澎湃新闻", category: "military", time: "2026-03-09 10:35", url: "#" },
-            { title: "伊拉克库尔德自治区宣布进入紧急状态", summary: "伊拉克库尔德自治区政府宣布进入紧急状态，关闭边境，防备冲突扩散，保障民众安全。", source: "澎湃新闻", category: "military", time: "2026-03-09 09:45", url: "#" },
-            { title: "巴基斯坦谴责美以袭击，声援伊朗", summary: "巴基斯坦外交部发表声明，谴责美以对伊朗的侵略行为，声援伊朗人民，呼吁国际社会介入调停。", source: "澎湃新闻", category: "diplomacy", time: "2026-03-09 09:10", url: "#" },
-            { title: "阿富汗塔利班表示关注局势发展", summary: "阿富汗塔利班政府表示密切关注中东局势，呼吁各方通过对话解决分歧，避免平民伤亡。", source: "澎湃新闻", category: "diplomacy", time: "2026-03-09 08:35", url: "#" },
-            { title: "联合国安理会召开紧急会议讨论中东局势", summary: "联合国安理会应俄罗斯要求召开紧急会议，讨论美伊冲突及中东局势升级问题，各方分歧明显。", source: "澎湃新闻", category: "diplomacy", time: "2026-03-09 08:00", url: "#" },
-            
-            // 界面新闻
-            { title: "青岛港开辟中东替代航线，绕开霍尔木兹", summary: "青岛港宣布与多家船公司合作，开辟经好望角至欧洲新航线，绕开霍尔木兹海峡风险，保障贸易畅通。", source: "界面新闻", category: "shipping", time: "2026-03-09 14:05", url: "#" },
-            { title: "大连商品交易所液化气期货涨停", summary: "大商所液化石油气期货主力合约涨停，市场担忧中东供应中断，投机资金大量涌入。", source: "界面新闻", category: "energy", time: "2026-03-09 12:55", url: "#" },
-            { title: "宁波舟山港加强原油储备", summary: "宁波舟山港宣布增加原油商业储备，为国家能源安全提供支撑，增强应对突发事件能力。", source: "界面新闻", category: "energy", time: "2026-03-09 11:40", url: "#" },
-            { title: "上海航运交易所发布中东航线风险提示", summary: "上海航运交易所发布风险提示，建议船东谨慎评估中东航线风险，合理配置保险，做好应急预案。", source: "界面新闻", category: "shipping", time: "2026-03-09 10:55", url: "#" },
-            { title: "天津港暂停伊朗航线作业", summary: "天津港集团宣布暂停伊朗航线船舶作业，待局势缓和后恢复，保障港口和人员安全。", source: "界面新闻", category: "shipping", time: "2026-03-09 09:40", url: "#" },
-            { title: "厦门国贸集团与沙特签订长期供油协议", summary: "厦门国贸集团宣布与沙特阿美签订5年期原油供应协议，确保原料供应，降低采购风险。", source: "界面新闻", category: "energy", time: "2026-03-09 09:05", url: "#" },
-            { title: "重庆汽车出口企业调整物流方案", summary: "重庆汽车出口企业调整中东物流方案，将海运改为中欧班列陆运，降低运输风险，保障交货。", source: "界面新闻", category: "shipping", time: "2026-03-09 08:30", url: "#" },
-            
-            // 第一财经
-            { title: "国资委要求央企做好能源保供", summary: "国务院国资委要求石油央企做好国内能源保供，确保成品油市场稳定，增加储备，平抑价格。", source: "第一财经", category: "energy", time: "2026-03-09 11:40", url: "#" },
-            { title: "商务部监测原油进口价格波动", summary: "商务部表示正在密切监测国际原油进口价格波动，必要时采取措施稳定市场，保障国内供应。", source: "第一财经", category: "energy", time: "2026-03-09 10:55", url: "#" },
-            { title: "交通运输部保障重点物资运输", summary: "交通运输部部署保障煤炭、石油等重点物资运输，确保供应链畅通，优先保障民生和工业需求。", source: "第一财经", category: "shipping", time: "2026-03-09 09:30", url: "#" },
-            { title: "工信部协调化工原料供应", summary: "工信部召开协调会，保障石油化工企业原料供应，防止产业链断裂，维护工业稳定运行。", source: "第一财经", category: "energy", time: "2026-03-09 08:50", url: "#" },
-            { title: "发改委召开能源价格调控会议", summary: "国家发改委召开专题会议，研究成品油价格调控机制，稳定国内市场，防止价格过快上涨。", source: "第一财经", category: "energy", time: "2026-03-09 07:40", url: "#" },
-            
-            // 财新网
-            { title: "中国考虑建立石油人民币定价机制", summary: "消息人士称，中国正在研究建立以人民币计价的石油定价机制，减少对美元依赖，提升人民币国际化水平。", source: "财新网", category: "diplomacy", time: "2026-03-09 14:10", url: "#" },
-            { title: "外资银行调高中资石油企业评级", summary: "高盛、摩根士丹利调高中石油、中石化评级，看好高油价环境下的盈利前景，上调目标价。", source: "财新网", category: "energy", time: "2026-03-09 13:00", url: "#" },
-            { title: "私募股权基金看好油气上游投资", summary: "多家PE表示将加大油气上游领域投资，特别是页岩油和深海油气项目，押注高油价持续。", source: "财新网", category: "energy", time: "2026-03-09 12:15", url: "#" },
-            { title: "主权财富基金减持美股增持能源股", summary: "中东主权财富基金宣布减持美股，增持欧洲和美国能源公司股票，看好能源板块长期表现。", source: "财新网", category: "energy", time: "2026-03-09 10:40", url: "#" },
-            { title: "私募看好油服设备投资机会", summary: "私募基金表示看好油服设备行业投资机会，特别是压裂设备和海上钻井平台，预计需求大幅增长。", source: "财新网", category: "energy", time: "2026-03-09 09:25", url: "#" }
+        // 财联社新闻数据（复刻 cls.cn/subject/10986）
+        const CLS_NEWS_DATA = [
+            {
+                id: "1",
+                title: "美、以、欧洲国家及其支持者所属船只严禁在霍尔木兹海峡通行",
+                summary: "①当地时间3月5日，伊朗伊斯兰革命卫队称，一艘美国油轮在波斯湾北部被其海军导弹击中，目前仍在燃烧。②伊朗表示，根据国际法规和决议，战争时期霍尔木兹海峡通行规则由伊朗掌控。③声明强调，美国、以色列及欧洲国家所属军用和商用船只严禁通行该海域，否则将遭打击。",
+                time: "2026-03-05 15:33",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2303816"
+            },
+            {
+                id: "2",
+                title: "美以袭击已致伊朗201人死亡 747人受伤",
+                summary: "据伊朗红新月会方面消息，伊朗全国28日有24个省份遭到美国和以色列的袭击。截至目前，已有201人在袭击中死亡，另有747人受伤。超过220个红新月会行动小组处于待命状态并在袭击现场展开工作。",
+                time: "2026-03-01 01:43",
+                category: "military",
+                url: "https://www.cls.cn/detail/2298621"
+            },
+            {
+                id: "3",
+                title: "英国海上贸易行动办公室：霍尔木兹海峡发生一起海上安全事件",
+                summary: "英国海上贸易行动办公室（UKMTO）当地时间3月8日发布消息称，其已接到报告称，在霍尔木兹海峡阿曼以北约6海里处发生一起海上安全事件。有消息称，一艘拖船遭到不明投射物击中。目前有关部门正在对事件展开调查。",
+                time: "2026-03-09 03:04",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2306491"
+            },
+            {
+                id: "4",
+                title: "避开霍尔木兹封锁 沙特紧急改道红海出口原油",
+                summary: "随着伊朗战争导致霍尔木兹海峡这一关键航运咽喉受阻，并使该地区储油设施趋于饱和，全球最大原油出口国沙特阿拉伯正将数百万桶原油转运至其红海沿岸的港口，以维持向全球市场的供应。油轮追踪数据显示，本月已有五艘超大型油轮在沙特西部港口延布装载原油并启程。",
+                time: "2026-03-05 08:00",
+                category: "energy",
+                url: "https://www.cls.cn/detail/2304372"
+            },
+            {
+                id: "5",
+                title: "伊朗总统称无意攻击邻国 战争第八天地区硝烟愈浓",
+                summary: "伊朗总统佩泽什基安表示，伊朗不会向邻国发动攻击，无意升级冲突。然而战争进入第八天，地区硝烟愈浓。美国中央司令部称，过去一周美国已对伊朗境内3000多个目标发动袭击。伊朗国家媒体报道，迄今为止美以袭击已在伊朗造成超过1230人死亡。",
+                time: "2026-03-07 12:00",
+                category: "diplomacy",
+                url: "https://www.cls.cn/detail/2305024"
+            },
+            {
+                id: "6",
+                title: "美第三个航母打击群据称准备部署至中东",
+                summary: "据知情人士透露，美国正准备向中东地区部署第三个航母打击群，以加强对伊朗的军事压力。这将是美国多年来首次在同一地区部署三个航母打击群，显示冲突可能进一步升级。",
+                time: "2026-03-07 09:59",
+                category: "military",
+                url: "https://www.cls.cn/detail/2304988"
+            },
+            {
+                id: "7",
+                title: "白宫称美国正"稳步控制"伊朗领空",
+                summary: "白宫新闻发言人表示，美国军队正在"稳步控制"伊朗领空，伊朗空军的抵抗能力已被大幅削弱。美军将继续执行打击任务，直至摧毁伊朗所有军事威胁。",
+                time: "2026-03-07 08:08",
+                category: "military",
+                url: "https://www.cls.cn/detail/2304955"
+            },
+            {
+                id: "8",
+                title: "伊朗启动"真实承诺4"第24轮军事行动",
+                summary: "伊朗伊斯兰革命卫队宣布启动"真实承诺4"行动的第24轮军事打击，向以色列境内多个目标发射弹道导弹和无人机。以色列方面称成功拦截大部分来袭导弹。",
+                time: "2026-03-07 07:21",
+                category: "military",
+                url: "https://www.cls.cn/detail/2304933"
+            },
+            {
+                id: "9",
+                title: "伊朗军方称不会关闭霍尔木兹海峡",
+                summary: "伊朗军方发言人表示，伊朗目前不打算完全关闭霍尔木兹海峡，但将严格控制通行船只。只有与伊朗有友好关系的国家的船只才可获得通行许可。",
+                time: "2026-03-07 03:58",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2304892"
+            },
+            {
+                id: "10",
+                title: "伊朗专家会议成员：哈梅内伊继任者身份即将揭晓",
+                summary: "伊朗专家会议成员透露，已故最高领袖哈梅内伊的继任者人选已经确定，身份将在近日正式公布。据消息人士称，哈梅内伊之子莫杰塔巴是最有可能的继任人选。",
+                time: "2026-03-08 22:44",
+                category: "diplomacy",
+                url: "https://www.cls.cn/detail/2306455"
+            },
+            {
+                id: "11",
+                title: "以防长称打死伊朗最高领袖军事秘书",
+                summary: "以色列国防部长卡茨表示，以军在最新一轮空袭中打死了伊朗最高领袖的军事秘书阿里·沙德马尼。这是继哈梅内伊之后被击毙的又一位伊朗高级军事指挥官。",
+                time: "2026-03-08 21:07",
+                category: "military",
+                url: "https://www.cls.cn/detail/2306412"
+            },
+            {
+                id: "12",
+                title: "伊朗称其六成导弹和无人机火力指向中东的美国目标",
+                summary: "伊朗伊斯兰革命卫队表示，在最新一轮军事行动中，约60%的导弹和无人机火力集中于中东地区的美军目标，包括美国在卡塔尔、阿联酋和巴林的军事基地。",
+                time: "2026-03-08 20:14",
+                category: "military",
+                url: "https://www.cls.cn/detail/2306388"
+            },
+            {
+                id: "13",
+                title: "以军：今日已监测到四轮伊朗导弹攻击",
+                summary: "以色列国防军发言人表示，仅3月8日当天，以军已监测到四轮来自伊朗的导弹攻击，总计超过50枚弹道导弹。铁穹防空系统成功拦截大部分导弹，但仍有部分落入人口密集区。",
+                time: "2026-03-08 18:58",
+                category: "military",
+                url: "https://www.cls.cn/detail/2306344"
+            },
+            {
+                id: "14",
+                title: "美伊战火持续蔓延 更多中东产油国减产",
+                summary: "由于伊朗战争导致霍尔木兹海峡持续关闭，更多中东主要产油国减少了产量。除科威特和阿联酋外，伊拉克也宣布减产20%，卡塔尔暂停LNG出口。国际能源署警告全球可能面临每天500万桶的供应缺口。",
+                time: "2026-03-09 08:19",
+                category: "energy",
+                url: "https://www.cls.cn/detail/2307124"
+            },
+            {
+                id: "15",
+                title: "沙特拦截20架接近油田的无人机",
+                summary: "沙特国防部3月7日称，沙特在当天拦截并摧毁了20架接近其沙伊巴油田的无人机，摧毁了三枚射向苏丹亲王空军基地的导弹。沙特表示将采取一切必要措施保护其石油设施。",
+                time: "2026-03-07 12:30",
+                category: "military",
+                url: "https://www.cls.cn/detail/2305088"
+            },
+            {
+                id: "16",
+                title: "巴林称已拦截累计84枚导弹和147架无人机",
+                summary: "巴林国防部称，自2月28日战事爆发以来，该国已拦截了累计84枚导弹和147架无人机。巴林谴责伊朗对其民用设施的袭击，称这违反了国际法。",
+                time: "2026-03-07 11:00",
+                category: "military",
+                url: "https://www.cls.cn/detail/2305055"
+            },
+            {
+                id: "17",
+                title: "阿联酋拦截9枚弹道导弹和109架无人机",
+                summary: "阿联酋国家紧急危机和灾害管理机构表示，该国防空系统在3月7日早间响应了一次导弹威胁，并于3月6日拦截了9枚弹道导弹和109架无人机。",
+                time: "2026-03-07 09:30",
+                category: "military",
+                url: "https://www.cls.cn/detail/2305011"
+            },
+            {
+                id: "18",
+                title: "油轮日租金近80万美元 一周跳涨4倍",
+                summary: "受中东海上战争险费率飙升影响，油轮日租金达到近80万美元，较一周前跳涨4倍。船东表示，只有极高的租金才能弥补保险成本和风险溢价。",
+                time: "2026-03-06 14:00",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2304555"
+            },
+            {
+                id: "19",
+                title: "国际保险公司重新签订中东船舶战争险合同",
+                summary: "财新获悉，国际保险公司已重新签订进入波斯湾和霍尔木兹海峡的船舶新战争险合同。新合同费率较战前上涨300%-500%，且设有更高的免赔额。",
+                time: "2026-03-06 10:00",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2304444"
+            },
+            {
+                id: "20",
+                title: "阿联酋拖船"Mussafah 2"在霍尔木兹海峡遇袭",
+                summary: "3月6日，一艘阿联酋注册的拖船"Mussafah 2"在霍尔木兹海峡试图救援遇险的"萨芬威望"号油轮时遇袭。国际海事组织称，船上至少有四名海员遇难，三人重伤。",
+                time: "2026-03-06 16:00",
+                category: "shipping",
+                url: "https://www.cls.cn/detail/2304666"
+            }
         ];
-
-        // 去重函数：基于标题相似度去重，保留最早发布的新闻
-        function deduplicateNews(newsArray) {
-            const seen = new Map();
-            
-            return newsArray.filter(item => {
-                // 生成标题指纹（前20个字符）
-                const fingerprint = item.title.slice(0, 20).toLowerCase().replace(/\s+/g, '');
-                
-                if (seen.has(fingerprint)) {
-                    // 已存在相同指纹，比较时间，保留更早的
-                    const existing = seen.get(fingerprint);
-                    if (new Date(item.time) < new Date(existing.time)) {
-                        seen.set(fingerprint, item);
-                        return true;
-                    }
-                    return false;
-                } else {
-                    seen.set(fingerprint, item);
-                    return true;
-                }
-            }).sort((a, b) => new Date(b.time) - new Date(a.time)); // 按时间倒序，最新的在前
-        }
-
-        // 处理后的新闻数据
-        const NEWS_DATA = {
-            updateTime: "2026-03-09 14:30",
-            news: deduplicateNews(RAW_NEWS_DATA)
-        };
 
         // 当前筛选
         let currentCategory = 'all';
@@ -392,13 +498,13 @@
         function init() {
             renderNews();
             setupFilters();
-            document.getElementById('update-time').textContent = NEWS_DATA.updateTime;
+            document.getElementById('update-time').textContent = '更新于: ' + new Date().toLocaleString('zh-CN');
         }
 
         // 渲染新闻
         function renderNews() {
             const container = document.getElementById('news-container');
-            let filtered = NEWS_DATA.news;
+            let filtered = CLS_NEWS_DATA;
             
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(n => n.category === currentCategory);
@@ -410,15 +516,17 @@
             }
             
             container.innerHTML = filtered.map((news, index) => `
-                <a href="${news.url}" target="_blank" class="news-item ${news.category}">
+                <a href="${news.url}" target="_blank" class="news-item">
                     <div class="news-header">
                         <div class="news-title">${escapeHtml(news.title)}</div>
                         <div class="news-time">${formatTime(news.time)}</div>
                     </div>
                     <div class="news-summary">${escapeHtml(news.summary)}</div>
                     <div class="news-meta">
-                        <span class="category-tag ${news.category}">${getCategoryName(news.category)}</span>
-                        <span class="news-count">#${index + 1}</span>
+                        <div class="news-source">
+                            <span class="cls-badge">财联社</span>
+                        </div>
+                        <span class="news-tag ${news.category}">${getCategoryName(news.category)}</span>
                     </div>
                 </a>
             `).join('');
@@ -446,7 +554,7 @@
         function formatTime(timeStr) {
             const date = new Date(timeStr);
             const now = new Date();
-            const diff = (now - date) / 60000; // 分钟
+            const diff = (now - date) / 60000;
             
             if (diff < 60) return Math.floor(diff) + '分钟前';
             if (diff < 1440) return Math.floor(diff / 60) + '小时前';
@@ -454,7 +562,12 @@
         }
 
         function getCategoryName(cat) {
-            const names = { military: '军事', energy: '能源', shipping: '航运', diplomacy: '外交' };
+            const names = {
+                military: '军事行动',
+                energy: '能源/石油',
+                shipping: '航运/海峡',
+                diplomacy: '外交/国际'
+            };
             return names[cat] || '其他';
         }
 
