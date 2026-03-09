@@ -454,44 +454,69 @@
         
         @media (max-width: 480px) {
             .header-main {
-                padding: 6px 8px;
+                padding: 6px 6px;
+                gap: 4px;
+            }
+            .header-icon {
+                font-size: 1.2rem;
             }
             .header h1 {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+                max-width: 80px;
             }
             .header-center {
                 margin-top: 4px;
                 gap: 2px;
             }
             .nav-btn {
-                padding: 3px 5px;
+                padding: 3px 4px;
                 font-size: 0.55rem;
+                gap: 1px;
             }
             .header-right {
                 font-size: 0.55rem;
                 padding: 2px 4px;
             }
+            .container {
+                padding: 6px;
+            }
             .storage-modal {
-                padding-top: 30px;
+                padding-top: 20px;
             }
             .storage-modal-content {
                 width: 96%;
-                padding: 14px;
+                padding: 12px;
                 max-height: 85vh;
+                border-radius: 10px;
+            }
+            .storage-header h2 {
+                font-size: 0.9rem;
             }
             #map {
-                height: 35vh;
-                min-height: 240px;
+                height: 32vh;
+                min-height: 200px;
+                border-radius: 6px;
             }
             .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
+                gap: 4px;
             }
             .stat-box {
-                padding: 8px 4px;
+                padding: 6px 2px;
+                border-radius: 6px;
             }
             .stat-box .number {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+            }
+            .stat-box h4, .stat-box .unit {
+                font-size: 0.55rem;
+            }
+            .sidebar {
+                padding: 10px;
+                max-height: 50vh;
+            }
+            .legend-section h3 {
+                font-size: 0.8rem;
             }
             .filter-btn {
                 font-size: 0.6rem;
@@ -506,11 +531,21 @@
             }
             /* 地图上的按钮移动端适配 */
             .map-toggle-buttons {
-                gap: 6px !important;
+                gap: 3px !important;
+                flex-direction: row !important;
             }
             .map-toggle-buttons button {
-                padding: 6px 10px !important;
-                font-size: 0.7rem !important;
+                padding: 3px 5px !important;
+                font-size: 0.55rem !important;
+                border-radius: 5px !important;
+                border-radius: 6px !important;
+            }
+            .leaflet-top.leaflet-right {
+                top: 5px !important;
+                right: 5px !important;
+            }
+            .leaflet-control {
+                margin: 0 !important;
             }
         }
         
