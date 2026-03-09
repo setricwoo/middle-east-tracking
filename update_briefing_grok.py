@@ -740,8 +740,8 @@ def generate_html(data):
                 font-size: 1.4rem;
             }}
             .header h1 {{
-                font-size: 0.75rem;
-                max-width: 100px;
+                font-size: 0.85rem;
+                white-space: nowrap;
                 line-height: 1.2;
             }}
             .header-center {{
@@ -797,8 +797,8 @@ def generate_html(data):
                 font-size: 1.2rem;
             }}
             .header h1 {{
-                font-size: 0.65rem;
-                max-width: 80px;
+                font-size: 0.75rem;
+                white-space: nowrap;
             }}
             .nav-btn {{
                 padding: 4px 6px;
