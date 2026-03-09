@@ -171,23 +171,71 @@ def categorize(text):
         return 'diplomacy'
     return 'military'
 
+def load_existing_news():
+    """从news.html加载现有新闻"""
+    try:
+        with open('news.html', 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # 提取CLS_NEWS_DATA数组
+        match = re.search(r'const CLS_NEWS_DATA = (\[.*?\]);', content, re.DOTALL)
+        if match:
+            news_json = match.group(1)
+            return json.loads(news_json)
+    except Exception as e:
+        print(f"读取现有新闻失败: {e}")
+    
+    return []
+
+def merge_news(existing_news, new_news):
+    """合并新闻，去重并按时间排序（最新的在前）"""
+    # 创建URL到新闻的映射
+    existing_urls = {item['url']: item for item in existing_news}
+    
+    # 添加新新闻（如果不存在）
+    added_count = 0
+    for item in new_news:
+        if item['url'] not in existing_urls:
+            existing_urls[item['url']] = item
+            added_count += 1
+    
+    # 转换为列表并按时间排序（最新的在前）
+    merged = list(existing_urls.values())
+    merged.sort(key=lambda x: x['time'], reverse=True)
+    
+    # 重新分配ID
+    for i, item in enumerate(merged, 1):
+        item['id'] = str(i)
+    
+    return merged, added_count
+
 def update_html(news_list):
-    """更新 news.html"""
+    """更新 news.html（增量更新，保留旧新闻）"""
     if not news_list:
         print("没有新闻数据可更新")
         return
     
+    # 加载现有新闻
+    existing_news = load_existing_news()
+    print(f"现有新闻: {len(existing_news)} 条")
+    
+    # 合并新闻
+    merged_news, added_count = merge_news(existing_news, news_list)
+    print(f"新增新闻: {added_count} 条")
+    print(f"合并后共: {len(merged_news)} 条")
+    
+    # 读取HTML内容
     with open('news.html', 'r', encoding='utf-8') as f:
         content = f.read()
     
     # 更新新闻数据
-    news_json = json.dumps(news_list, ensure_ascii=False, indent=4)
+    news_json = json.dumps(merged_news, ensure_ascii=False, indent=4)
     content = re.sub(r'const CLS_NEWS_DATA = \[.*?\];', f'const CLS_NEWS_DATA = {news_json};', content, flags=re.DOTALL)
     
     with open('news.html', 'w', encoding='utf-8') as f:
         f.write(content)
     
-    print(f"\nnews.html 已更新，共 {len(news_list)} 条新闻")
+    print(f"\nnews.html 已更新，新增 {added_count} 条，共 {len(merged_news)} 条新闻")
 
 def main():
     print("="*50)
