@@ -1794,7 +1794,8 @@
         document.getElementById('map').appendChild(legendDiv);
 
         // 图例
-        L.control({position: 'bottomleft'}).onAdd = function() {
+        const legendControl = L.control({position: 'bottomleft'});
+        legendControl.onAdd = function() {
             const div = L.DomUtil.create('div');
             div.style.cssText = 'background: rgba(255,255,255,0.95); padding: 14px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.12); border: 1px solid #e2e8f0; font-size: 0.8rem;';
             div.innerHTML = `
@@ -1811,7 +1812,8 @@
                 </div>
             `;
             return div;
-        }.addTo(map);
+        };
+        legendControl.addTo(map);
     </script>
 </body>
 </html>
