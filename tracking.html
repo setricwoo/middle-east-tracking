@@ -1169,14 +1169,6 @@
             </div>
         </div>
 
-        <!-- 实时航运跟踪地图 -->
-        <div class="map-section">
-            <h3>🗺️ 实时航运跟踪地图</h3>
-            <div style="width: 100%; height: auto; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0;">
-                <img src="map_screenshot.png" alt="实时航运跟踪地图" style="width: 100%; height: auto; display: block;">
-            </div>
-        </div>
-
         <div class="two-column">
             <div class="section">
                 <h3>⚓ 实时通航状态</h3>
@@ -1613,11 +1605,11 @@
         });
         */
         
-        // ==================== 霍尔木兹海峡每日通行量柱状图 ====================
+        // ==================== 霍尔木兹海峡每日通行量折线图 ====================
         // 数据来源: 船视宝 (微信小程序)
         const ctx = document.getElementById('trafficChart').getContext('2d');
 
-        // 真实数据（来自船视宝 - 2025年12月1日至2026年3月7日）
+        // 真实数据（来自船视宝 - 2025年12月1日至2026年3月8日）
         const realData = [
             {date: '2025-12-01', ships: 135, dwt: 11558286},
             {date: '2025-12-02', ships: 123, dwt: 10402209},
@@ -1715,52 +1707,57 @@
             {date: '2026-03-04', ships: 5, dwt: 146212},
             {date: '2026-03-05', ships: 12, dwt: 310296},
             {date: '2026-03-06', ships: 6, dwt: 87868},
-            {date: '2026-03-07', ships: 8, dwt: 328203}
+            {date: '2026-03-07', ships: 8, dwt: 328203},
+            {date: '2026-03-08', ships: 3, dwt: 110800}
         ];
 
         const labels = realData.map(d => {
             const parts = d.date.split('-');
             return `${parseInt(parts[1])}/${parseInt(parts[2])}`;
         });
-        const data = realData.map(d => d.ships);
-
-        // 设置颜色：封锁期间（3月1日起）红色，正常蓝色
-        const backgroundColors = realData.map((d, idx) => {
-            return d.date >= '2026-03-01' ? 'rgba(220, 38, 38, 0.8)' : 'rgba(59, 130, 246, 0.6)';
-        });
-
-        const borderColors = realData.map((d, idx) => {
-            return d.date >= '2026-03-01' ? 'rgba(220, 38, 38, 1)' : 'rgba(59, 130, 246, 1)';
-        });
+        const shipsData = realData.map(d => d.ships);
+        const dwtData = realData.map(d => (d.dwt / 10000).toFixed(1)); // 万吨
         
         new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: labels,
-                datasets: [{
-                    label: '日通行量 (艘次)',
-                    data: data,
-                    backgroundColor: backgroundColors,
-                    borderColor: borderColors,
-                    borderWidth: 1
-                }]
+                datasets: [
+                    {
+                        label: '通行艘次',
+                        data: shipsData,
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                        yAxisID: 'y',
+                        tension: 0.3
+                    },
+                    {
+                        label: '载重吨 (万吨)',
+                        data: dwtData,
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                        yAxisID: 'y1',
+                        tension: 0.3
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'top',
-                        labels: {
-                            usePointStyle: true,
-                            generateLabels: function(chart) {
-                                return [
-                                    {text: '正常通行', fillStyle: 'rgba(59, 130, 246, 0.6)', strokeStyle: 'rgba(59, 130, 246, 1)'},
-                                    {text: '封锁期间', fillStyle: 'rgba(220, 38, 38, 0.8)', strokeStyle: 'rgba(220, 38, 38, 1)'}
-                                ];
-                            }
-                        }
+                        position: 'top'
                     },
                     tooltip: {
                         callbacks: {
@@ -1769,12 +1766,7 @@
                                 return realData[idx].date;
                             },
                             label: function(context) {
-                                const idx = context.dataIndex;
-                                const dwt = realData[idx].dwt;
-                                return [
-                                    '通行艘次: ' + context.parsed.y,
-                                    '载重吨: ' + (dwt / 10000).toFixed(1) + '万吨'
-                                ];
+                                return context.dataset.label + ': ' + context.parsed.y;
                             }
                         }
                     },
@@ -1812,6 +1804,9 @@
                         }
                     },
                     y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
                         beginAtZero: true,
                         grid: {
                             color: 'rgba(0, 0, 0, 0.05)'
@@ -1820,6 +1815,28 @@
                             callback: function(value) {
                                 return value + ' 艘';
                             }
+                        },
+                        title: {
+                            display: true,
+                            text: '艘次'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: {
+                            drawOnChartArea: false
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return value + ' 万吨';
+                            }
+                        },
+                        title: {
+                            display: true,
+                            text: '万吨'
                         }
                     }
                 },
