@@ -213,16 +213,18 @@ def update_html(news_list):
     """更新 news.html（增量更新，保留旧新闻）"""
     if not news_list:
         print("没有新闻数据可更新")
-        return
+        return 0, 0, 0
     
     # 加载现有新闻
     existing_news = load_existing_news()
-    print(f"现有新闻: {len(existing_news)} 条")
+    existing_count = len(existing_news)
+    print(f"现有新闻: {existing_count} 条")
     
     # 合并新闻
     merged_news, added_count = merge_news(existing_news, news_list)
+    total_count = len(merged_news)
     print(f"新增新闻: {added_count} 条")
-    print(f"合并后共: {len(merged_news)} 条")
+    print(f"合并后共: {total_count} 条")
     
     # 读取HTML内容
     with open('news.html', 'r', encoding='utf-8') as f:
@@ -235,17 +237,22 @@ def update_html(news_list):
     with open('news.html', 'w', encoding='utf-8') as f:
         f.write(content)
     
-    print(f"\nnews.html 已更新，新增 {added_count} 条，共 {len(merged_news)} 条新闻")
+    print(f"\n[统计] 原有: {existing_count} 条 | 新增: {added_count} 条 | 现有: {total_count} 条")
+    return existing_count, added_count, total_count
 
 def main():
     print("="*50)
     
     news_list = scrape_news()
     if news_list:
-        update_html(news_list)
+        existing, added, total = update_html(news_list)
+        # 输出给父脚本解析的格式
+        print(f"\n[RESULT] existing={existing} added={added} total={total}")
         print("\n完成!")
+        return existing, added, total
     else:
         print("\n未能获取新闻")
+        return 0, 0, 0
 
 if __name__ == "__main__":
     main()

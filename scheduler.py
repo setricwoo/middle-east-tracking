@@ -36,6 +36,13 @@ def run_update():
             timeout=300
         )
         
+        # 解析并显示输出中的统计信息
+        output = result.stdout if result.stdout else ""
+        for line in output.split('\n'):
+            # 显示统计相关的行
+            if any(keyword in line for keyword in ['[更新]', '[统计]', '新增', '原有', '现有']):
+                log_message(line.strip())
+        
         if result.returncode == 0:
             log_message("[成功] 更新任务执行完成")
         else:

@@ -49,12 +49,26 @@ def main():
     # 1. 运行财联社爬虫
     log_message("[步骤1] 运行财联社新闻爬虫...")
     success, stdout, stderr = run_command("python scrape_cls_final.py", timeout=180)
+    
+    # 解析统计信息
+    stats = {"existing": 0, "added": 0, "total": 0}
     if success:
-        log_message("[成功] 新闻爬虫执行完成")
-        # 显示爬取的新闻数量
         for line in stdout.split('\n'):
-            if '成功爬取' in line or 'news.html' in line:
+            if '[统计]' in line or '[RESULT]' in line:
                 log_message(f"[信息] {line.strip()}")
+                # 解析 [RESULT] existing=X added=Y total=Z
+                if '[RESULT]' in line:
+                    import re
+                    m = re.search(r'existing=(\d+) added=(\d+) total=(\d+)', line)
+                    if m:
+                        stats = {"existing": int(m.group(1)), "added": int(m.group(2)), "total": int(m.group(3))}
+        
+        # 显示更新统计
+        if stats["added"] > 0:
+            log_message(f"[更新] ✓ 新增 {stats['added']} 条新闻")
+            log_message(f"[统计] 原有 {stats['existing']} 条 → 现有 {stats['total']} 条")
+        else:
+            log_message("[信息] 没有新增新闻")
     else:
         log_message(f"[失败] 新闻爬虫执行失败: {stderr}")
         return False
