@@ -242,3 +242,9 @@
 [2026-03-10 07:20:12] [失败] 推送失败: fatal: unable to access 'https://github.com/setricwoo/middle-east-tracking.git/': Failed to connect to github.com port 443 after 21073 ms: Could not connect to server
 
 [2026-03-10 07:20:12] [错误] 已达到最大重试次数，推送失败
+[2026-03-10 07:40:18] ============================================================
+[2026-03-10 07:40:18] 开始自动更新实时新闻
+[2026-03-10 07:40:18] ============================================================
+[2026-03-10 07:40:18] [步骤1] 运行财联社新闻爬虫...
+[2026-03-10 07:40:48] [成功] 新闻爬虫执行完成
+[2026-03-10 07:40:48] [错误] 发生异常: 'gbk' codec can't encode character '\u0478' in position 37: illegal multibyte sequence
