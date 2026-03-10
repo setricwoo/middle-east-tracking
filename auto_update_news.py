@@ -48,7 +48,7 @@ def main():
     
     # 1. 运行财联社爬虫
     log_message("[步骤1] 运行财联社新闻爬虫...")
-    success, stdout, stderr = run_command("python scrape_cls_final.py", timeout=180)
+    success, stdout, stderr = run_command("python scrape_cls_final.py", timeout=300)
     
     # 解析统计信息
     stats = {"existing": 0, "added": 0, "total": 0}
@@ -106,11 +106,11 @@ def main():
     
     # 5. Git push（带重试）
     max_retries = 3
-    retry_delay = 1200  # 20分钟 = 1200秒
+    retry_delay = 300  # 5分钟后重试
     
     for attempt in range(1, max_retries + 1):
         log_message(f"[步骤5] 推送到GitHub (尝试 {attempt}/{max_retries})...")
-        success, stdout, stderr = run_command("git push origin main", timeout=120)
+        success, stdout, stderr = run_command("git push origin main", timeout=180)
         
         if success:
             log_message("[成功] 已成功推送到GitHub!")

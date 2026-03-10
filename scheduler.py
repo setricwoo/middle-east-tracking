@@ -27,13 +27,14 @@ def run_update():
     log_message("定时触发：执行自动更新")
     
     try:
+        log_message("[执行] 启动 auto_update_news.py ...")
         result = subprocess.run(
             [sys.executable, 'auto_update_news.py'],
             capture_output=True,
             text=True,
             encoding='utf-8',
             errors='ignore',
-            timeout=300
+            timeout=600  # 增加到10分钟超时
         )
         
         # 解析并显示输出中的统计信息

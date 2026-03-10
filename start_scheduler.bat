@@ -1,28 +1,28 @@
 @echo off
 chcp 65001 >nul
-title 中东新闻自动更新 - 每20分钟
+title Middle East News Auto Update - Every 20min
 cls
 echo ============================================
-echo   中东新闻自动更新服务
+echo   Middle East News Auto Update Service
 echo ============================================
-echo   频率: 每20分钟执行一次
-echo   操作: 爬取财联社新闻 + 增量更新 + GitHub上传
-echo   特点: 
-          - 保留所有旧新闻
-echo          - 自动去重
-echo          - 新增新闻置顶显示
-echo   日志: scheduler_log.txt
-echo   停止: 按 Ctrl+C 或关闭此窗口
+echo   Frequency: Every 20 minutes
+echo   Operation: Crawl CLS News + Incremental Update + GitHub Upload
+echo   Features: 
+echo     - Keep all old news
+echo     - Auto deduplication
+echo     - New news on top
+echo   Log: scheduler_log.txt
+echo   Stop: Press Ctrl+C or close this window
 echo ============================================
 echo.
-echo 正在初始化...
+echo Initializing...
 echo.
 
-:: 安装schedule库（如果未安装）
-pip install schedule -q
+:: Install schedule library if not exists
+pip install schedule -q 2>nul
 
-:: 执行调度器
-echo [启动] 调度器已启动，等待执行...
+:: Run scheduler
+echo [Start] Scheduler started, waiting for execution...
 echo.
 python scheduler.py
 
