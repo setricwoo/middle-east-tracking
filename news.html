@@ -2035,7 +2035,7 @@
                 return `
                 <a href="${news.url}" target="_blank" class="news-item">
                     <div class="news-header">
-                        <div class="news-title">${escapeHtml(displayTitle)}</div>
+                        <div class="news-title">【${escapeHtml(displayTitle)}】</div>
                         <div class="news-time">${news.time || ''}</div>
                     </div>
                     ${displaySummary ? `<div class="news-summary">${escapeHtml(displaySummary)}</div>` : ''}
