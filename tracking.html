@@ -662,6 +662,17 @@
             border: 1px solid #e2e8f0;
         }
         
+        @media (max-width: 768px) {
+            .chart-section {
+                padding: 12px;
+                margin-left: -8px;
+                margin-right: -8px;
+                border-radius: 0;
+                border-left: none;
+                border-right: none;
+            }
+        }
+        
         .chart-section h3 {
             color: #1e40af;
             font-size: 1.1rem;
@@ -983,7 +994,7 @@
             }
             .chart-container {
                 height: 250px;
-                padding: 10px;
+                padding: 0;
             }
             .chart-stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -1055,6 +1066,7 @@
             }
             .chart-container {
                 height: 280px;
+                padding: 0;
             }
             .chart-stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -1216,8 +1228,8 @@
                 font-size: 0.8rem;
             }
             .chart-container {
-                height: 200px;
-                padding: 6px;
+                height: 220px;
+                padding: 0;
             }
             .chart-stats {
                 grid-template-columns: repeat(2, 1fr);
@@ -1931,7 +1943,7 @@
                 responsive: true,
                 maintainAspectRatio: false,
                 layout: {
-                    padding: window.innerWidth < 768 ? {left: 5, right: 5, top: 10, bottom: 5} : {left: 10, right: 10, top: 10, bottom: 10}
+                    padding: window.innerWidth < 768 ? {left: 0, right: 0, top: 5, bottom: 0} : {left: 10, right: 10, top: 10, bottom: 10}
                 },
                 interaction: {
                     mode: 'index',
@@ -1980,9 +1992,9 @@
                             display: false
                         },
                         ticks: {
-                            maxTicksLimit: window.innerWidth < 768 ? 8 : 15,
+                            maxTicksLimit: window.innerWidth < 768 ? 6 : 15,
                             font: {
-                                size: window.innerWidth < 768 ? 9 : 10
+                                size: window.innerWidth < 768 ? 8 : 10
                             }
                         }
                     },
@@ -1995,9 +2007,9 @@
                             color: 'rgba(0, 0, 0, 0.05)'
                         },
                         ticks: {
-                            maxTicksLimit: window.innerWidth < 768 ? 5 : 8,
+                            maxTicksLimit: window.innerWidth < 768 ? 4 : 8,
                             font: {
-                                size: window.innerWidth < 768 ? 9 : 11
+                                size: window.innerWidth < 768 ? 8 : 11
                             },
                             callback: function(value) {
                                 return window.innerWidth < 768 ? value : value + ' 艘';
