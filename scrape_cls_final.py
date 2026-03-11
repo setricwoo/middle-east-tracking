@@ -118,11 +118,35 @@ def scrape_news():
                     if not href or href in seen_urls:
                         continue
                     
+                    # 尝试获取摘要 - 从父元素或兄弟元素中查找
+                    summary = ''
+                    try:
+                        # 查找父元素的文本内容，可能包含摘要
+                        parent_text = parent.inner_text().strip()
+                        # 提取标题后的内容作为摘要
+                        if title in parent_text:
+                            summary_part = parent_text.replace(title, '').strip()
+                            # 清理时间戳等多余内容
+                            summary = re.sub(r'\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}', '', summary_part).strip()
+                        
+                        # 如果没有找到，尝试查找相邻的摘要元素
+                        if not summary or len(summary) < 10:
+                            # 尝试查找class包含content或summary的元素
+                            summary_el = parent.query_selector('[class*="content"], [class*="summary"], p')
+                            if summary_el:
+                                summary = summary_el.inner_text().strip()
+                    except:
+                        pass
+                    
+                    # 如果仍然没有摘要，使用标题
+                    if not summary:
+                        summary = title
+                    
                     seen_urls.add(href)
                     news_list.append({
                         'id': str(len(news_list) + 1),
                         'title': title[:120],
-                        'summary': title[:200],
+                        'summary': summary[:500],  # 增加摘要长度限制
                         'time': time_str,
                         'url': 'https://www.cls.cn' + href if not href.startswith('http') else href,
                         'category': categorize(title)

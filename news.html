@@ -212,38 +212,11 @@
         
         .news-meta {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
             font-size: 0.7rem;
             color: #94a3b8;
         }
-        
-        .news-source {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        
-        .cls-badge {
-            background: #dc2626;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 600;
-        }
-        
-        .news-tag {
-            padding: 2px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        
-        .news-tag.military { background: #fee2e2; color: #991b1b; }
-        .news-tag.energy { background: #fef3c7; color: #92400e; }
-        .news-tag.shipping { background: #f3e8ff; color: #6b21a8; }
-        .news-tag.diplomacy { background: #d1fae5; color: #065f46; }
         
         /* 空状态 */
         .empty-state {
@@ -284,8 +257,6 @@
             .news-time { margin-left: 0; font-size: 0.65rem; padding: 1px 5px; }
             .news-summary { font-size: 0.8rem; margin-bottom: 4px; line-height: 1.4; }
             .news-meta { flex-wrap: wrap; gap: 4px; }
-            .news-tag { font-size: 0.65rem; padding: 2px 6px; }
-            .cls-badge { font-size: 0.6rem; padding: 1px 5px; }
         }
         @media (max-width: 480px) {
             .header-main { padding: 6px 6px; gap: 4px; }
@@ -301,8 +272,6 @@
             .news-summary { font-size: 0.78rem; line-height: 1.4; margin-bottom: 4px; }
             .news-time { font-size: 0.6rem; padding: 1px 4px; }
             .news-meta { gap: 3px; }
-            .news-tag { font-size: 0.6rem; padding: 2px 5px; }
-            .cls-badge { font-size: 0.55rem; padding: 1px 4px; }
         }
     </style>
 </head>
@@ -2136,10 +2105,7 @@
                     </div>
                     ${displaySummary ? `<div class="news-summary">${escapeHtml(displaySummary)}</div>` : ''}
                     <div class="news-meta">
-                        <div class="news-source">
-                            <span class="cls-badge">财联社</span>
-                        </div>
-                        <span class="news-tag ${news.category}">${getCategoryName(news.category)}</span>
+                        <span>${news.time.split(' ')[0] || ''}</span>
                     </div>
                 </a>
             `}).join('');
