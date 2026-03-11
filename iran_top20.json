@@ -1,0 +1,588 @@
+{
+  "updatedAt": "2026-03-11T23:18:36.019351",
+  "topic": "Iran/Middle East",
+  "totalEvents": 13,
+  "totalMarkets": 88,
+  "markets": [
+    {
+      "id": "1227361",
+      "slug": "will-iran-close-the-strait-of-hormuz-by-march-31",
+      "question": "Will Iran close the Strait of Hormuz by March 31?",
+      "description": "If Iran halts or severely restricts international maritime traffic through the Strait of Hormuz by March 31, 2026, 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve t...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.9975,
+          "probability": 99.75
+        },
+        {
+          "outcome": "No",
+          "price": 0.0025,
+          "probability": 0.25
+        }
+      ],
+      "consensus": "Yes (99.75%)",
+      "volume": "31774089.86246989",
+      "volumeNum": 31774089.86246989,
+      "liquidity": "1998040.95804",
+      "endDate": "2026-12-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-iran-close-the-strait-of-hormuz-in-2025-8Ws7O_Z5D_TX.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018322"
+    },
+    {
+      "id": "958442",
+      "slug": "will-the-iranian-regime-fall-by-march-31",
+      "question": "Will the Iranian regime fall by March 31?",
+      "description": "This market will resolve to \"Yes\" if the Islamic Republic of Iran’s current ruling regime is overthrown, collapsed, or otherwise ceases to govern by March 31, 2026, 11:59 PM ET. Otherwise, this market...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0495,
+          "probability": 4.95
+        },
+        {
+          "outcome": "No",
+          "price": 0.9505,
+          "probability": 95.05
+        }
+      ],
+      "consensus": "No (95.05%)",
+      "volume": "29263331.036752976",
+      "volumeNum": 29263331.036752976,
+      "liquidity": "876600.7631",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-the-iranian-regime-fall-in-2025-YLXIniTmQs4q.png",
+      "updatedAt": "2026-03-11T23:18:36.018355"
+    },
+    {
+      "id": "1467139",
+      "slug": "will-iran-strike-israel-on-march-6",
+      "question": "Will Iran strike Israel on March 6?",
+      "description": "This market will resolve to \"Yes\" if Iran initiates a drone, missile, or air strike on Israel’s soil on the listed date in Israel Time (GMT+2). Otherwise, this market will resolve to \"No\".\n\nFor the pu...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0005,
+          "probability": 0.05
+        },
+        {
+          "outcome": "No",
+          "price": 0.9995,
+          "probability": 99.95
+        }
+      ],
+      "consensus": "No (99.95%)",
+      "volume": "14863232.767517",
+      "volumeNum": 14863232.767517,
+      "liquidity": "2667398.2727",
+      "endDate": null,
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/iran-strikes-israel-on-uF3Dek-k0wfn.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018815"
+    },
+    {
+      "id": "958443",
+      "slug": "will-the-iranian-regime-fall-by-june-30",
+      "question": "Will the Iranian regime fall by June 30?",
+      "description": "This market will resolve to \"Yes\" if the Islamic Republic of Iran’s current ruling regime is overthrown, collapsed, or otherwise ceases to govern by June 30, 2026, 11:59 PM ET. Otherwise, this market ...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.225,
+          "probability": 22.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.775,
+          "probability": 77.5
+        }
+      ],
+      "consensus": "No (77.5%)",
+      "volume": "14043965.89062913",
+      "volumeNum": 14043965.89062913,
+      "liquidity": "818490.0326",
+      "endDate": "2026-06-30T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-the-iranian-regime-fall-in-2025-YLXIniTmQs4q.png",
+      "updatedAt": "2026-03-11T23:18:36.018963"
+    },
+    {
+      "id": "663583",
+      "slug": "will-the-iranian-regime-fall-by-the-end-of-2026",
+      "question": "Will the Iranian regime fall before 2027?",
+      "description": "This market will resolve to \"Yes\" if the Islamic Republic of Iran’s current ruling regime is overthrown, collapsed, or otherwise ceases to govern by December 31, 2026, 11:59 PM ET. Otherwise, this mar...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.325,
+          "probability": 32.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.675,
+          "probability": 67.5
+        }
+      ],
+      "consensus": "No (67.5%)",
+      "volume": "9247382.796220122",
+      "volumeNum": 9247382.796220122,
+      "liquidity": "404049.0558",
+      "endDate": "2026-12-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-the-iranian-regime-fall-in-2025-YLXIniTmQs4q.png",
+      "updatedAt": "2026-03-11T23:18:36.018976"
+    },
+    {
+      "id": "1466014",
+      "slug": "us-x-iran-ceasefire-by-march-15",
+      "question": "US x Iran ceasefire by March 15?",
+      "description": "This market will resolve to “Yes” if there is an official ceasefire agreement, defined as a publicly announced and mutually agreed halt in direct military engagement, between the United States and Ira...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0415,
+          "probability": 4.15
+        },
+        {
+          "outcome": "No",
+          "price": 0.9585,
+          "probability": 95.85
+        }
+      ],
+      "consensus": "No (95.85%)",
+      "volume": "6990279.651253139",
+      "volumeNum": 6990279.651253139,
+      "liquidity": "301380.51749",
+      "endDate": null,
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/us-x-iran-ceasefire-by-Cgmx3GCuOwjs.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018704"
+    },
+    {
+      "id": "1162940",
+      "slug": "us-forces-enter-iran-by-march-31-222-191-243-517-878-439-519",
+      "question": "US forces enter Iran by March 31?",
+      "description": "This market will resolve to “Yes” if active US military personnel physically enter Iran at any point by the listed date (ET). Otherwise, this market will resolve to \"No\".\n\nMilitary special operation f...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.245,
+          "probability": 24.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.755,
+          "probability": 75.5
+        }
+      ],
+      "consensus": "No (75.5%)",
+      "volume": "6073477.687843001",
+      "volumeNum": 6073477.687843001,
+      "liquidity": "229629.4898",
+      "endDate": "2026-03-01T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/us-forces-enter-iran-by-L_p5JkCpvr0I.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018877"
+    },
+    {
+      "id": "1466015",
+      "slug": "us-x-iran-ceasefire-by-march-31",
+      "question": "US x Iran ceasefire by March 31?",
+      "description": "This market will resolve to “Yes” if there is an official ceasefire agreement, defined as a publicly announced and mutually agreed halt in direct military engagement, between the United States and Ira...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.305,
+          "probability": 30.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.695,
+          "probability": 69.5
+        }
+      ],
+      "consensus": "No (69.5%)",
+      "volume": "5841064.208441093",
+      "volumeNum": 5841064.208441093,
+      "liquidity": "224345.172",
+      "endDate": null,
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/us-x-iran-ceasefire-by-Cgmx3GCuOwjs.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018664"
+    },
+    {
+      "id": "1538080",
+      "slug": "will-crude-oil-cl-hit-low-85-by-end-of-march-728",
+      "question": "Will Crude Oil (CL) hit (LOW) $85 by end of March?",
+      "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or below the listed price between m...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 1.0,
+          "probability": 100.0
+        },
+        {
+          "outcome": "No",
+          "price": 0.0,
+          "probability": 0.0
+        }
+      ],
+      "consensus": "Yes (100.0%)",
+      "volume": "5826854.194744002",
+      "volumeNum": 5826854.194744002,
+      "liquidity": null,
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/crude-oil-9a850ce2a2.png",
+      "updatedAt": "2026-03-11T23:18:36.018570"
+    },
+    {
+      "id": "1466036",
+      "slug": "us-forces-enter-iran-by-march-14-337",
+      "question": "US forces enter Iran by March 14?",
+      "description": "This market will resolve to “Yes” if active US military personnel physically enter Iran at any point by the listed date (ET). Otherwise, this market will resolve to \"No\".\n\nMilitary special operation f...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.075,
+          "probability": 7.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.925,
+          "probability": 92.5
+        }
+      ],
+      "consensus": "No (92.5%)",
+      "volume": "5006396.714492967",
+      "volumeNum": 5006396.714492967,
+      "liquidity": "306621.8384",
+      "endDate": "2026-03-01T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/us-forces-enter-iran-by-L_p5JkCpvr0I.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018937"
+    },
+    {
+      "id": "1467766",
+      "slug": "will-crude-oil-cl-hit-high-100-by-end-of-march-658-396-769-971",
+      "question": "Will Crude Oil (CL) hit (HIGH) $100 by end of March?",
+      "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the fi...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.613,
+          "probability": 61.3
+        },
+        {
+          "outcome": "No",
+          "price": 0.387,
+          "probability": 38.7
+        }
+      ],
+      "consensus": "Yes (61.3%)",
+      "volume": "4725788.987520004",
+      "volumeNum": 4725788.987520004,
+      "liquidity": "75882.86977",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/crude-oil-9a850ce2a2.png",
+      "updatedAt": "2026-03-11T23:18:36.018392"
+    },
+    {
+      "id": "1198709",
+      "slug": "will-reza-pahlavi-enter-iran-by-march-31-282",
+      "question": "Will Reza Pahlavi enter Iran by March 31?",
+      "description": "If Reza Pahlavi visits Iran between market creation and March 31, 2026, 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve to \"No\".\n\nFor the purpose of this market, a ...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0195,
+          "probability": 1.95
+        },
+        {
+          "outcome": "No",
+          "price": 0.9805,
+          "probability": 98.05
+        }
+      ],
+      "consensus": "No (98.05%)",
+      "volume": "4379661.769472004",
+      "volumeNum": 4379661.769472004,
+      "liquidity": "247365.95006",
+      "endDate": "2026-06-30T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-reza-pahlavi-enter-iran-before-september-9bs9igLMW6m1.jpg",
+      "updatedAt": "2026-03-11T23:18:36.019000"
+    },
+    {
+      "id": "1466012",
+      "slug": "us-x-iran-ceasefire-by-march-2",
+      "question": "US x Iran ceasefire by March 2?",
+      "description": "This market will resolve to “Yes” if there is an official ceasefire agreement, defined as a publicly announced and mutually agreed halt in direct military engagement, between the United States and Ira...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0,
+          "probability": 0.0
+        },
+        {
+          "outcome": "No",
+          "price": 1.0,
+          "probability": 100.0
+        }
+      ],
+      "consensus": "No (100.0%)",
+      "volume": "3493959.096746",
+      "volumeNum": 3493959.096746,
+      "liquidity": null,
+      "endDate": null,
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/us-x-iran-ceasefire-by-Cgmx3GCuOwjs.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018714"
+    },
+    {
+      "id": "665307",
+      "slug": "will-iran-close-the-strait-of-hormuz-by-2027-969-911-654-431-667",
+      "question": "Will Iran close the Strait of Hormuz before 2027?",
+      "description": "If Iran halts or severely restricts international maritime traffic through the Strait of Hormuz by December 31, 2026, 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolv...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.998,
+          "probability": 99.8
+        },
+        {
+          "outcome": "No",
+          "price": 0.002,
+          "probability": 0.2
+        }
+      ],
+      "consensus": "Yes (99.8%)",
+      "volume": "3469021.995932992",
+      "volumeNum": 3469021.995932992,
+      "liquidity": "727482.69071",
+      "endDate": "2026-12-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-iran-close-the-strait-of-hormuz-in-2025-8Ws7O_Z5D_TX.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018252"
+    },
+    {
+      "id": "1516204",
+      "slug": "will-crude-oil-cl-hit-high-200-by-end-of-march-926",
+      "question": "Will Crude Oil (CL) hit (HIGH) $200 by end of March?",
+      "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the fi...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.031,
+          "probability": 3.1
+        },
+        {
+          "outcome": "No",
+          "price": 0.969,
+          "probability": 96.9
+        }
+      ],
+      "consensus": "No (96.9%)",
+      "volume": "3460153.435531995",
+      "volumeNum": 3460153.435531995,
+      "liquidity": "423838.68661",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/crude-oil-9a850ce2a2.png",
+      "updatedAt": "2026-03-11T23:18:36.018648"
+    },
+    {
+      "id": "1477563",
+      "slug": "will-crude-oil-cl-hit-high-150-by-end-of-march-138-937-747",
+      "question": "Will Crude Oil (CL) hit (HIGH) $150 by end of March?",
+      "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the fi...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.102,
+          "probability": 10.2
+        },
+        {
+          "outcome": "No",
+          "price": 0.898,
+          "probability": 89.8
+        }
+      ],
+      "consensus": "No (89.8%)",
+      "volume": "3430629.2016620156",
+      "volumeNum": 3430629.2016620156,
+      "liquidity": "163211.74189",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/crude-oil-9a850ce2a2.png",
+      "updatedAt": "2026-03-11T23:18:36.018591"
+    },
+    {
+      "id": "677397",
+      "slug": "will-israel-launch-a-major-ground-offensive-in-lebanon-by-march-31",
+      "question": "Will Israel launch a major ground offensive in Lebanon by March 31?",
+      "description": "This market will resolve to \"Yes\" if Israel initiates a major ground offensive in Lebanon by March 31, 2026, 11:59PM ET. Otherwise, this market will resolve to \"No\".\n\nA \"major ground offensive\" is def...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.635,
+          "probability": 63.5
+        },
+        {
+          "outcome": "No",
+          "price": 0.365,
+          "probability": 36.5
+        }
+      ],
+      "consensus": "Yes (63.5%)",
+      "volume": "3228236.717181981",
+      "volumeNum": 3228236.717181981,
+      "liquidity": "44359.825",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-israel-launch-a-major-ground-offensive-in-lebanon-by-december-31-5OgalKHi_0iX.jpg",
+      "updatedAt": "2026-03-11T23:18:36.019326"
+    },
+    {
+      "id": "1227362",
+      "slug": "will-iran-close-the-strait-of-hormuz-by-june-30",
+      "question": "Will Iran close the Strait of Hormuz by June 30?",
+      "description": "If Iran halts or severely restricts international maritime traffic through the Strait of Hormuz by June 30, 2026, 11:59 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve to...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.9975,
+          "probability": 99.75
+        },
+        {
+          "outcome": "No",
+          "price": 0.0025,
+          "probability": 0.25
+        }
+      ],
+      "consensus": "Yes (99.75%)",
+      "volume": "3104100.0782719874",
+      "volumeNum": 3104100.0782719874,
+      "liquidity": "687897.97774",
+      "endDate": "2026-06-30T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-iran-close-the-strait-of-hormuz-in-2025-8Ws7O_Z5D_TX.jpg",
+      "updatedAt": "2026-03-11T23:18:36.018337"
+    },
+    {
+      "id": "628889",
+      "slug": "israel-x-hamas-ceasefire-cancelled-by-october-31",
+      "question": "Israel x Hamas ceasefire cancelled by October 31?",
+      "description": "On October 9, Israel and Hamas signed a deal implementing a ceasefire: https://www.reuters.com/world/middle-east/israel-hamas-agree-gaza-ceasefire-return-hostages-2025-10-09/\n\nThis market will resolve...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.0,
+          "probability": 0.0
+        },
+        {
+          "outcome": "No",
+          "price": 1.0,
+          "probability": 100.0
+        }
+      ],
+      "consensus": "No (100.0%)",
+      "volume": "2502858.18776",
+      "volumeNum": 2502858.18776,
+      "liquidity": null,
+      "endDate": "2025-10-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/israel-x-hamas-ceasefire-cancelled-by-october-31-APMH1GLpv6ia.jpg",
+      "updatedAt": "2026-03-11T23:18:36.019191"
+    },
+    {
+      "id": "1467765",
+      "slug": "will-crude-oil-cl-hit-high-110-by-end-of-march-732-945-787-552",
+      "question": "Will Crude Oil (CL) hit (HIGH) $110 by end of March?",
+      "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the fi...",
+      "outcomes": [
+        "Yes",
+        "No"
+      ],
+      "probabilities": [
+        {
+          "outcome": "Yes",
+          "price": 0.3845,
+          "probability": 38.45
+        },
+        {
+          "outcome": "No",
+          "price": 0.6155,
+          "probability": 61.55
+        }
+      ],
+      "consensus": "No (61.55%)",
+      "volume": "2292487.4999179957",
+      "volumeNum": 2292487.4999179957,
+      "liquidity": "42778.52369",
+      "endDate": "2026-03-31T00:00:00Z",
+      "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/crude-oil-9a850ce2a2.png",
+      "updatedAt": "2026-03-11T23:18:36.018381"
+    }
+  ]
+}
