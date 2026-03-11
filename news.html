@@ -1998,6 +1998,20 @@
             renderNews();
         }
 
+        // 解析新闻标题和正文
+        function parseNewsContent(text) {
+            // 匹配【】内的内容作为标题
+            const bracketMatch = text.match(/【([^】]+)】/);
+            if (bracketMatch) {
+                const title = bracketMatch[1].trim();
+                // 提取】之后的内容作为正文
+                const contentAfterBracket = text.substring(text.indexOf('】') + 1).trim();
+                return { title, summary: contentAfterBracket };
+            }
+            // 如果没有【】，则使用原标题，正文为空或显示提示
+            return { title: text, summary: '' };
+        }
+
         // 渲染新闻
         function renderNews() {
             const container = document.getElementById('news-container');
@@ -2012,13 +2026,18 @@
                 return;
             }
             
-            container.innerHTML = filtered.map((news, index) => `
+            container.innerHTML = filtered.map((news, index) => {
+                const parsed = parseNewsContent(news.title);
+                const displayTitle = parsed.title;
+                const displaySummary = parsed.summary;
+                
+                return `
                 <a href="${news.url}" target="_blank" class="news-item">
                     <div class="news-header">
-                        <div class="news-title">${escapeHtml(news.title)}</div>
+                        <div class="news-title">${escapeHtml(displayTitle)}</div>
                         <div class="news-time">${news.time || ''}</div>
                     </div>
-                    <div class="news-summary">${escapeHtml(news.summary)}</div>
+                    ${displaySummary ? `<div class="news-summary">${escapeHtml(displaySummary)}</div>` : ''}
                     <div class="news-meta">
                         <div class="news-source">
                             <span class="cls-badge">财联社</span>
@@ -2026,7 +2045,7 @@
                         <span class="news-tag ${news.category}">${getCategoryName(news.category)}</span>
                     </div>
                 </a>
-            `).join('');
+            `}).join('');
         }
 
         // 工具函数
