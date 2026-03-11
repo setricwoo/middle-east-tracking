@@ -135,12 +135,19 @@ def scrape_news():
                             summary_el = parent.query_selector('[class*="content"], [class*="summary"], p')
                             if summary_el:
                                 summary = summary_el.inner_text().strip()
+                        
+                        # 提取】之后的内容作为纯摘要（去除标题部分）
+                        if '】' in summary:
+                            summary = summary.split('】', 1)[1].strip()
                     except:
                         pass
                     
-                    # 如果仍然没有摘要，使用标题
+                    # 如果仍然没有摘要，使用标题（提取】后的内容）
                     if not summary:
-                        summary = title
+                        if '】' in title:
+                            summary = title.split('】', 1)[1].strip()
+                        else:
+                            summary = title
                     
                     seen_urls.add(href)
                     news_list.append({
