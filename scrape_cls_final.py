@@ -149,6 +149,10 @@ def scrape_news():
                         else:
                             summary = title
                     
+                    # 清理财联社前缀
+                    title = clean_cls_prefix(title)
+                    summary = clean_cls_prefix(summary)
+                    
                     seen_urls.add(href)
                     news_list.append({
                         'id': str(len(news_list) + 1),
@@ -177,6 +181,16 @@ def scrape_news():
             print(f"错误: {e}")
             browser.close()
             return []
+
+def clean_cls_prefix(text):
+    """去除财联社前缀，如'财联社3月11日电'"""
+    if not text:
+        return text
+    import re
+    # 匹配模式: 财联社x月x日电
+    pattern = r'^财联社\d{1,2}月\d{1,2}日电[，,\s]*'
+    cleaned = re.sub(pattern, '', text.strip())
+    return cleaned
 
 def extract_time(text):
     """从文本中提取时间"""
