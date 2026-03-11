@@ -2133,17 +2133,23 @@
             // 匹配【】内的内容作为标题
             const bracketMatch = title.match(/【([^】]+)】/);
             let displayTitle = title;
-            let displaySummary = summary;
+            let displaySummary = '';
             
             if (bracketMatch) {
                 displayTitle = bracketMatch[1].trim();
             }
             
-            // 优先使用 summary 作为正文，提取】后的内容
-            if (summary && summary.includes('】')) {
-                displaySummary = summary.substring(summary.indexOf('】') + 1).trim();
+            // 优先使用 summary 作为正文（summary通常更完整）
+            if (summary && summary.trim()) {
+                // 如果 summary 有】，提取】后的内容
+                if (summary.includes('】')) {
+                    displaySummary = summary.substring(summary.indexOf('】') + 1).trim();
+                } else {
+                    // summary 没有】，直接使用完整summary
+                    displaySummary = summary.trim();
+                }
             } else if (title && title.includes('】')) {
-                // 如果 summary 没有】，尝试用 title
+                // 如果 summary 为空，尝试用 title
                 displaySummary = title.substring(title.indexOf('】') + 1).trim();
             }
             
