@@ -6,7 +6,8 @@ echo ==========================================
 echo.
 echo 执行内容：
 echo   1. 更新实时新闻（财联社）
-echo   2. 推送到GitHub
+echo   2. 更新Polymarket预测数据
+echo   3. 推送到GitHub
 echo.
 echo 执行频率：每20分钟
 echo.

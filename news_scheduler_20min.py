@@ -49,6 +49,34 @@ def run_news_update():
         log_message(f"[异常] 新闻更新时发生错误: {e}")
         return False
 
+def run_polymarket_update():
+    """执行Polymarket数据更新"""
+    log_message("[执行] 更新Polymarket预测数据...")
+    try:
+        result = subprocess.run(
+            [sys.executable, 'update_polymarket_html.py'],
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            errors='ignore',
+            timeout=300
+        )
+        
+        output = result.stdout if result.stdout else ""
+        for line in output.split('\n'):
+            if any(keyword in line for keyword in ['[成功]', '[更新]', '[完成]', 'RESULT']):
+                log_message(line.strip())
+        
+        if result.returncode == 0:
+            log_message("[成功] Polymarket数据更新完成")
+            return True
+        else:
+            log_message(f"[失败] Polymarket更新返回错误: {result.returncode}")
+            return False
+    except Exception as e:
+        log_message(f"[异常] Polymarket更新时发生错误: {e}")
+        return False
+
 def run_git_push():
     """推送到GitHub"""
     log_message("[执行] 推送到GitHub...")
@@ -102,11 +130,14 @@ def run_20min_update():
     # 更新新闻
     news_ok = run_news_update()
     
+    # 更新Polymarket数据
+    polymarket_ok = run_polymarket_update()
+    
     # 推送到GitHub
     git_ok = run_git_push()
     
     log_message("="*60)
-    log_message(f"任务完成: 新闻({'OK' if news_ok else 'FAIL'}) | GitHub({'OK' if git_ok else 'FAIL'})")
+    log_message(f"任务完成: 新闻({'OK' if news_ok else 'FAIL'}) | Polymarket({'OK' if polymarket_ok else 'FAIL'}) | GitHub({'OK' if git_ok else 'FAIL'})")
     log_message("下次执行时间: 20分钟后")
     log_message("")
 
@@ -114,7 +145,7 @@ def main():
     log_message("="*60)
     log_message("20分钟新闻定时调度器已启动")
     log_message("执行频率: 每20分钟")
-    log_message("执行内容: 更新实时新闻 + 推送到GitHub")
+    log_message("执行内容: 更新实时新闻 + Polymarket数据 + 推送到GitHub")
     log_message("按 Ctrl+C 停止")
     log_message("="*60)
     
