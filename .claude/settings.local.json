@@ -27,7 +27,9 @@
       "Bash(rm -f fetch_polymarket_v3.py fetch_polymarket_v4.py fetch_polymarket_v5.py fetch_polymarket_events.py fetch_polymarket_history.py)",
       "Bash(ls -la fetch_polymarket*.py polymarket_history_data.json)",
       "Bash(dir fetch_polymarket*.py polymarket_history_data.json)",
-      "Bash(python update_polymarket_html.py)"
+      "Bash(python update_polymarket_html.py)",
+      "Bash(grep -c \"type: ''line''\" polymarket.html)",
+      "Bash(grep \"type: ''bar''\" polymarket.html)"
     ]
   }
 }
