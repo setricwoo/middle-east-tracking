@@ -251,14 +251,14 @@ def generate_html(data: Dict) -> str:
 
     # 5. 3月原油价格
     oil_march_data = data.get("will-crude-oil-cl-hit-by-end-of-march", {})
-    html += generate_oil_card(oil_march_data, "3月原油价格预测", "Will Crude Oil (CL) hit by end of March?",
-                               ["$90", "$100", "$110", "$120"], chart_idx)
+    html += generate_oil_card(oil_march_data, "3月原油价格预测", "CL期货价格3月底前触碰概率",
+                               chart_idx)
     chart_idx += 1
 
     # 6. 6月原油价格
     oil_june_data = data.get("cl-hit-jun-2026", {})
-    html += generate_oil_card(oil_june_data, "6月原油价格预测", "Will Crude Oil (CL) hit by end of June?",
-                               ["$90", "$100", "$110", "$150"], chart_idx)
+    html += generate_oil_card(oil_june_data, "6月原油价格预测", "CL期货价格6月底前触碰概率",
+                               chart_idx)
     chart_idx += 1
 
     html += '''
@@ -390,50 +390,87 @@ def generate_event_card(event_data: Dict, title: str, subtitle: str,
 
 
 def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
-    """生成船舶数量卡片"""
+    """生成船舶数量卡片 - 选取概率最高的6个区间，显示为线图"""
     markets = ships_data.get("markets", [])
 
-    # 船舶区间
-    ranges = ["0-10", "10-20", "20-30", "30-40", "40-50", "50-60", "60+"]
-    prob_data = {}
-
+    # 收集所有市场数据（包含历史）
+    all_markets = []
     for m in markets:
-        q = m.get("question", "").lower()
+        q = m.get("question", "")
         outcomes = m.get("outcomes", {})
         yes_price = outcomes.get("Yes", {}).get("currentPrice", 0)
+        history = outcomes.get("Yes", {}).get("priceHistory", [])
 
-        for r in ranges:
-            # 匹配区间
-            if f"between {r.split('-')[0]} and {r.split('-')[-1]}" in q or f"{r.split('-')[0]} and {r.split('-')[-1]}" in q:
-                prob_data[r] = yes_price
-                break
-            elif "60 or more" in q and r == "60+":
-                prob_data[r] = yes_price
-                break
+        # 提取区间标签
+        import re
+        match = re.search(r'between (\d+) and (\d+)', q.lower())
+        if match:
+            label = f"{match.group(1)}-{match.group(2)}"
+        elif "60 or more" in q.lower():
+            label = "60+"
+        else:
+            continue
 
-    if not prob_data:
+        all_markets.append({
+            "label": label,
+            "price": yes_price,
+            "history": history
+        })
+
+    if not all_markets:
         return ""
+
+    # 按概率排序，取最高的6个
+    all_markets.sort(key=lambda x: x["price"], reverse=True)
+    top_markets = all_markets[:6]
 
     color_list = list(COLORS.values())
 
+    # 生成概率显示
     prob_html = '<div class="grid grid-cols-3 gap-2 mb-4">\n'
-    for i, r in enumerate(ranges):
-        if r in prob_data:
-            color = color_list[i % len(color_list)]
-            prob_html += f'''            <div class="flex items-center gap-2">
+    for i, m in enumerate(top_markets):
+        color = color_list[i % len(color_list)]
+        prob_html += f'''            <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full" style="background-color: {color}"></div>
-                <span class="text-sm text-slate-300">{r}:</span>
-                <span class="text-lg font-bold" style="color: {color}">{prob_data[r]}%</span>
+                <span class="text-sm text-slate-300">{m["label"]}:</span>
+                <span class="text-lg font-bold" style="color: {color}">{m["price"]}%</span>
             </div>\n'''
     prob_html += '        </div>\n'
 
-    # 图表数据
-    chart_data = [prob_data.get(r, 0) for r in ranges]
+    # 收集所有时间点
+    all_times = set()
+    for m in top_markets:
+        for h in m["history"]:
+            all_times.add(h["time"])
+
+    sorted_times = sorted(list(all_times))
+
+    # 生成数据集
+    chart_datasets = []
+    for i, m in enumerate(top_markets):
+        color = color_list[i % len(color_list)]
+        data_points = {}
+        for h in m["history"]:
+            data_points[h["time"]] = h["price"]
+
+        data_arr = [data_points.get(t, None) for t in sorted_times]
+        chart_datasets.append({
+            "label": m["label"],
+            "data": data_arr,
+            "borderColor": color,
+            "backgroundColor": color + "1a",
+            "borderWidth": 2,
+            "fill": False,
+            "tension": 0.4,
+            "pointRadius": 0,
+            "pointHoverRadius": 4
+        })
+
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-semibold text-white mb-1">3月霍尔木兹海峡船舶数量</h2>
-                <p class="text-sm text-slate-400 mb-4">平均每日通过船舶数量的概率分布</p>
+                <p class="text-sm text-slate-400 mb-4">平均每日通过船舶数量的概率分布 (Top 6)</p>
 
                 {prob_html}
 
@@ -444,24 +481,20 @@ def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
 
             <script>
                 new Chart(document.getElementById('{chart_id}'), {{
-                    type: 'bar',
+                    type: 'line',
                     data: {{
-                        labels: {json.dumps(ranges)},
-                        datasets: [{{
-                            label: '概率 (%)',
-                            data: {json.dumps(chart_data)},
-                            backgroundColor: {json.dumps(color_list[:len(ranges)])},
-                            borderWidth: 0
-                        }}]
+                        labels: {json.dumps(sorted_times)},
+                        datasets: {json.dumps(chart_datasets)}
                     }},
                     options: {{
                         responsive: true,
                         maintainAspectRatio: false,
+                        interaction: {{ intersect: false, mode: 'index' }},
                         plugins: {{
-                            legend: {{ display: false }}
+                            legend: {{ position: 'top', labels: {{ color: '#94a3b8', font: {{ size: 11 }} }} }}
                         }},
                         scales: {{
-                            x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b' }} }},
+                            x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
                             y: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b' }} }}
                         }}
                     }}
@@ -542,58 +575,85 @@ def generate_simple_card(event_data: Dict, title: str, subtitle: str,
 
 
 def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
-                      price_points: List[str], chart_idx: int) -> str:
-    """生成原油价格卡片"""
+                      chart_idx: int) -> str:
+    """生成原油价格卡片 - 选取概率最高的6个价格，显示为线图"""
     markets = oil_data.get("markets", [])
 
-    # 匹配价格点
-    price_data = {}
+    # 收集所有价格数据（包含历史）
+    all_prices = []
     for m in markets:
         q = m.get("question", "")
         outcomes = m.get("outcomes", {})
         yes_price = outcomes.get("Yes", {}).get("currentPrice", 0)
+        history = outcomes.get("Yes", {}).get("priceHistory", [])
 
-        for p in price_points:
-            if f"${p.replace('$', '')}" in q or f"hit__ by" in q.lower():
-                # 提取价格
-                import re
-                match = re.search(r'\$(\d+)', q)
-                if match:
-                    price = f"${match.group(1)}"
-                    if price in price_points or match.group(1) in [p.replace('$', '') for p in price_points]:
-                        price_data[price] = yes_price
-                        break
+        # 提取价格
+        import re
+        match = re.search(r'\$(\d+)', q)
+        if match:
+            price_label = f"${match.group(1)}"
+            # 排除已确定的价格（100%或0%）
+            if 0 < yes_price < 100:
+                all_prices.append({
+                    "label": price_label,
+                    "price": yes_price,
+                    "history": history
+                })
 
-    if not price_data:
-        # 使用默认匹配
-        for p in price_points:
-            for m in markets:
-                if f"${p.replace('$', '')}" in m.get("question", ""):
-                    outcomes = m.get("outcomes", {})
-                    price_data[p] = outcomes.get("Yes", {}).get("currentPrice", 0)
-                    break
-
-    if not price_data:
+    if not all_prices:
         return ""
 
+    # 按概率排序，取最高的6个
+    all_prices.sort(key=lambda x: x["price"], reverse=True)
+    top_prices = all_prices[:6]
+
     color_list = list(COLORS.values())
-    prob_html = '<div class="grid grid-cols-2 gap-2 mb-4">\n'
-    for i, (price, prob) in enumerate(sorted(price_data.items())):
+
+    # 生成概率显示
+    prob_html = '<div class="grid grid-cols-3 gap-2 mb-4">\n'
+    for i, p in enumerate(top_prices):
         color = color_list[i % len(color_list)]
         prob_html += f'''            <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full" style="background-color: {color}"></div>
-                <span class="text-sm text-slate-300">{price}:</span>
-                <span class="text-lg font-bold" style="color: {color}">{prob}%</span>
+                <span class="text-sm text-slate-300">{p["label"]}:</span>
+                <span class="text-lg font-bold" style="color: {color}">{p["price"]}%</span>
             </div>\n'''
     prob_html += '        </div>\n'
 
+    # 收集所有时间点
+    all_times = set()
+    for p in top_prices:
+        for h in p["history"]:
+            all_times.add(h["time"])
+
+    sorted_times = sorted(list(all_times))
+
+    # 生成数据集
+    chart_datasets = []
+    for i, p in enumerate(top_prices):
+        color = color_list[i % len(color_list)]
+        data_points = {}
+        for h in p["history"]:
+            data_points[h["time"]] = h["price"]
+
+        data_arr = [data_points.get(t, None) for t in sorted_times]
+        chart_datasets.append({
+            "label": p["label"],
+            "data": data_arr,
+            "borderColor": color,
+            "backgroundColor": color + "1a",
+            "borderWidth": 2,
+            "fill": False,
+            "tension": 0.4,
+            "pointRadius": 0,
+            "pointHoverRadius": 4
+        })
+
     chart_id = f"chart_{chart_idx}"
-    sorted_prices = sorted(price_data.keys(), key=lambda x: int(x.replace('$', '')))
-    chart_data = [price_data[p] for p in sorted_prices]
 
     html = f'''            <div class="card rounded-xl p-6">
                 <h2 class="text-xl font-semibold text-white mb-1">{title}</h2>
-                <p class="text-sm text-slate-400 mb-4">{subtitle}</p>
+                <p class="text-sm text-slate-400 mb-4">{subtitle} (Top 6)</p>
 
                 {prob_html}
 
@@ -604,22 +664,20 @@ def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
 
             <script>
                 new Chart(document.getElementById('{chart_id}'), {{
-                    type: 'bar',
+                    type: 'line',
                     data: {{
-                        labels: {json.dumps(sorted_prices)},
-                        datasets: [{{
-                            label: '概率 (%)',
-                            data: {json.dumps(chart_data)},
-                            backgroundColor: {json.dumps(color_list[:len(sorted_prices)])},
-                            borderWidth: 0
-                        }}]
+                        labels: {json.dumps(sorted_times)},
+                        datasets: {json.dumps(chart_datasets)}
                     }},
                     options: {{
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: {{ legend: {{ display: false }} }},
+                        interaction: {{ intersect: false, mode: 'index' }},
+                        plugins: {{
+                            legend: {{ position: 'top', labels: {{ color: '#94a3b8', font: {{ size: 11 }} }} }}
+                        }},
                         scales: {{
-                            x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b' }} }},
+                            x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
                             y: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b' }} }}
                         }}
                     }}
