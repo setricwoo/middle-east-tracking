@@ -1,0 +1,48 @@
+name: 每日简报自动更新
+
+on:
+  schedule:
+    # 北京时间 0:02 = UTC 16:02
+    - cron: '2 16 * * *'
+  workflow_dispatch:  # 支持手动触发
+
+jobs:
+  update-briefing:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      
+    - name: 设置 Python 环境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: 安装依赖
+      run: |
+        pip install requests
+        
+    - name: 运行简报更新脚本
+      env:
+        # 从 GitHub Secrets 读取 API 配置
+        AI_API_KEY: ${{ secrets.AI_API_KEY }}
+        AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+        AI_MODEL: ${{ secrets.AI_MODEL }}
+      run: |
+        cd $GITHUB_WORKSPACE
+        python update_briefing_grok.py
+        
+    - name: 提交更新结果
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add briefing.html briefing_data.json
+        # 只在有变更时提交
+        git diff --staged --quiet || git commit -m "📰 自动更新每日简报 $(date +'%Y-%m-%d')"
+        
+    - name: 推送到仓库
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
