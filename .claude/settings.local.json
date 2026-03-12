@@ -29,7 +29,8 @@
       "Bash(dir fetch_polymarket*.py polymarket_history_data.json)",
       "Bash(python update_polymarket_html.py)",
       "Bash(grep -c \"type: ''line''\" polymarket.html)",
-      "Bash(grep \"type: ''bar''\" polymarket.html)"
+      "Bash(grep \"type: ''bar''\" polymarket.html)",
+      "Bash(ls -la polymarket*.html)"
     ]
   }
 }
