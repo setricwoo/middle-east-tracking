@@ -21,13 +21,15 @@ jobs:
       with:
         python-version: '3.11'
         
-    - name: Install Playwright
+    - name: Install Playwright and dependencies
       run: |
         pip install playwright
         playwright install chromium
+        sudo playwright install-deps chromium
         
     - name: Run news scraper
       run: python scrape_cls_final.py
+      timeout-minutes: 10
         
     - name: Commit and push changes
       run: |
