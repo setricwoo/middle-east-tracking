@@ -32,7 +32,9 @@
       "Bash(grep \"type: ''bar''\" polymarket.html)",
       "Bash(ls -la polymarket*.html)",
       "Bash(python -c \"import json; content = open\\(''polymarket.html'', ''r'', encoding=''utf-8''\\).read\\(\\); print\\(''fill: false count:'', content.count\\(''\"\"fill\"\": false''\\)\\); print\\(''fill: true count:'', content.count\\(''\"\"fill\"\": true''\\)\\)\")",
-      "Bash(python -c \"import json; content = open\\(''polymarket_static.html'', ''r'', encoding=''utf-8''\\).read\\(\\); print\\(''fill: false count:'', content.count\\(''\"\"fill\"\": false''\\)\\); print\\(''fill: true count:'', content.count\\(''\"\"fill\"\": true''\\)\\)\")"
+      "Bash(python -c \"import json; content = open\\(''polymarket_static.html'', ''r'', encoding=''utf-8''\\).read\\(\\); print\\(''fill: false count:'', content.count\\(''\"\"fill\"\": false''\\)\\); print\\(''fill: true count:'', content.count\\(''\"\"fill\"\": true''\\)\\)\")",
+      "Bash(rm polymarket_static.html)",
+      "Bash(cp polymarket.html polymarket_static.html)"
     ]
   }
 }

@@ -33,15 +33,14 @@ HEADERS = {
     "Referer": "https://polymarket.com/",
 }
 
-# 颜色配置
+# 颜色配置 - 使用更柔和的专业色调
 COLORS = {
     "blue": "#3b82f6",
-    "green": "#10b981",
-    "amber": "#f59e0b",
-    "red": "#ef4444",
-    "purple": "#8b5cf6",
-    "cyan": "#06b6d4",
-    "pink": "#ec4899",
+    "indigo": "#6366f1",
+    "slate": "#64748b",
+    "teal": "#14b8a6",
+    "emerald": "#059669",
+    "sky": "#0ea5e9",
 }
 
 
@@ -182,40 +181,51 @@ def generate_html(data: Dict) -> str:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polymarket 伊朗相关预测市场 | 实时追踪</title>
+    <title>【华泰固收】中东地缘跟踪 - Polymarket预测市场</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #e2e8f0; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
         .chart-container { position: relative; height: 300px; width: 100%; }
-        .card { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 1px solid #334155; }
-        .positive { color: #10b981; }
-        .negative { color: #ef4444; }
+        .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .positive { color: #059669; }
+        .negative { color: #dc2626; }
+        /* 统一导航栏样式 */
+        .header { background: #fff; padding: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
+        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; max-width: 1200px; margin: 0 auto; }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { font-size: 1.8rem; color: #1e40af; }
+        .header h1 { font-size: 1.3rem; color: #1e40af; font-weight: 600; }
+        .header-center { display: flex; gap: 4px; background: #e2e8f0; padding: 4px; border-radius: 8px; }
+        .nav-btn { padding: 8px 16px; border: none; background: transparent; color: #475569; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
+        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 500; }
+        .header-right { font-size: 0.85rem; color: #64748b; }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="bg-slate-900/95 backdrop-blur border-b border-slate-700 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center space-x-4">
-                    <span class="text-xl font-bold text-blue-400">Polymarket Iran</span>
-                    <span class="text-xs text-slate-400">实时预测市场数据</span>
-                </div>
-                <div class="flex items-center space-x-6 text-sm">
-                    <a href="index.html" class="text-slate-300 hover:text-white transition">首页</a>
-                    <a href="briefing.html" class="text-slate-300 hover:text-white transition">简报</a>
-                    <a href="tracking.html" class="text-slate-300 hover:text-white transition">追踪</a>
-                    <a href="news.html" class="text-slate-300 hover:text-white transition">新闻</a>
-                </div>
+    <nav class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <span class="header-icon">🌐</span>
+                <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="briefing.html" class="nav-btn">📰 每日简报</a>
+                <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
+                <a href="news.html" class="nav-btn">🔴 实时新闻</a>
+                <a href="polymarket.html" class="nav-btn active">📈 Polymarket预测</a>
+            </div>
+            <div class="header-right">更新时间: ''' + datetime.now().strftime('%Y年%m-%d') + '''</div>
         </div>
     </nav>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="mb-8">
-            <h1 class="text-3xl font-bold text-white mb-2">伊朗相关预测市场追踪</h1>
-            <p class="text-slate-400">基于 Polymarket 实时数据 | 更新时间: ''' + update_time + '''</p>
+            <h1 class="text-3xl font-bold text-slate-800 mb-2">伊朗相关预测市场追踪</h1>
+            <p class="text-slate-500">基于 Polymarket 实时数据 | 更新时间: ''' + update_time + '''</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -228,14 +238,14 @@ def generate_html(data: Dict) -> str:
     trump_data = data.get("trump-announces-end-of-military-operations-against-iran-by", {})
     html += generate_event_card(trump_data, "特朗普宣布结束对伊朗军事行动", "不同截止日期的概率预测",
                                  ["March 15th", "March 31st", "April 30th", "June 30th"],
-                                 ["blue", "green", "amber", "purple"], chart_idx)
+                                 ["slate", "teal", "amber", "sky"], chart_idx)
     chart_idx += 1
 
     # 2. 美伊停火
     ceasefire_data = data.get("us-x-iran-ceasefire-by", {})
     html += generate_event_card(ceasefire_data, "美伊停火时间", "不同截止日期的概率预测",
                                  ["March 31", "April 30", "June 30"],
-                                 ["blue", "green", "amber"], chart_idx)
+                                 ["slate", "teal", "amber"], chart_idx)
     chart_idx += 1
 
     # 3. 霍尔木兹海峡船舶数量
@@ -246,7 +256,7 @@ def generate_html(data: Dict) -> str:
     # 4. 霍尔木兹海峡恢复正常
     normal_data = data.get("strait-of-hormuz-traffic-returns-to-normal-by-april-30", {})
     html += generate_simple_card(normal_data, "霍尔木兹海峡恢复正常", "4月30日前恢复正常的概率",
-                                  chart_idx, "blue")
+                                  chart_idx, "sky")
     chart_idx += 1
 
     # 5. 3月原油价格
@@ -265,8 +275,8 @@ def generate_html(data: Dict) -> str:
         </div>
     </div>
 
-    <footer class="bg-slate-900 border-t border-slate-700 mt-12 py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-slate-400 text-sm">
+    <footer class="bg-white border-t border-slate-200 mt-12 py-6">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 text-sm">
             <p>数据来源: Polymarket | 仅供信息参考，不构成投资建议</p>
         </div>
     </footer>
