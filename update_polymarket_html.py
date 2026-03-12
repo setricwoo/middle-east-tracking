@@ -204,6 +204,18 @@ def generate_html(data: Dict) -> str:
         .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
         .nav-btn.active { background: #fff; color: #1e40af; font-weight: 500; }
         .header-right { font-size: 0.85rem; color: #64748b; }
+        /* 手机端适配 */
+        @media (max-width: 768px) {
+            .header-main { padding: 6px 8px; gap: 4px; }
+            .header-left { gap: 6px; }
+            .header-icon { font-size: 1.2rem; }
+            .header h1 { font-size: 0.75rem; }
+            .header-center { gap: 2px; padding: 2px; }
+            .nav-btn { padding: 4px 6px; font-size: 0.6rem; gap: 2px; }
+            .nav-btn span { display: none; }
+            .header-right { display: none; }
+            .chart-container { height: 220px; }
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -214,11 +226,11 @@ def generate_html(data: Dict) -> str:
                 <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
             <div class="header-center">
-                <a href="index.html" class="nav-btn">🗺️ 原油图谱</a>
-                <a href="briefing.html" class="nav-btn">📰 每日简报</a>
-                <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
-                <a href="news.html" class="nav-btn">🔴 实时新闻</a>
-                <a href="polymarket.html" class="nav-btn active">📈 Polymarket预测</a>
+                <a href="index.html" class="nav-btn">🗺️ <span>原油图谱</span></a>
+                <a href="briefing.html" class="nav-btn">📰 <span>每日简报</span></a>
+                <a href="tracking.html" class="nav-btn">⚡ <span>海峡跟踪</span></a>
+                <a href="news.html" class="nav-btn">🔴 <span>实时新闻</span></a>
+                <a href="polymarket.html" class="nav-btn active">📈 <span>Polymarket</span></a>
             </div>
             <div class="header-right">更新时间: ''' + datetime.now().strftime('%Y年%m-%d') + '''</div>
         </div>
