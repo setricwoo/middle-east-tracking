@@ -33,14 +33,16 @@ HEADERS = {
     "Referer": "https://polymarket.com/",
 }
 
-# 颜色配置 - 使用更柔和的专业色调
+# 颜色配置 - 使用鲜明可见的颜色
 COLORS = {
-    "blue": "#3b82f6",
-    "indigo": "#6366f1",
-    "slate": "#64748b",
-    "teal": "#14b8a6",
-    "emerald": "#059669",
-    "sky": "#0ea5e9",
+    "blue": "#2563eb",      # 鲜明蓝色
+    "indigo": "#4f46e5",    # 鲜明紫色
+    "slate": "#0ea5e9",     # 改用青色（更可见）
+    "teal": "#10b981",      # 鲜明绿色
+    "emerald": "#059669",   # 深绿色
+    "sky": "#f59e0b",       # 改用橙色（更可见）
+    "amber": "#f97316",     # 橙色
+    "rose": "#e11d48",      # 玫红色
 }
 
 
@@ -238,14 +240,14 @@ def generate_html(data: Dict) -> str:
     trump_data = data.get("trump-announces-end-of-military-operations-against-iran-by", {})
     html += generate_event_card(trump_data, "特朗普宣布结束对伊朗军事行动", "不同截止日期的概率预测",
                                  ["March 15th", "March 31st", "April 30th", "June 30th"],
-                                 ["slate", "teal", "amber", "sky"], chart_idx)
+                                 ["blue", "indigo", "teal", "sky"], chart_idx)
     chart_idx += 1
 
     # 2. 美伊停火
     ceasefire_data = data.get("us-x-iran-ceasefire-by", {})
     html += generate_event_card(ceasefire_data, "美伊停火时间", "不同截止日期的概率预测",
                                  ["March 31", "April 30", "June 30"],
-                                 ["slate", "teal", "amber"], chart_idx)
+                                 ["blue", "indigo", "teal"], chart_idx)
     chart_idx += 1
 
     # 3. 霍尔木兹海峡船舶数量
@@ -256,7 +258,7 @@ def generate_html(data: Dict) -> str:
     # 4. 霍尔木兹海峡恢复正常
     normal_data = data.get("strait-of-hormuz-traffic-returns-to-normal-by-april-30", {})
     html += generate_simple_card(normal_data, "霍尔木兹海峡恢复正常", "4月30日前恢复正常的概率",
-                                  chart_idx, "sky")
+                                  chart_idx, "indigo")
     chart_idx += 1
 
     # 5. 3月原油价格
