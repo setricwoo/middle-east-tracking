@@ -46,49 +46,64 @@ COLORS = {
 }
 
 
-def get_event_by_slug(slug: str) -> Dict:
-    """通过slug获取事件数据"""
+def get_event_by_slug(slug: str, max_retries: int = 3) -> Dict:
+    """通过slug获取事件数据，带重试机制"""
     url = f"{GAMMA_API}/events"
     params = {"slug": slug, "_s": "slug"}
-    try:
-        resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
-        if isinstance(data, list) and len(data) > 0:
-            event = data[0]
-            event_id = event.get("id")
-            if event_id:
-                detail_url = f"{GAMMA_API}/events/{event_id}"
-                detail_resp = requests.get(detail_url, headers=HEADERS, timeout=30)
-                if detail_resp.status_code == 200:
-                    return detail_resp.json()
-            return event
-        return {}
-    except Exception as e:
-        print(f"  获取事件失败 {slug}: {e}")
-        return {}
+
+    for attempt in range(max_retries):
+        try:
+            time.sleep(1)  # 添加延迟避免限速
+            resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            if isinstance(data, list) and len(data) > 0:
+                event = data[0]
+                event_id = event.get("id")
+                if event_id:
+                    time.sleep(0.5)  # 详情请求前也延迟
+                    detail_url = f"{GAMMA_API}/events/{event_id}"
+                    detail_resp = requests.get(detail_url, headers=HEADERS, timeout=30)
+                    if detail_resp.status_code == 200:
+                        return detail_resp.json()
+                return event
+            return {}
+        except Exception as e:
+            if attempt < max_retries - 1:
+                print(f"  获取失败 {slug} (尝试 {attempt+1}/{max_retries}): {e}")
+                time.sleep(2)  # 失败后等待更长时间
+            else:
+                print(f"  获取事件失败 {slug}: {e}")
+                return {}
 
 
-def get_price_history(token_id: str, interval: str = "all") -> List[Dict]:
-    """获取价格历史数据"""
+def get_price_history(token_id: str, interval: str = "all", max_retries: int = 2) -> List[Dict]:
+    """获取价格历史数据，带重试机制"""
     url = f"{CLOB_API}/prices-history"
     params = {"market": token_id, "interval": interval}
-    try:
-        resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
-        return data.get("history", [])
-    except:
-        for alt_interval in ["max", "1d"]:
-            try:
-                params["interval"] = alt_interval
-                resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
-                if resp.status_code == 200:
-                    data = resp.json()
-                    return data.get("history", [])
-            except:
-                pass
-        return []
+
+    for attempt in range(max_retries):
+        try:
+            time.sleep(0.3)  # 添加小延迟
+            resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+            resp.raise_for_status()
+            data = resp.json()
+            return data.get("history", [])
+        except:
+            if attempt < max_retries - 1:
+                time.sleep(1)
+                continue
+            # 尝试其他interval
+            for alt_interval in ["max", "1d"]:
+                try:
+                    params["interval"] = alt_interval
+                    resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+                    if resp.status_code == 200:
+                        data = resp.json()
+                        return data.get("history", [])
+                except:
+                    pass
+            return []
 
 
 def parse_json_field(field) -> List:
@@ -105,12 +120,26 @@ def parse_json_field(field) -> List:
 
 def fetch_all_events_data() -> Dict:
     """获取所有事件数据"""
+    # 尝试加载之前保存的数据
+    prev_data = {}
+    try:
+        if os.path.exists("polymarket_data.json"):
+            with open("polymarket_data.json", "r", encoding="utf-8") as f:
+                saved = json.load(f)
+                prev_data = saved.get("events", {})
+    except:
+        pass
+
     all_data = {}
 
     for slug in EVENT_SLUGS:
         print(f"获取: {slug}")
         event = get_event_by_slug(slug)
         if not event:
+            # 如果获取失败，使用之前保存的数据
+            if slug in prev_data:
+                print(f"  使用缓存数据")
+                all_data[slug] = prev_data[slug]
             continue
 
         event_id = event.get("id")
