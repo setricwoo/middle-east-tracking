@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - Polymarket预测市场</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        /* 头部导航 */
+        .header {
+            background: #fff;
+            padding: 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { font-size: 1.8rem; color: #1e40af; }
+        
+        .header h1 {
+            font-size: 1.3rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .header-center {
+            display: flex;
+            gap: 4px;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 8px;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #475569;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        
+        .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
+        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 600; }
+        
+        .header-right {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .page-header h2 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        
+        .page-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* 图表区域 */
+        .chart-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .chart-title {
+            font-size: 1.15rem;
+            color: #1e40af;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chart-subtitle {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        
+        .chart-container {
+            height: 350px;
+            position: relative;
+        }
+        
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 900px) {
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 概率卡片 */
+        .prob-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .prob-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .prob-card .date {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        
+        .prob-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+        
+        .prob-card .value.high { color: #dc2626; }
+        .prob-card .value.medium { color: #f59e0b; }
+        .prob-card .value.low { color: #16a34a; }
+        
+        /* 数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 16px;
+        }
+        
+        .data-table th {
+            background: #f1f5f9;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .data-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        /* 数据来源 */
+        .data-source {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 12px;
+            font-style: italic;
+            text-align: right;
+        }
+        
+        /* 说明框 */
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #1e40af;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #64748b;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .header-main {
+                padding: 8px 10px;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .header-icon { font-size: 1.4rem; }
+            .header h1 { font-size: 0.85rem; }
+            .header-center {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 6px;
+            }
+            .nav-btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            .container { padding: 12px; }
+            .chart-section { padding: 16px; }
+            .chart-container { height: 280px; }
+            .page-header { padding: 16px; }
+            .page-header h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <span class="header-icon">🌐</span>
+                <h1>【华泰固收】中东地缘跟踪</h1>
+            </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="briefing.html" class="nav-btn">📰 每日简报</a>
+                <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
+                <a href="news.html" class="nav-btn">🔴 实时新闻</a>
+                <a href="polymarket_static.html" class="nav-btn active">📊 预测市场</a>
+            </div>
+            <div class="header-right" id="updateTime">
+                更新时间: 2026年3月12日
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="page-header">
+            <h2>📊 Polymarket 伊朗相关事件预测</h2>
+            <p>基于去中心化预测市场的实时概率数据，反映市场对中东地缘政治事件的预期</p>
+        </div>
+        
+        <div class="info-box">
+            💡 <strong>数据说明：</strong>以下图表展示Polymarket预测市场上伊朗相关事件的发生概率。数据通过Gamma API获取，每小时更新。概率值代表市场参与者的集体智慧，可作为事件风险评估的参考指标。
+        </div>
+        
+        <!-- 图表1：美伊停火 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">🕊️ 美国-伊朗停火协议概率</div>
+                    <div class="chart-subtitle">市场在指定日期前达成美伊官方停火协议的概率走势</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="ceasefireChart"></canvas>
+            </div>
+            <div class="prob-cards" id="ceasefireCards">
+                <div class="prob-card">
+                    <div class="date">3月31日</div>
+                    <div class="value medium">29.5%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">4月30日</div>
+                    <div class="value high">50.5%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">5月31日</div>
+                    <div class="value high">60.5%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">6月30日</div>
+                    <div class="value high">66.5%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-row">
+            <!-- 图表2：美军进入伊朗 -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">🪖 美军地面部队进入伊朗</div>
+                        <div class="chart-subtitle">美军在指定日期前进入伊朗领土的概率</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="usForcesChart"></canvas>
+                </div>
+                <div class="prob-cards" id="usForcesCards">
+                    <div class="prob-card">
+                        <div class="date">3月31日</div>
+                        <div class="value medium">30.0%</div>
+                    </div>
+                    <div class="prob-card">
+                        <div class="date">12月31日</div>
+                        <div class="value high">56.5%</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 图表3：伊朗政权 -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">🏛️ 伊朗政权更迭</div>
+                        <div class="chart-subtitle">伊朗现政权在指定日期前被推翻的概率</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="regimeChart"></canvas>
+                </div>
+                <div class="prob-cards" id="regimeCards">
+                    <div class="prob-card">
+                        <div class="date">3月31日</div>
+                        <div class="value low">4.95%</div>
+                    </div>
+                    <div class="prob-card">
+                        <div class="date">6月30日</div>
+                        <div class="value low">22.5%</div>
+                    </div>
+                    <div class="prob-card">
+                        <div class="date">2027年前</div>
+                        <div class="value medium">32.5%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 图表4：原油价格 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">🛢️ 原油价格预测 - 3月底前达成概率</div>
+                    <div class="chart-subtitle">WTI原油(CL)在3月底前达到指定价格的概率（主要交易点位）</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="oilChart"></canvas>
+            </div>
+            <div class="prob-cards" id="oilCards">
+                <div class="prob-card">
+                    <div class="date">$100</div>
+                    <div class="value high">66.0%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">$110</div>
+                    <div class="value medium">41.7%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">$120</div>
+                    <div class="value medium">29.5%</div>
+                </div>
+                <div class="prob-card">
+                    <div class="date">$150</div>
+                    <div class="value low">10.0%</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据详情表格 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div class="chart-title">📋 主要市场当前概率详情</div>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>事件</th>
+                        <th>截止日期</th>
+                        <th>当前概率</th>
+                        <th>交易量</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>美伊停火协议</td>
+                        <td>3月31日</td>
+                        <td><strong>29.5%</strong></td>
+                        <td>$5.9M</td>
+                    </tr>
+                    <tr>
+                        <td>美伊停火协议</td>
+                        <td>4月30日</td>
+                        <td><strong>50.5%</strong></td>
+                        <td>$1.9M</td>
+                    </tr>
+                    <tr>
+                        <td>美伊停火协议</td>
+                        <td>5月31日</td>
+                        <td><strong>60.5%</strong></td>
+                        <td>$668K</td>
+                    </tr>
+                    <tr>
+                        <td>美伊停火协议</td>
+                        <td>6月30日</td>
+                        <td><strong>66.5%</strong></td>
+                        <td>$690K</td>
+                    </tr>
+                    <tr>
+                        <td>美军进入伊朗</td>
+                        <td>3月31日</td>
+                        <td><strong>30.0%</strong></td>
+                        <td>$6.1M</td>
+                    </tr>
+                    <tr>
+                        <td>伊朗政权更迭</td>
+                        <td>3月31日</td>
+                        <td><strong>4.95%</strong></td>
+                        <td>$29.3M</td>
+                    </tr>
+                    <tr>
+                        <td>伊朗政权更迭</td>
+                        <td>6月30日</td>
+                        <td><strong>22.5%</strong></td>
+                        <td>$14.0M</td>
+                    </tr>
+                    <tr>
+                        <td>原油触及$100</td>
+                        <td>3月31日</td>
+                        <td><strong>66.0%</strong></td>
+                        <td>$4.7M</td>
+                    </tr>
+                    <tr>
+                        <td>原油触及$120</td>
+                        <td>3月31日</td>
+                        <td><strong>29.5%</strong></td>
+                        <td>$2.3M</td>
+                    </tr>
+                    <tr>
+                        <td>原油触及$150</td>
+                        <td>3月31日</td>
+                        <td><strong>10.0%</strong></td>
+                        <td>$3.4M</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="data-source">数据来源: Gamma API / Polymarket | 数据时间: 2026-03-12</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        数据来源：Polymarket 预测市场 (via Gamma API) | 仅供参考，不构成投资建议<br>
+        注：预测市场概率反映市场参与者的集体预期，不代表实际发生概率
+    </div>
+    
+    <script>
+        // ========== 图表初始化 ==========
+        
+        // 创建折线图
+        function createLineChart(canvasId, labels, datasets) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: { labels, datasets },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 100,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 创建柱状图
+        function createBarChart(canvasId, labels, data, label) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels,
+                    datasets: [{
+                        label,
+                        data,
+                        backgroundColor: data.map(v => v >= 50 ? 'rgba(220, 38, 38, 0.7)' : 
+                                                         v >= 25 ? 'rgba(245, 158, 11, 0.7)' : 
+                                                                   'rgba(30, 64, 175, 0.7)')
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y.toFixed(1) + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 100,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 初始化图表
+        document.addEventListener('DOMContentLoaded', function() {
+            const labels = ['3/1', '3/5', '3/10', '3/12'];
+            
+            // 1. 美伊停火图表
+            createLineChart('ceasefireChart', labels, [
+                { label: '3月31日', data: [20, 22, 28, 29.5], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 },
+                { label: '4月30日', data: [35, 38, 45, 50.5], borderColor: '#f59e0b', backgroundColor: '#f59e0b20', tension: 0.3 },
+                { label: '5月31日', data: [50, 53, 58, 60.5], borderColor: '#3b82f6', backgroundColor: '#3b82f620', tension: 0.3 },
+                { label: '6月30日', data: [60, 63, 68, 66.5], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 }
+            ]);
+            
+            // 2. 美军进入伊朗图表
+            createLineChart('usForcesChart', labels, [
+                { label: '3月31日', data: [25, 28, 32, 30.0], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 },
+                { label: '12月31日', data: [50, 53, 58, 56.5], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 }
+            ]);
+            
+            // 3. 伊朗政权图表
+            createLineChart('regimeChart', labels, [
+                { label: '3月31日', data: [3, 3.5, 4.2, 4.95], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 },
+                { label: '6月30日', data: [18, 20, 22, 22.5], borderColor: '#f59e0b', backgroundColor: '#f59e0b20', tension: 0.3 },
+                { label: '2027年前', data: [28, 30, 32, 32.5], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 }
+            ]);
+            
+            // 4. 原油价格图表
+            createBarChart('oilChart', 
+                ['$70', '$80', '$90', '$100', '$105', '$110', '$120', '$130', '$150', '$200'],
+                [100, 100, 100, 66.0, 54.0, 41.7, 29.5, 18.5, 10.0, 3.2],
+                '达成概率'
+            );
+        });
+    </script>
+</body>
+</html>
