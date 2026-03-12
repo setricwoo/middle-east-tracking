@@ -212,7 +212,7 @@ def generate_html(data: Dict) -> str:
                 <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
             <div class="header-center">
-                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="index.html" class="nav-btn">🗺️ 原油图谱</a>
                 <a href="briefing.html" class="nav-btn">📰 每日简报</a>
                 <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
                 <a href="news.html" class="nav-btn">🔴 实时新闻</a>
