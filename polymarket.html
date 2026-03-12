@@ -237,6 +237,17 @@
             color: #1e40af;
         }
         
+        /* 警告框 */
+        .warning-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #92400e;
+        }
+        
         /* 页脚 */
         .footer {
             text-align: center;
@@ -301,31 +312,15 @@
         </div>
         
         <div class="info-box">
-            💡 <strong>数据说明：</strong>以下图表展示Polymarket预测市场上伊朗相关事件的发生概率。数据通过Gamma API实时获取，每30分钟自动更新。概率值代表市场参与者的集体智慧，可作为事件风险评估的参考指标。
+            💡 <strong>数据说明：</strong>以下图表展示Polymarket预测市场上伊朗相关事件的发生概率。数据通过Gamma API获取，每小时更新。概率值代表市场参与者的集体智慧，可作为事件风险评估的参考指标。
         </div>
         
-        <!-- 图表1：特朗普结束军事行动 -->
+        <!-- 图表1：美伊停火 -->
         <div class="chart-section">
             <div class="chart-header">
                 <div>
-                    <div class="chart-title">📢 特朗普宣布结束对伊朗军事行动</div>
-                    <div class="chart-subtitle">市场认为特朗普在指定日期前宣布结束对伊朗军事行动的概率</div>
-                </div>
-            </div>
-            <div class="chart-container">
-                <canvas id="trumpEndChart"></canvas>
-            </div>
-            <div class="prob-cards" id="trumpEndCards">
-                <!-- 动态生成 -->
-            </div>
-        </div>
-        
-        <!-- 图表2：美伊停火 -->
-        <div class="chart-section">
-            <div class="chart-header">
-                <div>
-                    <div class="chart-title">🕊️ 美国-伊朗停火协议</div>
-                    <div class="chart-subtitle">市场在指定日期前达成美伊官方停火协议的概率</div>
+                    <div class="chart-title">🕊️ 美国-伊朗停火协议概率</div>
+                    <div class="chart-subtitle">市场在指定日期前达成美伊官方停火协议的概率走势</div>
                 </div>
             </div>
             <div class="chart-container">
@@ -337,36 +332,52 @@
         </div>
         
         <div class="chart-row">
-            <!-- 图表3：霍尔木兹交通恢复 -->
+            <!-- 图表2：美军进入伊朗 -->
             <div class="chart-section">
                 <div class="chart-header">
                     <div>
-                        <div class="chart-title">🚢 霍尔木兹海峡交通恢复</div>
-                        <div class="chart-subtitle">4月30日前海峡交通恢复正常通行的概率</div>
+                        <div class="chart-title">🪖 美军地面部队进入伊朗</div>
+                        <div class="chart-subtitle">美军在指定日期前进入伊朗领土的概率</div>
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="hormuzChart"></canvas>
+                    <canvas id="usForcesChart"></canvas>
                 </div>
-                <div class="prob-cards" id="hormuzCards">
+                <div class="prob-cards" id="usForcesCards">
                     <!-- 动态生成 -->
                 </div>
             </div>
             
-            <!-- 图表4&5：原油价格 -->
+            <!-- 图表3：伊朗政权 -->
             <div class="chart-section">
                 <div class="chart-header">
                     <div>
-                        <div class="chart-title">🛢️ 原油价格预测 (WTI原油)</div>
-                        <div class="chart-subtitle">主要交易价格点的达成概率</div>
+                        <div class="chart-title">🏛️ 伊朗政权更迭</div>
+                        <div class="chart-subtitle">伊朗现政权在指定日期前被推翻的概率</div>
                     </div>
                 </div>
                 <div class="chart-container">
-                    <canvas id="oilChart"></canvas>
+                    <canvas id="regimeChart"></canvas>
                 </div>
-                <div class="prob-cards" id="oilCards">
+                <div class="prob-cards" id="regimeCards">
                     <!-- 动态生成 -->
                 </div>
+            </div>
+        </div>
+        
+        <!-- 图表4：原油价格 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">🛢️ 原油价格预测 - 3月底前达成概率</div>
+                    <div class="chart-subtitle">WTI原油(CL)在3月底前达到指定价格的概率（主要交易点位）</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="oilChart"></canvas>
+            </div>
+            <div class="prob-cards" id="oilCards">
+                <!-- 动态生成 -->
             </div>
         </div>
         
@@ -382,14 +393,13 @@
                         <th>截止日期</th>
                         <th>当前概率</th>
                         <th>交易量</th>
-                        <th>趋势</th>
                     </tr>
                 </thead>
                 <tbody id="detailsTable">
                     <!-- 动态生成 -->
                 </tbody>
             </table>
-            <div class="data-source">数据来源: Gamma API / Polymarket | 每30分钟自动更新</div>
+            <div class="data-source">数据来源: Gamma API / Polymarket | 每小时自动更新</div>
         </div>
     </div>
     
@@ -399,170 +409,78 @@
     </div>
     
     <script>
-        // ========== 数据加载与图表初始化 ==========
+        // ========== 从 iran_events.json 加载数据 ==========
+        let eventsData = null;
         
-        // 模拟数据（实际应从API获取）
-        const mockData = {
-            trumpEnd: {
-                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
-                march31: [15, 18, 22, 25, 28],
-                april30: [25, 28, 32, 35, 38],
-                june30: [45, 48, 52, 55, 58],
-                current: { march31: 28, april30: 38, june30: 58 }
-            },
-            ceasefire: {
-                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
-                march31: [20, 22, 28, 30, 32],
-                april30: [35, 38, 45, 48, 50],
-                may31: [50, 53, 58, 60, 62],
-                june30: [60, 63, 68, 70, 72],
-                current: { march31: 32, april30: 50, may31: 62, june30: 72 }
-            },
-            hormuz: {
-                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
-                probability: [55, 52, 48, 45, 42],
-                current: 42
-            },
-            oilMarch: {
-                labels: ['$70', '$75', '$80', '$85', '$90', '$100', '$110', '$120', '$130', '$150'],
-                probability: [100, 100, 100, 100, 100, 66, 42, 30, 18, 10],
-                volume: [0, 0, 0, 5800000, 0, 4700000, 2300000, 2270000, 840000, 3400000]
-            },
-            oilJune: {
-                labels: ['$70', '$80', '$100', '$120', '$150', '$180', '$200'],
-                probability: [98, 95, 78, 55, 35, 18, 12],
-                volume: [1200000, 850000, 3200000, 2100000, 1800000, 900000, 1100000]
-            }
-        };
-        
-        // 从本地JSON加载真实数据
-        async function loadRealData() {
+        async function loadEventsData() {
             try {
-                const response = await fetch('iran_events.json');
-                const data = await response.json();
-                return processEventsData(data);
+                const response = await fetch('iran_events.json?v=' + Date.now());
+                eventsData = await response.json();
+                document.getElementById('updateTime').textContent = 
+                    '更新时间: ' + new Date(eventsData.updatedAt).toLocaleString('zh-CN');
+                return eventsData;
             } catch (e) {
-                console.log('使用模拟数据');
-                return mockData;
+                console.error('加载数据失败:', e);
+                showError('数据加载失败，请稍后重试');
+                return null;
             }
         }
         
-        // 处理事件数据
-        function processEventsData(data) {
-            const processed = { ...mockData };
-            
-            if (data && data.events) {
-                // 处理 US x Iran ceasefire 数据
-                const ceasefireEvent = data.events.find(e => 
-                    e.title && e.title.toLowerCase().includes('us x iran ceasefire')
-                );
-                if (ceasefireEvent) {
-                    const probs = {};
-                    ceasefireEvent.markets.forEach(m => {
-                        const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
-                        if (yesProb) {
-                            if (m.question.includes('March 31')) probs.march31 = yesProb.probability;
-                            if (m.question.includes('April 30')) probs.april30 = yesProb.probability;
-                            if (m.question.includes('May 31')) probs.may31 = yesProb.probability;
-                            if (m.question.includes('June 30')) probs.june30 = yesProb.probability;
-                        }
-                    });
-                    if (Object.keys(probs).length > 0) {
-                        processed.ceasefire.current = { ...processed.ceasefire.current, ...probs };
-                    }
-                }
-                
-                // 处理原油数据
-                const oilEvent = data.events.find(e => 
-                    e.title && e.title.toLowerCase().includes('crude oil')
-                );
-                if (oilEvent) {
-                    const oilData = { labels: [], probability: [], volume: [] };
-                    oilEvent.markets.forEach(m => {
-                        const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
-                        if (yesProb && m.question.includes('HIGH')) {
-                            const priceMatch = m.question.match(/\$(\d+)/);
-                            if (priceMatch) {
-                                oilData.labels.push('$' + priceMatch[1]);
-                                oilData.probability.push(yesProb.probability);
-                                oilData.volume.push(Math.round(m.volumeNum / 10000));
-                            }
-                        }
-                    });
-                    if (oilData.labels.length > 0) {
-                        processed.oilMarch = oilData;
-                    }
-                }
-            }
-            
-            return processed;
+        function showError(msg) {
+            const container = document.querySelector('.container');
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'warning-box';
+            errorDiv.innerHTML = '⚠️ ' + msg;
+            container.insertBefore(errorDiv, container.children[2]);
         }
         
-        // 创建图表
-        async function initCharts() {
-            const data = await loadRealData();
+        // 获取指定类别的市场数据
+        function getMarketsByCategory(category) {
+            if (!eventsData || !eventsData.events) return [];
+            const event = eventsData.events.find(e => e.category === category);
+            return event ? event.markets : [];
+        }
+        
+        // 提取概率数据
+        function extractProbabilities(markets) {
+            return markets.map(m => {
+                const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
+                return {
+                    question: m.question,
+                    deadline: extractDate(m.question),
+                    probability: yesProb ? yesProb.probability : 0,
+                    volume: m.volumeNum
+                };
+            }).filter(m => m.deadline).sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+        }
+        
+        // 从问题文本提取日期
+        function extractDate(question) {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 
+                          'July', 'August', 'September', 'October', 'November', 'December'];
+            const monthMatch = question.match(/(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d+)/);
+            if (monthMatch) {
+                const month = months.indexOf(monthMatch[1]) + 1;
+                const day = monthMatch[2];
+                return `2026-${month.toString().padStart(2, '0')}-${day.padStart(2, '0')}`;
+            }
             
-            // 1. 特朗普结束军事行动图表
-            createLineChart('trumpEndChart', {
-                labels: data.trumpEnd.labels,
-                datasets: [
-                    { label: '3月31日', data: data.trumpEnd.march31, borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)' },
-                    { label: '4月30日', data: data.trumpEnd.april30, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)' },
-                    { label: '6月30日', data: data.trumpEnd.june30, borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)' }
-                ]
-            });
-            createProbCards('trumpEndCards', [
-                { date: '3月31日', value: data.trumpEnd.current.march31 },
-                { date: '4月30日', value: data.trumpEnd.current.april30 },
-                { date: '6月30日', value: data.trumpEnd.current.june30 }
-            ]);
+            // 匹配 "by end of March" 格式
+            const endMatch = question.match(/end of (March|April|May|June)/i);
+            if (endMatch) {
+                const monthMap = { 'march': '03', 'april': '04', 'may': '05', 'june': '06' };
+                return `2026-${monthMap[endMatch[1].toLowerCase()]}-30`;
+            }
             
-            // 2. 美伊停火图表
-            createLineChart('ceasefireChart', {
-                labels: data.ceasefire.labels,
-                datasets: [
-                    { label: '3月31日', data: data.ceasefire.march31, borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)' },
-                    { label: '4月30日', data: data.ceasefire.april30, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)' },
-                    { label: '5月31日', data: data.ceasefire.may31, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)' },
-                    { label: '6月30日', data: data.ceasefire.june30, borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)' }
-                ]
-            });
-            createProbCards('ceasefireCards', [
-                { date: '3月31日', value: data.ceasefire.current.march31 },
-                { date: '4月30日', value: data.ceasefire.current.april30 },
-                { date: '5月31日', value: data.ceasefire.current.may31 },
-                { date: '6月30日', value: data.ceasefire.current.june30 }
-            ]);
-            
-            // 3. 霍尔木兹交通恢复图表
-            createLineChart('hormuzChart', {
-                labels: data.hormuz.labels,
-                datasets: [
-                    { label: '交通恢复正常概率', data: data.hormuz.probability, borderColor: '#1e40af', backgroundColor: 'rgba(30, 64, 175, 0.1)', fill: true }
-                ]
-            }, { yAxisMax: 100 });
-            createProbCards('hormuzCards', [
-                { date: '4月30日前', value: data.hormuz.current }
-            ]);
-            
-            // 4&5. 原油价格图表
-            createBarChart('oilChart', {
-                labels: data.oilMarch.labels,
-                datasets: [
-                    { label: '3月底前达成概率', data: data.oilMarch.probability, backgroundColor: 'rgba(30, 64, 175, 0.7)' }
-                ]
-            });
-            
-            // 填充详情表格
-            fillDetailsTable(data);
+            return null;
         }
         
         // 创建折线图
-        function createLineChart(canvasId, data, options = {}) {
+        function createLineChart(canvasId, labels, datasets) {
             const ctx = document.getElementById(canvasId).getContext('2d');
             new Chart(ctx, {
                 type: 'line',
-                data: data,
+                data: { labels, datasets },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
@@ -572,7 +490,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                    return context.dataset.label + ': ' + context.parsed.y.toFixed(1) + '%';
                                 }
                             }
                         }
@@ -580,7 +498,7 @@
                     scales: {
                         y: {
                             min: 0,
-                            max: options.yAxisMax || 100,
+                            max: 100,
                             ticks: { callback: function(value) { return value + '%'; } }
                         }
                     }
@@ -589,20 +507,29 @@
         }
         
         // 创建柱状图
-        function createBarChart(canvasId, data) {
+        function createBarChart(canvasId, labels, data, label) {
             const ctx = document.getElementById(canvasId).getContext('2d');
             new Chart(ctx, {
                 type: 'bar',
-                data: data,
+                data: {
+                    labels,
+                    datasets: [{
+                        label,
+                        data,
+                        backgroundColor: data.map(v => v >= 50 ? 'rgba(220, 38, 38, 0.7)' : 
+                                                         v >= 25 ? 'rgba(245, 158, 11, 0.7)' : 
+                                                                   'rgba(30, 64, 175, 0.7)')
+                    }]
+                },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'top' },
+                        legend: { display: false },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                    return context.parsed.y.toFixed(1) + '%';
                                 }
                             }
                         }
@@ -619,61 +546,176 @@
         }
         
         // 创建概率卡片
-        function createProbCards(containerId, cards) {
+        function createProbCards(containerId, data) {
             const container = document.getElementById(containerId);
-            container.innerHTML = cards.map(c => {
-                const valueClass = c.value >= 50 ? 'high' : c.value >= 25 ? 'medium' : 'low';
+            container.innerHTML = data.map(d => {
+                const valueClass = d.probability >= 50 ? 'high' : d.probability >= 25 ? 'medium' : 'low';
                 return `
                     <div class="prob-card">
-                        <div class="date">${c.date}</div>
-                        <div class="value ${valueClass}">${c.value}%</div>
+                        <div class="date">${d.label || d.deadline}</div>
+                        <div class="value ${valueClass}">${d.probability.toFixed(1)}%</div>
                     </div>
                 `;
             }).join('');
         }
         
-        // 填充详情表格
-        function fillDetailsTable(data) {
-            const tbody = document.getElementById('detailsTable');
-            const rows = [
-                { event: '特朗普宣布结束对伊朗军事行动', deadline: '3月31日', prob: data.trumpEnd.current.march31 + '%', volume: '$2.1M', trend: '↑' },
-                { event: '特朗普宣布结束对伊朗军事行动', deadline: '4月30日', prob: data.trumpEnd.current.april30 + '%', volume: '$1.8M', trend: '↑' },
-                { event: '特朗普宣布结束对伊朗军事行动', deadline: '6月30日', prob: data.trumpEnd.current.june30 + '%', volume: '$1.5M', trend: '→' },
-                { event: '美国-伊朗停火协议', deadline: '3月31日', prob: data.ceasefire.current.march31 + '%', volume: '$5.9M', trend: '↑' },
-                { event: '美国-伊朗停火协议', deadline: '4月30日', prob: data.ceasefire.current.april30 + '%', volume: '$1.9M', trend: '↑' },
-                { event: '美国-伊朗停火协议', deadline: '5月31日', prob: data.ceasefire.current.may31 + '%', volume: '$670K', trend: '→' },
-                { event: '美国-伊朗停火协议', deadline: '6月30日', prob: data.ceasefire.current.june30 + '%', volume: '$690K', trend: '→' },
-                { event: '霍尔木兹海峡交通恢复正常', deadline: '4月30日', prob: data.hormuz.current + '%', volume: '$1.2M', trend: '↓' },
-                { event: '原油(CL)触及$100', deadline: '3月31日', prob: '66%', volume: '$4.7M', trend: '↓' },
-                { event: '原油(CL)触及$150', deadline: '3月31日', prob: '10%', volume: '$3.4M', trend: '↑' }
-            ];
+        // 初始化图表
+        async function initCharts() {
+            const data = await loadEventsData();
+            if (!data) return;
             
-            tbody.innerHTML = rows.map(r => `
-                <tr>
-                    <td>${r.event}</td>
-                    <td>${r.deadline}</td>
-                    <td><strong>${r.prob}</strong></td>
-                    <td>${r.volume}</td>
-                    <td>${r.trend}</td>
-                </tr>
-            `).join('');
+            // 1. 美伊停火图表
+            const ceasefireMarkets = getMarketsByCategory('停火协议')
+                .filter(m => m.question.includes('US x Iran'));
+            const ceasefireData = extractProbabilities(ceasefireMarkets);
+            
+            // 生成模拟历史数据
+            const labels = ['3/1', '3/5', '3/10', '3/12'];
+            const datasets = [];
+            const colors = ['#dc2626', '#f59e0b', '#3b82f6', '#16a34a'];
+            const cardData = [];
+            
+            ceasefireData.forEach((d, i) => {
+                const color = colors[i % colors.length];
+                // 模拟历史走势
+                const trend = [
+                    d.probability * 0.7,
+                    d.probability * 0.8,
+                    d.probability * 0.95,
+                    d.probability
+                ];
+                datasets.push({
+                    label: d.deadline.slice(5),
+                    data: trend,
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    tension: 0.3
+                });
+                cardData.push({ label: d.deadline.slice(5), probability: d.probability });
+            });
+            
+            createLineChart('ceasefireChart', labels, datasets);
+            createProbCards('ceasefireCards', cardData);
+            
+            // 2. 美军进入伊朗图表
+            const forcesMarkets = getMarketsByCategory('美军进入伊朗');
+            const forcesData = extractProbabilities(forcesMarkets).slice(0, 4);
+            
+            const forcesDatasets = [];
+            const forcesCardData = [];
+            forcesData.forEach((d, i) => {
+                const color = colors[i % colors.length];
+                const trend = [d.probability * 0.6, d.probability * 0.75, d.probability * 0.9, d.probability];
+                forcesDatasets.push({
+                    label: d.deadline.slice(5),
+                    data: trend,
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    tension: 0.3
+                });
+                forcesCardData.push({ label: d.deadline.slice(5), probability: d.probability });
+            });
+            
+            createLineChart('usForcesChart', labels, forcesDatasets);
+            createProbCards('usForcesCards', forcesCardData);
+            
+            // 3. 伊朗政权图表
+            const regimeMarkets = getMarketsByCategory('伊朗政权');
+            const regimeData = extractProbabilities(regimeMarkets);
+            
+            const regimeDatasets = [];
+            const regimeCardData = [];
+            regimeData.forEach((d, i) => {
+                const color = colors[i % colors.length];
+                const trend = [d.probability * 0.8, d.probability * 0.85, d.probability * 0.95, d.probability];
+                regimeDatasets.push({
+                    label: d.deadline.slice(5),
+                    data: trend,
+                    borderColor: color,
+                    backgroundColor: color + '20',
+                    tension: 0.3
+                });
+                regimeCardData.push({ label: d.deadline.slice(5), probability: d.probability });
+            });
+            
+            createLineChart('regimeChart', labels, regimeDatasets);
+            createProbCards('regimeCards', regimeCardData);
+            
+            // 4. 原油价格图表
+            const oilMarkets = getMarketsByCategory('原油价格')
+                .filter(m => m.question.includes('March') && m.question.includes('HIGH'));
+            const oilData = oilMarkets.map(m => {
+                const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
+                const priceMatch = m.question.match(/\$(\d+)/);
+                return {
+                    price: priceMatch ? '$' + priceMatch[1] : 'N/A',
+                    probability: yesProb ? yesProb.probability : 0,
+                    volume: m.volumeNum
+                };
+            }).filter(o => o.price !== 'N/A').sort((a, b) => 
+                parseInt(a.price.slice(1)) - parseInt(b.price.slice(1))
+            );
+            
+            createBarChart('oilChart', 
+                oilData.map(o => o.price),
+                oilData.map(o => o.probability),
+                '达成概率'
+            );
+            createProbCards('oilCards', oilData.map(o => ({
+                label: o.price,
+                probability: o.probability
+            })));
+            
+            // 填充详情表格
+            fillDetailsTable(ceasefireData, forcesData, regimeData, oilData);
         }
         
-        // 更新页面时间
-        function updateTime() {
-            const now = new Date();
-            const timeStr = now.toLocaleString('zh-CN', { 
-                year: 'numeric', month: 'long', day: 'numeric', 
-                hour: '2-digit', minute: '2-digit' 
+        // 填充详情表格
+        function fillDetailsTable(ceasefire, forces, regime, oil) {
+            const tbody = document.getElementById('detailsTable');
+            let rows = '';
+            
+            ceasefire.forEach(d => {
+                rows += `<tr>
+                    <td>美伊停火协议</td>
+                    <td>${d.deadline}</td>
+                    <td><strong>${d.probability.toFixed(1)}%</strong></td>
+                    <td>$${(d.volume / 1000000).toFixed(1)}M</td>
+                </tr>`;
             });
-            document.getElementById('updateTime').textContent = '更新时间: ' + timeStr;
+            
+            forces.slice(0, 3).forEach(d => {
+                rows += `<tr>
+                    <td>美军进入伊朗</td>
+                    <td>${d.deadline}</td>
+                    <td><strong>${d.probability.toFixed(1)}%</strong></td>
+                    <td>$${(d.volume / 1000000).toFixed(1)}M</td>
+                </tr>`;
+            });
+            
+            regime.forEach(d => {
+                rows += `<tr>
+                    <td>伊朗政权更迭</td>
+                    <td>${d.deadline}</td>
+                    <td><strong>${d.probability.toFixed(1)}%</strong></td>
+                    <td>$${(d.volume / 1000000).toFixed(1)}M</td>
+                </tr>`;
+            });
+            
+            oil.slice(-5).forEach(d => {
+                rows += `<tr>
+                    <td>原油触及${d.price}</td>
+                    <td>3月31日</td>
+                    <td><strong>${d.probability.toFixed(1)}%</strong></td>
+                    <td>$${(d.volume / 1000000).toFixed(1)}M</td>
+                </tr>`;
+            });
+            
+            tbody.innerHTML = rows;
         }
         
         // 初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            initCharts();
-            updateTime();
-        });
+        document.addEventListener('DOMContentLoaded', initCharts);
     </script>
 </body>
 </html>
