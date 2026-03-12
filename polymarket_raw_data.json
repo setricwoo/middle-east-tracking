@@ -1,0 +1,2090 @@
+[
+  {
+    "slug": "trump-announces-end-of-military-operations-against-iran-by",
+    "id": "236992",
+    "title": "Trump announces end of military operations against Iran by ...?",
+    "description": "This market will resolve to \"Yes\" if President Trump, the US government, or the military publicly and officially announce that their military operations against Iran, initiated on February 28, 2026, have concluded by the listed date. Otherwise, this market will resolve to “No”.\n\nQualifying statements must clearly indicate that the operation has ended. Informal announcements, statements from unnamed sources or leaks will not qualify. \n\nWritten public statements from Donald Trump (e.g. posts from his personal Truth Social account), will count. Videos posted on his social media accounts will also qualify for a \"Yes\" resolution.\n\nThe primary resolution source for this market will be official statements from the US government and/or its official representatives; however, a consensus of credible reporting may also be used.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "slug": "us-x-iran-ceasefire-by",
+    "id": "236840",
+    "title": "US x Iran ceasefire by...?",
+    "description": "This market will resolve to “Yes” if there is an official ceasefire agreement, defined as a publicly announced and mutually agreed halt in direct military engagement, between the United States and Iran by the listed date, 11:59 PM ET.\n\nFor the purposes of this market, an “official ceasefire agreement” requires clear public confirmation from both the United States government and the government of Iran that they have agreed to halt military hostilities against one another.\n\nIf the agreement is officially reached before the resolution date, this market will resolve to “Yes,” regardless of whether the ceasefire officially takes effect after the resolution date.\n\nAny form of informal understanding, backchannel communication, de-escalation without an announced agreement, or unilateral pause in hostilities will not be considered an official ceasefire. Humanitarian pauses, limited operational pauses, or temporary tactical stand-downs will not count toward the resolution of this market.\n\nA broader peace deal, normalization agreement, or political framework will qualify only if it includes a publicly announced and mutually agreed halt in military engagement between the United States and Iran, effective on a specified date, or otherwise confirmed by an overwhelming consensus of credible reporting. Agreements that outline future negotiations or de-escalation measures without an explicit, dated commitment to stop fighting will not qualify.\n\nThis market’s resolution will be based on official statements from the United States government and the government of Iran. However, a wide consensus of credible media reporting confirming that an official ceasefire agreement has been reached will suffice.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "slug": "avg-of-ships-transiting-strait-of-hormuz-end-of-march",
+    "id": "257025",
+    "title": "Avg. # of ships transiting Strait of Hormuz end of March?",
+    "description": "This market will resolve according to the 7-day moving average of transit calls (“Arrivals of Ships”) for the Strait of Hormuz that IMF Portwatch reports for March 31, 2026.\n\nTransit calls include container, dry bulk, roll-on/roll-off, general cargo, and tanker ships. Ships not reported by IMF Portwatch will not be considered.\n\nThis market will resolve as soon as data for March 31, 2026 has been published. If no data for March 31, 2026 has been published by April 14, 2026, 11:59 PM ET, this market will resolve based on data for the most recent date prior to March 31, 2026 for which data is available.\n\nThis market will resolve based on the first publication of data for March 31, 2026. Any subsequent revisions will not be considered.\nIf the reported value falls exactly between two brackets, this market will resolve to the higher range bracket.\n\nThe resolution source for this market will be IMF Portwatch, specifically the transit calls data published for the Strait of Hormuz at https://portwatch.imf.org/pages/cb5856222a5b4105adc6ee7e880a1730, both in the chart and through downloadable files.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "slug": "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
+    "id": "256854",
+    "title": "Strait of Hormuz traffic returns to normal by April 30?",
+    "description": "This market will resolve to “Yes” if IMF Portwatch publishes a 7-day moving average of transit calls (“Arrivals of Ships”) for the Strait of Hormuz equal to or above 60 for any date between market creation and April 30, 2026. Otherwise, this market will resolve to “No”.\n\nDaily transit calls include container, dry bulk, roll-on/roll-off, general cargo, and tanker ships. Ships not reported by IMF Portwatch will not be considered.\n\nThis market will resolve as soon as IMF Portwatch publishes a 7-day moving average of transit calls equal to or above the specified level, or once data has been published for the final date in the specified period and no such value has been published. If no data has been published for the final date of the specified period within 14 calendar days (ET) after the end of that period, this market will resolve based on data published up to that point.\n\nRevisions to previously published data points made within this market’s timeframe will be considered. However, they will not disqualify a previously published data point from qualifying. Revisions to previously published data points after data is published for April 30, 2026, however, will not be considered.\n\nThe resolution source for this market will be IMF Portwatch, specifically the transit calls data published for the Strait of Hormuz at https://portwatch.imf.org/pages/cb5856222a5b4105adc6ee7e880a1730, both in the chart and through downloadable files.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "slug": "will-crude-oil-cl-hit-by-end-of-march",
+    "id": "237260",
+    "title": "Will Crude Oil (CL) hit__ by end of March?",
+    "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the final trading day of March 2026. Otherwise, the market will resolve to \"No\".\n\nFor CME Crude Oil (CL) futures contracts, the active month is the nearest of the contract months listed. The active month becomes a non-active month effective two business days prior to the spot month expiration. For example; if the spot month expires on a Friday the next listed contract will be considered the Active Month on the Wednesday prior to the spot month expiration.\n\nOnly the Active Month's official settlement price published by CME Group will be considered. Intraday trades, highs, lows, bids, offers, midpoint values, or indicative prices do not count.\n\nNote that the settlement price may differ from the last traded price. CME's methodology to determine the settlement price can vary by commodity and contract.\n\nOnly days on which CME publishes an official settlement price for the Active Month will be included. Days without settlement prices (weekends, holidays, or market closures) are ignored.\n\nThis market will resolve based on the settlement price as it appears on the CME settlement page at the time it is first published for that trading day, regardless of any later corrections or updates.\n\nThe resolution source for this market is the CME Group website — specifically, the daily \"Settlement\" price for the Active Month of Crude Oil (CL) futures.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  },
+  {
+    "slug": "cl-hit-jun-2026",
+    "id": "125877",
+    "title": "Will Crude Oil (CL) hit__ by end of June?",
+    "description": "This market will resolve to \"Yes\" if, on any trading day, the official CME settlement price for the Active Month (front month) of Crude Oil (CL) futures is equal to or above the listed price by the final trading day of June 2026. Otherwise, the market will resolve to \"No\".\n\nFor CME Crude Oil (CL) futures contracts, the active month is the nearest of the contract months listed. The active month becomes a non-active month effective two business days prior to the spot month expiration. For example; if the spot month expires on a Friday the next listed contract will be considered the Active Month on the Wednesday prior to the spot month expiration.\n\nOnly the Active Month's official settlement price published by CME Group will be considered. Intraday trades, highs, lows, bids, offers, midpoint values, or indicative prices do not count.\n\nNote that the settlement price may differ from the last traded price. CME's methodology to determine the settlement price can vary by commodity and contract.\n\nOnly days on which CME publishes an official settlement price for the Active Month will be included. Days without settlement prices (weekends, holidays, or market closures) are ignored.\n\nThis market will resolve based on the settlement price as it appears on the CME settlement page at the time it is first published for that trading day, regardless of any later corrections or updates.\n\nThe resolution source for this market is the CME Group website — specifically, the daily \"Settlement\" price for the Active Month of Crude Oil (CL) futures.",
+    "markets": [
+      {
+        "id": "12",
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "32257.445115",
+        "volumeNum": 32257.45,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "17",
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "89665.252158",
+        "volumeNum": 89665.25,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "18",
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "43279.456005",
+        "volumeNum": 43279.46,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "19",
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "22067.475119",
+        "volumeNum": 22067.48,
+        "liquidity": "0.179651",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "20",
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "116803.377183",
+        "volumeNum": 116803.38,
+        "liquidity": "0.367501",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "36",
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "59755.804763",
+        "volumeNum": 59755.8,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "40",
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "10802601.987023",
+        "volumeNum": 10802601.99,
+        "liquidity": "68.283267",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "42",
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "21881.05833",
+        "volumeNum": 21881.06,
+        "liquidity": "0",
+        "endDate": "2020-11-04T00:00:00Z"
+      },
+      {
+        "id": "43",
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "priceHistory": [],
+        "volume": "46944.579746",
+        "volumeNum": 46944.58,
+        "liquidity": "4.601742",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "44",
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "priceHistory": [],
+        "volume": "69947.098531",
+        "volumeNum": 69947.1,
+        "liquidity": "190.134841",
+        "endDate": "2020-11-17T00:00:00Z"
+      },
+      {
+        "id": "46",
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "31841.386373",
+        "volumeNum": 31841.39,
+        "liquidity": "0",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "47",
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "outcomes": [
+          "Dems",
+          "Reps"
+        ],
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "priceHistory": [],
+        "volume": "243053.252109",
+        "volumeNum": 243053.25,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "48",
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "outcomes": [
+          "Long",
+          "Short"
+        ],
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "priceHistory": [],
+        "volume": "72112.484035",
+        "volumeNum": 72112.48,
+        "liquidity": "1.937475",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "56",
+        "question": "Who will win the 2020 MLB World Series?",
+        "outcomes": [
+          "Rays",
+          "Dodgers"
+        ],
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "priceHistory": [],
+        "volume": "107601.586423",
+        "volumeNum": 107601.59,
+        "liquidity": "0",
+        "endDate": "2020-10-29T00:00:00Z"
+      },
+      {
+        "id": "57",
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "35661.941003",
+        "volumeNum": 35661.94,
+        "liquidity": "0",
+        "endDate": "2020-10-31T00:00:00Z"
+      },
+      {
+        "id": "59",
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "priceHistory": [],
+        "volume": "127476.154269",
+        "volumeNum": 127476.15,
+        "liquidity": "0.13149",
+        "endDate": "2021-01-02T00:00:00Z"
+      },
+      {
+        "id": "63",
+        "question": "Will BTC break $15k before 2021?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "224706.488667",
+        "volumeNum": 224706.49,
+        "liquidity": "0",
+        "endDate": "2021-01-01T00:00:00Z"
+      },
+      {
+        "id": "64",
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "17497.115264",
+        "volumeNum": 17497.12,
+        "liquidity": "0",
+        "endDate": "2020-10-25T00:00:00Z"
+      },
+      {
+        "id": "65",
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "outcomes": [
+          "Yes",
+          "No"
+        ],
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "priceHistory": [],
+        "volume": "81312.461764",
+        "volumeNum": 81312.46,
+        "liquidity": "0",
+        "endDate": "2020-11-20T00:00:00Z"
+      },
+      {
+        "id": "66",
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "outcomes": [
+          "Damwon",
+          "Suning"
+        ],
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "priceHistory": [],
+        "volume": "84205.451739",
+        "volumeNum": 84205.45,
+        "liquidity": "0",
+        "endDate": "2021-11-01T00:00:00Z"
+      }
+    ]
+  }
+]

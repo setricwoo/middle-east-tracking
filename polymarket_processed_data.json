@@ -1,0 +1,992 @@
+{
+  "trump-announces-end-of-military-operations-against-iran-by": {
+    "title": "Trump announces end of military operations against Iran by ...?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  },
+  "us-x-iran-ceasefire-by": {
+    "title": "US x Iran ceasefire by...?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  },
+  "avg-of-ships-transiting-strait-of-hormuz-end-of-march": {
+    "title": "Avg. # of ships transiting Strait of Hormuz end of March?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  },
+  "strait-of-hormuz-traffic-returns-to-normal-by-april-30": {
+    "title": "Strait of Hormuz traffic returns to normal by April 30?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  },
+  "will-crude-oil-cl-hit-by-end-of-march": {
+    "title": "Will Crude Oil (CL) hit__ by end of March?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  },
+  "cl-hit-jun-2026": {
+    "title": "Will Crude Oil (CL) hit__ by end of June?",
+    "markets": {
+      "Will Joe Biden get Coronavirus before the election": {
+        "question": "Will Joe Biden get Coronavirus before the election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Airbnb begin publicly trading before Jan 1, 2": {
+        "question": "Will Airbnb begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will a new Supreme Court Justice be confirmed befo": {
+        "question": "Will a new Supreme Court Justice be confirmed before Nov 3rd, 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Kim Kardashian and Kanye West divorce before ": {
+        "question": "Will Kim Kardashian and Kanye West divorce before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will Coinbase begin publicly trading before Jan 1,": {
+        "question": "Will Coinbase begin publicly trading before Jan 1, 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "What will the price of Bitcoin be on November 4th,": {
+        "question": "What will the price of Bitcoin be on November 4th, 2020?",
+        "currentPrices": {
+          "Long": 0.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Will Trump win the 2020 U.S. presidential election": {
+        "question": "Will Trump win the 2020 U.S. presidential election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will there be an Emergency Use Authorization (EUA)": {
+        "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "What will the total value locked (TVL) in DeFi be ": {
+        "question": "What will the total value locked (TVL) in DeFi be at the end of 2020, according to DefiPulse?",
+        "currentPrices": {
+          "Long": 58.43,
+          "Short": 41.57
+        },
+        "series": {}
+      },
+      "What will the USD price of Filecoin ($FIL) be on N": {
+        "question": "What will the USD price of Filecoin ($FIL) be on November 17th, 2020?",
+        "currentPrices": {
+          "Long": 49.89,
+          "Short": 50.11
+        },
+        "series": {}
+      },
+      "Will Drake release a new studio album before the e": {
+        "question": "Will Drake release a new studio album before the end of 2020?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Which party will win Florida in the 2020 president": {
+        "question": "Which party will win Florida in the 2020 presidential election?",
+        "currentPrices": {
+          "Dems": 0.0,
+          "Reps": 0.0
+        },
+        "series": {}
+      },
+      "How many confirmed Coronavirus cases will there be": {
+        "question": "How many confirmed Coronavirus cases will there be at EOY in the USA?",
+        "currentPrices": {
+          "Long": 100.0,
+          "Short": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 MLB World Series?": {
+        "question": "Who will win the 2020 MLB World Series?",
+        "currentPrices": {
+          "Rays": 0.0,
+          "Dodgers": 0.0
+        },
+        "series": {}
+      },
+      "Will Dharma’s Phase 1 Retroactive UNI Distribution": {
+        "question": "Will Dharma’s Phase 1 Retroactive UNI Distribution proposal pass?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will there be a federal charge filed against Hunte": {
+        "question": "Will there be a federal charge filed against Hunter Biden before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 100.0
+        },
+        "series": {}
+      },
+      "Will BTC break $15k before 2021?": {
+        "question": "Will BTC break $15k before 2021?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will Khabib win his UFC 254 Fight?": {
+        "question": "Will Khabib win his UFC 254 Fight?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Will 538 outperform The Economist in forecasting t": {
+        "question": "Will 538 outperform The Economist in forecasting the 2020 Presidential Election?",
+        "currentPrices": {
+          "Yes": 0.0,
+          "No": 0.0
+        },
+        "series": {}
+      },
+      "Who will win the 2020 League of Legends World Cham": {
+        "question": "Who will win the 2020 League of Legends World Championship?",
+        "currentPrices": {
+          "Damwon": 0.0,
+          "Suning": 0.0
+        },
+        "series": {}
+      }
+    }
+  }
+}
