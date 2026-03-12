@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - Polymarket预测市场</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+        
+        /* 头部导航 */
+        .header {
+            background: #fff;
+            padding: 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { font-size: 1.8rem; color: #1e40af; }
+        
+        .header h1 {
+            font-size: 1.3rem;
+            color: #1e40af;
+            font-weight: 600;
+        }
+        
+        .header-center {
+            display: flex;
+            gap: 4px;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 8px;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            color: #475569;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+        
+        .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
+        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 600; }
+        
+        .header-right {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: #f1f5f9;
+            padding: 6px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+        
+        .page-header h2 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        
+        .page-header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* 图表区域 */
+        .chart-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .chart-title {
+            font-size: 1.15rem;
+            color: #1e40af;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .chart-subtitle {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        
+        .chart-container {
+            height: 350px;
+            position: relative;
+        }
+        
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+        
+        @media (max-width: 900px) {
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 概率卡片 */
+        .prob-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .prob-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .prob-card .date {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        
+        .prob-card .value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e40af;
+        }
+        
+        .prob-card .value.high { color: #dc2626; }
+        .prob-card .value.medium { color: #f59e0b; }
+        .prob-card .value.low { color: #16a34a; }
+        
+        /* 数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 16px;
+        }
+        
+        .data-table th {
+            background: #f1f5f9;
+            padding: 10px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .data-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .data-table tr:hover {
+            background: #f8fafc;
+        }
+        
+        /* 数据来源 */
+        .data-source {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 12px;
+            font-style: italic;
+            text-align: right;
+        }
+        
+        /* 说明框 */
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #1e40af;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #64748b;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .header-main {
+                padding: 8px 10px;
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+            .header-icon { font-size: 1.4rem; }
+            .header h1 { font-size: 0.85rem; }
+            .header-center {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 6px;
+            }
+            .nav-btn {
+                padding: 6px 10px;
+                font-size: 0.75rem;
+            }
+            .container { padding: 12px; }
+            .chart-section { padding: 16px; }
+            .chart-container { height: 280px; }
+            .page-header { padding: 16px; }
+            .page-header h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <span class="header-icon">🌐</span>
+                <h1>【华泰固收】中东地缘跟踪</h1>
+            </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">🗺️ 海湾原油图谱</a>
+                <a href="briefing.html" class="nav-btn">📰 每日简报</a>
+                <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
+                <a href="news.html" class="nav-btn">🔴 实时新闻</a>
+                <a href="polymarket.html" class="nav-btn active">📊 预测市场</a>
+            </div>
+            <div class="header-right" id="updateTime">
+                更新时间: 2026年3月12日
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="page-header">
+            <h2>📊 Polymarket 伊朗相关事件预测</h2>
+            <p>基于去中心化预测市场的实时概率数据，反映市场对中东地缘政治事件的预期</p>
+        </div>
+        
+        <div class="info-box">
+            💡 <strong>数据说明：</strong>以下图表展示Polymarket预测市场上伊朗相关事件的发生概率。数据通过Gamma API实时获取，每30分钟自动更新。概率值代表市场参与者的集体智慧，可作为事件风险评估的参考指标。
+        </div>
+        
+        <!-- 图表1：特朗普结束军事行动 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">📢 特朗普宣布结束对伊朗军事行动</div>
+                    <div class="chart-subtitle">市场认为特朗普在指定日期前宣布结束对伊朗军事行动的概率</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="trumpEndChart"></canvas>
+            </div>
+            <div class="prob-cards" id="trumpEndCards">
+                <!-- 动态生成 -->
+            </div>
+        </div>
+        
+        <!-- 图表2：美伊停火 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div>
+                    <div class="chart-title">🕊️ 美国-伊朗停火协议</div>
+                    <div class="chart-subtitle">市场在指定日期前达成美伊官方停火协议的概率</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="ceasefireChart"></canvas>
+            </div>
+            <div class="prob-cards" id="ceasefireCards">
+                <!-- 动态生成 -->
+            </div>
+        </div>
+        
+        <div class="chart-row">
+            <!-- 图表3：霍尔木兹交通恢复 -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">🚢 霍尔木兹海峡交通恢复</div>
+                        <div class="chart-subtitle">4月30日前海峡交通恢复正常通行的概率</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="hormuzChart"></canvas>
+                </div>
+                <div class="prob-cards" id="hormuzCards">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+            
+            <!-- 图表4&5：原油价格 -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">🛢️ 原油价格预测 (WTI原油)</div>
+                        <div class="chart-subtitle">主要交易价格点的达成概率</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="oilChart"></canvas>
+                </div>
+                <div class="prob-cards" id="oilCards">
+                    <!-- 动态生成 -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 数据详情表格 -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <div class="chart-title">📋 主要市场当前概率详情</div>
+            </div>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>事件</th>
+                        <th>截止日期</th>
+                        <th>当前概率</th>
+                        <th>交易量</th>
+                        <th>趋势</th>
+                    </tr>
+                </thead>
+                <tbody id="detailsTable">
+                    <!-- 动态生成 -->
+                </tbody>
+            </table>
+            <div class="data-source">数据来源: Gamma API / Polymarket | 每30分钟自动更新</div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        数据来源：Polymarket 预测市场 (via Gamma API) | 仅供参考，不构成投资建议<br>
+        注：预测市场概率反映市场参与者的集体预期，不代表实际发生概率
+    </div>
+    
+    <script>
+        // ========== 数据加载与图表初始化 ==========
+        
+        // 模拟数据（实际应从API获取）
+        const mockData = {
+            trumpEnd: {
+                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
+                march31: [15, 18, 22, 25, 28],
+                april30: [25, 28, 32, 35, 38],
+                june30: [45, 48, 52, 55, 58],
+                current: { march31: 28, april30: 38, june30: 58 }
+            },
+            ceasefire: {
+                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
+                march31: [20, 22, 28, 30, 32],
+                april30: [35, 38, 45, 48, 50],
+                may31: [50, 53, 58, 60, 62],
+                june30: [60, 63, 68, 70, 72],
+                current: { march31: 32, april30: 50, may31: 62, june30: 72 }
+            },
+            hormuz: {
+                labels: ['3/1', '3/5', '3/10', '3/11', '3/12'],
+                probability: [55, 52, 48, 45, 42],
+                current: 42
+            },
+            oilMarch: {
+                labels: ['$70', '$75', '$80', '$85', '$90', '$100', '$110', '$120', '$130', '$150'],
+                probability: [100, 100, 100, 100, 100, 66, 42, 30, 18, 10],
+                volume: [0, 0, 0, 5800000, 0, 4700000, 2300000, 2270000, 840000, 3400000]
+            },
+            oilJune: {
+                labels: ['$70', '$80', '$100', '$120', '$150', '$180', '$200'],
+                probability: [98, 95, 78, 55, 35, 18, 12],
+                volume: [1200000, 850000, 3200000, 2100000, 1800000, 900000, 1100000]
+            }
+        };
+        
+        // 从本地JSON加载真实数据
+        async function loadRealData() {
+            try {
+                const response = await fetch('iran_events.json');
+                const data = await response.json();
+                return processEventsData(data);
+            } catch (e) {
+                console.log('使用模拟数据');
+                return mockData;
+            }
+        }
+        
+        // 处理事件数据
+        function processEventsData(data) {
+            const processed = { ...mockData };
+            
+            if (data && data.events) {
+                // 处理 US x Iran ceasefire 数据
+                const ceasefireEvent = data.events.find(e => 
+                    e.title && e.title.toLowerCase().includes('us x iran ceasefire')
+                );
+                if (ceasefireEvent) {
+                    const probs = {};
+                    ceasefireEvent.markets.forEach(m => {
+                        const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
+                        if (yesProb) {
+                            if (m.question.includes('March 31')) probs.march31 = yesProb.probability;
+                            if (m.question.includes('April 30')) probs.april30 = yesProb.probability;
+                            if (m.question.includes('May 31')) probs.may31 = yesProb.probability;
+                            if (m.question.includes('June 30')) probs.june30 = yesProb.probability;
+                        }
+                    });
+                    if (Object.keys(probs).length > 0) {
+                        processed.ceasefire.current = { ...processed.ceasefire.current, ...probs };
+                    }
+                }
+                
+                // 处理原油数据
+                const oilEvent = data.events.find(e => 
+                    e.title && e.title.toLowerCase().includes('crude oil')
+                );
+                if (oilEvent) {
+                    const oilData = { labels: [], probability: [], volume: [] };
+                    oilEvent.markets.forEach(m => {
+                        const yesProb = m.probabilities.find(p => p.outcome === 'Yes');
+                        if (yesProb && m.question.includes('HIGH')) {
+                            const priceMatch = m.question.match(/\$(\d+)/);
+                            if (priceMatch) {
+                                oilData.labels.push('$' + priceMatch[1]);
+                                oilData.probability.push(yesProb.probability);
+                                oilData.volume.push(Math.round(m.volumeNum / 10000));
+                            }
+                        }
+                    });
+                    if (oilData.labels.length > 0) {
+                        processed.oilMarch = oilData;
+                    }
+                }
+            }
+            
+            return processed;
+        }
+        
+        // 创建图表
+        async function initCharts() {
+            const data = await loadRealData();
+            
+            // 1. 特朗普结束军事行动图表
+            createLineChart('trumpEndChart', {
+                labels: data.trumpEnd.labels,
+                datasets: [
+                    { label: '3月31日', data: data.trumpEnd.march31, borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)' },
+                    { label: '4月30日', data: data.trumpEnd.april30, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)' },
+                    { label: '6月30日', data: data.trumpEnd.june30, borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)' }
+                ]
+            });
+            createProbCards('trumpEndCards', [
+                { date: '3月31日', value: data.trumpEnd.current.march31 },
+                { date: '4月30日', value: data.trumpEnd.current.april30 },
+                { date: '6月30日', value: data.trumpEnd.current.june30 }
+            ]);
+            
+            // 2. 美伊停火图表
+            createLineChart('ceasefireChart', {
+                labels: data.ceasefire.labels,
+                datasets: [
+                    { label: '3月31日', data: data.ceasefire.march31, borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)' },
+                    { label: '4月30日', data: data.ceasefire.april30, borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)' },
+                    { label: '5月31日', data: data.ceasefire.may31, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)' },
+                    { label: '6月30日', data: data.ceasefire.june30, borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)' }
+                ]
+            });
+            createProbCards('ceasefireCards', [
+                { date: '3月31日', value: data.ceasefire.current.march31 },
+                { date: '4月30日', value: data.ceasefire.current.april30 },
+                { date: '5月31日', value: data.ceasefire.current.may31 },
+                { date: '6月30日', value: data.ceasefire.current.june30 }
+            ]);
+            
+            // 3. 霍尔木兹交通恢复图表
+            createLineChart('hormuzChart', {
+                labels: data.hormuz.labels,
+                datasets: [
+                    { label: '交通恢复正常概率', data: data.hormuz.probability, borderColor: '#1e40af', backgroundColor: 'rgba(30, 64, 175, 0.1)', fill: true }
+                ]
+            }, { yAxisMax: 100 });
+            createProbCards('hormuzCards', [
+                { date: '4月30日前', value: data.hormuz.current }
+            ]);
+            
+            // 4&5. 原油价格图表
+            createBarChart('oilChart', {
+                labels: data.oilMarch.labels,
+                datasets: [
+                    { label: '3月底前达成概率', data: data.oilMarch.probability, backgroundColor: 'rgba(30, 64, 175, 0.7)' }
+                ]
+            });
+            
+            // 填充详情表格
+            fillDetailsTable(data);
+        }
+        
+        // 创建折线图
+        function createLineChart(canvasId, data, options = {}) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: options.yAxisMax || 100,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 创建柱状图
+        function createBarChart(canvasId, data) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + context.parsed.y + '%';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 100,
+                            ticks: { callback: function(value) { return value + '%'; } }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 创建概率卡片
+        function createProbCards(containerId, cards) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = cards.map(c => {
+                const valueClass = c.value >= 50 ? 'high' : c.value >= 25 ? 'medium' : 'low';
+                return `
+                    <div class="prob-card">
+                        <div class="date">${c.date}</div>
+                        <div class="value ${valueClass}">${c.value}%</div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // 填充详情表格
+        function fillDetailsTable(data) {
+            const tbody = document.getElementById('detailsTable');
+            const rows = [
+                { event: '特朗普宣布结束对伊朗军事行动', deadline: '3月31日', prob: data.trumpEnd.current.march31 + '%', volume: '$2.1M', trend: '↑' },
+                { event: '特朗普宣布结束对伊朗军事行动', deadline: '4月30日', prob: data.trumpEnd.current.april30 + '%', volume: '$1.8M', trend: '↑' },
+                { event: '特朗普宣布结束对伊朗军事行动', deadline: '6月30日', prob: data.trumpEnd.current.june30 + '%', volume: '$1.5M', trend: '→' },
+                { event: '美国-伊朗停火协议', deadline: '3月31日', prob: data.ceasefire.current.march31 + '%', volume: '$5.9M', trend: '↑' },
+                { event: '美国-伊朗停火协议', deadline: '4月30日', prob: data.ceasefire.current.april30 + '%', volume: '$1.9M', trend: '↑' },
+                { event: '美国-伊朗停火协议', deadline: '5月31日', prob: data.ceasefire.current.may31 + '%', volume: '$670K', trend: '→' },
+                { event: '美国-伊朗停火协议', deadline: '6月30日', prob: data.ceasefire.current.june30 + '%', volume: '$690K', trend: '→' },
+                { event: '霍尔木兹海峡交通恢复正常', deadline: '4月30日', prob: data.hormuz.current + '%', volume: '$1.2M', trend: '↓' },
+                { event: '原油(CL)触及$100', deadline: '3月31日', prob: '66%', volume: '$4.7M', trend: '↓' },
+                { event: '原油(CL)触及$150', deadline: '3月31日', prob: '10%', volume: '$3.4M', trend: '↑' }
+            ];
+            
+            tbody.innerHTML = rows.map(r => `
+                <tr>
+                    <td>${r.event}</td>
+                    <td>${r.deadline}</td>
+                    <td><strong>${r.prob}</strong></td>
+                    <td>${r.volume}</td>
+                    <td>${r.trend}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // 更新页面时间
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleString('zh-CN', { 
+                year: 'numeric', month: 'long', day: 'numeric', 
+                hour: '2-digit', minute: '2-digit' 
+            });
+            document.getElementById('updateTime').textContent = '更新时间: ' + timeStr;
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            updateTime();
+        });
+    </script>
+</body>
+</html>
