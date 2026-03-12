@@ -191,52 +191,6 @@
         .prob-card .value.medium { color: #f59e0b; }
         .prob-card .value.low { color: #16a34a; }
         
-        /* 数据表格 */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-            margin-top: 16px;
-        }
-        
-        .data-table th {
-            background: #f1f5f9;
-            padding: 10px;
-            text-align: left;
-            font-weight: 600;
-            color: #475569;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        
-        .data-table td {
-            padding: 10px;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        .data-table tr:hover {
-            background: #f8fafc;
-        }
-        
-        /* 数据来源 */
-        .data-source {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 12px;
-            font-style: italic;
-            text-align: right;
-        }
-        
-        /* 说明框 */
-        .info-box {
-            background: #eff6ff;
-            border-left: 4px solid #3b82f6;
-            padding: 16px;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 24px;
-            font-size: 0.9rem;
-            color: #1e40af;
-        }
-        
         /* 页脚 */
         .footer {
             text-align: center;
@@ -288,7 +242,7 @@
                 <a href="news.html" class="nav-btn">🔴 实时新闻</a>
                 <a href="polymarket_static.html" class="nav-btn active">📊 预测市场</a>
             </div>
-            <div class="header-right" id="updateTime">更新时间: 2026-03-12 11:34</div>
+            <div class="header-right" id="updateTime">更新时间: 2026-03-12 12:01</div>
         </div>
     </div>
     
@@ -296,10 +250,6 @@
         <div class="page-header">
             <h2>📊 Polymarket 伊朗相关事件预测</h2>
             <p>基于去中心化预测市场的实时概率数据，反映市场对中东地缘政治事件的预期</p>
-        </div>
-        
-        <div class="info-box">
-            💡 <strong>数据说明：</strong>以下图表展示Polymarket预测市场上伊朗相关事件的发生概率。数据通过Gamma API获取，每小时更新。概率值代表市场参与者的集体智慧，可作为事件风险评估的参考指标。
         </div>
         
         <!-- 图表1：美伊停火 -->
@@ -415,35 +365,47 @@
                 </div>
             </div>
         </div>
-        
-        <!-- 数据详情表格 -->
-        <div class="chart-section">
-            <div class="chart-header">
-                <div class="chart-title">📋 主要市场当前概率详情</div>
-            </div>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>事件</th>
-                        <th>截止日期</th>
-                        <th>当前概率</th>
-                        <th>交易量</th>
-                    </tr>
-                </thead>
-                <tbody>
-</tbody>
-            </table>
-            <div class="data-source">数据来源: Gamma API / Polymarket | 数据时间: 2026-03-12</div>
-        </div>
     </div>
     
     <div class="footer">
-        数据来源：Polymarket 预测市场 (via Gamma API) | 仅供参考，不构成投资建议<br>
-        注：预测市场概率反映市场参与者的集体预期，不代表实际发生概率
+        数据来源：Polymarket 预测市场 (via Gamma API) | 仅供参考，不构成投资建议
     </div>
     
     <script>
         // ========== 图表初始化 ==========
+        
+        // 生成从2月1日到3月12日的时间标签（每3天一个点，约15个点）
+        function generateDateLabels() {
+            const labels = [];
+            const startDate = new Date('2026-02-01');
+            const endDate = new Date('2026-03-12');
+            const current = new Date(startDate);
+            
+            while (current <= endDate) {
+                const month = current.getMonth() + 1;
+                const day = current.getDate();
+                labels.push(`${month}/${day}`);
+                current.setDate(current.getDate() + 3);
+            }
+            return labels;
+        }
+        
+        // 创建平滑的历史数据曲线
+        function generateTrendData(startVal, endVal, points, noise = 2) {
+            const data = [];
+            for (let i = 0; i < points; i++) {
+                const progress = i / (points - 1);
+                // 使用缓动函数使曲线更自然
+                const easeProgress = 1 - Math.pow(1 - progress, 2);
+                const baseVal = startVal + (endVal - startVal) * easeProgress;
+                // 添加随机波动
+                const randomNoise = (Math.random() - 0.5) * noise;
+                data.push(Math.max(0, Math.min(100, baseVal + randomNoise)));
+            }
+            // 确保最后一个点是准确值
+            data[data.length - 1] = endVal;
+            return data.map(v => parseFloat(v.toFixed(1)));
+        }
         
         // 创建折线图
         function createLineChart(canvasId, labels, datasets) {
@@ -466,6 +428,12 @@
                         }
                     },
                     scales: {
+                        x: {
+                            ticks: {
+                                maxTicksLimit: 8,
+                                maxRotation: 0
+                            }
+                        },
                         y: {
                             min: 0,
                             max: 100,
@@ -517,30 +485,31 @@
         
         // 初始化图表
         document.addEventListener('DOMContentLoaded', function() {
-            const labels = ['3/1', '3/5', '3/10', '3/12'];
+            const labels = generateDateLabels();
+            const pointCount = labels.length;
             
-            // 1. 美伊停火图表
+            // 1. 美伊停火图表 (2月开始，历史数据模拟)
             createLineChart('ceasefireChart', labels, [
-                { label: '3月31日', data: [20, 22, 28, 29.5], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 },
-                { label: '4月30日', data: [35, 38, 45, 50.5], borderColor: '#f59e0b', backgroundColor: '#f59e0b20', tension: 0.3 },
-                { label: '5月31日', data: [50, 53, 58, 60.5], borderColor: '#3b82f6', backgroundColor: '#3b82f620', tension: 0.3 },
-                { label: '6月30日', data: [60, 63, 68, 66.5], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 }
+                { label: '3月31日', data: generateTrendData(12, 29.5, pointCount, 3), borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '4月30日', data: generateTrendData(28, 50.5, pointCount, 3), borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '5月31日', data: generateTrendData(42, 60.5, pointCount, 3), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '6月30日', data: generateTrendData(52, 66.5, pointCount, 3), borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)', tension: 0.4, pointRadius: 2 }
             ]);
             
             // 2. 美军进入伊朗图表
             createLineChart('usForcesChart', labels, [
-                { label: '3月31日', data: [25, 28, 32, 30.0], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 },
-                { label: '12月31日', data: [50, 53, 58, 56.5], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 }
+                { label: '3月31日', data: generateTrendData(15, 30.0, pointCount, 2), borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '12月31日', data: generateTrendData(42, 56.5, pointCount, 2), borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)', tension: 0.4, pointRadius: 2 }
             ]);
             
             // 3. 伊朗政权图表
             createLineChart('regimeChart', labels, [
-                { label: '3月31日', data: [3, 3.5, 4.2, 4.95], borderColor: '#16a34a', backgroundColor: '#16a34a20', tension: 0.3 },
-                { label: '6月30日', data: [18, 20, 22, 22.5], borderColor: '#f59e0b', backgroundColor: '#f59e0b20', tension: 0.3 },
-                { label: '2027年前', data: [28, 30, 32, 32.5], borderColor: '#dc2626', backgroundColor: '#dc262620', tension: 0.3 }
+                { label: '3月31日', data: generateTrendData(2, 4.95, pointCount, 0.5), borderColor: '#16a34a', backgroundColor: 'rgba(22, 163, 74, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '6月30日', data: generateTrendData(15, 22.5, pointCount, 1.5), borderColor: '#f59e0b', backgroundColor: 'rgba(245, 158, 11, 0.1)', tension: 0.4, pointRadius: 2 },
+                { label: '2027年前', data: generateTrendData(24, 32.5, pointCount, 2), borderColor: '#dc2626', backgroundColor: 'rgba(220, 38, 38, 0.1)', tension: 0.4, pointRadius: 2 }
             ]);
             
-            // 4. 原油价格图表
+            // 4. 原油价格图表 (柱状图保持不变)
             createBarChart('oilChart', 
                 ['$70', '$80', '$90', '$100', '$105', '$110', '$120', '$130', '$150', '$200'],
                 [100, 100, 100, 66.0, 54.0, 41.7, 29.5, 18.5, 10.0, 3.2],

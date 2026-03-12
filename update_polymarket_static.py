@@ -212,86 +212,6 @@ def update_html(data):
         pattern = r'(<div class="prob-cards" id="oilCards">)(.*?)(</div>)'
         html = re.sub(pattern, f'\\1{cards_html}\\3', html, flags=re.DOTALL)
     
-    # 6. 更新详情表格
-    table_rows = []
-    
-    # 停火数据
-    if 'ceasefire' in data:
-        for key, label in [('march31', '3月31日'), ('april30', '4月30日'), 
-                          ('may31', '5月31日'), ('june30', '6月30日')]:
-            if key in data['ceasefire']:
-                item = data['ceasefire'][key]
-                table_rows.append({
-                    'event': '美伊停火协议',
-                    'date': label,
-                    'prob': item['prob'],
-                    'volume': format_volume(item['volume'])
-                })
-    
-    # 美军数据
-    if 'usforces' in data:
-        for key, label in [('march31', '3月31日'), ('dec31', '12月31日')]:
-            if key in data['usforces']:
-                item = data['usforces'][key]
-                table_rows.append({
-                    'event': '美军进入伊朗',
-                    'date': label,
-                    'prob': item['prob'],
-                    'volume': format_volume(item['volume'])
-                })
-    
-    # 政权数据
-    if 'regime' in data:
-        for key, label in [('march31', '3月31日'), ('june30', '6月30日'), ('y2027', '2027年前')]:
-            if key in data['regime']:
-                item = data['regime'][key]
-                table_rows.append({
-                    'event': '伊朗政权更迭',
-                    'date': label,
-                    'prob': item['prob'],
-                    'volume': format_volume(item['volume'])
-                })
-    
-    # 原油价格数据
-    if 'oil_march' in data:
-        for op in data['oil_march'][-5:]:  # 取最后5个
-            table_rows.append({
-                'event': f"原油触及${op['price']}",
-                'date': '3月31日',
-                'prob': op['prob'],
-                'volume': format_volume(op['volume'])
-            })
-    
-    # 生成表格HTML
-    table_html = '\n'.join([
-        f'''<tr>
-                        <td>{row['event']}</td>
-                        <td>{row['date']}</td>
-                        <td><strong>{row['prob']:.1f}%</strong></td>
-                        <td>{row['volume']}</td>
-                    </tr>''' for row in table_rows
-    ])
-    
-    pattern = r'(<table class="data-table">.*?<tbody>)(.*?)(</tbody>)'
-    html = re.sub(pattern, f'\\1\n{table_html}\\3', html, flags=re.DOTALL)
-    
-    # 7. 更新图表JS数据 - 停火
-    if 'ceasefire' in data:
-        cf = data['ceasefire']
-        chart_data = []
-        for key in ['march31', 'april30', 'may31', 'june30']:
-            if key in cf:
-                prob = cf[key]['prob']
-                # 模拟历史走势数据
-                trend = [prob * 0.7, prob * 0.8, prob * 0.95, prob]
-                chart_data.append(trend)
-            else:
-                chart_data.append([0, 0, 0, 0])
-        
-        # 更新JS中的数据
-        js_data_str = ', '.join([f"[{', '.join([str(v) for v in d])}]" for d in chart_data[:4]])
-        # 简化处理：替换createLineChart调用中的数据
-    
     # 保存文件
     try:
         with open(HTML_FILE, 'w', encoding='utf-8') as f:
@@ -313,26 +233,26 @@ def print_summary(data):
                           ('may31', '5月31日'), ('june30', '6月30日')]:
             if key in data['ceasefire']:
                 item = data['ceasefire'][key]
-                print(f"   {label}: {item['prob']:.1f}% (交易量: {format_volume(item['volume'])})")
+                print(f"   {label}: {item['prob']:.1f}%")
     
     if 'usforces' in data:
         print("\n[2] 美军进入伊朗:")
         for key, label in [('march31', '3月31日'), ('dec31', '12月31日')]:
             if key in data['usforces']:
                 item = data['usforces'][key]
-                print(f"   {label}: {item['prob']:.1f}% (交易量: {format_volume(item['volume'])})")
+                print(f"   {label}: {item['prob']:.1f}%")
     
     if 'regime' in data:
         print("\n[3] 伊朗政权更迭:")
         for key, label in [('march31', '3月31日'), ('june30', '6月30日'), ('y2027', '2027年前')]:
             if key in data['regime']:
                 item = data['regime'][key]
-                print(f"   {label}: {item['prob']:.1f}% (交易量: {format_volume(item['volume'])})")
+                print(f"   {label}: {item['prob']:.1f}%")
     
     if 'oil_march' in data:
         print("\n[4] 原油价格(3月底前):")
         for op in data['oil_march'][-4:]:  # 只显示最后4个
-            print(f"   ${op['price']}: {op['prob']:.1f}% (交易量: {format_volume(op['volume'])})")
+            print(f"   ${op['price']}: {op['prob']:.1f}%")
     
     print("\n" + "="*60)
 
