@@ -2247,3 +2247,9 @@ Everything up-to-date
 [2026-03-13 00:24:32] [执行] 更新Polymarket预测数据...
 [2026-03-13 00:29:17] [成功] Polymarket数据更新完成
 [2026-03-13 00:29:17] [执行] 推送到GitHub...
+[2026-03-13 00:30:09] [警告] GitHub推送可能失败: fatal: unable to access 'https://github.com/setricwoo/middle-east-tracking.git/': Recv failure: Connection was reset
+
+[2026-03-13 00:30:09] ============================================================
+[2026-03-13 00:30:09] 任务完成: 新闻(OK) | Polymarket(OK) | GitHub(FAIL)
+[2026-03-13 00:30:09] 下次执行时间: 20分钟后
+[2026-03-13 00:30:09] 
