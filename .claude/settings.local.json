@@ -4,7 +4,16 @@
       "WebSearch",
       "Bash(python screenshot_map.py)",
       "Bash(ls -la \"d:/python_code/海湾以来-最新/\"*.png)",
-      "Bash(python update_briefing.py)"
+      "Bash(python update_briefing.py)",
+      "Bash(curl -s -I \"https://gamma-api.polymarket.com/events?limit=1\")",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/markets/246663/prices\")",
+      "Bash(curl -s https://gamma-api.polymarket.com/events?slug=trump-announces-end-military-action-iran)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\(d[0][''''markets''''][0] if d and d[0].get\\(''''markets''''\\) else {}, indent=2\\)[:2000]\\)\")",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/events?search=trump+iran+military&active=true&limit=3\")",
+      "Bash(python3 -c \":*)",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/events?search=trump+iran+military&active=true&limit=1\")",
+      "Bash(cd /tmp)",
+      "Bash(curl -s \"https://gamma-api.polymarket.com/events?search=trump%20iran%20military&active=true&limit=1\" -o trump_event.json)"
     ]
   }
 }
