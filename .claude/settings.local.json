@@ -14,7 +14,8 @@
       "Bash(curl -s \"https://gamma-api.polymarket.com/events?search=trump+iran+military&active=true&limit=1\")",
       "Bash(cd /tmp)",
       "Bash(curl -s \"https://gamma-api.polymarket.com/events?search=trump%20iran%20military&active=true&limit=1\" -o trump_event.json)",
-      "Bash(python update_polymarket_static.py)"
+      "Bash(python update_polymarket_static.py)",
+      "Bash(python convert_theme.py)"
     ]
   }
 }
