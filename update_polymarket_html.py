@@ -227,7 +227,7 @@ def generate_html(data: Dict) -> str:
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="mb-8">
             <h1 class="text-3xl font-bold text-slate-800 mb-2">伊朗相关预测市场追踪</h1>
-            <p class="text-slate-500">基于 Polymarket 实时数据 | 更新时间: ''' + update_time + '''</p>
+            <p class="text-slate-500">基于 Polymarket 实时数据</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -322,7 +322,7 @@ def generate_event_card(event_data: Dict, title: str, subtitle: str,
         color = color_list[i % len(color_list)]
         prob_html += f'''            <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full" style="background-color: {color}"></div>
-                <span class="text-sm text-slate-300">{label}:</span>
+                <span class="text-sm text-slate-700">{label}:</span>
                 <span class="text-lg font-bold" style="color: {color}">{yes_price}%</span>
                 <span class="text-xs text-slate-500">({volume_str})</span>
             </div>\n'''
@@ -366,8 +366,8 @@ def generate_event_card(event_data: Dict, title: str, subtitle: str,
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
-                <h2 class="text-xl font-semibold text-white mb-1">{title}</h2>
-                <p class="text-sm text-slate-400 mb-4">{subtitle}</p>
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">{title}</h2>
+                <p class="text-sm text-slate-600 mb-4">{subtitle}</p>
 
                 {prob_html}
 
@@ -388,7 +388,7 @@ def generate_event_card(event_data: Dict, title: str, subtitle: str,
                         maintainAspectRatio: false,
                         interaction: {{ intersect: false, mode: 'index' }},
                         plugins: {{
-                            legend: {{ position: 'top', labels: {{ color: '#94a3b8', font: {{ size: 11 }} }} }}
+                            legend: {{ position: 'top', labels: {{ color: '#334155', font: {{ size: 11 }} }} }}
                         }},
                         scales: {{
                             x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
@@ -444,7 +444,7 @@ def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
         color = color_list[i % len(color_list)]
         prob_html += f'''            <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full" style="background-color: {color}"></div>
-                <span class="text-sm text-slate-300">{m["label"]}:</span>
+                <span class="text-sm text-slate-700">{m["label"]}:</span>
                 <span class="text-lg font-bold" style="color: {color}">{m["price"]}%</span>
             </div>\n'''
     prob_html += '        </div>\n'
@@ -481,8 +481,8 @@ def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
-                <h2 class="text-xl font-semibold text-white mb-1">3月霍尔木兹海峡船舶数量</h2>
-                <p class="text-sm text-slate-400 mb-4">平均每日通过船舶数量的概率分布 (Top 6)</p>
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">3月霍尔木兹海峡船舶数量</h2>
+                <p class="text-sm text-slate-600 mb-4">平均每日通过船舶数量的概率分布 (Top 6)</p>
 
                 {prob_html}
 
@@ -503,7 +503,7 @@ def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
                         maintainAspectRatio: false,
                         interaction: {{ intersect: false, mode: 'index' }},
                         plugins: {{
-                            legend: {{ position: 'top', labels: {{ color: '#94a3b8', font: {{ size: 11 }} }} }}
+                            legend: {{ position: 'top', labels: {{ color: '#334155', font: {{ size: 11 }} }} }}
                         }},
                         scales: {{
                             x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
@@ -536,17 +536,17 @@ def generate_simple_card(event_data: Dict, title: str, subtitle: str,
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
-                <h2 class="text-xl font-semibold text-white mb-1">{title}</h2>
-                <p class="text-sm text-slate-400 mb-4">{subtitle}</p>
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">{title}</h2>
+                <p class="text-sm text-slate-600 mb-4">{subtitle}</p>
 
                 <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div class="text-center p-4 bg-slate-800/50 rounded-lg">
+                    <div class="text-center p-4 bg-slate-100 rounded-lg border border-slate-200">
                         <div class="text-3xl font-bold" style="color: {color}">{yes_price}%</div>
-                        <div class="text-sm text-slate-400 mt-1">Yes</div>
+                        <div class="text-sm text-slate-500 mt-1">Yes</div>
                     </div>
-                    <div class="text-center p-4 bg-slate-800/50 rounded-lg">
-                        <div class="text-3xl font-bold text-slate-400">{no_price}%</div>
-                        <div class="text-sm text-slate-400 mt-1">No</div>
+                    <div class="text-center p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold text-slate-600">{no_price}%</div>
+                        <div class="text-sm text-slate-500 mt-1">No</div>
                     </div>
                 </div>
 
@@ -627,7 +627,7 @@ def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
         color = color_list[i % len(color_list)]
         prob_html += f'''            <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full" style="background-color: {color}"></div>
-                <span class="text-sm text-slate-300">{p["label"]}:</span>
+                <span class="text-sm text-slate-700">{p["label"]}:</span>
                 <span class="text-lg font-bold" style="color: {color}">{p["price"]}%</span>
             </div>\n'''
     prob_html += '        </div>\n'
@@ -664,8 +664,8 @@ def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
-                <h2 class="text-xl font-semibold text-white mb-1">{title}</h2>
-                <p class="text-sm text-slate-400 mb-4">{subtitle} (Top 6)</p>
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">{title}</h2>
+                <p class="text-sm text-slate-600 mb-4">{subtitle} (Top 6)</p>
 
                 {prob_html}
 
@@ -686,7 +686,7 @@ def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
                         maintainAspectRatio: false,
                         interaction: {{ intersect: false, mode: 'index' }},
                         plugins: {{
-                            legend: {{ position: 'top', labels: {{ color: '#94a3b8', font: {{ size: 11 }} }} }}
+                            legend: {{ position: 'top', labels: {{ color: '#334155', font: {{ size: 11 }} }} }}
                         }},
                         scales: {{
                             x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
