@@ -38,7 +38,8 @@
       "Bash(done)",
       "Bash(for f:*)",
       "Bash(do sed:*)",
-      "Bash(echo \"Updated $f\")"
+      "Bash(echo \"Updated $f\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" --max-time 15 \"https://gamma-api.polymarket.com/events?slug=trump-announces-end-of-military-operations-against-iran-by&_s=slug\" -H \"User-Agent: Mozilla/5.0\" -H \"Origin: https://polymarket.com\")"
     ]
   }
 }
