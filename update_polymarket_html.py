@@ -236,15 +236,23 @@ def generate_html(data: Dict) -> str:
         .header-right { font-size: 0.85rem; color: #64748b; }
         /* 手机端适配 */
         @media (max-width: 768px) {
-            .header-main { padding: 6px 8px; gap: 4px; }
-            .header-left { gap: 6px; }
-            .header-icon { font-size: 1.2rem; }
-            .header h1 { font-size: 0.75rem; }
-            .header-center { gap: 2px; padding: 2px; }
-            .nav-btn { padding: 4px 6px; font-size: 0.6rem; gap: 2px; }
+            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
+            .header-left { flex-shrink: 0; gap: 6px; }
+            .header-icon { font-size: 1.4rem; }
+            .header h1 { font-size: 0.85rem; white-space: nowrap; line-height: 1.2; }
+            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; padding: 0 4px; }
+            .nav-btn { padding: 4px 6px; font-size: 0.6rem; gap: 2px; white-space: nowrap; flex-shrink: 0; }
             .nav-btn span { display: none; }
-            .header-right { display: none; }
+            .header-right { font-size: 0.6rem; padding: 2px 6px; flex-shrink: 0; }
             .chart-container { height: 220px; }
+        }
+        @media (max-width: 480px) {
+            .header-main { padding: 6px 6px; gap: 4px; }
+            .header-icon { font-size: 1.2rem; }
+            .header h1 { font-size: 0.75rem; white-space: nowrap; }
+            .header-center { margin-top: 4px; gap: 2px; }
+            .nav-btn { padding: 4px 6px; font-size: 0.7rem; gap: 2px; }
+            .header-right { font-size: 0.55rem; padding: 2px 4px; }
         }
     </style>
 </head>
