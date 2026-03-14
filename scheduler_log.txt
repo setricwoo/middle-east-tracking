@@ -3692,3 +3692,16 @@ Everything up-to-date
 [2026-03-14 20:06:52] [执行] 更新Polymarket预测数据...
 [2026-03-14 20:11:53] [异常] Polymarket更新时发生错误: Command '['C:\\Users\\wujin\\AppData\\Local\\Programs\\Python\\Python314\\python.exe', 'update_polymarket_html.py']' timed out after 300 seconds
 [2026-03-14 20:11:53] [执行] 推送到GitHub...
+[2026-03-14 20:11:59] [成功] GitHub推送完成
+[2026-03-14 20:11:59] ============================================================
+[2026-03-14 20:11:59] 任务完成: 新闻(OK) | Polymarket(FAIL) | GitHub(OK)
+[2026-03-14 20:11:59] 下次执行时间: 20分钟后
+[2026-03-14 20:11:59] 
+[2026-03-14 20:32:00] ============================================================
+[2026-03-14 20:32:00] 【20分钟定时】执行新闻自动更新
+[2026-03-14 20:32:00] [执行] 更新实时新闻...
+[2026-03-14 20:32:39] [RESULT] existing=482 added=1 total=483
+[2026-03-14 20:32:39] [成功] 新闻更新完成
+[2026-03-14 20:32:39] [执行] 更新Polymarket预测数据...
+[2026-03-14 20:37:39] [异常] Polymarket更新时发生错误: Command '['C:\\Users\\wujin\\AppData\\Local\\Programs\\Python\\Python314\\python.exe', 'update_polymarket_html.py']' timed out after 300 seconds
+[2026-03-14 20:37:39] [执行] 推送到GitHub...
