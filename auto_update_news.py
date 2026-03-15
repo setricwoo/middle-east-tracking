@@ -104,12 +104,20 @@ def main():
         return False
     log_message("[成功] 变更已提交")
     
-    # 5. Git push（带重试）
+    # 5. Git pull --rebase（先同步远程更改）
+    log_message("[步骤5] 同步远程仓库...")
+    success, stdout, stderr = run_command("git pull --rebase origin main", timeout=60)
+    if not success:
+        log_message(f"[警告] 拉取远程更改失败: {stderr}，尝试继续推送...")
+    else:
+        log_message("[成功] 已同步远程更改")
+
+    # 6. Git push（带重试）
     max_retries = 3
     retry_delay = 300  # 5分钟后重试
-    
+
     for attempt in range(1, max_retries + 1):
-        log_message(f"[步骤5] 推送到GitHub (尝试 {attempt}/{max_retries})...")
+        log_message(f"[步骤6] 推送到GitHub (尝试 {attempt}/{max_retries})...")
         success, stdout, stderr = run_command("git push origin main", timeout=180)
         
         if success:
