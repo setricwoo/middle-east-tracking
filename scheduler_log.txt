@@ -4213,3 +4213,19 @@ hint
 [2026-03-15 10:56:16] [执行] 更新Polymarket预测数据...
 [2026-03-15 11:01:16] [异常] Polymarket更新时发生错误: Command '['C:\\Users\\wujin\\AppData\\Local\\Programs\\Python\\Python314\\python.exe', 'update_polymarket_html.py']' timed out after 300 seconds
 [2026-03-15 11:01:16] [执行] 推送到GitHub...
+[2026-03-15 11:01:20] [警告] GitHub推送可能失败: To https://github.com/setricwoo/middle-east-tracking.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/setricwoo/middle-east-tracking.git'
+hint
+[2026-03-15 11:01:20] ============================================================
+[2026-03-15 11:01:20] 任务完成: 新闻(OK) | Polymarket(FAIL) | GitHub(FAIL)
+[2026-03-15 11:01:20] 下次执行时间: 20分钟后
+[2026-03-15 11:01:20] 
+[2026-03-15 11:21:20] ============================================================
+[2026-03-15 11:21:20] 【20分钟定时】执行新闻自动更新
+[2026-03-15 11:21:20] [执行] 更新实时新闻...
+[2026-03-15 11:22:07] [RESULT] existing=501 added=1 total=502
+[2026-03-15 11:22:07] [成功] 新闻更新完成
+[2026-03-15 11:22:07] [执行] 更新Polymarket预测数据...
+[2026-03-15 11:26:32] [成功] Polymarket数据更新完成
+[2026-03-15 11:26:32] [执行] 推送到GitHub...
