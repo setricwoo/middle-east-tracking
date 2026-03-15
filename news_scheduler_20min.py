@@ -78,49 +78,89 @@ def run_polymarket_update():
         return False
 
 def run_git_push():
-    """推送到GitHub"""
+    """推送到GitHub，带重试机制"""
     log_message("[执行] 推送到GitHub...")
-    try:
-        # 先添加所有更改
-        add_result = subprocess.run(
-            ['git', 'add', '-A'],
-            capture_output=True,
-            text=True,
-            encoding='utf-8',
-            timeout=60
-        )
-        
-        # 提交更改
-        commit_result = subprocess.run(
-            ['git', 'commit', '-m', f'自动更新新闻: {datetime.now().strftime("%Y-%m-%d %H:%M")}'],
-            capture_output=True,
-            text=True,
-            encoding='utf-8',
-            timeout=60
-        )
-        
-        # 推送到GitHub
-        push_result = subprocess.run(
-            ['git', 'push', 'origin', 'main'],
-            capture_output=True,
-            text=True,
-            encoding='utf-8',
-            timeout=120
-        )
-        
-        if push_result.returncode == 0:
-            log_message("[成功] GitHub推送完成")
-            return True
-        else:
-            stderr = push_result.stderr if push_result.stderr else ""
-            if "nothing to commit" in stderr.lower() or "nothing to commit" in str(commit_result.stderr):
+    
+    max_retries = 3
+    retry_delay = 10  # 重试间隔秒数
+    
+    for attempt in range(1, max_retries + 1):
+        try:
+            # 先检查是否有更改需要提交
+            status_result = subprocess.run(
+                ['git', 'status', '--porcelain'],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                timeout=30
+            )
+            
+            if not status_result.stdout.strip():
                 log_message("[信息] 无新内容需要推送")
                 return True
-            log_message(f"[警告] GitHub推送可能失败: {stderr[:200]}")
-            return False
-    except Exception as e:
-        log_message(f"[异常] GitHub推送时发生错误: {e}")
-        return False
+            
+            # 先添加所有更改
+            add_result = subprocess.run(
+                ['git', 'add', '-A'],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                timeout=60
+            )
+            
+            # 提交更改
+            commit_result = subprocess.run(
+                ['git', 'commit', '-m', f'自动更新新闻: {datetime.now().strftime("%Y-%m-%d %H:%M")}'],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                timeout=60
+            )
+            
+            # 推送到GitHub
+            push_result = subprocess.run(
+                ['git', 'push', 'origin', 'main'],
+                capture_output=True,
+                text=True,
+                encoding='utf-8',
+                timeout=120
+            )
+            
+            if push_result.returncode == 0:
+                log_message("[成功] GitHub推送完成")
+                return True
+            else:
+                stderr = push_result.stderr if push_result.stderr else ""
+                if "nothing to commit" in stderr.lower():
+                    log_message("[信息] 无新内容需要推送")
+                    return True
+                
+                log_message(f"[警告] GitHub推送失败 (尝试 {attempt}/{max_retries}): {stderr[:150]}")
+                
+                if attempt < max_retries:
+                    log_message(f"[重试] 等待 {retry_delay} 秒后重试...")
+                    time.sleep(retry_delay)
+                else:
+                    log_message("[失败] 已达到最大重试次数，推送失败")
+                    return False
+                    
+        except subprocess.TimeoutExpired:
+            log_message(f"[警告] GitHub推送超时 (尝试 {attempt}/{max_retries})")
+            if attempt < max_retries:
+                log_message(f"[重试] 等待 {retry_delay} 秒后重试...")
+                time.sleep(retry_delay)
+            else:
+                log_message("[失败] 已达到最大重试次数，推送失败")
+                return False
+        except Exception as e:
+            log_message(f"[异常] GitHub推送时发生错误 (尝试 {attempt}/{max_retries}): {e}")
+            if attempt < max_retries:
+                log_message(f"[重试] 等待 {retry_delay} 秒后重试...")
+                time.sleep(retry_delay)
+            else:
+                return False
+    
+    return False
 
 def run_20min_update():
     """执行20分钟更新任务"""
