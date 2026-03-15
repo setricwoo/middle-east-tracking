@@ -108,7 +108,17 @@ def main():
     log_message("[步骤5] 同步远程仓库...")
     success, stdout, stderr = run_command("git pull --rebase origin main", timeout=60)
     if not success:
-        log_message(f"[警告] 拉取远程更改失败: {stderr}，尝试继续推送...")
+        log_message(f"[警告] 拉取远程更改失败: {stderr}")
+        # 如果有冲突，尝试中止rebase并强制使用我们的版本
+        log_message("[处理] 尝试中止rebase...")
+        run_command("git rebase --abort", timeout=30)
+        log_message("[处理] 使用force with lease推送...")
+        success, stdout, stderr = run_command("git push --force-with-lease origin main", timeout=180)
+        if success:
+            log_message("[成功] 已强制推送到GitHub!")
+            log_message("="*60)
+            return True
+        log_message("[警告] 强制推送也失败，尝试继续普通推送...")
     else:
         log_message("[成功] 已同步远程更改")
 
