@@ -47,24 +47,24 @@ COLORS = {
 }
 
 
-def get_event_by_slug(slug: str, max_retries: int = 3) -> Dict:
+def get_event_by_slug(slug: str, max_retries: int = 2) -> Dict:
     """通过slug获取事件数据，带重试机制"""
     url = f"{GAMMA_API}/events"
     params = {"slug": slug, "_s": "slug"}
 
     for attempt in range(max_retries):
         try:
-            time.sleep(1)  # 添加延迟避免限速
-            resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+            time.sleep(0.3)  # 减少延迟
+            resp = requests.get(url, params=params, headers=HEADERS, timeout=15)
             resp.raise_for_status()
             data = resp.json()
             if isinstance(data, list) and len(data) > 0:
                 event = data[0]
                 event_id = event.get("id")
                 if event_id:
-                    time.sleep(0.5)  # 详情请求前也延迟
+                    time.sleep(0.2)  # 减少延迟
                     detail_url = f"{GAMMA_API}/events/{event_id}"
-                    detail_resp = requests.get(detail_url, headers=HEADERS, timeout=30)
+                    detail_resp = requests.get(detail_url, headers=HEADERS, timeout=15)
                     if detail_resp.status_code == 200:
                         return detail_resp.json()
                 return event
@@ -72,33 +72,33 @@ def get_event_by_slug(slug: str, max_retries: int = 3) -> Dict:
         except Exception as e:
             if attempt < max_retries - 1:
                 print(f"  获取失败 {slug} (尝试 {attempt+1}/{max_retries}): {e}")
-                time.sleep(2)  # 失败后等待更长时间
+                time.sleep(1)  # 失败后等待
             else:
                 print(f"  获取事件失败 {slug}: {e}")
                 return {}
 
 
-def get_price_history(token_id: str, interval: str = "all", max_retries: int = 2) -> List[Dict]:
+def get_price_history(token_id: str, interval: str = "all", max_retries: int = 1) -> List[Dict]:
     """获取价格历史数据，带重试机制"""
     url = f"{CLOB_API}/prices-history"
     params = {"market": token_id, "interval": interval}
 
     for attempt in range(max_retries):
         try:
-            time.sleep(0.3)  # 添加小延迟
-            resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+            time.sleep(0.1)  # 减少延迟
+            resp = requests.get(url, params=params, headers=HEADERS, timeout=10)
             resp.raise_for_status()
             data = resp.json()
             return data.get("history", [])
         except:
             if attempt < max_retries - 1:
-                time.sleep(1)
+                time.sleep(0.5)
                 continue
             # 尝试其他interval
             for alt_interval in ["max", "1d"]:
                 try:
                     params["interval"] = alt_interval
-                    resp = requests.get(url, params=params, headers=HEADERS, timeout=30)
+                    resp = requests.get(url, params=params, headers=HEADERS, timeout=10)
                     if resp.status_code == 200:
                         data = resp.json()
                         return data.get("history", [])
@@ -187,7 +187,7 @@ def fetch_all_events_data() -> Dict:
                             })
                         except:
                             pass
-                    time.sleep(0.15)
+                    # 移除多余延迟
 
                 market_info["outcomes"][outcome_name] = {
                     "currentPrice": round(current_price * 100, 2),
