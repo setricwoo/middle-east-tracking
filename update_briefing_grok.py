@@ -109,7 +109,7 @@ def call_api(config, system_prompt, user_prompt):
             config["api_url"],
             headers=headers,
             json=payload,
-            timeout=120
+            timeout=180
         )
         
         if response.status_code != 200:
