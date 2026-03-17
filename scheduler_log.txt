@@ -6460,3 +6460,18 @@ hint
 [2026-03-18 04:57:40] [执行] 更新Polymarket预测数据...
 [2026-03-18 05:02:15] [成功] Polymarket数据更新完成
 [2026-03-18 05:02:15] [执行] 推送到GitHub...
+[2026-03-18 05:02:43] [警告] GitHub推送可能失败: To https://github.com/setricwoo/middle-east-tracking.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/setricwoo/middle-east-tracking.git'
+hint
+[2026-03-18 05:02:44] ============================================================
+[2026-03-18 05:02:44] 任务完成: 新闻(OK) | Polymarket(OK) | GitHub(FAIL)
+[2026-03-18 05:02:44] 下次执行时间: 20分钟后
+[2026-03-18 05:02:44] 
+[2026-03-18 05:22:45] ============================================================
+[2026-03-18 05:22:45] 【20分钟定时】执行新闻自动更新
+[2026-03-18 05:22:45] [执行] 更新实时新闻...
+[2026-03-18 05:25:51] [成功] 新闻更新完成
+[2026-03-18 05:25:51] [执行] 更新Polymarket预测数据...
+[2026-03-18 05:30:51] [异常] Polymarket更新时发生错误: Command '['C:\\Users\\wujin\\AppData\\Local\\Programs\\Python\\Python314\\python.exe', 'update_polymarket_html.py']' timed out after 300 seconds
+[2026-03-18 05:30:51] [执行] 推送到GitHub...
