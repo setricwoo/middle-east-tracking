@@ -5841,3 +5841,11 @@ hint
 [2026-03-17 09:03:46] [执行] 更新Polymarket预测数据...
 [2026-03-17 09:08:01] [成功] Polymarket数据更新完成
 [2026-03-17 09:08:01] [执行] 推送到GitHub...
+[2026-03-17 09:08:04] [警告] GitHub推送可能失败: To https://github.com/setricwoo/middle-east-tracking.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/setricwoo/middle-east-tracking.git'
+hint
+[2026-03-17 09:08:04] ============================================================
+[2026-03-17 09:08:04] 任务完成: 新闻(OK) | Polymarket(OK) | GitHub(FAIL)
+[2026-03-17 09:08:04] 下次执行时间: 20分钟后
+[2026-03-17 09:08:04] 
