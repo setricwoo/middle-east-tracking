@@ -42,13 +42,13 @@ def get_today_info():
         "blockade_day": (today - datetime(2026, 3, 2)).days + 1
     }
 
-def call_ai_api(system_prompt, user_prompt, max_retries=2):
-    """调用AI API"""
-    if not API_KEY:
-        print("[错误] 未设置AI_API_KEY环境变量")
+def call_kimi_api(system_prompt, user_prompt, max_retries=2):
+    """调用Kimi AI API"""
+    if not KIMI_API_KEY:
+        print("[错误] 未设置KIMI_API_KEY环境变量")
         return None
     
-    config = get_api_config()
+    config = get_kimi_config()
     headers = {
         "Authorization": f"Bearer {config['api_key']}",
         "Content-Type": "application/json"
@@ -108,7 +108,7 @@ def generate_gulf_news(country, info):
 请为{country}生成1条今天的能源设施相关新闻。
 新闻应涉及：石油设施、炼油厂、油田、港口、储油设施、生产情况等。"""
     
-    response = call_ai_api(system_prompt, user_prompt)
+    response = call_kimi_api(system_prompt, user_prompt)
     if response:
         try:
             # 提取JSON
@@ -269,14 +269,13 @@ def main():
     print(f"[信息] 冲突第 {info['conflict_day']} 天")
     print(f"[信息] 封锁第 {info['blockade_day']} 天")
     
-    if not API_KEY:
-        print("\n[错误] 未设置AI_APIKEY环境变量，无法使用AI生成新闻")
+    if not KIMI_API_KEY:
+        print("\n[错误] 未设置KIMI_API_KEY环境变量，无法使用AI生成新闻")
         print("[提示] 将使用简化版更新（仅更新时间和基础数据）")
-        # 回退到简化版
-        import subprocess
-        subprocess.run(["python", "update_gulf_map_simple.py"])
-        subprocess.run(["python", "update_hormuz_data.py"])
-        subprocess.run(["python", "update_briefing_simple.py"])
+        # 回退到简化版 - 仅更新时间和基础数据
+        update_hormuz_strait()  # 这个不依赖AI
+        # 简报使用已有的API配置
+        update_briefing()
         return
     
     # 使用AI API更新

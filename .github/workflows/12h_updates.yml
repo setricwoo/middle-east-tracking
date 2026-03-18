@@ -27,6 +27,11 @@ jobs:
         
     - name: Run full update with AI
       env:
+        # Kimi API配置（用于海湾图谱和霍尔木兹海峡）
+        KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+        KIMI_BASE_URL: ${{ secrets.KIMI_BASE_URL }}
+        KIMI_MODEL: ${{ secrets.KIMI_MODEL }}
+        # 简报API配置（update_briefing_grok.py使用）
         AI_API_KEY: ${{ secrets.AI_API_KEY }}
         AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
         AI_MODEL: ${{ secrets.AI_MODEL }}
