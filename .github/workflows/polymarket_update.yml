@@ -1,13 +1,13 @@
-name: Daily Briefing Update
+name: Polymarket Update (Every 20min)
 
 on:
   schedule:
-    # UTC 16:02 = Beijing 00:02
-    - cron: '2 16 * * *'
+    # 每20分钟运行一次
+    - cron: '*/20 * * * *'
   workflow_dispatch:
 
 jobs:
-  update-briefing:
+  update-polymarket:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -22,19 +22,17 @@ jobs:
         python-version: '3.11'
         
     - name: Install dependencies
-      run: pip install requests
+      run: |
+        pip install requests
         
-    - name: Run briefing update script
-      env:
-        AI_API_KEY: ${{ secrets.AI_API_KEY }}
-        AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
-        AI_MODEL: ${{ secrets.AI_MODEL }}
-      run: python update_briefing_grok.py
+    - name: Run Polymarket updater
+      run: python update_polymarket_html.py
+      timeout-minutes: 8
         
     - name: Commit and push changes
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add briefing.html briefing_data.json
-        git diff --staged --quiet || git commit -m "Update briefing $(date +'%Y-%m-%d')"
+        git add polymarket.html polymarket_data.json
+        git diff --staged --quiet || git commit -m "Update Polymarket $(date +'%Y-%m-%d %H:%M')"
         git push

@@ -1,0 +1,108 @@
+name: 12-Hour Updates (Gulf Map, Briefing, Hormuz)
+
+on:
+  schedule:
+    # 每12小时运行一次：UTC 00:00, 12:00 = 北京时间 08:00, 20:00
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-gulf-map:
+    name: Update Gulf Oil Map
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: pip install requests
+        
+    - name: Run Gulf Map updater
+      # 使用简化版更新脚本（不需要API调用）
+      run: python update_gulf_map_simple.py
+      timeout-minutes: 10
+        
+    - name: Commit Gulf Map changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add index.html
+        git diff --staged --quiet || git commit -m "Update Gulf Map $(date +'%Y-%m-%d %H:%M')"
+        git push
+
+  update-hormuz:
+    name: Update Hormuz Strait
+    runs-on: ubuntu-latest
+    needs: update-gulf-map
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: pip install requests
+        
+    - name: Update Hormuz data
+      # 更新历史.csv和tracking.html
+      run: python update_hormuz_data.py
+      timeout-minutes: 10
+        
+    - name: Commit Hormuz changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add tracking.html 历史.csv
+        git diff --staged --quiet || git commit -m "Update Hormuz $(date +'%Y-%m-%d %H:%M')"
+        git push
+
+  update-briefing:
+    name: Update Daily Briefing
+    runs-on: ubuntu-latest
+    needs: update-hormuz
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: pip install requests
+        
+    - name: Run briefing update
+      env:
+        AI_API_KEY: ${{ secrets.AI_API_KEY }}
+        AI_BASE_URL: ${{ secrets.AI_BASE_URL }}
+        AI_MODEL: ${{ secrets.AI_MODEL }}
+      # 先尝试API版本，如果失败则使用简化版
+      run: |
+        timeout 180 python update_briefing_grok.py || python update_briefing_simple.py
+      timeout-minutes: 8
+        
+    - name: Commit briefing changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add briefing.html briefing_data.json briefing_content.json
+        git diff --staged --quiet || git commit -m "Update briefing $(date +'%Y-%m-%d %H:%M')"
+        git push
