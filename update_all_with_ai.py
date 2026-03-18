@@ -13,16 +13,22 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 # API配置 - 从环境变量读取
-API_KEY = os.environ.get("AI_API_KEY")
-BASE_URL = os.environ.get("AI_BASE_URL", "https://api.vectorengine.ai/v1")
-MODEL = os.environ.get("AI_MODEL", "grok-4.2")
+# 海湾原油图谱和霍尔木兹海峡使用Kimi API
+KIMI_API_KEY = os.environ.get("KIMI_API_KEY")
+KIMI_BASE_URL = os.environ.get("KIMI_BASE_URL", "https://api.moonshot.cn/v1")
+KIMI_MODEL = os.environ.get("KIMI_MODEL", "kimi-latest")  # 或 kimi-k2
 
-def get_api_config():
-    """获取API配置"""
+# 冲突每日简报使用原有的AI_API_KEY配置（update_briefing_grok.py中已配置）
+BRIEFING_API_KEY = os.environ.get("AI_API_KEY")
+BRIEFING_BASE_URL = os.environ.get("AI_BASE_URL", "https://api.vectorengine.ai/v1")
+BRIEFING_MODEL = os.environ.get("AI_MODEL", "grok-4.2")
+
+def get_kimi_config():
+    """获取Kimi API配置（用于海湾图谱和霍尔木兹海峡）"""
     return {
-        "api_key": API_KEY,
-        "api_url": f"{BASE_URL}/chat/completions",
-        "model": MODEL
+        "api_key": KIMI_API_KEY,
+        "api_url": f"{KIMI_BASE_URL}/chat/completions",
+        "model": KIMI_MODEL
     }
 
 def get_today_info():
