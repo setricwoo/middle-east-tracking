@@ -32,11 +32,24 @@ jobs:
     - name: Run Polymarket updater
       run: python update_polymarket_html.py
       timeout-minutes: 8
+      continue-on-error: true
+        
+    - name: Check if files changed
+      id: check_changes
+      run: |
+        if git diff --quiet HEAD -- polymarket.html polymarket_data.json; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+          echo "No changes detected"
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+          echo "Changes detected"
+        fi
         
     - name: Commit and push changes
+      if: steps.check_changes.outputs.changed == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add polymarket.html polymarket_data.json
-        git diff --staged --quiet || git commit -m "Update Polymarket $(date +'%Y-%m-%d %H:%M')"
+        git commit -m "Update Polymarket $(date +'%Y-%m-%d %H:%M')"
         git push

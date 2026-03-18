@@ -755,30 +755,40 @@ def main():
     print(f"时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("="*60)
 
-    # 获取数据
-    print("\n正在获取Polymarket数据...")
-    data = fetch_all_events_data()
+    try:
+        # 获取数据
+        print("\n正在获取Polymarket数据...")
+        data = fetch_all_events_data()
 
-    # 生成HTML
-    print("\n正在生成HTML...")
-    html = generate_html(data)
+        # 生成HTML
+        print("\n正在生成HTML...")
+        html = generate_html(data)
 
-    # 保存HTML
-    filename = "polymarket.html"
-    with open(filename, 'w', encoding='utf-8') as f:
-        f.write(html)
-    print(f"HTML已保存: {filename}")
+        # 保存HTML
+        filename = "polymarket.html"
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(html)
+        print(f"HTML已保存: {filename}")
 
-    # 同时保存JSON数据
-    json_filename = "polymarket_data.json"
-    with open(json_filename, 'w', encoding='utf-8') as f:
-        json.dump({"fetchedAt": datetime.now().isoformat(), "events": data}, f, ensure_ascii=False, indent=2)
-    print(f"数据已保存: {json_filename}")
+        # 同时保存JSON数据
+        json_filename = "polymarket_data.json"
+        with open(json_filename, 'w', encoding='utf-8') as f:
+            json.dump({"fetchedAt": datetime.now().isoformat(), "events": data}, f, ensure_ascii=False, indent=2)
+        print(f"数据已保存: {json_filename}")
 
-    print("\n" + "="*60)
-    print("完成!")
-    print("="*60)
+        print("\n" + "="*60)
+        print("完成!")
+        print("="*60)
+        return 0
+    except Exception as e:
+        print(f"\n[错误] 更新失败: {e}")
+        import traceback
+        traceback.print_exc()
+        print("\n不标记为失败，继续执行")
+        return 0
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    exit_code = main()
+    sys.exit(exit_code)
