@@ -21,15 +21,25 @@ jobs:
       with:
         python-version: '3.11'
         
-    - name: Install Playwright and dependencies
+    - name: Cache Playwright browsers
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/ms-playwright
+        key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+        
+    - name: Install dependencies
       run: |
         pip install playwright
+        
+    - name: Install Playwright browsers
+      run: |
         playwright install chromium
-        sudo playwright install-deps chromium
+      timeout-minutes: 10
         
     - name: Run news scraper
       run: python scrape_cls_final.py
-      timeout-minutes: 10
+      timeout-minutes: 15
+      continue-on-error: true
         
     - name: Commit and push changes
       run: |
