@@ -6,6 +6,10 @@ on:
     - cron: '0 0,12 * * *'
   workflow_dispatch:
 
+env:
+  # 使用Node.js 24避免弃用警告
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   full-update:
     name: Full Update with AI

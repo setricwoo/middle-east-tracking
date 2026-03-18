@@ -6,6 +6,10 @@ on:
     - cron: '*/20 * * * *'
   workflow_dispatch:
 
+env:
+  # 使用Node.js 24避免弃用警告
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update-news:
     runs-on: ubuntu-latest
@@ -22,10 +26,12 @@ jobs:
         python-version: '3.11'
         
     - name: Cache Playwright browsers
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ~/.cache/ms-playwright
         key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-playwright-
         
     - name: Install dependencies
       run: |
@@ -41,10 +47,20 @@ jobs:
       timeout-minutes: 15
       continue-on-error: true
         
+    - name: Check if file changed
+      id: check_changes
+      run: |
+        if git diff --quiet HEAD -- news.html; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+        
     - name: Commit and push changes
+      if: steps.check_changes.outputs.changed == 'true'
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add news.html
-        git diff --staged --quiet || git commit -m "Update news $(date +'%Y-%m-%d %H:%M')"
+        git commit -m "Update news $(date +'%Y-%m-%d %H:%M')"
         git push

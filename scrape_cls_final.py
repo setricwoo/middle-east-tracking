@@ -170,10 +170,13 @@ def scrape_news():
             return news_list
             
         except Exception as e:
-            print(f"[错误] {e}")
+            print(f"[错误] 爬取过程出错: {e}")
             import traceback
             traceback.print_exc()
-            browser.close()
+            try:
+                browser.close()
+            except:
+                pass
             return []
 
 def extract_summary(parent, title):
@@ -288,16 +291,23 @@ def main():
     print(f"财联社新闻爬虫 - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("="*50)
     
-    news_list = scrape_news()
-    if news_list:
-        existing, added, total = update_html(news_list)
-        print(f"\n[RESULT] existing={existing} added={added} total={total}")
-        print("\n完成!")
-        return existing, added, total
-    else:
-        print("\n未能获取新闻")
-        # 返回0而不是失败，这样GitHub Actions不会报错
-        return 0, 0, 0
+    try:
+        news_list = scrape_news()
+        if news_list:
+            existing, added, total = update_html(news_list)
+            print(f"\n[RESULT] existing={existing} added={added} total={total}")
+            print("\n完成!")
+            return 0
+        else:
+            print("\n未能获取新闻，但不标记为失败")
+            return 0
+    except Exception as e:
+        print(f"\n[错误] 发生异常: {e}")
+        import traceback
+        traceback.print_exc()
+        print("\n不标记为失败，继续执行")
+        return 0
 
 if __name__ == "__main__":
-    main()
+    exit_code = main()
+    sys.exit(exit_code)
