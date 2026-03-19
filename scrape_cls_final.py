@@ -44,9 +44,15 @@ def try_api_fetch():
                         if not time_str:
                             continue
                             
-                        # 转换时间格式
+                        # 转换时间格式（统一转换为北京时间）
                         try:
-                            dt = datetime.fromtimestamp(int(time_str)) if time_str.isdigit() else datetime.strptime(time_str, '%Y-%m-%d %H:%M')
+                            beijing_tz = ZoneInfo("Asia/Shanghai")
+                            if time_str.isdigit():
+                                # 时间戳转换为北京时间
+                                dt = datetime.fromtimestamp(int(time_str), tz=beijing_tz)
+                            else:
+                                # 字符串时间直接解析为北京时间
+                                dt = datetime.strptime(time_str, '%Y-%m-%d %H:%M').replace(tzinfo=beijing_tz)
                             time_formatted = dt.strftime('%Y-%m-%d %H:%M')
                         except:
                             time_formatted = time_str
@@ -403,8 +409,9 @@ def update_html(news_list):
     return existing_count, added_count, total_count
 
 def main():
+    beijing_tz = ZoneInfo("Asia/Shanghai")
     print("="*50)
-    print(f"财联社新闻爬虫 - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print(f"财联社新闻爬虫 - {datetime.now(beijing_tz).strftime('%Y-%m-%d %H:%M')}")
     print("="*50)
     
     try:

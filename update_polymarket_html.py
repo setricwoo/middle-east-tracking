@@ -180,7 +180,8 @@ def fetch_all_events_data() -> Dict:
                         try:
                             ts = h.get("t", 0)
                             price = h.get("p", 0)
-                            dt = datetime.fromtimestamp(ts)
+                            beijing_tz = ZoneInfo("Asia/Shanghai")
+                            dt = datetime.fromtimestamp(ts, tz=beijing_tz)
                             price_history.append({
                                 "time": dt.strftime('%m-%d %H:%M'),
                                 "timestamp": ts,
@@ -207,7 +208,8 @@ def fetch_all_events_data() -> Dict:
 
 def generate_html(data: Dict) -> str:
     """生成完整的HTML页面"""
-    update_time = datetime.now().strftime('%Y-%m-%d %H:%M')
+    beijing_tz = ZoneInfo("Asia/Shanghai")
+    update_time = datetime.now(beijing_tz).strftime('%Y-%m-%d %H:%M')
 
     html = '''<!DOCTYPE html>
 <html lang="zh-CN">
