@@ -10,6 +10,7 @@ import time
 import re
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from typing import Dict, List, Any
 
 # Polymarket APIs
@@ -270,7 +271,7 @@ def generate_html(data: Dict) -> str:
                 <a href="news.html" class="nav-btn">🔴 <span>实时新闻</span></a>
                 <a href="polymarket.html" class="nav-btn active">📈 <span>Polymarket</span></a>
             </div>
-            <div class="header-right">更新时间: ''' + datetime.now().strftime('%Y年%m-%d') + '''</div>
+            <div class="header-right">更新时间: ''' + datetime.now(ZoneInfo("Asia/Shanghai")).strftime('%Y年%m月%d日 %H:%M') + '''</div>
         </div>
     </nav>
 

@@ -7,6 +7,7 @@ import json
 import re
 import sys
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 import requests
 
 def try_api_fetch():
@@ -385,9 +386,10 @@ def update_html(news_list):
     news_json = json.dumps(merged_news, ensure_ascii=False, indent=4)
     content = re.sub(r'const CLS_NEWS_DATA = \[.*?\];', f'const CLS_NEWS_DATA = {news_json};', content, flags=re.DOTALL)
     
-    # 更新右上角时间戳（使用UTC时间，并添加时区标识）
-    current_date = datetime.now().strftime('%Y年%m月%d日')
-    current_time_full = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # 更新右上角时间戳（使用北京时间）
+    beijing_tz = ZoneInfo("Asia/Shanghai")
+    current_date = datetime.now(beijing_tz).strftime('%Y年%m月%d日')
+    current_time_full = datetime.now(beijing_tz).strftime('%Y-%m-%d %H:%M:%S')
     
     # 尝试匹配不同格式的时间戳
     content = re.sub(r'更新时间: \d{4}年\d{1,2}月\d{1,2}日', f'更新时间: {current_date}', content)
@@ -396,7 +398,7 @@ def update_html(news_list):
         f.write(content)
     
     print(f"\n[统计] 原有: {existing_count} 条 | 新增: {added_count} 条 | 现有: {total_count} 条")
-    print(f"[时间戳] 已更新为: {current_date} ({current_time_full} UTC)")
+    print(f"[时间戳] 已更新为: {current_date} ({current_time_full} 北京时间)")
     print(f"[文件已写入] news.html")
     return existing_count, added_count, total_count
 
