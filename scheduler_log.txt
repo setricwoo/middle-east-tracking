@@ -7126,3 +7126,7 @@ error: failed to push some refs to 'https://g
  ! [rejected]        main -> main (fetch first)
 error: failed to push some refs to 'https://g
 [2026-03-19 14:23:16] [重试] 等待 10 秒后重试...
+[2026-03-19 14:23:29] [警告] GitHub推送失败 (尝试 2/3): To https://github.com/setricwoo/middle-east-tracking.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://g
+[2026-03-19 14:23:29] [重试] 等待 10 秒后重试...
