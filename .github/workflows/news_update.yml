@@ -35,7 +35,7 @@ jobs:
         
     - name: Install dependencies
       run: |
-        pip install playwright
+        pip install playwright requests
         
     - name: Install Playwright browsers
       run: |
