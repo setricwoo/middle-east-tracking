@@ -9,6 +9,8 @@ on:
 env:
   # 使用Node.js 24避免弃用警告
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  # 设置北京时区
+  TZ: Asia/Shanghai
 
 jobs:
   full-update:
