@@ -48,25 +48,3 @@
 | 实时新闻 | news.html | 财联社中东冲突专题新闻 | 爬虫自动抓取 |
 | Polymarket | polymarket.html | 预测市场概率追踪 | Polymarket API |
 
-## 技术栈
-
-- **前端**：原生HTML + CSS + JavaScript
-- **地图**：Leaflet.js (index.html, tracking.html)
-- **图表**：Chart.js (tracking.html, polymarket.html)
-- **CSS框架**：Tailwind CSS (polymarket.html)
-- **字体**：Segoe UI / Inter
-
-## 自动化更新
-
-- **每20分钟**：新闻爬取(scrape_cls_final.py)、Polymarket更新(update_polymarket_html.py)
-- **每12小时**：AI生成简报(update_briefing_grok.py)、地图内容更新(update_all_with_ai.py)
-
----
-
-## 各页面详细提示词
-
-- [01-海湾原油图谱.md](./01-海湾原油图谱.md)
-- [02-美以伊冲突每日简报.md](./02-美以伊冲突每日简报.md)
-- [03-霍尔木兹海峡跟踪.md](./03-霍尔木兹海峡跟踪.md)
-- [04-实时新闻.md](./04-实时新闻.md)
-- [05-Polymarket预测市场.md](./05-Polymarket预测市场.md)
