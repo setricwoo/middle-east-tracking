@@ -7,10 +7,80 @@ import json
 import re
 import sys
 from datetime import datetime, timedelta
+import requests
+
+def try_api_fetch():
+    """尝试通过API获取新闻数据"""
+    try:
+        # 财联社API端点（通过网页分析得到）
+        url = "https://www.cls.cn/v3/SubjectHomeArticles"
+        params = {
+            "subjectId": "10986",
+            "page": "1",
+            "size": "50"
+        }
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Referer': 'https://www.cls.cn/subject/10986',
+            'Accept': 'application/json'
+        }
+        
+        print(f"请求API: {url}")
+        response = requests.get(url, params=params, headers=headers, timeout=15)
+        print(f"响应状态: {response.status_code}")
+        
+        if response.status_code == 200:
+            data = response.json()
+            if data.get('code') == 200 and data.get('data', {}).get('articles'):
+                articles = data['data']['articles']
+                news_list = []
+                for item in articles:
+                    try:
+                        title = item.get('title', '')
+                        content = item.get('content', '')
+                        # 提取时间
+                        time_str = item.get('time', '')
+                        if not time_str:
+                            continue
+                            
+                        # 转换时间格式
+                        try:
+                            dt = datetime.fromtimestamp(int(time_str)) if time_str.isdigit() else datetime.strptime(time_str, '%Y-%m-%d %H:%M')
+                            time_formatted = dt.strftime('%Y-%m-%d %H:%M')
+                        except:
+                            time_formatted = time_str
+                        
+                        news_list.append({
+                            'id': str(len(news_list) + 1),
+                            'title': title[:120],
+                            'summary': content[:500] if content else title[:500],
+                            'time': time_formatted,
+                            'url': f"https://www.cls.cn/detail/{item.get('id', '')}",
+                            'category': categorize(title)
+                        })
+                    except Exception as e:
+                        continue
+                
+                if news_list:
+                    print(f"API获取成功: {len(news_list)} 条")
+                    return news_list
+    except Exception as e:
+        print(f"API获取失败: {e}")
+    
+    return None
 
 def scrape_news():
     """爬取财联社新闻"""
     print("开始爬取财联社新闻...")
+    
+    # 首先尝试直接通过HTTP请求获取API数据（更快，更少依赖浏览器）
+    print("尝试通过API获取新闻...")
+    api_news = try_api_fetch()
+    if api_news:
+        print(f"API获取成功，共 {len(api_news)} 条新闻")
+        return api_news
+    
+    print("API获取失败，使用Playwright浏览器抓取...")
     
     with sync_playwright() as p:
         # 启动浏览器，增加更多参数避免检测
@@ -22,15 +92,22 @@ def scrape_news():
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         )
         page = context.new_page()
-        page.set_default_timeout(30000)  # 增加到30秒
+        page.set_default_timeout(60000)  # 增加到60秒
         
         try:
             # 访问页面
             print("正在访问 https://www.cls.cn/subject/10986")
-            page.goto("https://www.cls.cn/subject/10986", wait_until="networkidle", timeout=30000)
-            page.wait_for_timeout(3000)
+            page.goto("https://www.cls.cn/subject/10986", wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_timeout(5000)
             
             print(f"页面标题: {page.title()}")
+            
+            # 截图保存用于调试
+            try:
+                page.screenshot(path='debug_screenshot.png', full_page=True)
+                print("已保存调试截图: debug_screenshot.png")
+            except Exception as e:
+                print(f"截图失败: {e}")
             
             # 检查页面是否加载成功
             if "中东冲突" not in page.title() and "财联社" not in page.title():
@@ -277,13 +354,19 @@ def update_html(news_list):
     with open('news.html', 'r', encoding='utf-8') as f:
         content = f.read()
     
+    # 更新新闻数据
     news_json = json.dumps(merged_news, ensure_ascii=False, indent=4)
     content = re.sub(r'const CLS_NEWS_DATA = \[.*?\];', f'const CLS_NEWS_DATA = {news_json};', content, flags=re.DOTALL)
+    
+    # 更新右上角时间戳
+    current_date = datetime.now().strftime('%Y年%m月%d日')
+    content = re.sub(r'更新时间: \d{4}年\d{1,2}月\d{1,2}日', f'更新时间: {current_date}', content)
     
     with open('news.html', 'w', encoding='utf-8') as f:
         f.write(content)
     
     print(f"\n[统计] 原有: {existing_count} 条 | 新增: {added_count} 条 | 现有: {total_count} 条")
+    print(f"[时间戳] 已更新为: {current_date}")
     return existing_count, added_count, total_count
 
 def main():
