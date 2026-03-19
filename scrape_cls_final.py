@@ -177,12 +177,16 @@ def scrape_news():
             time_elements = page.query_selector_all('[class*="time"], [class*="999"], time')
             print(f"找到 {len(time_elements)} 个时间元素")
             
-            for time_el in time_elements[:100]:  # 限制处理数量
+            for time_el in time_elements[:200]:  # 增加处理数量
                 try:
-                    time_text = time_el.inner_text()
+                    time_text = time_el.inner_text().strip()
                     
-                    # 检查是否是有效的时间格式
-                    if not re.search(r'\d{4}-\d{2}-\d{2}', time_text):
+                    # 跳过空文本
+                    if not time_text:
+                        continue
+                    
+                    # 检查是否包含时间格式 (更宽松的检查)
+                    if not re.search(r'\d{1,4}[/-]\d{1,2}[/-]\d{1,2}|\d{1,2}:\d{2}', time_text):
                         continue
                     
                     time_str = extract_time(time_text)
@@ -232,7 +236,8 @@ def scrape_news():
                         'category': categorize(title)
                     })
                     
-                    if len(news_list) >= 100:
+                    if len(news_list) >= 200:
+                        print("  达到新闻数量上限(200条)，停止提取")
                         break
                         
                 except Exception as e:
@@ -295,11 +300,33 @@ def clean_cls_prefix(text):
     return re.sub(pattern, '', text.strip())
 
 def extract_time(text):
-    """提取时间"""
+    """提取时间 - 支持多种格式"""
     if not text:
         return ''
+    
+    # 格式1: 2026-03-19 08:47
     match = re.search(r'(\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2})', text)
-    return match.group(1) if match else ''
+    if match:
+        return match.group(1)
+    
+    # 格式2: 03-19 08:47 (没有年份，假设为当前年)
+    match = re.search(r'(\d{2}-\d{2}\s+\d{2}:\d{2})', text)
+    if match:
+        current_year = datetime.now().year
+        return f"{current_year}-{match.group(1)}"
+    
+    # 格式3: 2026/03/19 08:47 (使用斜杠)
+    match = re.search(r'(\d{4}/\d{2}/\d{2}\s+\d{2}:\d{2})', text)
+    if match:
+        return match.group(1).replace('/', '-')
+    
+    # 格式4: 03/19 08:47 (使用斜杠，没有年份)
+    match = re.search(r'(\d{2}/\d{2}\s+\d{2}:\d{2})', text)
+    if match:
+        current_year = datetime.now().year
+        return f"{current_year}-{match.group(1).replace('/', '-')}"
+    
+    return ''
 
 def categorize(text):
     """分类新闻"""
