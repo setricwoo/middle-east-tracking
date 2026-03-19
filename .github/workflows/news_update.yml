@@ -2,8 +2,10 @@ name: News Update (Every 20min)
 
 on:
   schedule:
-    # 每20分钟运行一次
+    # 每20分钟运行一次 (UTC时间)
     - cron: '*/20 * * * *'
+  push:
+    branches: [main]
   workflow_dispatch:
 
 env:
