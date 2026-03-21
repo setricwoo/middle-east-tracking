@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - 数据跟踪</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f8fafc; color: #1e293b; line-height: 1.6; }
+
+        /* ── 顶部导航 ── */
+        .header { background: #fff; padding: 0; box-shadow: 0 1px 3px rgba(0,0,0,.1); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 200; }
+        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; max-width: 1400px; margin: 0 auto; }
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .header-icon { font-size: 1.8rem; color: #1e40af; }
+        .header h1 { font-size: 1.3rem; color: #1e40af; font-weight: 600; }
+        .header-center { display: flex; gap: 4px; background: #e2e8f0; padding: 4px; border-radius: 8px; }
+        .nav-btn { padding: 8px 16px; border: none; background: transparent; color: #475569; border-radius: 6px; cursor: pointer; font-size: .85rem; transition: all .2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .nav-btn:hover { background: rgba(255,255,255,.5); color: #1e40af; }
+        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 500; }
+        .header-right { font-size: .8rem; color: #64748b; }
+
+        /* ── 子Tab ── */
+        .sub-nav-wrap { background: #fff; border-bottom: 1px solid #e2e8f0; position: sticky; top: 57px; z-index: 100; }
+        .sub-nav { display: flex; gap: 4px; padding: 8px 24px; max-width: 1400px; margin: 0 auto; overflow-x: auto; }
+        .tab-btn { padding: 8px 20px; border: 1px solid #e2e8f0; background: transparent; color: #475569; border-radius: 8px; cursor: pointer; font-size: .9rem; white-space: nowrap; transition: all .2s; }
+        .tab-btn:hover { background: #f1f5f9; color: #1e40af; }
+        .tab-btn.active { background: #1e40af; color: #fff; border-color: #1e40af; font-weight: 500; }
+
+        /* ── 内容区 ── */
+        .content { max-width: 1400px; margin: 0 auto; padding: 24px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* ── 卡片 & 网格 ── */
+        .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+        /* ── 实时指标卡片 ── */
+        .stat-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 20px; text-align: center; }
+        .stat-card .label { font-size: .8rem; color: #64748b; margin-bottom: 6px; }
+        .stat-card .value { font-size: 1.6rem; font-weight: 700; color: #1e40af; }
+        .stat-card .sub { font-size: .75rem; color: #94a3b8; margin-top: 4px; }
+        .stat-card.warn .value { color: #dc2626; }
+        .stat-card.ok .value { color: #059669; }
+
+        /* ── 变化标签 ── */
+        .chg-pos { color: #059669; font-weight: 600; }
+        .chg-neg { color: #dc2626; font-weight: 600; }
+        .chg-neu { color: #64748b; font-weight: 600; }
+
+        /* ── 图表容器 ── */
+        .chart-wrap { position: relative; height: 280px; width: 100%; margin-top: 12px; }
+        .chart-title { font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 2px; }
+        .chart-sub { font-size: .8rem; color: #64748b; margin-bottom: 12px; }
+
+        /* ── 视频 ── */
+        .video-section { margin: 20px 0; }
+        .video-wrap { border-radius: 12px; overflow: hidden; background: #0f172a; }
+        video { display: block; width: 100%; max-height: 480px; object-fit: contain; }
+
+        /* ── 快照轮播 ── */
+        .snapshot-wrap { position: relative; background: #0f172a; border-radius: 12px; overflow: hidden; }
+        .snapshot-img { width: 100%; display: block; border-radius: 12px; }
+        .snapshot-controls { display: flex; justify-content: center; gap: 12px; margin-top: 10px; align-items: center; }
+        .snap-btn { padding: 6px 16px; background: #e2e8f0; border: none; border-radius: 6px; cursor: pointer; font-size: .85rem; }
+        .snap-btn:hover { background: #1e40af; color: #fff; }
+        #snap-counter { font-size: .85rem; color: #64748b; }
+
+        /* ── iframe ── */
+        .iframe-wrap { border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .iframe-wrap iframe { display: block; width: 100%; height: 900px; border: none; }
+
+        /* ── ISW 文章正文 ── */
+        .isw-body { font-size: .92rem; line-height: 1.85; color: #1e293b; }
+        .isw-body p { margin: 0 0 12px; }
+        .isw-body h2, .isw-body h3 { font-size: 1rem; font-weight: 700; margin: 16px 0 8px; color: #1e40af; }
+        .isw-body ul, .isw-body ol { margin: 8px 0 12px 20px; }
+        .isw-body li { margin-bottom: 4px; }
+        .isw-body a { color: #2563eb; }
+        .isw-body img { display: none; }  /* 正文中的图片由图片区单独展示 */
+        .isw-body .wp-block-image, .isw-body figure { display: none; }
+        .isw-body sup, .isw-body .footnote { font-size: .75rem; color: #94a3b8; }
+        .war-img-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; }
+        .war-img-card img { width: 100%; display: block; border-radius: 0; }
+        .war-img-card .war-img-alt { font-size: .75rem; color: #64748b; padding: 6px 10px; background: #f8fafc; }
+        .war-tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: .75rem; font-weight: 600; background: #fef2f2; color: #dc2626; margin-bottom: 10px; }
+        .war-history-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
+        .war-history-item:last-child { border-bottom: none; }
+        .isw-body-collapsed { max-height: 300px; overflow: hidden; position: relative; }
+        .isw-body-collapsed::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(transparent, #fff); }
+
+        /* ── 响应式 ── */
+        @media (max-width: 768px) {
+            .header-main { flex-wrap: wrap; padding: 8px 12px; gap: 6px; }
+            .header-center { order: 3; width: 100%; justify-content: center; }
+            .nav-btn { padding: 4px 8px; font-size: .7rem; }
+            .content { padding: 12px; }
+            .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+            .chart-wrap { height: 220px; }
+            .iframe-wrap iframe { height: 600px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<nav class="header">
+    <div class="header-main">
+        <div class="header-left">
+            <span class="header-icon">📊</span>
+            <h1>【华泰固收】中东地缘跟踪</h1>
+        </div>
+        <div class="header-center">
+            <a href="index.html" class="nav-btn">🗺️ 原油图谱</a>
+            <a href="briefing.html" class="nav-btn">📰 每日简报</a>
+            <a href="tracking.html" class="nav-btn">⚡ 海峡跟踪</a>
+            <a href="news.html" class="nav-btn">🔴 实时新闻</a>
+            <a href="polymarket.html" class="nav-btn">📈 Polymarket预测</a>
+            <a href="data-tracking.html" class="nav-btn active">📊 数据跟踪</a>
+        </div>
+        <div class="header-right" id="page-update-time">加载中...</div>
+    </div>
+</nav>
+
+<!-- 子Tab导航 -->
+<div class="sub-nav-wrap">
+    <div class="sub-nav">
+        <button class="tab-btn active" onclick="switchTab('strait')">🚢 海峡通行</button>
+        <button class="tab-btn" onclick="switchTab('polymarket')">🎲 市场预测</button>
+        <button class="tab-btn" onclick="switchTab('commodities')">📦 商品价格</button>
+        <button class="tab-btn" onclick="switchTab('financial')">🌐 全球金融</button>
+        <button class="tab-btn" onclick="switchTab('war')">⚔️ 战局形势</button>
+    </div>
+</div>
+
+<!-- ══════════ Tab 1: 海峡通行 ══════════ -->
+<div class="content">
+<div id="tab-strait" class="tab-content active">
+
+    <!-- 实时指标卡片 -->
+    <div class="grid-4" style="margin-bottom:12px;">
+        <div class="stat-card warn"><div class="label">当前过境船只</div><div class="value" id="s-ship-now">--</div><div class="sub">正常水平约60艘/日</div></div>
+        <div class="stat-card warn"><div class="label">综合封锁率 (TPC)</div><div class="value" id="s-tpc">--</div><div class="sub">相对正常水平</div></div>
+        <div class="stat-card"><div class="label">湾区船舶总数</div><div class="value" id="s-overall">--</div><div class="sub">在航 <span id="s-underway">--</span> 艘</div></div>
+        <div class="stat-card"><div class="label">数据更新时间</div><div class="value" style="font-size:1rem;" id="s-update-time">--</div><div class="sub">每10分钟</div></div>
+    </div>
+    <div class="grid-4" style="margin-bottom:20px;">
+        <div class="stat-card"><div class="label">原油封锁率</div><div class="value" id="s-oil">--</div><div class="sub">Oil Tanker</div></div>
+        <div class="stat-card"><div class="label">LNG 封锁率</div><div class="value" id="s-lng">--</div><div class="sub">液化天然气</div></div>
+        <div class="stat-card"><div class="label">化肥(NPK)封锁率</div><div class="value" id="s-npk">--</div><div class="sub">氮磷钾化肥</div></div>
+        <div class="stat-card"><div class="label">铝/汽车封锁率</div><div class="value" id="s-alcar">--</div><div class="sub">Al / Car</div></div>
+    </div>
+
+    <!-- 视频 + 快照 -->
+    <div class="grid-2" style="margin-bottom:20px;">
+        <div class="card">
+            <div class="chart-title">金十监控视频</div>
+            <div class="chart-sub">MarineTraffic 霍尔木兹海峡实时动态（来源：金十数据）</div>
+            <div class="video-wrap" id="video-wrap">
+                <p style="color:#94a3b8;padding:40px;text-align:center;">视频加载中...</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="chart-title">实时快照（每小时）</div>
+            <div class="chart-sub" id="snap-time">金十快照 / MarineTraffic截图</div>
+            <div class="snapshot-wrap">
+                <img id="snap-img" class="snapshot-img" src="" alt="暂无快照" onerror="this.style.opacity=.3" />
+            </div>
+            <div class="snapshot-controls">
+                <button class="snap-btn" onclick="prevSnap()">‹ 上一张</button>
+                <span id="snap-counter">--/--</span>
+                <button class="snap-btn" onclick="nextSnap()">下一张 ›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 近24h快照延时视频 -->
+    <div class="card" style="margin-bottom:20px;" id="timelapse-card">
+        <div class="chart-title">24h 航运回溯视频</div>
+        <div class="chart-sub">由快照自动合成延时视频（GitHub Actions 每20分钟更新截图）</div>
+        <div class="video-wrap" id="timelapse-wrap">
+            <p style="color:#94a3b8;padding:40px;text-align:center;">延时视频加载中...</p>
+        </div>
+    </div>
+
+    <!-- 历史通行量折线图（双轴：船次 + 承运量） -->
+    <div class="card" style="margin-bottom:20px;">
+        <div class="chart-title">霍尔木兹海峡日通行量与承运量</div>
+        <div class="chart-sub">历史数据（2025-12起，来自历史.csv）+ 金十数据近期 | 红线=冲突开始(2026-01-07)</div>
+        <div class="chart-wrap" style="height:320px;"><canvas id="chart-ships"></canvas></div>
+    </div>
+
+    <!-- GSCPI 全球供应链压力指数 -->
+    <div class="card" style="margin-bottom:20px;">
+        <div class="chart-title">全球供应链压力指数（GSCPI）</div>
+        <div class="chart-sub">来源：纽约联储 | 标准化指数（均值=0，std=1）| 越高=供应链压力越大</div>
+        <div id="gscpi-info" style="font-size:.82rem;color:#64748b;margin:6px 0;"></div>
+        <div class="chart-wrap" style="height:260px;"><canvas id="chart-gscpi"></canvas></div>
+    </div>
+
+    <!-- 船型 / 方向 / 船队性质 -->
+    <div class="grid-3" style="margin-bottom:20px;">
+        <div class="card">
+            <div class="chart-title">船型分类（油轮/货轮）</div>
+            <div class="chart-wrap"><canvas id="chart-tanker"></canvas></div>
+        </div>
+        <div class="card">
+            <div class="chart-title">进出港方向</div>
+            <div class="chart-wrap"><canvas id="chart-direction"></canvas></div>
+        </div>
+        <div class="card">
+            <div class="chart-title">船队性质分类</div>
+            <div class="chart-wrap"><canvas id="chart-fleet"></canvas></div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ══════════ Tab 2: 市场预测 ══════════ -->
+<div id="tab-polymarket" class="tab-content">
+    <div class="card" style="margin-bottom:20px;">
+        <div class="chart-title" style="margin-bottom:16px;">特朗普支持率走势</div>
+        <div id="trump-info" style="display:flex;gap:24px;margin-bottom:16px;flex-wrap:wrap;"></div>
+        <div class="chart-wrap" style="height:260px;"><canvas id="chart-trump"></canvas></div>
+        <div style="font-size:.75rem;color:#94a3b8;margin-top:8px;" id="trump-source">数据来源：加载中...</div>
+    </div>
+    <div class="iframe-wrap">
+        <iframe src="polymarket.html" title="Polymarket预测市场"></iframe>
+    </div>
+</div>
+
+<!-- ══════════ Tab 3: 商品价格 ══════════ -->
+<div id="tab-commodities" class="tab-content">
+    <div class="grid-2" id="commodity-charts"></div>
+</div>
+
+<!-- ══════════ Tab 4: 全球金融 ══════════ -->
+<div id="tab-financial" class="tab-content">
+    <div id="financial-cards" class="grid-4" style="margin-bottom:20px;"></div>
+    <div class="grid-2" id="financial-charts"></div>
+</div>
+
+<!-- ══════════ Tab 5: 战局形势 ══════════ -->
+<div id="tab-war" class="tab-content">
+
+    <!-- 最新文章头部 -->
+    <div class="card" style="margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:0;">
+                <span class="war-tag">⚔️ ISW 最新战况</span>
+                <div class="chart-title" id="war-title" style="font-size:1.15rem;">加载中...</div>
+                <div style="font-size:.8rem;color:#64748b;margin-top:6px;" id="war-meta"></div>
+            </div>
+            <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+                <button id="war-lang-btn" onclick="toggleISWLang()"
+                        style="padding:6px 14px;border:1px solid #e2e8f0;background:#f8fafc;border-radius:6px;cursor:pointer;font-size:.82rem;color:#475569;">
+                    显示英文
+                </button>
+                <a id="war-link" href="#" target="_blank"
+                   style="padding:8px 20px;background:#1e40af;color:#fff;border-radius:8px;text-decoration:none;font-size:.85rem;font-weight:500;">
+                    查看原文 →
+                </a>
+            </div>
+        </div>
+
+        <!-- Key Takeaways -->
+        <div style="margin-top:20px;">
+            <div style="font-size:.85rem;font-weight:700;color:#475569;margin-bottom:10px;letter-spacing:.05em;">KEY TAKEAWAYS</div>
+            <ol id="war-takeaways" style="padding-left:20px;font-size:.92rem;line-height:1.9;color:#1e293b;">
+                <li style="color:#94a3b8;">加载中...</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- 战场地图网格 -->
+    <div style="margin-bottom:20px;">
+        <div class="chart-title" style="margin-bottom:14px;">战场地图与数据图表</div>
+        <div id="war-images" class="grid-2" style="gap:16px;">
+            <div style="grid-column:1/-1;padding:40px;text-align:center;color:#94a3b8;">
+                请先运行 <code>fetch_isw_update.py</code> 获取数据
+            </div>
+        </div>
+    </div>
+
+    <!-- 历史更新列表 -->
+    <div class="card">
+        <div class="chart-title" style="margin-bottom:14px;">历史更新记录</div>
+        <div id="war-history"></div>
+    </div>
+
+</div>
+
+</div><!-- /content -->
+
+<script>
+// ══════════════════════════════════════════════
+// Tab 切换
+// ══════════════════════════════════════════════
+function switchTab(name) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.currentTarget.classList.add('active');
+    // 更新 URL hash
+    history.replaceState(null, '', '#' + name);
+}
+
+// 从 hash 恢复 tab
+(function() {
+    const hash = location.hash.replace('#', '');
+    if (hash) {
+        const btn = document.querySelector(`.tab-btn[onclick*="${hash}"]`);
+        if (btn) { btn.click(); }
+    }
+})();
+
+// ══════════════════════════════════════════════
+// 工具函数
+// ══════════════════════════════════════════════
+const CONFLICT_DATE = '2026-01-07';
+const CHART_DEFAULTS = {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: {
+        legend: { position: 'top', labels: { color: '#334155', font: { size: 11 }, boxWidth: 12 } }
+    },
+    scales: {
+        x: { grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', maxTicksLimit: 8, font: { size: 10 } } },
+        y: { grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', font: { size: 10 } } }
+    }
+};
+
+function fmtChg(v, base, unit = '') {
+    if (v == null || base == null || base === 0) return '';
+    const pct = ((v - base) / Math.abs(base) * 100).toFixed(1);
+    const cls = pct > 0 ? 'chg-pos' : pct < 0 ? 'chg-neg' : 'chg-neu';
+    return `<span class="${cls}">${pct > 0 ? '+' : ''}${pct}%</span>`;
+}
+
+function findConflictVal(hist) {
+    // 找冲突开始日期最近的值
+    if (!hist || !hist.length) return null;
+    for (let i = 0; i < hist.length; i++) {
+        if (hist[i][0] >= CONFLICT_DATE) return hist[i][1];
+    }
+    return hist[hist.length - 1][1];
+}
+
+const PALETTE = ['#2563eb','#e11d48','#10b981','#f59e0b','#8b5cf6','#0ea5e9','#f97316','#6366f1'];
+
+function makeLineChart(canvasId, labels, datasets, extraOpts = {}) {
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+    const opts = JSON.parse(JSON.stringify(CHART_DEFAULTS));
+    Object.assign(opts, extraOpts);
+    return new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: datasets.map((ds, i) => ({
+                tension: 0.3,
+                pointRadius: 0,
+                pointHoverRadius: 4,
+                borderWidth: 2,
+                fill: false,
+                borderColor: PALETTE[i % PALETTE.length],
+                backgroundColor: PALETTE[i % PALETTE.length] + '22',
+                ...ds
+            }))
+        },
+        options: opts
+    });
+}
+
+function makeBarChart(canvasId, labels, datasets) {
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+    return new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: datasets.map((ds, i) => ({
+                borderColor: PALETTE[i % PALETTE.length],
+                backgroundColor: PALETTE[i % PALETTE.length] + 'bb',
+                borderWidth: 1,
+                ...ds
+            }))
+        },
+        options: {
+            ...JSON.parse(JSON.stringify(CHART_DEFAULTS)),
+            scales: {
+                x: { stacked: true, grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', maxTicksLimit: 8, font: { size: 10 } } },
+                y: { stacked: true, grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', font: { size: 10 } } }
+            }
+        }
+    });
+}
+
+// ══════════════════════════════════════════════
+// Tab 1: 海峡通行
+// ══════════════════════════════════════════════
+let snapshots = [], snapIdx = 0;
+
+async function loadHistoricalCSV() {
+    try {
+        const buf = await (await fetch('历史.csv')).arrayBuffer();
+        // 文件实为 UTF-8（数据行全为 ASCII，GBK 亦可兼容）
+        const text = new TextDecoder('utf-8', { fatal: false }).decode(buf);
+        const rows = text.split('\n').slice(1).map(line => {
+            const parts = line.trim().split(',');
+            if (parts.length < 2 || !parts[0]) return null;
+            const rawDate = parts[0].trim();
+            const ships = parseFloat(parts[1]) || 0;
+            const tonnage = parseFloat(parts[2]) || 0;
+            // 2025/12/1 → 2025-12-01
+            const iso = rawDate.replace(/\//g, '-')
+                               .replace(/-(\d)(?=-|$)/g, '-0$1');
+            if (!iso.match(/^\d{4}-\d{2}-\d{2}$/)) return null;
+            return { date: iso, ships, tonnage };
+        }).filter(Boolean);
+        console.log(`[CSV] 加载 ${rows.length} 条历史数据`);
+        return rows;
+    } catch (e) {
+        console.warn('[CSV] 历史.csv 加载失败:', e);
+        return [];
+    }
+}
+
+function makeShipsDualChart(combined, conflictIdx) {
+    const ctx = document.getElementById('chart-ships');
+    if (!ctx) return;
+    const labels = combined.map(r => r.date.slice(5));
+    const beforeShips = combined.map((r, i) => i < conflictIdx ? r.ships : null);
+    const afterShips  = combined.map((r, i) => i >= conflictIdx ? r.ships : null);
+    const tonnageData = combined.map(r => r.tonnage > 0 ? +(r.tonnage / 10000).toFixed(1) : null);
+    const hasTonnage  = tonnageData.some(v => v !== null);
+
+    const datasets = [
+        { label: '冲突前船次(艘)', data: beforeShips, yAxisID: 'y',
+          borderColor: '#2563eb', backgroundColor: '#2563eb22',
+          tension: 0.3, pointRadius: 0, borderWidth: 2, fill: false },
+        { label: '冲突后船次(艘)', data: afterShips, yAxisID: 'y',
+          borderColor: '#dc2626', backgroundColor: '#dc262622',
+          tension: 0.3, pointRadius: 0, borderWidth: 2, fill: false },
+    ];
+    if (hasTonnage) {
+        datasets.push({ label: '承运量(万吨)', data: tonnageData, yAxisID: 'y1',
+            borderColor: '#f59e0b', backgroundColor: '#f59e0b22',
+            borderDash: [5, 3], tension: 0.3, pointRadius: 0, borderWidth: 2, fill: false });
+    }
+
+    new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { intersect: false, mode: 'index' },
+            plugins: { legend: { position: 'top', labels: { color: '#334155', font: { size: 11 }, boxWidth: 12 } } },
+            scales: {
+                x: { grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', maxTicksLimit: 10, font: { size: 10 } } },
+                y: { position: 'left',
+                     title: { display: true, text: '船次(艘)', color: '#334155', font: { size: 11 } },
+                     grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', font: { size: 10 } } },
+                y1: { position: 'right',
+                      title: { display: hasTonnage, text: '承运量(万吨)', color: '#f59e0b', font: { size: 11 } },
+                      grid: { drawOnChartArea: false }, ticks: { color: '#f59e0b', font: { size: 10 } } }
+            }
+        }
+    });
+}
+
+async function loadStraitData() {
+    const csvRows = await loadHistoricalCSV();
+
+    fetch('strait_data.json?t=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById('page-update-time').textContent = '更新: ' + (data.updated || '--').replace('T', ' ').slice(0, 16);
+
+            // 实时卡片
+            const rt = data.realtime || {};
+            const setVal = (id, v, suffix='') => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = v != null ? v + suffix : '--';
+            };
+            setVal('s-ship-now', rt.ship_now, ' 艘');
+            setVal('s-tpc', rt.tpc, '%');
+            setVal('s-oil', rt.oil, '%');
+            setVal('s-lng', rt.lng, '%');
+            setVal('s-npk', rt.npk, '%');
+            setVal('s-overall', rt.overall);
+            setVal('s-underway', rt.underway);
+            const el = document.getElementById('s-alcar');
+            if (el && rt.al != null) el.textContent = `${rt.al}% / ${rt.car != null ? rt.car + '%' : '--'}`;
+            const tuEl = document.getElementById('s-update-time');
+            if (tuEl && rt.updated) tuEl.textContent = rt.updated.slice(0, 16);
+
+            // 金十监控视频
+            if (data.video_url) {
+                document.getElementById('video-wrap').innerHTML =
+                    `<video controls autoplay muted loop src="${data.video_url}" style="width:100%;max-height:400px;"></video>`;
+            }
+
+            // 本地延时视频（由快照合成）
+            if (data.timelapse_video) {
+                document.getElementById('timelapse-wrap').innerHTML =
+                    `<video controls src="${data.timelapse_video}?t=${Date.now()}" style="width:100%;max-height:400px;"></video>`;
+            }
+
+            // 快照
+            snapshots = (data.snapshots || []).slice().reverse();
+            if (snapshots.length) { snapIdx = 0; updateSnap(); }
+
+            // 合并 CSV 历史 + jin10 daily total
+            const csvMap = new Map(csvRows.map(r => [r.date, r]));
+            const jin10Daily = (data.daily || []).reduce((m, r) => {
+                if (r.date && r.total != null) m[r.date] = r.total;
+                return m;
+            }, {});
+            const combined = [...csvRows];
+            Object.entries(jin10Daily).forEach(([d, v]) => {
+                if (!csvMap.has(d)) combined.push({ date: d, ships: v, tonnage: 0 });
+            });
+            combined.sort((a, b) => a.date.localeCompare(b.date));
+
+            const conflictIdx = combined.findIndex(r => r.date >= CONFLICT_DATE);
+            makeShipsDualChart(combined, conflictIdx < 0 ? combined.length : conflictIdx);
+
+            // 船型 stacked bar
+            const daily = (data.daily || []).slice(-30);
+            makeBarChart('chart-tanker', daily.map(r => r.date.slice(5)), [
+                { label: '油轮', data: daily.map(r => r.tanker) },
+                { label: '货轮', data: daily.map(r => r.cargo) }
+            ]);
+
+            // 方向
+            const dir = (data.direction || []).slice(-30);
+            makeBarChart('chart-direction', dir.map(r => r.date.slice(5)), [
+                { label: '进港', data: dir.map(r => r.inbound) },
+                { label: '出港', data: dir.map(r => r.outbound) }
+            ]);
+
+            // 船队性质
+            const fleet = (data.fleet_type || []).slice(-30);
+            makeBarChart('chart-fleet', fleet.map(r => r.date.slice(5)), [
+                { label: '制裁船', data: fleet.map(r => r.sanctioned) },
+                { label: '影子船队', data: fleet.map(r => r.shadow) },
+                { label: '正规商船', data: fleet.map(r => r.regular) }
+            ]);
+        })
+        .catch(err => {
+            console.warn('strait_data.json 加载失败，仅用CSV:', err);
+            if (csvRows.length) {
+                const conflictIdx = csvRows.findIndex(r => r.date >= CONFLICT_DATE);
+                makeShipsDualChart(csvRows, conflictIdx < 0 ? csvRows.length : conflictIdx);
+            }
+        });
+}
+
+function updateSnap() {
+    if (!snapshots.length) return;
+    const s = snapshots[snapIdx];
+    // 支持 url（Jin10快照）或 file（本地截图）
+    document.getElementById('snap-img').src = s.url || s.file || '';
+    document.getElementById('snap-time').textContent = (s.ts || '') + (s.url ? ' (金十快照)' : ' (MarineTraffic)');
+    document.getElementById('snap-counter').textContent = `${snapIdx+1} / ${snapshots.length}`;
+}
+function prevSnap() { if (snapIdx > 0) { snapIdx--; updateSnap(); } }
+function nextSnap() { if (snapIdx < snapshots.length - 1) { snapIdx++; updateSnap(); } }
+
+// ══════════════════════════════════════════════
+// Tab 2: Trump 支持率
+// ══════════════════════════════════════════════
+function loadTrumpApproval(marketData) {
+    const ta = marketData.trump_approval;
+    if (!ta || !ta.dates || !ta.dates.length) {
+        document.getElementById('trump-source').textContent = '暂无数据，请先运行 fetch_market_data.py';
+        return;
+    }
+
+    document.getElementById('trump-source').textContent = `数据来源：${ta.source === 'economist' ? 'The Economist' : 'FiveThirtyEight'} | ${ta.dates.length} 条记录`;
+
+    const latest_a = ta.approve[ta.approve.length - 1];
+    const latest_d = ta.disapprove[ta.disapprove.length - 1];
+    document.getElementById('trump-info').innerHTML = `
+        <div style="text-align:center;padding:10px 20px;background:#f1f5f9;border-radius:8px;">
+            <div style="font-size:.8rem;color:#64748b;">支持率</div>
+            <div style="font-size:1.5rem;font-weight:700;color:#2563eb;">${latest_a != null ? latest_a.toFixed(1) + '%' : '--'}</div>
+        </div>
+        <div style="text-align:center;padding:10px 20px;background:#f1f5f9;border-radius:8px;">
+            <div style="font-size:.8rem;color:#64748b;">反对率</div>
+            <div style="font-size:1.5rem;font-weight:700;color:#dc2626;">${latest_d != null ? latest_d.toFixed(1) + '%' : '--'}</div>
+        </div>`;
+
+    makeLineChart('chart-trump', ta.dates, [
+        { label: '支持率 (Approve)', data: ta.approve, borderColor: '#2563eb' },
+        { label: '反对率 (Disapprove)', data: ta.disapprove, borderColor: '#dc2626' }
+    ]);
+}
+
+// ══════════════════════════════════════════════
+// Tab 3 & 4: 金融市场数据
+// ══════════════════════════════════════════════
+function buildCommodityCharts(data) {
+    const groups = [
+        { id: 'oil',    title: '原油价格',      tickers: ['BZ=F', 'CL=F'] },
+        { id: 'gas',    title: '天然气价格',     tickers: ['TTF=F', 'NG=F'] },
+        { id: 'grain',  title: '粮食价格',       tickers: ['ZW=F', 'ZC=F'] },
+        { id: 'chem_n', title: '氮肥/尿素 (股价代理)', tickers: ['CF', 'NTR'] },
+        { id: 'chem_m', title: '甲醇/磷肥 (股价代理)', tickers: ['OCI.AS', 'MOS'] },
+        { id: 'bei',    title: '通胀预期 BEI 10Y', special: 'bei' }
+    ];
+
+    const container = document.getElementById('commodity-charts');
+    container.innerHTML = '';
+
+    groups.forEach(g => {
+        const canvasId = 'c-' + g.id;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<div class="chart-title">${g.title}</div>
+            <div id="info-${g.id}" style="display:flex;gap:12px;flex-wrap:wrap;margin:6px 0;font-size:.82rem;"></div>
+            <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
+        container.appendChild(card);
+
+        if (g.special === 'bei') {
+            const bei = data.bei;
+            if (bei && bei.hist && bei.hist.length) {
+                const cval = findConflictVal(bei.hist);
+                document.getElementById('info-' + g.id).innerHTML =
+                    `<span>当前: <b>${bei.latest}%</b></span>
+                     <span>冲突前: ${cval != null ? cval.toFixed(2) + '%' : '--'}</span>
+                     <span>变化: ${fmtChg(bei.latest, cval, '%')}</span>`;
+                makeLineChart(canvasId, bei.hist.map(r => r[0].slice(5)), [
+                    { label: 'BEI 10Y (%)', data: bei.hist.map(r => r[1]), borderColor: '#8b5cf6' }
+                ]);
+            } else {
+                document.getElementById('info-' + g.id).textContent = '暂无数据';
+            }
+        } else {
+            const datasets = [];
+            let infoHTML = '';
+            g.tickers.forEach((ticker, i) => {
+                const d = data.commodities[ticker];
+                if (!d || !d.hist || !d.hist.length) return;
+                const cval = findConflictVal(d.hist);
+                infoHTML += `<span style="color:${PALETTE[i]}"><b>${d.name}</b>: ${d.latest} ${d.unit} ${fmtChg(d.latest, cval)}</span>`;
+                datasets.push({ label: d.name, data: d.hist.map(r => r[1]) });
+            });
+            document.getElementById('info-' + g.id).innerHTML = infoHTML;
+            if (datasets.length && data.commodities[g.tickers[0]]?.hist?.length) {
+                const labels = data.commodities[g.tickers[0]].hist.map(r => r[0].slice(5));
+                makeLineChart(canvasId, labels, datasets);
+            }
+        }
+    });
+}
+
+function buildFinancialSection(data) {
+    // 指标卡片
+    const cardContainer = document.getElementById('financial-cards');
+    const allTickers = Object.keys(data.financial || {});
+    cardContainer.innerHTML = allTickers.map(ticker => {
+        const d = data.financial[ticker];
+        const cval = findConflictVal(d.hist);
+        const chg = (d.latest != null && cval != null && cval !== 0)
+            ? ((d.latest - cval) / Math.abs(cval) * 100).toFixed(1) : null;
+        const chgHtml = chg != null
+            ? `<span class="${chg > 0 ? 'chg-pos' : chg < 0 ? 'chg-neg' : 'chg-neu'}">${chg > 0 ? '+' : ''}${chg}%</span>`
+            : '';
+        return `<div class="stat-card">
+            <div class="label">${d.name}</div>
+            <div class="value" style="font-size:1.2rem;">${d.latest != null ? d.latest : '--'}</div>
+            <div class="sub">${d.unit} &nbsp;冲突后 ${chgHtml}</div>
+        </div>`;
+    }).join('');
+
+    // 图表分组
+    const groups = [
+        {
+            id: 'equity', title: '股市与能源板块 (冲突前=100基准化)',
+            tickers: ['^GSPC', 'XLE', 'KSA', 'PDBC'], normalize: true
+        },
+        {
+            id: 'rates', title: '美国国债收益率',
+            tickers: ['^TNX', '^IRX'], normalize: false
+        },
+        {
+            id: 'fx', title: '汇率 - 以色列谢克尔 (地区风险)',
+            tickers: ['ILS=X'], normalize: false
+        },
+        {
+            id: 'credit', title: '新兴市场主权信用 (冲突前=100基准化)',
+            tickers: ['EMB', 'EMHY'], normalize: true
+        }
+    ];
+
+    const container = document.getElementById('financial-charts');
+    container.innerHTML = '';
+
+    groups.forEach(g => {
+        const canvasId = 'f-' + g.id;
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<div class="chart-title">${g.title}</div>
+            <div id="info-f-${g.id}" style="display:flex;gap:12px;flex-wrap:wrap;margin:6px 0;font-size:.82rem;"></div>
+            <div class="chart-wrap"><canvas id="${canvasId}"></canvas></div>`;
+        container.appendChild(card);
+
+        const datasets = [];
+        let infoHTML = '';
+        let labels = null;
+
+        g.tickers.forEach((ticker, i) => {
+            const d = data.financial[ticker];
+            if (!d || !d.hist || !d.hist.length) return;
+            const cval = findConflictVal(d.hist);
+            let values = d.hist.map(r => r[1]);
+            if (g.normalize && cval) {
+                values = values.map(v => v != null ? +(v / cval * 100).toFixed(2) : null);
+            }
+            infoHTML += `<span style="color:${PALETTE[i]}"><b>${d.name}</b>: ${d.latest} ${d.unit} ${fmtChg(d.latest, cval)}</span> `;
+            datasets.push({ label: d.name, data: values });
+            if (!labels) labels = d.hist.map(r => r[0].slice(5));
+        });
+
+        document.getElementById('info-f-' + g.id).innerHTML = infoHTML;
+        if (datasets.length && labels) {
+            makeLineChart(canvasId, labels, datasets,
+                g.normalize ? { scales: { ...CHART_DEFAULTS.scales, y: { ...CHART_DEFAULTS.scales.y, title: { display: true, text: '冲突前=100' } } } } : {}
+            );
+        }
+    });
+}
+
+// ══════════════════════════════════════════════
+// GSCPI 图表（数据来自 market_data.json）
+// ══════════════════════════════════════════════
+function buildGSCPIChart(data) {
+    const gscpi = data.gscpi;
+    const infoEl = document.getElementById('gscpi-info');
+    if (!gscpi || !gscpi.hist || !gscpi.hist.length) {
+        if (infoEl) infoEl.textContent = '暂无数据，请先运行 fetch_market_data.py（需 pip install openpyxl）';
+        return;
+    }
+
+    const conflictVal = gscpi.hist.find(r => r[0] >= '2026-01')?.[1];
+    if (infoEl) {
+        infoEl.innerHTML = `当前: <b>${gscpi.latest}</b> (${gscpi.latest_date}) &nbsp;|&nbsp; `
+            + `冲突前: ${conflictVal != null ? conflictVal.toFixed(2) : '--'} &nbsp;|&nbsp; `
+            + `变化: ${conflictVal != null ? (gscpi.latest > conflictVal ? '+' : '') + (gscpi.latest - conflictVal).toFixed(2) + ' σ' : '--'}`;
+    }
+
+    const labels = gscpi.hist.map(r => r[0]);
+    const values = gscpi.hist.map(r => r[1]);
+    const ctx = document.getElementById('chart-gscpi');
+    if (!ctx) return;
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [
+                { label: 'GSCPI (σ)', data: values,
+                  borderColor: '#8b5cf6', backgroundColor: '#8b5cf622',
+                  tension: 0.3, pointRadius: 0, borderWidth: 2, fill: true },
+                { label: '均值 (0)', data: values.map(() => 0),
+                  borderColor: '#94a3b8', borderDash: [4, 4],
+                  pointRadius: 0, borderWidth: 1, fill: false }
+            ]
+        },
+        options: {
+            responsive: true, maintainAspectRatio: false,
+            interaction: { intersect: false, mode: 'index' },
+            plugins: { legend: { position: 'top', labels: { color: '#334155', font: { size: 11 }, boxWidth: 12 } } },
+            scales: {
+                x: { grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', maxTicksLimit: 8, font: { size: 10 } } },
+                y: { grid: { color: 'rgba(100,116,139,.15)' }, ticks: { color: '#64748b', font: { size: 10 } },
+                     title: { display: true, text: '标准差 (σ)', color: '#334155', font: { size: 11 } } }
+            }
+        }
+    });
+}
+
+// ══════════════════════════════════════════════
+// 加载所有数据
+// ══════════════════════════════════════════════
+// ══════════════════════════════════════════════
+// Tab 5: 战局形势 (ISW)
+// ══════════════════════════════════════════════
+let iswLangZh = true, curISWArticle = null;
+
+function renderTakeaways(article) {
+    if (!article) return;
+    const items = iswLangZh ? (article.takeaways_zh || []) : (article.takeaways_en || []);
+    const el = document.getElementById('war-takeaways');
+    if (!el) return;
+    if (!items.length) {
+        el.innerHTML = '<li style="color:#94a3b8;">暂无 Key Takeaways 数据，请重新运行 fetch_isw_update.py</li>';
+    } else {
+        el.innerHTML = items.map(t => `<li style="margin-bottom:8px;">${t}</li>`).join('');
+    }
+}
+
+function toggleISWLang() {
+    iswLangZh = !iswLangZh;
+    const btn = document.getElementById('war-lang-btn');
+    if (btn) btn.textContent = iswLangZh ? '显示英文' : '显示中文';
+    renderTakeaways(curISWArticle);
+}
+
+function loadISWData() {
+    fetch('isw_data.json?t=' + Date.now())
+        .then(r => r.json())
+        .then(data => {
+            const latest = (data.articles || [])[0];
+            if (!latest) {
+                document.getElementById('war-title').textContent = '暂无数据，请运行 fetch_isw_update.py';
+                document.getElementById('war-takeaways').innerHTML =
+                    '<li style="color:#94a3b8;">请先运行 fetch_isw_update.py 获取数据</li>';
+                return;
+            }
+
+            curISWArticle = latest;
+            document.getElementById('war-title').textContent = latest.title || '';
+            document.getElementById('war-meta').textContent =
+                `日期: ${latest.date}  ·  抓取时间: ${(latest.fetched || '').slice(0, 16)}  ·  来源: ISW (understandingwar.org)`;
+            const link = document.getElementById('war-link');
+            if (link) link.href = latest.url || '#';
+
+            // Key Takeaways
+            renderTakeaways(latest);
+
+            // 图片网格
+            const imgGrid = document.getElementById('war-images');
+            if (imgGrid) {
+                const imgs = latest.images || [];
+                if (imgs.length === 0) {
+                    imgGrid.innerHTML = '<div style="grid-column:1/-1;padding:20px;text-align:center;color:#94a3b8;">该期无地图图片</div>';
+                } else {
+                    imgGrid.innerHTML = imgs.map(img => {
+                        const caption = img.alt_zh || img.alt || '';
+                        return `<div class="war-img-card">
+                            <img src="${img.url}" alt="${img.alt || ''}" loading="lazy"
+                                 onerror="this.parentElement.style.display='none'" />
+                            ${caption ? `<div class="war-img-alt">${caption}</div>` : ''}
+                        </div>`;
+                    }).join('');
+                }
+            }
+
+            // 历史列表
+            const histEl = document.getElementById('war-history');
+            if (histEl) {
+                histEl.innerHTML = (data.articles || []).map(a =>
+                    `<div class="war-history-item">
+                        <span style="font-size:.9rem;color:#334155;">
+                            <span style="color:#94a3b8;font-size:.8rem;margin-right:8px;">${a.date}</span>
+                            ${a.title || a.url}
+                        </span>
+                        <a href="${a.url}" target="_blank"
+                           style="font-size:.8rem;color:#1e40af;white-space:nowrap;margin-left:12px;">查看 →</a>
+                    </div>`
+                ).join('');
+            }
+        })
+        .catch(() => {
+            document.getElementById('war-title').textContent = '数据未找到，请运行 fetch_isw_update.py';
+        });
+}
+
+loadStraitData(); // async, no await needed at top level
+loadISWData();
+
+fetch('market_data.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+        loadTrumpApproval(data);
+        buildCommodityCharts(data);
+        buildFinancialSection(data);
+        buildGSCPIChart(data);
+    })
+    .catch(err => {
+        console.warn('market_data.json 加载失败:', err);
+        document.getElementById('trump-source').textContent = '请先运行 fetch_market_data.py 生成数据';
+        document.getElementById('commodity-charts').innerHTML =
+            '<div style="grid-column:1/-1;padding:40px;text-align:center;color:#94a3b8;">请先运行 <code>fetch_market_data.py</code> 生成数据</div>';
+        document.getElementById('financial-charts').innerHTML =
+            '<div style="grid-column:1/-1;padding:40px;text-align:center;color:#94a3b8;">请先运行 <code>fetch_market_data.py</code> 生成数据</div>';
+    });
+</script>
+</body>
+</html>

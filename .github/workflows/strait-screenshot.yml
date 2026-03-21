@@ -1,0 +1,45 @@
+name: 海峡截图 (每20分钟)
+
+on:
+  schedule:
+    - cron: '*/20 * * * *'
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache Playwright
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}
+
+      - name: Install dependencies
+        run: pip install playwright imageio-ffmpeg
+
+      - name: Install Playwright browsers
+        run: playwright install --with-deps chromium
+
+      - name: Run screenshot script
+        run: python screenshot_for_ci.py
+        timeout-minutes: 5
+
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Actions"
+          git add strait_snapshots/ strait_data.json strait_timelapse.mp4 || true
+          git diff --staged --quiet || git commit -m "截图更新 $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push
