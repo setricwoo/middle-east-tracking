@@ -76,16 +76,110 @@ def parse_date_from_url(url: str) -> str:
     return datetime.now(BEIJING_TZ).strftime("%Y-%m-%d")
 
 
-def translate_text(text: str, use_deepl: bool = True) -> str:
+def translate_text(text: str) -> str:
     """
     翻译英文到中文
-    优先使用 DeepL（质量最好），失败则使用 Hugging Face（免费）
+    主要使用 Hugging Face 免费 API（Helsinki-NLP/opus-mt-en-zh），
+    失败时回退到 DeepL 或 MyMemory
     """
     if not text or not text.strip():
         return text
     
-    # 方案1: DeepL Free API（需要 DEEPL_API_KEY 环境变量）
-    if use_deepl and os.environ.get("DEEPL_API_KEY"):
+    # 方案1: Hugging Face 免费推理 API（Helsinki-NLP/opus-mt-en-zh）
+    # 这是专门用于英中翻译的模型，质量较好且完全免费
+    hf_url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-zh"
+    headers = {"Content-Type": "application/json"}
+    
+    # 如果设置了 HF_API_KEY，使用它（可提高速率限制）
+    if os.environ.get("HF_API_KEY"):
+        headers["Authorization"] = f"Bearer {os.environ['HF_API_KEY']}"
+    
+    # 分段翻译（HF 有长度限制，每段约 400 字符）
+    max_len = 400
+    if len(text) > max_len:
+        # 简单按句子分割
+        sentences = text.replace('. ', '.|').replace('! ', '!|').replace('? ', '?|').split('|')
+        translated_parts = []
+        current_chunk = ""
+        
+        for sent in sentences:
+            if len(current_chunk) + len(sent) > max_len:
+                if current_chunk:
+                    # 翻译当前块
+                    for attempt in range(3):
+                        try:
+                            data = {"inputs": current_chunk.strip()}
+                            req = urllib.request.Request(
+                                hf_url,
+                                data=json.dumps(data).encode('utf-8'),
+                                headers=headers,
+                                method='POST'
+                            )
+                            res = json.loads(urllib.request.urlopen(req, timeout=30).read())
+                            if isinstance(res, list) and len(res) > 0:
+                                translated_parts.append(res[0].get("translation_text", current_chunk))
+                                break
+                        except Exception as e:
+                            if attempt < 2:
+                                time.sleep(2)
+                            else:
+                                translated_parts.append(current_chunk)
+                current_chunk = sent
+            else:
+                current_chunk += " " + sent if current_chunk else sent
+        
+        # 翻译最后一块
+        if current_chunk:
+            for attempt in range(3):
+                try:
+                    data = {"inputs": current_chunk.strip()}
+                    req = urllib.request.Request(
+                        hf_url,
+                        data=json.dumps(data).encode('utf-8'),
+                        headers=headers,
+                        method='POST'
+                    )
+                    res = json.loads(urllib.request.urlopen(req, timeout=30).read())
+                    if isinstance(res, list) and len(res) > 0:
+                        translated_parts.append(res[0].get("translation_text", current_chunk))
+                        break
+                except Exception:
+                    if attempt < 2:
+                        time.sleep(2)
+                    else:
+                        translated_parts.append(current_chunk)
+        
+        return " ".join(translated_parts)
+    
+    # 短文本直接翻译，带重试机制
+    for attempt in range(3):
+        try:
+            data = {"inputs": text[:500]}
+            req = urllib.request.Request(
+                hf_url,
+                data=json.dumps(data).encode('utf-8'),
+                headers=headers,
+                method='POST'
+            )
+            res = json.loads(urllib.request.urlopen(req, timeout=30).read())
+            # HF 返回格式: [{"translation_text": "..."}]
+            if isinstance(res, list) and len(res) > 0:
+                return res[0].get("translation_text", text)
+            elif isinstance(res, dict) and res.get("error"):
+                # 模型加载中，等待后重试
+                if attempt < 2:
+                    print(f"  [HF] 模型加载中，等待 {attempt + 1}s...")
+                    time.sleep(attempt + 1)
+                    continue
+        except Exception as e:
+            if attempt < 2:
+                print(f"  [HF] 重试 {attempt + 1}/3...")
+                time.sleep(attempt + 1)
+            else:
+                print(f"  [Hugging Face 失败] {e}")
+    
+    # 方案2: DeepL Free API（如果设置了 DEEPL_API_KEY）
+    if os.environ.get("DEEPL_API_KEY"):
         try:
             api_key = os.environ["DEEPL_API_KEY"]
             url = "https://api-free.deepl.com/v2/translate"
@@ -107,30 +201,7 @@ def translate_text(text: str, use_deepl: bool = True) -> str:
             if res.get("translations"):
                 return res["translations"][0]["text"]
         except Exception as e:
-            print(f"  [DeepL 失败] {e}, 尝试 Hugging Face...")
-    
-    # 方案2: Hugging Face 免费推理 API（facebook/m2m100）
-    try:
-        # 使用 Helsinki-NLP/opus-mt-en-zh 专门做英中翻译
-        url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-zh"
-        headers = {"Content-Type": "application/json"}
-        # 小量使用无需 API key，大量使用可设置 HF_API_KEY
-        if os.environ.get("HF_API_KEY"):
-            headers["Authorization"] = f"Bearer {os.environ['HF_API_KEY']}"
-        
-        data = {"inputs": text[:500]}  # HF 有长度限制
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(data).encode('utf-8'),
-            headers=headers,
-            method='POST'
-        )
-        res = json.loads(urllib.request.urlopen(req, timeout=30).read())
-        # HF 返回格式: [{"translation_text": "..."}]
-        if isinstance(res, list) and len(res) > 0:
-            return res[0].get("translation_text", text)
-    except Exception as e:
-        print(f"  [Hugging Face 失败] {e}")
+            print(f"  [DeepL 失败] {e}")
     
     # 方案3: 回退到 MyMemory
     try:
