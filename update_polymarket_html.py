@@ -25,6 +25,8 @@ EVENT_SLUGS = [
     "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
     "will-crude-oil-cl-hit-by-end-of-march",
     "cl-hit-jun-2026",
+    "which-party-will-win-the-house-in-2026",
+    "which-party-will-win-the-senate-in-2026",
 ]
 
 # 请求头
@@ -272,6 +274,7 @@ def generate_html(data: Dict) -> str:
                 <a href="tracking.html" class="nav-btn">⚡ <span>海峡跟踪</span></a>
                 <a href="news.html" class="nav-btn">🔴 <span>实时新闻</span></a>
                 <a href="polymarket.html" class="nav-btn active">📈 <span>Polymarket</span></a>
+                <a href="data-tracking.html" class="nav-btn">📊 <span>数据跟踪</span></a>
             </div>
             <div class="header-right">更新时间: ''' + datetime.now(ZoneInfo("Asia/Shanghai")).strftime('%Y年%m月%d日 %H:%M') + '''</div>
         </div>
@@ -324,6 +327,18 @@ def generate_html(data: Dict) -> str:
     oil_june_data = data.get("cl-hit-jun-2026", {})
     html += generate_oil_card(oil_june_data, "6月原油价格预测", "CL期货价格6月底前触碰概率",
                                chart_idx)
+    chart_idx += 1
+
+    # 7. 2026年众议院控制权
+    house_data = data.get("which-party-will-win-the-house-in-2026", {})
+    html += generate_party_card(house_data, "2026年中期选举：众议院", "哪个党将控制众议院",
+                                 chart_idx)
+    chart_idx += 1
+
+    # 8. 2026年参议院控制权
+    senate_data = data.get("which-party-will-win-the-senate-in-2026", {})
+    html += generate_party_card(senate_data, "2026年中期选举：参议院", "哪个党将控制参议院",
+                                 chart_idx)
     chart_idx += 1
 
     html += '''
@@ -744,6 +759,103 @@ def generate_oil_card(oil_data: Dict, title: str, subtitle: str,
                         scales: {{
                             x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
                             y: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5, drawBorder: false }}, ticks: {{ color: '#64748b' }} }}
+                        }}
+                    }}
+                }});
+            </script>
+'''
+    return html
+
+
+def generate_party_card(event_data: Dict, title: str, subtitle: str, chart_idx: int) -> str:
+    """生成党派预测卡片（用于中期选举）"""
+    markets = event_data.get("markets", [])
+    if not markets:
+        return ""
+
+    m = markets[0]
+    outcomes = m.get("outcomes", {})
+
+    # 找到Republican/Democrat或类似键
+    rep_key = next((k for k in outcomes if "repub" in k.lower() or "republican" in k.lower()), None)
+    dem_key = next((k for k in outcomes if "demo" in k.lower() or "democrat" in k.lower()), None)
+    if not rep_key or not dem_key:
+        keys = list(outcomes.keys())
+        if len(keys) >= 2:
+            rep_key, dem_key = keys[0], keys[1]
+        else:
+            return ""
+
+    rep_price = outcomes[rep_key].get("currentPrice", 0)
+    dem_price = outcomes[dem_key].get("currentPrice", 0)
+    rep_history = outcomes[rep_key].get("priceHistory", [])
+    dem_history = outcomes[dem_key].get("priceHistory", [])
+
+    all_times = set(h["time"] for h in rep_history) | set(h["time"] for h in dem_history)
+    sorted_times = sorted(list(all_times))
+
+    rep_pts = {h["time"]: h["price"] for h in rep_history}
+    dem_pts = {h["time"]: h["price"] for h in dem_history}
+
+    chart_id = f"chart_{chart_idx}"
+    rep_color = COLORS["rose"]
+    dem_color = COLORS["blue"]
+
+    html = f'''            <div class="card rounded-xl p-6">
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">{title}</h2>
+                <p class="text-sm text-slate-600 mb-4">{subtitle}</p>
+
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div class="text-center p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold" style="color: {rep_color}">{rep_price}%</div>
+                        <div class="text-sm text-slate-500 mt-1">共和党</div>
+                    </div>
+                    <div class="text-center p-4 bg-slate-100 rounded-lg border border-slate-200">
+                        <div class="text-3xl font-bold" style="color: {dem_color}">{dem_price}%</div>
+                        <div class="text-sm text-slate-500 mt-1">民主党</div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="{chart_id}"></canvas>
+                </div>
+            </div>
+
+            <script>
+                new Chart(document.getElementById('{chart_id}'), {{
+                    type: 'line',
+                    data: {{
+                        labels: {json.dumps(sorted_times)},
+                        datasets: [
+                            {{
+                                label: '共和党 (%)',
+                                data: {json.dumps([rep_pts.get(t) for t in sorted_times])},
+                                borderColor: '{rep_color}',
+                                backgroundColor: '{rep_color}1a',
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.4,
+                                pointRadius: 0
+                            }},
+                            {{
+                                label: '民主党 (%)',
+                                data: {json.dumps([dem_pts.get(t) for t in sorted_times])},
+                                borderColor: '{dem_color}',
+                                backgroundColor: '{dem_color}1a',
+                                borderWidth: 2,
+                                fill: false,
+                                tension: 0.4,
+                                pointRadius: 0
+                            }}
+                        ]
+                    }},
+                    options: {{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {{ legend: {{ position: 'top', labels: {{ color: '#334155', font: {{ size: 11 }} }} }} }},
+                        scales: {{
+                            x: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5 }}, ticks: {{ color: '#64748b', maxTicksLimit: 10 }} }},
+                            y: {{ grid: {{ color: 'rgba(100, 116, 139, 0.2)', lineWidth: 0.5 }}, ticks: {{ color: '#64748b' }} }}
                         }}
                     }}
                 }});

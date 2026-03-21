@@ -129,11 +129,11 @@
 <!-- 子Tab导航 -->
 <div class="sub-nav-wrap">
     <div class="sub-nav">
-        <button class="tab-btn active" onclick="switchTab('strait')">🚢 海峡通行</button>
-        <button class="tab-btn" onclick="switchTab('polymarket')">🎲 市场预测</button>
-        <button class="tab-btn" onclick="switchTab('commodities')">📦 商品价格</button>
-        <button class="tab-btn" onclick="switchTab('financial')">🌐 全球金融</button>
-        <button class="tab-btn" onclick="switchTab('war')">⚔️ 战局形势</button>
+        <button class="tab-btn active" onclick="switchTab('strait', this)">🚢 海峡通行</button>
+        <button class="tab-btn" onclick="switchTab('polymarket', this)">🎲 市场预测</button>
+        <button class="tab-btn" onclick="switchTab('commodities', this)">📦 商品价格</button>
+        <button class="tab-btn" onclick="switchTab('financial', this)">🌐 全球金融</button>
+        <button class="tab-btn" onclick="switchTab('war', this)">⚔️ 战局形势</button>
     </div>
 </div>
 
@@ -300,11 +300,15 @@
 // ══════════════════════════════════════════════
 // Tab 切换
 // ══════════════════════════════════════════════
-function switchTab(name) {
+function switchTab(name, btnElement) {
     document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
     document.getElementById('tab-' + name).classList.add('active');
-    event.currentTarget.classList.add('active');
+    if (btnElement) {
+        btnElement.classList.add('active');
+    } else if (event && event.currentTarget) {
+        event.currentTarget.classList.add('active');
+    }
     // 更新 URL hash
     history.replaceState(null, '', '#' + name);
 }
@@ -314,7 +318,10 @@ function switchTab(name) {
     const hash = location.hash.replace('#', '');
     if (hash) {
         const btn = document.querySelector(`.tab-btn[onclick*="${hash}"]`);
-        if (btn) { btn.click(); }
+        if (btn) { 
+            // 手动触发 tab 切换，不依赖点击事件
+            switchTab(hash, btn);
+        }
     }
 })();
 

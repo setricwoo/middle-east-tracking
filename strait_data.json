@@ -1,0 +1,570 @@
+{
+  "updated": "2026-03-21T17:17:59",
+  "realtime": {
+    "ship_now": 2,
+    "ship_avg": 60,
+    "tpc": 96.67,
+    "oil": 99,
+    "lng": 98,
+    "lpg": 99,
+    "meoh": 99,
+    "npk": 98.15,
+    "al": 94.25,
+    "car": 89.15,
+    "overall": 2904,
+    "stationary": 2268,
+    "underway": 636,
+    "updated": "2026-03-21 17:10:03"
+  },
+  "daily": [
+    {
+      "date": "2026-02-28",
+      "tanker": 50,
+      "cargo": 98,
+      "total": 148,
+      "chg": null
+    },
+    {
+      "date": "2026-03-01",
+      "tanker": 3,
+      "cargo": 18,
+      "total": 21,
+      "chg": -0.86
+    },
+    {
+      "date": "2026-03-02",
+      "tanker": 3,
+      "cargo": 7,
+      "total": 10,
+      "chg": -0.52
+    },
+    {
+      "date": "2026-03-03",
+      "tanker": 0,
+      "cargo": 0,
+      "total": 0,
+      "chg": -1
+    },
+    {
+      "date": "2026-03-04",
+      "tanker": 0,
+      "cargo": 2,
+      "total": 2,
+      "chg": null
+    },
+    {
+      "date": "2026-03-05",
+      "tanker": 4,
+      "cargo": 3,
+      "total": 7,
+      "chg": 2.5
+    },
+    {
+      "date": "2026-03-06",
+      "tanker": 2,
+      "cargo": 4,
+      "total": 6,
+      "chg": -0.14
+    },
+    {
+      "date": "2026-03-07",
+      "tanker": 0,
+      "cargo": 1,
+      "total": 1,
+      "chg": -0.83
+    },
+    {
+      "date": "2026-03-08",
+      "tanker": 0,
+      "cargo": 1,
+      "total": 1,
+      "chg": 0
+    },
+    {
+      "date": "2026-03-09",
+      "tanker": 0,
+      "cargo": 1,
+      "total": 1,
+      "chg": 0
+    },
+    {
+      "date": "2026-03-10",
+      "tanker": 1,
+      "cargo": 7,
+      "total": 8,
+      "chg": 7
+    },
+    {
+      "date": "2026-03-11",
+      "tanker": 1,
+      "cargo": 1,
+      "total": 2,
+      "chg": -0.75
+    },
+    {
+      "date": "2026-03-12",
+      "tanker": 0,
+      "cargo": 5,
+      "total": 5,
+      "chg": 1.5
+    },
+    {
+      "date": "2026-03-13",
+      "tanker": 1,
+      "cargo": 1,
+      "total": 2,
+      "chg": -0.6
+    },
+    {
+      "date": "2026-03-14",
+      "tanker": 1,
+      "cargo": 2,
+      "total": 3,
+      "chg": 0.5
+    },
+    {
+      "date": "2026-03-15",
+      "tanker": 0,
+      "cargo": 3,
+      "total": 3,
+      "chg": 0
+    },
+    {
+      "date": "2026-03-16",
+      "tanker": 0,
+      "cargo": 2,
+      "total": 2,
+      "chg": -0.33
+    },
+    {
+      "date": "2026-03-17",
+      "tanker": 0,
+      "cargo": 4,
+      "total": 4,
+      "chg": 1
+    },
+    {
+      "date": "2026-03-18",
+      "tanker": 1,
+      "cargo": 2,
+      "total": 3,
+      "chg": -0.25
+    }
+  ],
+  "direction": [
+    {
+      "date": "2026-03-02",
+      "inbound": 3,
+      "outbound": 4,
+      "total": 7
+    },
+    {
+      "date": "2026-03-03",
+      "inbound": 2,
+      "outbound": 2,
+      "total": 4
+    },
+    {
+      "date": "2026-03-04",
+      "inbound": 4,
+      "outbound": 1,
+      "total": 5
+    },
+    {
+      "date": "2026-03-07",
+      "inbound": 1,
+      "outbound": 2,
+      "total": 3
+    },
+    {
+      "date": "2026-03-08",
+      "inbound": 0,
+      "outbound": 2,
+      "total": 2
+    },
+    {
+      "date": "2026-03-09",
+      "inbound": 0,
+      "outbound": 1,
+      "total": 1
+    },
+    {
+      "date": "2026-03-10",
+      "inbound": 0,
+      "outbound": 2,
+      "total": 2
+    },
+    {
+      "date": "2026-03-11",
+      "inbound": 0,
+      "outbound": 2,
+      "total": 2
+    },
+    {
+      "date": "2026-03-14",
+      "inbound": 0,
+      "outbound": 0,
+      "total": 0
+    },
+    {
+      "date": "2026-03-15",
+      "inbound": 0,
+      "outbound": 3,
+      "total": 3
+    },
+    {
+      "date": "2026-03-16",
+      "inbound": 1,
+      "outbound": 1,
+      "total": 2
+    }
+  ],
+  "fleet_type": [
+    {
+      "date": "2026-03-01",
+      "sanctioned": 7,
+      "shadow": 2,
+      "regular": 20
+    },
+    {
+      "date": "2026-03-02",
+      "sanctioned": 3,
+      "shadow": 0,
+      "regular": 6
+    },
+    {
+      "date": "2026-03-03",
+      "sanctioned": 1,
+      "shadow": 0,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-04",
+      "sanctioned": 4,
+      "shadow": 1,
+      "regular": 3
+    },
+    {
+      "date": "2026-03-05",
+      "sanctioned": 0,
+      "shadow": 1,
+      "regular": 3
+    },
+    {
+      "date": "2026-03-06",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 1
+    },
+    {
+      "date": "2026-03-07",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-08",
+      "sanctioned": 2,
+      "shadow": 1,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-09",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-10",
+      "sanctioned": 1,
+      "shadow": 3,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-11",
+      "sanctioned": 1,
+      "shadow": 1,
+      "regular": 6
+    },
+    {
+      "date": "2026-03-12",
+      "sanctioned": 1,
+      "shadow": 0,
+      "regular": 1
+    },
+    {
+      "date": "2026-03-13",
+      "sanctioned": 1,
+      "shadow": 0,
+      "regular": 1
+    },
+    {
+      "date": "2026-03-14",
+      "sanctioned": 3,
+      "shadow": 0,
+      "regular": 1
+    },
+    {
+      "date": "2026-03-15",
+      "sanctioned": 0,
+      "shadow": 0,
+      "regular": 5
+    },
+    {
+      "date": "2026-03-16",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 2
+    },
+    {
+      "date": "2026-03-17",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 0
+    },
+    {
+      "date": "2026-03-18",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 0
+    },
+    {
+      "date": "2026-03-19",
+      "sanctioned": 2,
+      "shadow": 0,
+      "regular": 0
+    }
+  ],
+  "snapshots": [
+    {
+      "ts": "2026-03-19 11:22",
+      "url": "https://oimg.jin10.com/news/26/03/MX7eDmn3bVb1-aC8OXwlzj.png"
+    },
+    {
+      "ts": "2026-03-19 12:00",
+      "url": "https://oimg.jin10.com/news/26/03/EjQQYieJo7FQLINKaO6s6G.png"
+    },
+    {
+      "ts": "2026-03-19 13:00",
+      "url": "https://oimg.jin10.com/news/26/03/0SE99Jv5-9rmo3QaCK8V4Z.png"
+    },
+    {
+      "ts": "2026-03-19 14:00",
+      "url": "https://oimg.jin10.com/news/26/03/F07cf_-vNO_xs4K8GqaATq.png"
+    },
+    {
+      "ts": "2026-03-19 15:00",
+      "url": "https://oimg.jin10.com/news/26/03/2Jn8LdbLNjBa04LPDJx8oy.png"
+    },
+    {
+      "ts": "2026-03-19 16:00",
+      "url": "https://oimg.jin10.com/news/26/03/O37an1D7Tdrikd43z8c1dd.png"
+    },
+    {
+      "ts": "2026-03-19 17:00",
+      "url": "https://oimg.jin10.com/news/26/03/AGWVIZe9cXIKVpkisF14TK.png"
+    },
+    {
+      "ts": "2026-03-19 18:00",
+      "url": "https://oimg.jin10.com/news/26/03/RFgvTRWHdynczfuhnBeBoG.png"
+    },
+    {
+      "ts": "2026-03-19 19:00",
+      "url": "https://oimg.jin10.com/news/26/03/6KyFfCtyjVhHvSxUtpEnyI.png"
+    },
+    {
+      "ts": "2026-03-19 20:00",
+      "url": "https://oimg.jin10.com/news/26/03/NKgxciE_ZzebjCLVQ2HZI2.png"
+    },
+    {
+      "ts": "2026-03-19 21:00",
+      "url": "https://oimg.jin10.com/news/26/03/E79-ZCVe9W7dE7TRRs9KEC.png"
+    },
+    {
+      "ts": "2026-03-19 22:00",
+      "url": "https://oimg.jin10.com/news/26/03/YiRHwY-gPiCk1LY2TX0r3J.png"
+    },
+    {
+      "ts": "2026-03-19 23:00",
+      "url": "https://oimg.jin10.com/news/26/03/akAM9YLZgBqTAEMcSsTfsK.png"
+    },
+    {
+      "ts": "2026-03-20 00:00",
+      "url": "https://oimg.jin10.com/news/26/03/xd6xEMa0PaovZjwYN3gx5q.png"
+    },
+    {
+      "ts": "2026-03-20 01:00",
+      "url": "https://oimg.jin10.com/news/26/03/lmz33i9m-eWPww94TwZvfq.png"
+    },
+    {
+      "ts": "2026-03-20 02:00",
+      "url": "https://oimg.jin10.com/news/26/03/RNq62hb-QEMxExJALEukoC.png"
+    },
+    {
+      "ts": "2026-03-20 03:00",
+      "url": "https://oimg.jin10.com/news/26/03/OK42nKHk430-cRAl2LOoHS.png"
+    },
+    {
+      "ts": "2026-03-20 04:00",
+      "url": "https://oimg.jin10.com/news/26/03/ox6o-inZ8Rm2k_htH3rSTF.png"
+    },
+    {
+      "ts": "2026-03-20 05:00",
+      "url": "https://oimg.jin10.com/news/26/03/nhKt_Vx9dLum0QjIi5K-lN.png"
+    },
+    {
+      "ts": "2026-03-20 06:00",
+      "url": "https://oimg.jin10.com/news/26/03/NPz2kqmP26k0eUMpn56jsH.png"
+    },
+    {
+      "ts": "2026-03-20 07:00",
+      "url": "https://oimg.jin10.com/news/26/03/7lQef-zv75KCIHGYAUAvH6.png"
+    },
+    {
+      "ts": "2026-03-20 08:00",
+      "url": "https://oimg.jin10.com/news/26/03/uGME7mIYScDVWVzxMk3DTW.png"
+    },
+    {
+      "ts": "2026-03-20 09:00",
+      "url": "https://oimg.jin10.com/news/26/03/202wNNovOlrOrSMqlsWzGi.png"
+    },
+    {
+      "ts": "2026-03-20 10:00",
+      "url": "https://oimg.jin10.com/news/26/03/aEdg0v5Sa9_libx7JRIzmN.png"
+    },
+    {
+      "ts": "2026-03-20 11:00",
+      "url": "https://oimg.jin10.com/news/26/03/vAmndKZUxvoN9yLgaWp_3L.png"
+    },
+    {
+      "ts": "2026-03-20 12:00",
+      "url": "https://oimg.jin10.com/news/26/03/Wa86bA1zNq4l6stXIwm58j.png"
+    },
+    {
+      "ts": "2026-03-20 13:00",
+      "url": "https://oimg.jin10.com/news/26/03/NaXnh4QlUe7m8DE0pf70iF.png"
+    },
+    {
+      "ts": "2026-03-20 14:00",
+      "url": "https://oimg.jin10.com/news/26/03/wWmjV8YGRUdkyhIC6H1RhM.png"
+    },
+    {
+      "ts": "2026-03-20 15:00",
+      "url": "https://oimg.jin10.com/news/26/03/Rvck4wfkEwMjqn2lBgO5jp.png"
+    },
+    {
+      "ts": "2026-03-20 16:00",
+      "url": "https://oimg.jin10.com/news/26/03/D0iMVnTJ2xJxo8mATNOQ_f.png"
+    },
+    {
+      "ts": "2026-03-20 17:00",
+      "url": "https://oimg.jin10.com/news/26/03/1SqQdqabarRi1B0a25s2Vg.png"
+    },
+    {
+      "ts": "2026-03-20 18:00",
+      "url": "https://oimg.jin10.com/news/26/03/rJuqyhIuav0FnSrPCgXKqd.png"
+    },
+    {
+      "ts": "2026-03-20 19:00",
+      "url": "https://oimg.jin10.com/news/26/03/grdh8Q8khdQomVReOTdEVU.png"
+    },
+    {
+      "ts": "2026-03-20 20:00",
+      "url": "https://oimg.jin10.com/news/26/03/TQU7-lGK5G72YWmN2SE5pv.png"
+    },
+    {
+      "ts": "2026-03-20 21:00",
+      "url": "https://oimg.jin10.com/news/26/03/dalLdUdBTL2byGl3xNlB1o.png"
+    },
+    {
+      "ts": "2026-03-20 22:00",
+      "url": "https://oimg.jin10.com/news/26/03/3Sa5bTlsxE1RYmzlvVVCO9.png"
+    },
+    {
+      "ts": "2026-03-20 23:00",
+      "url": "https://oimg.jin10.com/news/26/03/mJ-EWsnoxBWhXrgiovRBdi.png"
+    },
+    {
+      "ts": "2026-03-21 00:00",
+      "url": "https://oimg.jin10.com/news/26/03/z70Vtrrs4u9KDi7x6aZ2I5.png"
+    },
+    {
+      "ts": "2026-03-21 01:00",
+      "url": "https://oimg.jin10.com/news/26/03/dS5kZeVc_X9TM3nnc0jgsY.png"
+    },
+    {
+      "ts": "2026-03-21 02:00",
+      "url": "https://oimg.jin10.com/news/26/03/jk1H4_Ex_VuS-r-nZKqVBp.png"
+    },
+    {
+      "ts": "2026-03-21 03:00",
+      "url": "https://oimg.jin10.com/news/26/03/fDdaIgm2UYsUjwqUTQtXuD.png"
+    },
+    {
+      "ts": "2026-03-21 04:00",
+      "url": "https://oimg.jin10.com/news/26/03/tlfYpnAIRlFvbjmbnbnLdF.png"
+    },
+    {
+      "ts": "2026-03-21 05:00",
+      "url": "https://oimg.jin10.com/news/26/03/gfBEFshKcShHjfeBIXt5ux.png"
+    },
+    {
+      "ts": "2026-03-21 06:00",
+      "url": "https://oimg.jin10.com/news/26/03/S--7InFPcCxK-7aDMPKlWF.png"
+    },
+    {
+      "ts": "2026-03-21 07:00",
+      "url": "https://oimg.jin10.com/news/26/03/X0SEuPMtOBsEWTsvFelsz3.png"
+    },
+    {
+      "ts": "2026-03-21 08:00",
+      "url": "https://oimg.jin10.com/news/26/03/Gg6hH95iXQFRjdtGs1T44X.png"
+    },
+    {
+      "ts": "2026-03-21 09:00",
+      "url": "https://oimg.jin10.com/news/26/03/Fb7L1PTHwtpDFhOF1vrKga.png"
+    },
+    {
+      "ts": "2026-03-21 10:00",
+      "url": "https://oimg.jin10.com/news/26/03/nhl6kIL8V3Hrnyxnrn7aIr.png"
+    },
+    {
+      "ts": "2026-03-21 11:00",
+      "url": "https://oimg.jin10.com/news/26/03/GxOhiEYCGgmTkXGJnPCUKX.png"
+    },
+    {
+      "ts": "2026-03-21 12:00",
+      "url": "https://oimg.jin10.com/news/26/03/6ezO2dnCMo-i1aJH3Kq_wY.png"
+    },
+    {
+      "ts": "2026-03-21 13:00",
+      "url": "https://oimg.jin10.com/news/26/03/kHEGFEFE43ChdNx0NBCStd.png"
+    },
+    {
+      "ts": "2026-03-21 14:00",
+      "url": "https://oimg.jin10.com/news/26/03/qhjrYh6t3T2DKXqlN9T_So.png"
+    },
+    {
+      "ts": "2026-03-21 15:00",
+      "url": "https://oimg.jin10.com/news/26/03/zfgQ0Pa4j9I_Z2xXtHUSak.png"
+    },
+    {
+      "ts": "2026-03-21 16:00",
+      "url": "https://oimg.jin10.com/news/26/03/jSt5wdeMhj1EHpz0hBnUbT.png"
+    },
+    {
+      "ts": "2026-03-21 17:00",
+      "url": "https://oimg.jin10.com/news/26/03/DjkJaCEoarCWntMjlo44lx.png"
+    },
+    {
+      "ts": "2026-03-21 17:12",
+      "file": "strait_snapshots/20260321_1712.png"
+    },
+    {
+      "ts": "2026-03-21 17:16",
+      "file": "strait_snapshots/20260321_1716.png"
+    }
+  ],
+  "video_url": "https://flash-scdn.jin10.com/8c1d2c82-79be-47cf-9284-34c6226e4dcc.mp4",
+  "timelapse_video": "strait_timelapse.mp4"
+}
