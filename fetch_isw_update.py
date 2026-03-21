@@ -76,10 +76,63 @@ def parse_date_from_url(url: str) -> str:
     return datetime.now(BEIJING_TZ).strftime("%Y-%m-%d")
 
 
-def translate_text(text: str) -> str:
-    """用 MyMemory 免费 API 翻译英文到中文，失败静默返回原文"""
+def translate_text(text: str, use_deepl: bool = True) -> str:
+    """
+    翻译英文到中文
+    优先使用 DeepL（质量最好），失败则使用 Hugging Face（免费）
+    """
     if not text or not text.strip():
         return text
+    
+    # 方案1: DeepL Free API（需要 DEEPL_API_KEY 环境变量）
+    if use_deepl and os.environ.get("DEEPL_API_KEY"):
+        try:
+            api_key = os.environ["DEEPL_API_KEY"]
+            url = "https://api-free.deepl.com/v2/translate"
+            headers = {
+                "Authorization": f"DeepL-Auth-Key {api_key}",
+                "Content-Type": "application/json"
+            }
+            data = {
+                "text": [text[:1000]],
+                "target_lang": "ZH"
+            }
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(data).encode('utf-8'),
+                headers=headers,
+                method='POST'
+            )
+            res = json.loads(urllib.request.urlopen(req, timeout=15).read())
+            if res.get("translations"):
+                return res["translations"][0]["text"]
+        except Exception as e:
+            print(f"  [DeepL 失败] {e}, 尝试 Hugging Face...")
+    
+    # 方案2: Hugging Face 免费推理 API（facebook/m2m100）
+    try:
+        # 使用 Helsinki-NLP/opus-mt-en-zh 专门做英中翻译
+        url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-zh"
+        headers = {"Content-Type": "application/json"}
+        # 小量使用无需 API key，大量使用可设置 HF_API_KEY
+        if os.environ.get("HF_API_KEY"):
+            headers["Authorization"] = f"Bearer {os.environ['HF_API_KEY']}"
+        
+        data = {"inputs": text[:500]}  # HF 有长度限制
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(data).encode('utf-8'),
+            headers=headers,
+            method='POST'
+        )
+        res = json.loads(urllib.request.urlopen(req, timeout=30).read())
+        # HF 返回格式: [{"translation_text": "..."}]
+        if isinstance(res, list) and len(res) > 0:
+            return res[0].get("translation_text", text)
+    except Exception as e:
+        print(f"  [Hugging Face 失败] {e}")
+    
+    # 方案3: 回退到 MyMemory
     try:
         encoded = urllib.parse.quote(text[:800])
         url = f"https://api.mymemory.translated.net/get?q={encoded}&langpair=en|zh-CN"
@@ -87,11 +140,11 @@ def translate_text(text: str) -> str:
         res = json.loads(urllib.request.urlopen(req, timeout=10).read())
         if res.get("responseStatus") == 200:
             translated = res["responseData"]["translatedText"]
-            # MyMemory 在配额超限时会返回 MYMEMORY WARNING
             if "MYMEMORY WARNING" not in translated:
                 return translated
     except Exception:
         pass
+    
     return text
 
 
