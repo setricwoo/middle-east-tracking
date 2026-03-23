@@ -1246,7 +1246,7 @@
                 <a href="data-tracking.html" class="nav-btn">📊 数据跟踪</a>
             </div>
             <div class="header-right">
-                更新时间: 2026年03月19日
+                更新时间: 2026年03月21日
             </div>
         </div>
     </div>
@@ -1255,21 +1255,178 @@
         <div class="alert-banner">
             <span class="icon">🚨</span>
             <div>
-                <h2>霍尔木兹海峡状态：严格封锁（第18天）</h2>
-                <p>3月19日通行量维持极低水平（4艘次，正常约120艘次/日），通航量不足正常3%。约750-1000艘商船滞留海湾。美以伊战争进入第20天，以色列两天内击毙三名伊朗高级官员（情报部长哈提卜、最高国家安全委员会秘书拉里贾尼、巴斯基民兵负责人索莱马尼）。伊朗大规模报复袭击卡塔尔、阿联酋、沙特、科威特四国能源设施，海湾石油出口暴跌超60%。战争险保费从0.25%暴涨至1%-3%，涨幅超1000%，多家保赔协会已取消承保。VLCC日租金突破42万美元创历史新高。IEA释放4亿桶战略储备。</p>
+                <h2>霍尔木兹海峡状态：严格封锁（第20天）</h2>
+                <p>3月21日通行量降至1艘次（正常约120艘次/日），通航量不足正常1%。约750-1000艘商船滞留海湾。美以伊战争进入第22天。航运保险市场'软封锁'：费率从战前0.25%飙升至5%，涨幅2000%，国际主流海事保险体系对波斯湾启动'集体撤保+拒保'，安达保险(Chubb)或为首航提供200亿美元承保计划。特朗普称美国将不再守卫霍尔木兹海峡。伊朗被曝向部分油轮收取200万美元过境费。卡塔尔LNG出口因设施遭袭下降17%，年收入损失约200亿美元。</p>
                 <p style="font-size: 0.8rem; margin-top: 8px; opacity: 0.9;">
-                    💡 实时数据来源：历史.csv、Kpler、UKMTO | 伊朗：驱逐美以外交官的国家可获海峡安全通行 | 沙特24小时内拦截近100架伊朗无人机
+                    💡 实时数据来源：历史.csv、Kpler、UKMTO | 3月21日通行1艘/1.48万吨 | 保险费率0.25%→5%（20倍涨幅）| 伊朗收取200万美元过境费
                 </p>
             </div>
         </div>
 
-        <!-- 每日通行量柱状图 -->
+        <!-- 金十数据：船只实时通行状态 -->
+        <div class="section" id="jin10-ship-status-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0;">🚢 船只实时通行状态</h3>
+                <span style="font-size: 0.8rem; color: #94a3b8;">数据基于AIS数据和公开资料整理</span>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                <!-- 左侧：当前通过霍尔木兹海峡 -->
+                <div style="background: linear-gradient(135deg, #fff5eb 0%, #ffe4cc 100%); border-radius: 12px; padding: 24px; text-align: center; border: 1px solid #ffd8bf;">
+                    <div style="font-size: 0.9rem; color: #595959; margin-bottom: 12px;">当前通过霍尔木兹海峡</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px;">
+                        <span id="jin10-hormuz-passing" style="font-size: 3.5rem; font-weight: 700; color: #fa8c16; line-height: 1;">--</span>
+                        <span style="font-size: 1.2rem; color: #595959;">艘</span>
+                    </div>
+                    <div style="font-size: 0.8rem; color: #8c8c8c; margin-top: 8px;">根据媒体报道更新</div>
+                </div>
+                
+                <!-- 右侧：阿曼湾与波斯湾海域内 -->
+                <div style="background: #fafafa; border-radius: 12px; padding: 24px; border: 1px solid #f0f0f0;">
+                    <div style="font-size: 0.9rem; color: #595959; text-align: center; margin-bottom: 16px;">阿曼湾与波斯湾海域内</div>
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <span id="jin10-total-ships" style="font-size: 2.5rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 1rem; color: #595959;">艘</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0 12px;">
+                        <div>
+                            <div style="font-size: 0.85rem; color: #1890ff; margin-bottom: 4px;">
+                                <span style="font-weight: 600;">航行中</span> <span style="font-size: 0.75rem; color: #8c8c8c;">速度≥1节</span>
+                            </div>
+                            <div id="jin10-sailing" style="font-size: 1.3rem; font-weight: 600; color: #1890ff;">--艘</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 0.85rem; color: #f5222d; margin-bottom: 4px;">
+                                <span style="font-weight: 600;">锚泊/停靠</span> <span style="font-size: 0.75rem; color: #8c8c8c;">速度<1节</span>
+                            </div>
+                            <div id="jin10-anchored" style="font-size: 1.3rem; font-weight: 600; color: #f5222d;">--艘</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 12px; text-align: right;">
+                数据更新时间: <span id="jin10-ship-update-time">--</span> | 来源: <a href="https://qihuo.jin10.com/topic/strait_of_hormuz.html" target="_blank">金十数据</a>
+            </p>
+        </div>
+
+        <!-- 金十数据：行业通行压力系数 -->
+        <div class="section" id="jin10-pressure-section" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="margin: 0;">🔴 行业通行压力系数</h3>
+                <span style="font-size: 0.8rem; color: #94a3b8;">数据来源：金十数据</span>
+            </div>
+            
+            <!-- 综合压力系数 - 仪表盘样式 -->
+            <div style="background: linear-gradient(135deg, #fff2f0 0%, #ffccc7 100%); border-radius: 16px; padding: 32px 24px; text-align: center; margin-bottom: 24px; border: 1px solid #ffa39e; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #52c41a 0%, #faad14 50%, #f5222d 100%);"></div>
+                <div style="font-size: 1rem; color: #595959; margin-bottom: 8px;">综合通行压力系数</div>
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 8px;">
+                    <span id="jin10-total-pressure" style="font-size: 4rem; font-weight: 800; color: #cf1322; line-height: 1;">--</span>
+                    <span style="font-size: 1.5rem; color: #cf1322; font-weight: 600;">%</span>
+                </div>
+                <div id="jin10-pressure-level" style="display: inline-block; margin-top: 12px; padding: 6px 16px; background: #cf1322; color: white; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">高风险</div>
+            </div>
+            
+            <!-- 分行业压力系数 -->
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px;">
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">原油及成品油</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-oil" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-oil-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">液化天然气(LNG)</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-lng" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-lng-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">液化石油气(LPG)</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-lpg" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-lpg-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">化肥(尿素及磷肥)</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-fertilizer" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-fertilizer-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">铝材</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-aluminum" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-aluminum-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: #fff; border-radius: 12px; padding: 20px; text-align: center; border: 1px solid #f0f0f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                    <div style="font-size: 0.85rem; color: #8c8c8c; margin-bottom: 12px;">甲醇</div>
+                    <div style="display: flex; align-items: baseline; justify-content: center; gap: 2px;">
+                        <span id="jin10-methanol" style="font-size: 2rem; font-weight: 700; color: #262626;">--</span>
+                        <span style="font-size: 0.9rem; color: #8c8c8c;">%</span>
+                    </div>
+                    <div style="margin-top: 8px; height: 4px; background: #f5f5f5; border-radius: 2px; overflow: hidden;">
+                        <div id="jin10-methanol-bar" style="height: 100%; width: 0%; background: linear-gradient(90deg, #ff4d4f, #cf1322); border-radius: 2px; transition: width 0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 16px; text-align: right;">
+                数据更新时间: <span id="jin10-update-time">--</span> | 来源: <a href="https://qihuo.jin10.com/topic/strait_of_hormuz.html" target="_blank">金十数据</a>
+            </p>
+        </div>
+
+        <!-- 每日通行量折线图（历史CSV数据） -->
         <div class="chart-section">
-            <h3>📊 霍尔木兹海峡每日通行量</h3>
+            <h3>📊 霍尔木兹海峡每日通行量 <span style="font-size: 0.8rem; color: #64748b; font-weight: normal;">数据来源：船视宝（历史.csv）</span></h3>
             <div class="chart-container">
                 <canvas id="trafficChart"></canvas>
             </div>
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 8px; text-align: right;">
+                数据更新时间: <span id="csv-update-time">--</span> | 来源: 船视宝
+            </p>
+        </div>
 
+        <!-- 金十数据：24h航运回溯 -->
+        <div class="section" id="jin10-snapshot-section" style="display: none;">
+            <h3>📸 24h航运回溯 <span style="font-size: 0.8rem; color: #64748b; font-weight: normal;">数据来源：金十数据</span></h3>
+            
+            <div id="jin10-snapshots-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                <!-- 动态加载金十图片 -->
+            </div>
+            
+            <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 12px; text-align: center;">
+                图片直接来自金十数据实时监控页面 | 
+                <a href="https://qihuo.jin10.com/topic/strait_of_hormuz.html" target="_blank">查看原始页面 →</a>
+            </p>
         </div>
 
         <!-- 最新情报摘要 -->
@@ -2029,6 +2186,158 @@
                 }
             }
         });
+        
+        // ==================== 加载金十数据 ====================
+        async function loadJin10Data() {
+            try {
+                const response = await fetch('jin10_strait_data.json?t=' + Date.now());
+                if (!response.ok) {
+                    console.log('金十数据暂未加载');
+                    return;
+                }
+                
+                const data = await response.json();
+                
+                // ========== 1. 船只实时通行状态 ==========
+                const shipStatusSection = document.getElementById('jin10-ship-status-section');
+                if (shipStatusSection) {
+                    shipStatusSection.style.display = 'block';
+                    
+                    // 当前通过霍尔木兹海峡
+                    if (data.ship_counts && data.ship_counts.hormuz_passing !== undefined) {
+                        document.getElementById('jin10-hormuz-passing').textContent = 
+                            data.ship_counts.hormuz_passing;
+                    } else if (data.ship_counts && data.ship_counts.hormuz) {
+                        // 如果没有单独的在航数据，使用总数
+                        document.getElementById('jin10-hormuz-passing').textContent = 
+                            data.ship_counts.hormuz;
+                    }
+                    
+                    // 海域内总船舶数
+                    const totalShips = (data.ship_counts?.oman || 0) + (data.ship_counts?.persian || 0);
+                    if (totalShips > 0) {
+                        document.getElementById('jin10-total-ships').textContent = 
+                            totalShips.toLocaleString();
+                    }
+                    
+                    // 航行中 vs 锚泊/停靠
+                    if (data.ship_counts) {
+                        if (data.ship_counts.sailing !== undefined) {
+                            document.getElementById('jin10-sailing').textContent = 
+                                data.ship_counts.sailing.toLocaleString() + '艘';
+                        }
+                        if (data.ship_counts.anchored !== undefined) {
+                            document.getElementById('jin10-anchored').textContent = 
+                                data.ship_counts.anchored.toLocaleString() + '艘';
+                        }
+                    }
+                    
+                    // 更新时间
+                    if (data.updated) {
+                        document.getElementById('jin10-ship-update-time').textContent = 
+                            data.updated.slice(0, 16).replace('T', ' ');
+                    }
+                }
+                
+                // ========== 2. 行业通行压力系数 ==========
+                const pressureSection = document.getElementById('jin10-pressure-section');
+                if (pressureSection) {
+                    pressureSection.style.display = 'block';
+                    
+                    // 更新综合通行压力系数
+                    if (data.industry_pressure && data.industry_pressure.total) {
+                        const totalPressure = data.industry_pressure.total;
+                        document.getElementById('jin10-total-pressure').textContent = totalPressure;
+                        
+                        // 更新压力等级标签
+                        const levelEl = document.getElementById('jin10-pressure-level');
+                        if (levelEl) {
+                            if (totalPressure >= 95) {
+                                levelEl.textContent = '极高风险';
+                                levelEl.style.background = '#cf1322';
+                            } else if (totalPressure >= 80) {
+                                levelEl.textContent = '高风险';
+                                levelEl.style.background = '#cf1322';
+                            } else if (totalPressure >= 60) {
+                                levelEl.textContent = '中等风险';
+                                levelEl.style.background = '#fa8c16';
+                            } else {
+                                levelEl.textContent = '低风险';
+                                levelEl.style.background = '#52c41a';
+                            }
+                        }
+                    }
+                    
+                    // 更新各品类数据及进度条
+                    const categoryMap = {
+                        'oil': 'jin10-oil',
+                        'lng': 'jin10-lng',
+                        'lpg': 'jin10-lpg',
+                        'fertilizer': 'jin10-fertilizer',
+                        'aluminum': 'jin10-aluminum',
+                        'methanol': 'jin10-methanol'
+                    };
+                    
+                    for (const [key, elementId] of Object.entries(categoryMap)) {
+                        if (data.industry_pressure[key]) {
+                            const value = data.industry_pressure[key].value;
+                            
+                            // 更新数字
+                            const el = document.getElementById(elementId);
+                            if (el) {
+                                el.textContent = value;
+                            }
+                            
+                            // 更新进度条
+                            const barEl = document.getElementById(elementId + '-bar');
+                            if (barEl) {
+                                barEl.style.width = value + '%';
+                            }
+                        }
+                    }
+                    
+                    // 更新时间
+                    if (data.updated) {
+                        document.getElementById('jin10-update-time').textContent = 
+                            data.updated.slice(0, 16).replace('T', ' ');
+                    }
+                }
+                
+                // ========== 3. 实时快照 ==========
+                const snapshotSection = document.getElementById('jin10-snapshot-section');
+                if (snapshotSection && data.snapshots && data.snapshots.length > 0) {
+                    snapshotSection.style.display = 'block';
+                    
+                    const container = document.getElementById('jin10-snapshots-container');
+                    if (container) {
+                        container.innerHTML = data.snapshots.slice(0, 4).map((snap, index) => `
+                            <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); background: #fff;">
+                                <img src="${snap.url}" 
+                                     style="width: 100%; height: 200px; object-fit: cover; display: block;"
+                                     alt="${snap.alt || '金十实时快照'}"
+                                     onerror="this.parentElement.innerHTML='<div style=\'padding: 40px; text-align: center; color: #94a3b8;\'>图片加载失败</div>'">
+                                <div style="padding: 8px 12px; background: #f8fafc; font-size: 0.75rem; color: #64748b; display: flex; justify-content: space-between;">
+                                    <span>${snap.alt || '实时快照'}</span>
+                                    <span>#${index + 1}</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+                
+                console.log('金十数据加载成功');
+                
+            } catch (error) {
+                console.log('金十数据加载失败:', error);
+            }
+        }
+        
+        // 加载金十数据
+        loadJin10Data();
+        
+        // 设置CSV更新时间（当前日期）
+        document.getElementById('csv-update-time').textContent = 
+            new Date().toLocaleString('zh-CN', {month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'});
     </script>
 </body>
 </html>
