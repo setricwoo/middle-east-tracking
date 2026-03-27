@@ -34,6 +34,9 @@ IRAN_MARKET_SLUGS = [
     "us-forces-enter-iran-by",
     # 伊朗袭击以色列
     "iran-strikes-israel-on",
+    # 美国中期选举
+    "which-party-will-control-the-senate-after-2026-midterms",
+    "which-party-will-control-the-house-after-2026-midterms",
 ]
 
 # 中文分类映射
@@ -48,6 +51,8 @@ CATEGORY_MAP = {
     "will-the-iranian-regime-fall-by-june-30": "伊朗政权",
     "us-forces-enter-iran-by": "美军进入伊朗",
     "iran-strikes-israel-on": "伊朗袭击以色列",
+    "which-party-will-control-the-senate-after-2026-midterms": "中期选举-参议院",
+    "which-party-will-control-the-house-after-2026-midterms": "中期选举-众议院",
 }
 
 

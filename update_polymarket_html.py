@@ -229,56 +229,93 @@ def generate_html(data: Dict) -> str:
         .positive { color: #059669; }
         .negative { color: #dc2626; }
         /* 统一导航栏样式 */
-        .header { background: #fff; padding: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 100; }
-        .header-main { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; max-width: 1200px; margin: 0 auto; }
-        .header-left { display: flex; align-items: center; gap: 12px; }
-        .header-icon { font-size: 1.8rem; color: #1e40af; }
-        .header h1 { font-size: 1.3rem; color: #1e40af; font-weight: 600; }
-        .header-center { display: flex; gap: 4px; background: #e2e8f0; padding: 4px; border-radius: 8px; }
-        .nav-btn { padding: 8px 16px; border: none; background: transparent; color: #475569; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
-        .nav-btn:hover { background: rgba(255,255,255,0.5); color: #1e40af; }
-        .nav-btn.active { background: #fff; color: #1e40af; font-weight: 500; }
-        .header-right { font-size: 0.85rem; color: #64748b; }
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-left h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .header-center {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-btn {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+        .nav-btn.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-weight: 500;
+        }
+        .header-right {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.7);
+            white-space: nowrap;
+        }
         /* 手机端适配 */
         @media (max-width: 768px) {
             .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
-            .header-left { flex-shrink: 0; gap: 6px; }
-            .header-icon { font-size: 1.4rem; }
-            .header h1 { font-size: 0.85rem; white-space: nowrap; line-height: 1.2; }
-            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; padding: 0 4px; }
-            .nav-btn { padding: 4px 6px; font-size: 0.6rem; gap: 2px; white-space: nowrap; flex-shrink: 0; }
-            .nav-btn span { display: none; }
-            .header-right { font-size: 0.6rem; padding: 2px 6px; flex-shrink: 0; }
+            .header-left { flex-shrink: 0; }
+            .header h1 { font-size: 0.9rem; white-space: nowrap; }
+            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; margin-top: 6px; }
+            .nav-btn { padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
+            .header-right { font-size: 0.65rem; padding: 2px 6px; flex-shrink: 0; }
             .chart-container { height: 220px; }
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 6px; gap: 4px; }
-            .header-icon { font-size: 1.2rem; }
-            .header h1 { font-size: 0.75rem; white-space: nowrap; }
-            .header-center { margin-top: 4px; gap: 2px; }
-            .nav-btn { padding: 4px 6px; font-size: 0.7rem; gap: 2px; }
-            .header-right { font-size: 0.55rem; padding: 2px 4px; }
+            .header-main { padding: 6px 8px; }
+            .header h1 { font-size: 0.8rem; }
+            .nav-btn { padding: 3px 6px; font-size: 0.7rem; }
+            .header-right { font-size: 0.6rem; }
         }
     </style>
 </head>
 <body class="min-h-screen">
-    <nav class="header">
+    <div class="header">
         <div class="header-main">
             <div class="header-left">
-                <span class="header-icon">🌐</span>
                 <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
             <div class="header-center">
-                <a href="index.html" class="nav-btn">🗺️ <span>原油图谱</span></a>
-                <a href="briefing.html" class="nav-btn">📰 <span>每日简报</span></a>
-                <a href="tracking.html" class="nav-btn">⚡ <span>海峡跟踪</span></a>
-                <a href="news.html" class="nav-btn">🔴 <span>实时新闻</span></a>
-                <a href="polymarket.html" class="nav-btn active">📈 <span>Polymarket</span></a>
-                <a href="data-tracking.html" class="nav-btn">📊 <span>数据跟踪</span></a>
+                <a href="tracking.html" class="nav-btn">海峡跟踪</a>
+                <a href="polymarket.html" class="nav-btn active">Polymarket</a>
+                <a href="data-tracking.html" class="nav-btn">全球市场</a>
+                <a href="war-situation.html" class="nav-btn">战局形势</a>
+                <a href="news.html" class="nav-btn">实时新闻</a>
+                <a href="briefing.html" class="nav-btn">每日简报</a>
+                <a href="index.html" class="nav-btn">原油图谱</a>
             </div>
             <div class="header-right">更新时间: ''' + datetime.now(ZoneInfo("Asia/Shanghai")).strftime('%Y年%m月%d日 %H:%M') + '''</div>
         </div>
-    </nav>
+    </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="mb-8">

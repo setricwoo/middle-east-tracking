@@ -1,0 +1,140 @@
+{
+  "which-party-will-win-the-house-in-2026": {
+    "title": "Which party will win the House in 2026?",
+    "id": "32225",
+    "markets": [
+      {
+        "question": "Will another party control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will the Democratic Party control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": "[\"0.845\", \"0.155\"]",
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will the Republican Party control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": "[\"0.155\", \"0.845\"]",
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party A control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party B control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party C control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party D control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party E control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party F control the House after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      }
+    ]
+  },
+  "which-party-will-win-the-senate-in-2026": {
+    "title": "Which party will win the Senate in 2026?",
+    "id": "32224",
+    "markets": [
+      {
+        "question": "Will the Democratic Party control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": "[\"0.475\", \"0.525\"]",
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will the Republican Party control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": "[\"0.525\", \"0.475\"]",
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party A control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party B control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party C control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party D control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party E control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will Party F control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      },
+      {
+        "question": "Will another party control the Senate after the 2026 Midterm elections?",
+        "outcomes": "[\"Yes\", \"No\"]",
+        "outcomePrices": [],
+        "interval": null,
+        "history_count": 0
+      }
+    ]
+  }
+}

@@ -66,6 +66,7 @@ def load_existing_data() -> dict:
         "fleet_type": [],
         "snapshots": [],
         "video_url": "",
+        "jin10": {},
     }
 
 
@@ -146,6 +147,107 @@ async def fetch_jin10_data(data: dict):
                     print(f"[视频] 从HTML提取 URL: {matches[0][:60]}...")
         except Exception as e:
             print(f"[警告] 提取视频URL失败: {e}")
+
+        # 提取行业通行压力系数（从页面文本）
+        print("[提取] 行业通行压力系数...")
+        try:
+            pressure_data = await page.evaluate(r'''
+                () => {
+                    const result = { total: null, categories: [] };
+                    const bodyText = document.body.innerText || '';
+                    
+                    // 方法1: 专门查找"行业通行压力系数"标题后面的数字
+                    const match = bodyText.match(/行业通行压力系数\D*(\d+\.?\d*)%/);
+                    if (match) {
+                        result.total = parseFloat(match[1]);
+                    }
+                    
+                    // 方法2: 如果没找到，尝试在"压力系数"附近查找最大的百分比
+                    if (!result.total) {
+                        const pressureSection = bodyText.match(/压力系数[\s\S]{0,500}/);
+                        if (pressureSection) {
+                            const allPercents = pressureSection[0].match(/(\d+\.?\d*)%/g);
+                            if (allPercents) {
+                                let maxVal = 0;
+                                for (let p of allPercents) {
+                                    const val = parseFloat(p);
+                                    if (val > maxVal && val <= 100) maxVal = val;
+                                }
+                                if (maxVal > 0) result.total = maxVal;
+                            }
+                        }
+                    }
+                    
+                    // 提取各品类数据 - 甲醇、原油、LPG、LNG、化肥、铝
+                    // 注意：正则按优先级排序，先匹配特定模式，再匹配通用模式
+                    const categoryPatterns = [
+                        {key: 'methanol', name: '甲醇', pattern: /甲醇[\s\w]*?(\d+\.?\d*)%/},
+                        {key: 'oil', name: '原油及成品油', pattern: /原油(?:及成品油)?[\s\w]*?(\d+\.?\d*)%/},
+                        {key: 'lpg', name: '液化石油气/LPG', pattern: /(?:液化石油气|LPG)[^%]*?(\d+\.?\d*)%/},
+                        {key: 'lng', name: '液化天然气/LNG', pattern: /(?:液化天然气|LNG)[^%]*?(\d+\.?\d*)%/},
+                        {key: 'fertilizer', name: '化肥', pattern: /(?:化肥|尿素|磷肥|钾肥)[^%]*?(\d+\.?\d*)%/},
+                        {key: 'aluminum', name: '铝材', pattern: /(?:铝材|铝及铝制品|铝制品|原铝)[^%]*?(\d+\.?\d*)%/}
+                    ];
+                    
+                    for (let cat of categoryPatterns) {
+                        const match = bodyText.match(cat.pattern);
+                        if (match) {
+                            const value = match[1] ? parseFloat(match[1]) : (match[2] ? parseFloat(match[2]) : null);
+                            if (value !== null) {
+                                result.categories.push({
+                                    key: cat.key,
+                                    name: cat.name,
+                                    value: value
+                                });
+                            }
+                        }
+                    }
+                    
+                    return result;
+                }
+            ''')
+            
+            # 构建 industry_pressure 数据结构
+            industry_pressure = {}
+            if pressure_data.get('total'):
+                industry_pressure['total'] = pressure_data['total']
+                print(f"  综合通行压力系数: {pressure_data['total']}%")
+            
+            seen = set()
+            for cat in pressure_data.get('categories', []):
+                if cat['key'] not in seen:
+                    seen.add(cat['key'])
+                    industry_pressure[cat['key']] = {
+                        'name': cat['name'],
+                        'value': cat['value']
+                    }
+                    print(f"  {cat['name']}: {cat['value']}%")
+            
+            # 保存到 jin10 字段，与 update_strait_data.py 格式一致
+            if industry_pressure:
+                data['jin10'] = {
+                    'updated': datetime.now(BEIJING_TZ).strftime('%Y-%m-%dT%H:%M:%S'),
+                    'source': '金十数据',
+                    'url': JIN10_URL,
+                    'industry_pressure': industry_pressure
+                }
+                
+                # 同时保存到 jin10_strait_data.json（供 tracking.html 使用）
+                jin10_data = {
+                    'updated': datetime.now(BEIJING_TZ).strftime('%Y-%m-%dT%H:%M:%S'),
+                    'source': '金十数据',
+                    'url': JIN10_URL,
+                    'industry_pressure': industry_pressure,
+                    'ship_counts': data.get('ship_counts', {}),
+                    'video_url': data.get('video_url'),
+                    'snapshot_url': data.get('snapshots', [{}])[-1].get('url') if data.get('snapshots') else None
+                }
+                jin10_file = WORKDIR / 'jin10_strait_data.json'
+                with open(jin10_file, 'w', encoding='utf-8') as f:
+                    json.dump(jin10_data, f, ensure_ascii=False, indent=2)
+                print(f"[保存] {jin10_file.name} 已更新")
+        except Exception as e:
+            print(f"[警告] 提取行业压力系数失败: {e}")
 
         await context.close()
         await browser.close()

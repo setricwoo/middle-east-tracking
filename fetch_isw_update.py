@@ -4,9 +4,13 @@
 每12小时抓取 ISW 伊朗战事更新（understandingwar.org）
 1. 先尝试按日期构造 URL（最可靠），回退到索引页搜索
 2. 提取 Key Takeaways（英文列表）
-3. 用 MyMemory API 翻译为中文
+3. 用 MyMemory API 翻译为中文（可选 DeepL API key 提高质量）
 4. 提取战场地图图片（含 alt_zh 中文说明）
 5. 保存到 isw_data.json
+
+翻译说明：
+- 主要使用 MyMemory API（免费，500字符/请求，1000请求/小时）
+- 可选设置 DEEPL_API_KEY 环境变量使用 DeepL（质量更好）
 """
 
 import asyncio
@@ -79,106 +83,14 @@ def parse_date_from_url(url: str) -> str:
 def translate_text(text: str) -> str:
     """
     翻译英文到中文
-    主要使用 Hugging Face 免费 API（Helsinki-NLP/opus-mt-en-zh），
-    失败时回退到 DeepL 或 MyMemory
+    主要使用 MyMemory API，可选 DeepL（需 API key）
     """
     if not text or not text.strip():
         return text
     
-    # 方案1: Hugging Face 免费推理 API（Helsinki-NLP/opus-mt-en-zh）
-    # 这是专门用于英中翻译的模型，质量较好且完全免费
-    hf_url = "https://api-inference.huggingface.co/models/Helsinki-NLP/opus-mt-en-zh"
-    headers = {"Content-Type": "application/json"}
+    text = text.strip()
     
-    # 如果设置了 HF_API_KEY，使用它（可提高速率限制）
-    if os.environ.get("HF_API_KEY"):
-        headers["Authorization"] = f"Bearer {os.environ['HF_API_KEY']}"
-    
-    # 分段翻译（HF 有长度限制，每段约 400 字符）
-    max_len = 400
-    if len(text) > max_len:
-        # 简单按句子分割
-        sentences = text.replace('. ', '.|').replace('! ', '!|').replace('? ', '?|').split('|')
-        translated_parts = []
-        current_chunk = ""
-        
-        for sent in sentences:
-            if len(current_chunk) + len(sent) > max_len:
-                if current_chunk:
-                    # 翻译当前块
-                    for attempt in range(3):
-                        try:
-                            data = {"inputs": current_chunk.strip()}
-                            req = urllib.request.Request(
-                                hf_url,
-                                data=json.dumps(data).encode('utf-8'),
-                                headers=headers,
-                                method='POST'
-                            )
-                            res = json.loads(urllib.request.urlopen(req, timeout=30).read())
-                            if isinstance(res, list) and len(res) > 0:
-                                translated_parts.append(res[0].get("translation_text", current_chunk))
-                                break
-                        except Exception as e:
-                            if attempt < 2:
-                                time.sleep(2)
-                            else:
-                                translated_parts.append(current_chunk)
-                current_chunk = sent
-            else:
-                current_chunk += " " + sent if current_chunk else sent
-        
-        # 翻译最后一块
-        if current_chunk:
-            for attempt in range(3):
-                try:
-                    data = {"inputs": current_chunk.strip()}
-                    req = urllib.request.Request(
-                        hf_url,
-                        data=json.dumps(data).encode('utf-8'),
-                        headers=headers,
-                        method='POST'
-                    )
-                    res = json.loads(urllib.request.urlopen(req, timeout=30).read())
-                    if isinstance(res, list) and len(res) > 0:
-                        translated_parts.append(res[0].get("translation_text", current_chunk))
-                        break
-                except Exception:
-                    if attempt < 2:
-                        time.sleep(2)
-                    else:
-                        translated_parts.append(current_chunk)
-        
-        return " ".join(translated_parts)
-    
-    # 短文本直接翻译，带重试机制
-    for attempt in range(3):
-        try:
-            data = {"inputs": text[:500]}
-            req = urllib.request.Request(
-                hf_url,
-                data=json.dumps(data).encode('utf-8'),
-                headers=headers,
-                method='POST'
-            )
-            res = json.loads(urllib.request.urlopen(req, timeout=30).read())
-            # HF 返回格式: [{"translation_text": "..."}]
-            if isinstance(res, list) and len(res) > 0:
-                return res[0].get("translation_text", text)
-            elif isinstance(res, dict) and res.get("error"):
-                # 模型加载中，等待后重试
-                if attempt < 2:
-                    print(f"  [HF] 模型加载中，等待 {attempt + 1}s...")
-                    time.sleep(attempt + 1)
-                    continue
-        except Exception as e:
-            if attempt < 2:
-                print(f"  [HF] 重试 {attempt + 1}/3...")
-                time.sleep(attempt + 1)
-            else:
-                print(f"  [Hugging Face 失败] {e}")
-    
-    # 方案2: DeepL Free API（如果设置了 DEEPL_API_KEY）
+    # 方案1: DeepL Free API（如果设置了 DEEPL_API_KEY，质量最好）
     if os.environ.get("DEEPL_API_KEY"):
         try:
             api_key = os.environ["DEEPL_API_KEY"]
@@ -203,18 +115,50 @@ def translate_text(text: str) -> str:
         except Exception as e:
             print(f"  [DeepL 失败] {e}")
     
-    # 方案3: 回退到 MyMemory
-    try:
-        encoded = urllib.parse.quote(text[:800])
-        url = f"https://api.mymemory.translated.net/get?q={encoded}&langpair=en|zh-CN"
-        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        res = json.loads(urllib.request.urlopen(req, timeout=10).read())
-        if res.get("responseStatus") == 200:
-            translated = res["responseData"]["translatedText"]
-            if "MYMEMORY WARNING" not in translated:
-                return translated
-    except Exception:
-        pass
+    # 方案2: MyMemory API（免费，限制 500 字符/请求，每小时 1000 请求）
+    # 分段处理长文本
+    max_len = 500
+    if len(text) > max_len:
+        # 按句子分割
+        sentences = text.replace('. ', '.|').replace('! ', '!|').replace('? ', '?|').split('|')
+        translated_parts = []
+        current_chunk = ""
+        
+        for sent in sentences:
+            if len(current_chunk) + len(sent) > max_len:
+                if current_chunk:
+                    result = _translate_single_mymemory(current_chunk)
+                    translated_parts.append(result)
+                current_chunk = sent
+            else:
+                current_chunk += " " + sent if current_chunk else sent
+        
+        # 翻译最后一块
+        if current_chunk:
+            result = _translate_single_mymemory(current_chunk)
+            translated_parts.append(result)
+        
+        return " ".join(translated_parts)
+    
+    # 短文本直接翻译
+    return _translate_single_mymemory(text)
+
+
+def _translate_single_mymemory(text: str) -> str:
+    """单次 MyMemory 翻译，带重试"""
+    for attempt in range(2):
+        try:
+            encoded = urllib.parse.quote(text[:500])
+            url = f"https://api.mymemory.translated.net/get?q={encoded}&langpair=en|zh-CN"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"}, method='GET')
+            res = json.loads(urllib.request.urlopen(req, timeout=10).read())
+            if res.get("responseStatus") == 200:
+                translated = res["responseData"]["translatedText"]
+                if "MYMEMORY WARNING" not in translated:
+                    return translated
+        except Exception:
+            if attempt < 1:
+                time.sleep(1)
     
     return text
 

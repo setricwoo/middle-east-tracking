@@ -1,6 +1,731 @@
 {
-  "updated": "2026-03-21T20:37:34",
+  "updated": "2026-03-27T08:48:22",
   "articles": [
+    {
+      "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-26-2026",
+      "title": "Iran Update Special Report, March 26, 2026",
+      "title_zh": "伊朗局势更新 特别报告 2026年3月26日",
+      "date": "2026-03-26",
+      "takeaways": [
+        {
+          "en": "The combined force conducted strikes around Mashhad, Khorasan Razavi Province, on March 25 and 26, marking the northeastern-most strikes conducted so far in the war. The combined force has slowly swept across Iran west to east and is now getting to some of the furthest targets of the campaign.",
+          "zh": "3月25日和26日在马什哈德呼罗珊·拉扎维省周围发生的美以联军实施打击标志着东北方向地区进行迄今为止最多的打击战争。美以联军已经慢慢席卷伊朗西部到东部，现在正在到达该战役的一些最远的目标。"
+        },
+        {
+          "en": "The IDF has continued targeting senior Iranian commanders to disrupt Iranian command and control and operations broadly. The IDF announced on March 26 that it killed Islamic Revolutionary Guards Corps (IRGC) Navy Commander Rear Admiral Alireza Tangsiri in Bandar Abbas, Hormozgan Province.",
+          "zh": "继续有针对以色列国防军高级伊朗指挥官，以干扰伊朗指挥控制和广泛行动。3以色列国防军宣布月26日，击毙伊斯兰革命卫队（伊斯兰革命卫队 ）海军少将阿里雷扎·坦格里西在阿巴斯港，霍尔木兹甘省。"
+        },
+        {
+          "en": "An IRGC cultural official told state media that the IRGC has lowered the minimum recruitment age to 12. This decision follows reports that the IRGC is facing difficulties with recruiting new personnel and managing broader operational disruptions.",
+          "zh": "一名伊斯兰革命卫队文化官员告诉国家媒体，伊斯兰革命卫队已将最低招募年龄降至12岁。此前有报道称，伊斯兰革命卫队在招聘新员工和管理更广泛的行动中断方面面临困难。"
+        },
+        {
+          "en": "Hezbollah continues to claim a high rate of attacks against Israeli targets in northern Israel and southern Lebanon. Hezbollah claimed to conduct 73 attacks targeting Israeli forces in northern Israel and southern Lebanon, as well as northern Israeli towns, between 2:00 PM ET on March 25 and 2:00 PM ET on March 26.",
+          "zh": "真主党继续宣称对以色列北部和以色列南部和黎巴嫩南部目标的袭击频率很高。在美国东部时间3月25日14:00真主党宣称，截至3月26日14:00之间，对以色列北部和以色列南部北部城镇以色列的部队进行了73次袭击。"
+        }
+      ],
+      "charts": [
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Nuclear-Military-and-Energy-Infrastructure-in-Mashhad-City-Evening-of-March-26-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_00.png",
+          "title_zh": "核设施分布态势地图",
+          "description_zh": "ISW发布的态势地图，展示核设施分布相关战略态势",
+          "full_analysis": "【核设施分布分析】\n\n战略要点：\n• 该态势地反映了当前核设施分布的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "核计划",
+            "浓缩铀",
+            "国际关注"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-26-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_01.png",
+          "title_zh": "美以联军行动态势地图",
+          "description_zh": "ISW发布的态势地图，展示美以联军行动相关战略态势",
+          "full_analysis": "【美以联军行动分析】\n\n战略要点：\n• 该态势地反映了当前美以联军行动的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "美以联军",
+            "伊朗境内",
+            "军事打击",
+            "战略目标"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-26-FINAL-1024x768.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_02.png",
+          "title_zh": "巴林方向威胁发射行动示意图",
+          "description_zh": "ISW发布的发射行动示意图，展示巴林方向威胁相关战略态势",
+          "full_analysis": "【巴林方向威胁分析】\n\n战略要点：\n• 该发射行动示意反映了当前巴林方向威胁的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "巴林",
+            "导弹威胁",
+            "海湾国家"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-26-FINAL-1024x768.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_03.png",
+          "title_zh": "战场态势发射行动示意图",
+          "description_zh": "ISW发布的发射行动示意图，展示战场态势相关战略态势",
+          "full_analysis": "【战场态势分析】\n\n战略要点：\n• 该发射行动示意反映了当前战场态势的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "ISW战略分析"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-26-FINAL-1024x768.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_04.png",
+          "title_zh": "战场态势发射行动示意图",
+          "description_zh": "ISW发布的发射行动示意图，展示战场态势相关战略态势",
+          "full_analysis": "【战场态势分析】\n\n战略要点：\n• 该发射行动示意反映了当前战场态势的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "ISW战略分析"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-26-FINAL-1024x768.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_05.png",
+          "title_zh": "阿联酋方向威胁发射行动示意图",
+          "description_zh": "ISW发布的发射行动示意图，展示阿联酋方向威胁相关战略态势",
+          "full_analysis": "【阿联酋方向威胁分析】\n\n战略要点：\n• 该发射行动示意反映了当前阿联酋方向威胁的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "阿联酋",
+            "导弹威胁",
+            "能源设施"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-25-FINAL-1-1024x768.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_06.png",
+          "title_zh": "真主党袭击分析图表",
+          "description_zh": "ISW发布的分析图表，展示真主党袭击相关战略态势",
+          "full_analysis": "【真主党袭击分析】\n\n战略要点：\n• 该分析表反映了当前真主党袭击的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击",
+            "北部边境"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-and-Hezbollah-Retaliatory-Attacks-on-Israel-and-Lebanon-March-26-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-26_07.png",
+          "title_zh": "真主党袭击态势地图",
+          "description_zh": "ISW发布的态势地图，展示真主党袭击相关战略态势",
+          "full_analysis": "【真主党袭击分析】\n\n战略要点：\n• 该态势地反映了当前真主党袭击的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月27日",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击",
+            "北部边境"
+          ],
+          "caption_en": ""
+        }
+      ],
+      "fetched": "2026-03-27T08:48:22",
+      "takeaways_en": [
+        "The combined force conducted strikes around Mashhad, Khorasan Razavi Province, on March 25 and 26, marking the northeastern-most strikes conducted so far in the war. The combined force has slowly swept across Iran west to east and is now getting to some of the furthest targets of the campaign.",
+        "The IDF has continued targeting senior Iranian commanders to disrupt Iranian command and control and operations broadly. The IDF announced on March 26 that it killed Islamic Revolutionary Guards Corps (IRGC) Navy Commander Rear Admiral Alireza Tangsiri in Bandar Abbas, Hormozgan Province.",
+        "An IRGC cultural official told state media that the IRGC has lowered the minimum recruitment age to 12. This decision follows reports that the IRGC is facing difficulties with recruiting new personnel and managing broader operational disruptions.",
+        "Hezbollah continues to claim a high rate of attacks against Israeli targets in northern Israel and southern Lebanon. Hezbollah claimed to conduct 73 attacks targeting Israeli forces in northern Israel and southern Lebanon, as well as northern Israeli towns, between 2:00 PM ET on March 25 and 2:00 PM ET on March 26."
+      ],
+      "takeaways_zh": [
+        "3月25日和26日在马什哈德呼罗珊·拉扎维省周围发生的美以联军实施打击标志着东北方向地区进行迄今为止最多的打击战争。美以联军已经慢慢席卷伊朗西部到东部，现在正在到达该战役的一些最远的目标。",
+        "继续有针对以色列国防军高级伊朗指挥官，以干扰伊朗指挥控制和广泛行动。3以色列国防军宣布月26日，击毙伊斯兰革命卫队（伊斯兰革命卫队 ）海军少将阿里雷扎·坦格里西在阿巴斯港，霍尔木兹甘省。",
+        "一名伊斯兰革命卫队文化官员告诉国家媒体，伊斯兰革命卫队已将最低招募年龄降至12岁。此前有报道称，伊斯兰革命卫队在招聘新员工和管理更广泛的行动中断方面面临困难。",
+        "真主党继续宣称对以色列北部和以色列南部和黎巴嫩南部目标的袭击频率很高。在美国东部时间3月25日14:00真主党宣称，截至3月26日14:00之间，对以色列北部和以色列南部北部城镇以色列的部队进行了73次袭击。"
+      ]
+    },
+    {
+      "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-25-2026",
+      "title": "Iran Update Special Report, March 25, 2026",
+      "title_zh": "伊朗局势更新 特别报告, 3月 2026年25日",
+      "date": "2026-03-25",
+      "takeaways": [
+        {
+          "en": "The United States presented a 15-point proposal to Iran via Pakistan on March 24. The 15-point proposal reportedly includes provisions requiring Iran to dismantle its nuclear program, end uranium enrichment, hand over its enriched uranium stockpile, limit its missile capabilities, cease support for the Axis of Resistance, and ensure freedom of navigation through the Strait of Hormuz, among other demands. The Trump administration has reportedly not yet received a formal Iranian response to the US proposal. The White House threatened on March 25 to conduct further military action against Iran if the regime does not agree to a deal to end the conflict.",
+          "zh": "该委员会于3月24日伊朗向巴基斯坦美国提出了一项15点建议。据报道， 伊朗 15点提案包括要求拆除核计划、结束铀浓缩、移交其丰富的铀库存、限制其导弹能力、停止对抵抗轴心的支持以及通过其他要求霍尔木兹海峡确保航行自由的规定。据报道，特朗普政府尚未收到对该美国提案的正式伊朗回复。 白宫威胁将于3月25日采取进一步军事行动，反对该政权不同伊朗意达成协议，以结束制裁冲突。"
+        },
+        {
+          "en": "Iran sent a letter to International Maritime Organization member states on March 22 stating that “non-hostile” ships can pass through the Strait of Hormuz if they coordinate with Iran. Ships associated with the United States, Israel, or other “participants in the aggression” are not eligible for safe passage. Vessel operators are required to contact intermediaries with connections to the IRGC before transiting through the strait.",
+          "zh": "伊朗于3月22日致函国际海事组织成员国，表示“非敌对”船只霍尔木兹海峡如果与协调，可以通过伊朗。与美国， 以色列，或其他“侵略参与者”相关的船舶不符合安全通行的资格。船只运营商必须在通过海峡伊斯兰革命卫队之前联系与有联系的中介机构。"
+        },
+        {
+          "en": "A longtime observer of drone operations suggested on March 25 that drone footage posted by the Islamic Resistance in Iraq on March 24 is consistent with a fiber-optic first-person view (FPV) drone.  ISW-CTP is unable to authenticate the Islamic Resistance in Iraq’s video. Iran’s ability to manufacture and operate fiber-optic FPV drones and transfer this technology to its regional proxies and partners would pose a significant challenge to US interests in the Middle East, if the footage is authentic.",
+          "zh": "一位长期观察无人机行动的观察员3月25日表示，伊斯兰抵抗运动3月24伊拉克日发布的无人机镜头与光纤第一人称视图（关键威胁项目 FPV ）一致无人机。战争研究所-无法在的伊拉克视频中验证伊斯兰伊朗抵抗运动。如果镜头是真实的，则制造和操作光纤FPV无人机并将该技术转让给其区域代理和合作伙中东伴的能力将对美国利益构成重大挑战。"
+        },
+        {
+          "en": "ISW-CTP has recorded an uptick in combined force strikes targeting Iranian defense industrial sites since its last data cutoff. This uptick comes amid a report that Israeli Prime Minister Benjamin Netanyahu ordered the Israel Defense Forces (IDF) to destroy as much of Iran’s arms industry as possible over the next 48 hours.",
+          "zh": "战争研究所-关键威胁项目自上次数据截止以来，针对伊朗防御工业现场的联合部队打击有所增加。在一份报告中，本杰明以色列总理内塔尼亚胡命令以色列防御以色列国防军部队在接下来的48小时内摧毁尽可能多的伊朗军火工业。"
+        }
+      ],
+      "charts": [
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-25-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_00.png",
+          "title_zh": "美以联军行动态势地图",
+          "description_zh": "ISW发布的态势地图，展示美以联军行动相关战略态势",
+          "full_analysis": "【美以联军行动分析】\n\n战略要点：\n• 该态势地反映了当前美以联军行动的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "美以联军",
+            "伊朗境内",
+            "军事打击",
+            "战略目标"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iran-and-Axis-Retaliatory-Strikes-Evening-of-March-25-2026-1.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_01.png",
+          "title_zh": "战场态势态势地图",
+          "description_zh": "ISW发布的态势地图，展示战场态势相关战略态势",
+          "full_analysis": "【战场态势分析】\n\n战略要点：\n• 该态势地反映了当前战场态势的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "ISW战略分析"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-25-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_02.png",
+          "title_zh": "巴林方向威胁发射行动示意图",
+          "description_zh": "自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列",
+          "full_analysis": "【巴林方向威胁分析】\n\n背景信息：\n1. 自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列\n2. 伊朗继续到目标沙特阿拉伯， 巴林科威特，和阿联酋（阿联酋 ） 3月25日。两名不愿透露姓名的消息人士3月22日告诉以色列媒体，伊朗由于沙特阿拉伯由于担心继续罢工可能引发沙特的直接反应，他们决定限制袭击军事。\n\n战略要点：\n• 该发射行动示意反映了当前巴林方向威胁的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "巴林",
+            "导弹威胁",
+            "海湾国家"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-25-FINAL-FIXED-4.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_03.png",
+          "title_zh": "战场态势发射行动示意图",
+          "description_zh": "自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列",
+          "full_analysis": "【战场态势分析】\n\n背景信息：\n1. 自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列\n2. 伊朗继续到目标沙特阿拉伯， 巴林科威特，和阿联酋（阿联酋 ） 3月25日。两名不愿透露姓名的消息人士3月22日告诉以色列媒体，伊朗由于沙特阿拉伯由于担心继续罢工可能引发沙特的直接反应，他们决定限制袭击军事。\n\n战略要点：\n• 该发射行动示意反映了当前战场态势的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "ISW战略分析"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-25-FINAL-2.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_04.png",
+          "title_zh": "沙特方向威胁发射行动示意图",
+          "description_zh": "自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列",
+          "full_analysis": "【沙特方向威胁分析】\n\n背景信息：\n1. 自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列\n2. 伊朗继续到目标沙特阿拉伯， 巴林科威特，和阿联酋（阿联酋 ） 3月25日。两名不愿透露姓名的消息人士3月22日告诉以色列媒体，伊朗由于沙特阿拉伯由于担心继续罢工可能引发沙特的直接反应，他们决定限制袭击军事。\n\n战略要点：\n• 该发射行动示意反映了当前沙特方向威胁的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "沙特阿拉伯",
+            "导弹威胁",
+            "地区安全"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-25-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_05.png",
+          "title_zh": "阿联酋方向威胁发射行动示意图",
+          "description_zh": "自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列",
+          "full_analysis": "【阿联酋方向威胁分析】\n\n背景信息：\n1. 自从最后一次数据截止以色列以来战争研究所，伊朗关键威胁项目已经发射了七波导弹。[79]据报道，七波中的六导弹波只包括一波以色列国防军拦截。[80] 3月25日在Hadera的Orot Rabin发以色列电厂附近伊朗导弹受到影响。[81] 以色列\n2. 伊朗继续到目标沙特阿拉伯， 巴林科威特，和阿联酋（阿联酋 ） 3月25日。两名不愿透露姓名的消息人士3月22日告诉以色列媒体，伊朗由于沙特阿拉伯由于担心继续罢工可能引发沙特的直接反应，他们决定限制袭击军事。\n\n战略要点：\n• 该发射行动示意反映了当前阿联酋方向威胁的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "阿联酋",
+            "导弹威胁",
+            "能源设施"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Attacks-in-Northern-Israel-and-Southern-Lebanon-March-25-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_06.png",
+          "title_zh": "真主党袭击态势地图",
+          "description_zh": "ISW发布的态势地图，展示真主党袭击相关战略态势",
+          "full_analysis": "【真主党袭击分析】\n\n战略要点：\n• 该态势地反映了当前真主党袭击的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击",
+            "北部边境"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-24-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_07.png",
+          "title_zh": "真主党袭击分析图表",
+          "description_zh": "在美国东部时间3月24日以色列下午3点黎巴嫩至3月25日下午3点之间，针对以及北部和南部北部以色列城镇的部以色列队和阵地的真主党声称79次袭击。[90]这标志着对黎巴嫩境内以色列和南部以色列部队的袭击次数最多",
+          "full_analysis": "【真主党袭击分析】\n\n背景信息：\n1. 在美国东部时间3月24日以色列下午3点黎巴嫩至3月25日下午3点之间，针对以及北部和南部北部以色列城镇的部以色列队和阵地的真主党声称79次袭击。[90]这标志着对黎巴嫩境内以色列和南部以色列部队的袭击次数最多\n2. 自该组织于3月以色列1日加入增加以来，针对目标真主党战争的攻击率通常为，如下所示。\n\n战略要点：\n• 该分析表反映了当前真主党袭击的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击",
+            "北部边境"
+          ],
+          "caption_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-March-1-24-FINAL-1.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-25_08.png",
+          "title_zh": "真主党袭击分析图表",
+          "description_zh": "在美国东部时间3月24日以色列下午3点黎巴嫩至3月25日下午3点之间，针对以及北部和南部北部以色列城镇的部以色列队和阵地的真主党声称79次袭击。[90]这标志着对黎巴嫩境内以色列和南部以色列部队的袭击次数最多",
+          "full_analysis": "【真主党袭击分析】\n\n背景信息：\n1. 在美国东部时间3月24日以色列下午3点黎巴嫩至3月25日下午3点之间，针对以及北部和南部北部以色列城镇的部以色列队和阵地的真主党声称79次袭击。[90]这标志着对黎巴嫩境内以色列和南部以色列部队的袭击次数最多\n2. 自该组织于3月以色列1日加入增加以来，针对目标真主党战争的攻击率通常为，如下所示。\n\n战略要点：\n• 该分析表反映了当前真主党袭击的实时态势\n• 数据来源：ISW（战争研究所）基于公开情报分析\n• 更新时间：2026年03月26日",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击",
+            "北部边境"
+          ],
+          "caption_en": ""
+        }
+      ],
+      "fetched": "2026-03-26T23:49:02",
+      "takeaways_en": [
+        "The United States presented a 15-point proposal to Iran via Pakistan on March 24. The 15-point proposal reportedly includes provisions requiring Iran to dismantle its nuclear program, end uranium enrichment, hand over its enriched uranium stockpile, limit its missile capabilities, cease support for the Axis of Resistance, and ensure freedom of navigation through the Strait of Hormuz, among other demands. The Trump administration has reportedly not yet received a formal Iranian response to the US proposal. The White House threatened on March 25 to conduct further military action against Iran if the regime does not agree to a deal to end the conflict.",
+        "Iran sent a letter to International Maritime Organization member states on March 22 stating that “non-hostile” ships can pass through the Strait of Hormuz if they coordinate with Iran. Ships associated with the United States, Israel, or other “participants in the aggression” are not eligible for safe passage. Vessel operators are required to contact intermediaries with connections to the IRGC before transiting through the strait.",
+        "A longtime observer of drone operations suggested on March 25 that drone footage posted by the Islamic Resistance in Iraq on March 24 is consistent with a fiber-optic first-person view (FPV) drone.  ISW-CTP is unable to authenticate the Islamic Resistance in Iraq’s video. Iran’s ability to manufacture and operate fiber-optic FPV drones and transfer this technology to its regional proxies and partners would pose a significant challenge to US interests in the Middle East, if the footage is authentic.",
+        "ISW-CTP has recorded an uptick in combined force strikes targeting Iranian defense industrial sites since its last data cutoff. This uptick comes amid a report that Israeli Prime Minister Benjamin Netanyahu ordered the Israel Defense Forces (IDF) to destroy as much of Iran’s arms industry as possible over the next 48 hours."
+      ],
+      "takeaways_zh": [
+        "该委员会于3月24日伊朗向巴基斯坦美国提出了一项15点建议。据报道， 伊朗 15点提案包括要求拆除核计划、结束铀浓缩、移交其丰富的铀库存、限制其导弹能力、停止对抵抗轴心的支持以及通过其他要求霍尔木兹海峡确保航行自由的规定。据报道，特朗普政府尚未收到对该美国提案的正式伊朗回复。 白宫威胁将于3月25日采取进一步军事行动，反对该政权不同伊朗意达成协议，以结束制裁冲突。",
+        "伊朗于3月22日致函国际海事组织成员国，表示“非敌对”船只霍尔木兹海峡如果与协调，可以通过伊朗。与美国， 以色列，或其他“侵略参与者”相关的船舶不符合安全通行的资格。船只运营商必须在通过海峡伊斯兰革命卫队之前联系与有联系的中介机构。",
+        "一位长期观察无人机行动的观察员3月25日表示，伊斯兰抵抗运动3月24伊拉克日发布的无人机镜头与光纤第一人称视图（关键威胁项目 FPV ）一致无人机。战争研究所-无法在的伊拉克视频中验证伊斯兰伊朗抵抗运动。如果镜头是真实的，则制造和操作光纤FPV无人机并将该技术转让给其区域代理和合作伙中东伴的能力将对美国利益构成重大挑战。",
+        "战争研究所-关键威胁项目自上次数据截止以来，针对伊朗防御工业现场的联合部队打击有所增加。在一份报告中，本杰明以色列总理内塔尼亚胡命令以色列防御以色列国防军部队在接下来的48小时内摧毁尽可能多的伊朗军火工业。"
+      ]
+    },
+    {
+      "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-24-2026",
+      "title": "Iran Update Special Report, March 24, 2026",
+      "title_zh": "伊朗局势更新 特别报告, 3月 2026年24日",
+      "date": "2026-03-24",
+      "takeaways": [
+        {
+          "en": "Iran is reportedly requiring some vessels to pay a fee to transit the Strait of Hormuz. Maritime intelligence company Lloyd’s List reported on March 23 that over 20 vessels have taken a “Tehran-approved route” to transit the Strait of Hormuz through Iranian territorial waters since the war began. Lloyd’s List reported that at least two vessels, including a Chinese state-owned feeder tanker, have paid Iran a fee in exchange for safe passage through the strait.",
+          "zh": "伊朗 据报道，要求一些船只支付过境费霍尔木兹海峡。海事情报公司劳埃德船级社（ Lloyd's List ） 3月23日报道，自战争开始以来，已有20多艘船只采用“德黑兰批准的航线”霍尔木兹海峡通过伊朗领海。劳埃德船级社（ Lloyd's List ）报道称，至少有两艘船只，包括一艘中国国有支线油轮，已经支付伊朗了一笔费用，以换取通过海峡的安全通行。"
+        },
+        {
+          "en": "The combined force continued to strike Iranian ballistic missile infrastructure to degrade Iran’s missile capabilities. The Israel Defense Forces (IDF) announced that it has conducted more than 600 strikes targeting Iranian ballistic missile sites since the start of the war.",
+          "zh": "合并的力量继续削弱打击 伊朗 弹道导弹 基础设施着他的伊朗 导弹能力。以色列 防御部队（以色列国防军 ）宣布，自开始以来，已进行了600多次针对伊朗 弹道导弹地点的罢工战争。"
+        },
+        {
+          "en": "The combined force continued to strike industrial sites and companies with ties to the Iranian Ministry of Defense and Armed Forces Logistics. The IDF reported that it conducted an “extensive” wave of strikes targeting Iranian “production sites” in Esfahan Province and other areas of Iran on March 24.",
+          "zh": "联合部队继续前往与武装部队后勤伊朗部有联系打击的工业场所防御和公司。以色列国防军据报道， 3月24日，它对伊斯法罕省和其他地区的伊朗“生产基地”进行了“大规模伊朗”罢工。"
+        },
+        {
+          "en": "Iran has launched nine waves of missiles targeting Israel since ISW-CTP’s last data cutoff. Iran continued to fire cluster munitions targeting Israel on March 24, likely to maximize destruction and terrorize Israeli civilians.",
+          "zh": "自ISW-CTP上次数据截止以色列以来，伊朗已经发射了九波导弹。伊朗继续在3月24以色列日发射集束弹药，可能最大限度地破坏和恐吓以色列平民。"
+        },
+        {
+          "en": "Hezbollah claimed 54 attacks targeting Israeli forces and positions in northern Israel and southern Lebanon, as well as northern Israeli towns, between 3:00 PM ET on March 23 and 3:00 PM ET on March 24. The IDF is preparing to expand its ground operations and air campaign in Lebanon.",
+          "zh": "真主党 声称在美国东部时间3月23日以色列下午3点至3月24日下午3点之间，对黎巴嫩北部和南部以及北部以色列城镇以色列的部队和阵地发动了54次袭击。该以色列国防军组织正准备扩大在黎巴嫩的地面行动和空中战役。"
+        }
+      ],
+      "charts": [
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-24-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_00.png",
+          "title_zh": "美以联军行动地图",
+          "description_zh": "ISW发布的地图，展示美以联军行动相关态势",
+          "context": [
+            "美以联军",
+            "伊朗境内",
+            "军事打击"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Defense-Industrial-Graphic-03-24-26.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_01.png",
+          "title_zh": "战场态势趋势图",
+          "description_zh": "ISW发布的趋势图，展示战场态势相关态势",
+          "context": [
+            "ISW分析"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iran-and-Axis-Retaliatory-Strikes-Evening-of-March-24-2026-scaled.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_02.png",
+          "title_zh": "战场态势地图",
+          "description_zh": "ISW发布的地图，展示战场态势相关态势",
+          "context": [
+            "ISW分析"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-24-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_03.png",
+          "title_zh": "巴林方向发射示意图",
+          "description_zh": "ISW发布的发射示意图，展示巴林方向相关态势",
+          "context": [
+            "巴林",
+            "导弹威胁"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-24-FINAL-FIXED.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_04.png",
+          "title_zh": "战场态势发射示意图",
+          "description_zh": "ISW发布的发射示意图，展示战场态势相关态势",
+          "context": [
+            "ISW分析"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-24-FINAL-2.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_05.png",
+          "title_zh": "沙特方向发射示意图",
+          "description_zh": "ISW发布的发射示意图，展示沙特方向相关态势",
+          "context": [
+            "沙特阿拉伯",
+            "导弹威胁"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-24-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_06.png",
+          "title_zh": "阿联酋方向发射示意图",
+          "description_zh": "ISW发布的发射示意图，展示阿联酋方向相关态势",
+          "context": [
+            "阿联酋",
+            "导弹威胁"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Attacks-in-Northern-Israel-and-Southern-Lebanon-Evening-of-March-24-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_07.png",
+          "title_zh": "真主党地图",
+          "description_zh": "ISW发布的地图，展示真主党相关态势",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-23-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_08.png",
+          "title_zh": "真主党图表",
+          "description_zh": "ISW发布的图表，展示真主党相关态势",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-March-1-23-FINAL-2.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-24_09.png",
+          "title_zh": "真主党图表",
+          "description_zh": "ISW发布的图表，展示真主党相关态势",
+          "context": [
+            "黎巴嫩",
+            "真主党",
+            "对以袭击"
+          ],
+          "caption_en": "",
+          "context_en": ""
+        }
+      ],
+      "fetched": "2026-03-26T11:58:05",
+      "takeaways_en": [
+        "Iran is reportedly requiring some vessels to pay a fee to transit the Strait of Hormuz. Maritime intelligence company Lloyd’s List reported on March 23 that over 20 vessels have taken a “Tehran-approved route” to transit the Strait of Hormuz through Iranian territorial waters since the war began. Lloyd’s List reported that at least two vessels, including a Chinese state-owned feeder tanker, have paid Iran a fee in exchange for safe passage through the strait.",
+        "The combined force continued to strike Iranian ballistic missile infrastructure to degrade Iran’s missile capabilities. The Israel Defense Forces (IDF) announced that it has conducted more than 600 strikes targeting Iranian ballistic missile sites since the start of the war.",
+        "The combined force continued to strike industrial sites and companies with ties to the Iranian Ministry of Defense and Armed Forces Logistics. The IDF reported that it conducted an “extensive” wave of strikes targeting Iranian “production sites” in Esfahan Province and other areas of Iran on March 24.",
+        "Iran has launched nine waves of missiles targeting Israel since ISW-CTP’s last data cutoff. Iran continued to fire cluster munitions targeting Israel on March 24, likely to maximize destruction and terrorize Israeli civilians.",
+        "Hezbollah claimed 54 attacks targeting Israeli forces and positions in northern Israel and southern Lebanon, as well as northern Israeli towns, between 3:00 PM ET on March 23 and 3:00 PM ET on March 24. The IDF is preparing to expand its ground operations and air campaign in Lebanon."
+      ],
+      "takeaways_zh": [
+        "伊朗 据报道，要求一些船只支付过境费霍尔木兹海峡。海事情报公司劳埃德船级社（ Lloyd's List ） 3月23日报道，自战争开始以来，已有20多艘船只采用“德黑兰批准的航线”霍尔木兹海峡通过伊朗领海。劳埃德船级社（ Lloyd's List ）报道称，至少有两艘船只，包括一艘中国国有支线油轮，已经支付伊朗了一笔费用，以换取通过海峡的安全通行。",
+        "合并的力量继续削弱打击 伊朗 弹道导弹 基础设施着他的伊朗 导弹能力。以色列 防御部队（以色列国防军 ）宣布，自开始以来，已进行了600多次针对伊朗 弹道导弹地点的罢工战争。",
+        "联合部队继续前往与武装部队后勤伊朗部有联系打击的工业场所防御和公司。以色列国防军据报道， 3月24日，它对伊斯法罕省和其他地区的伊朗“生产基地”进行了“大规模伊朗”罢工。",
+        "自ISW-CTP上次数据截止以色列以来，伊朗已经发射了九波导弹。伊朗继续在3月24以色列日发射集束弹药，可能最大限度地破坏和恐吓以色列平民。",
+        "真主党 声称在美国东部时间3月23日以色列下午3点至3月24日下午3点之间，对黎巴嫩北部和南部以及北部以色列城镇以色列的部队和阵地发动了54次袭击。该以色列国防军组织正准备扩大在黎巴嫩的地面行动和空中战役。"
+      ]
+    },
+    {
+      "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-23-2026",
+      "title": "Iran Update Special Report, March 23, 2026",
+      "title_zh": "伊朗局势更新 特别报告, 3月 2026年23日",
+      "date": "2026-03-23",
+      "takeaways": [
+        {
+          "en": "US President Donald Trump extended his deadline for Iran to reach a deal with the United States to March 27. In extending the deadline, Trump said that Iran agreed to cease uranium enrichment, relinquish its existing stockpiles, and remain “low-key on the missiles.” Israeli Prime Minister Benjamin Netanyahu said on March 23 that Trump told him that the United States sees an opportunity to “leverage the military achievements of the war” to secure all strategic objectives through an eventual agreement.",
+          "zh": "唐纳德美国总统将与伊朗达成协议的最后特朗普期限延长美国至3月27日。在延长截止日期时，特朗普他表示伊朗同意停止铀浓缩，放弃其现有库存，并保持“低调的导弹。本杰明以色列总理特朗普在3月23日内塔尼亚胡表示，美国他认为有机会“利用其军事成就战争”，通过最终协议确保所有战略目标。"
+        },
+        {
+          "en": "Ghalibaf publicly rejected reports of United States-Iran negotiations on X on March 23. That Ghalibaf is leading diplomatic engagement with the United States is consistent with reports that he has consolidated tremendous influence in Iran, especially since the current war began.",
+          "zh": "加利巴夫 公开驳回了美国3月23日关于X伊朗谈判的报道。加利巴夫这是与领先的外交接触，这与他巩固了巨大影响力的报道美国是一致的伊朗，特别是自当前战争开始以来。"
+        },
+        {
+          "en": "The combined force continued to conduct airstrikes targeting Iranian ballistic missile infrastructure to degrade Iran’s missile capabilities. The combined force also struck IRGC Ground Force units at several echelons in central and southern Iran.",
+          "zh": "联合部队继续进行针对伊朗 弹道导弹基础设施的空袭，以降低其伊朗 导弹能力。联合部队还袭击伊斯兰革命卫队地面部队了中部和南部的几个梯队伊朗。"
+        },
+        {
+          "en": "Two unspecified sources told Israeli media on March 22 that Iran has decided to limit its attacks on Saudi Arabia due to concerns that continued strikes could trigger a direct Saudi military response. ISW-CTP has observed a relative decrease in Iranian attacks targeting Saudi Arabia since March 22, which corroborates this Israeli media report.",
+          "zh": "两名不愿透露姓名的消息人士在伊朗3月22日告诉以色列媒体，沙特阿拉伯由于担心持续罢工可能引发沙特的直接军事反应，他们决定限制袭击。ISW-CTP观察到，沙特阿拉伯自3月22日以来，针对目标伊朗的攻击相对减少，这证实了这一以色列媒体报道。"
+        },
+        {
+          "en": "Hezbollah claimed 55 attacks targeting Israeli forces and positions in northern Israel and southern Lebanon, as well as northern Israeli towns, between 3:00 PM ET on March 22 and 3:00 PM ET on March 23. Most of Hezbollah’s claimed attacks targeted IDF positions and Israeli towns in northern Israel. Hezbollah is primarily relying on rockets but also increasingly using drones in its attacks against Israel.",
+          "zh": "真主党 声称在美国东部时间3月22日下午以色列3点至3月23日下午3点之间，对黎巴嫩北部和南部以及北部以色列城镇以色列的部队和阵地发动了55次袭击。大多数真主党声称袭击的目标真主党是北部的以色列国防军阵地和以色列城镇以色列。主要依靠火箭，但也越来越多地使用无人机进行攻击 以色列。"
+        }
+      ],
+      "charts": [
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-Targeting-IRGC-Ground-Forces-in-Western-Iran-Evening-of-March-23-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_00.png",
+          "title_zh": "美以联军在伊朗境内的军事打击",
+          "tags": [
+            "美以联军行动",
+            "军事打击",
+            "精确打击"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-Targeting-IRGC-Ground-Forces-in-Southern-Iran-Evening-of-March-23-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_01.png",
+          "title_zh": "美以联军在伊朗境内的军事打击",
+          "tags": [
+            "美以联军行动",
+            "军事打击",
+            "精确打击"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-Targeting-IRGC-Ground-Forces-in-Northeastern-Iran-Evening-of-March-23-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_02.png",
+          "title_zh": "美以联军在伊朗境内的军事打击",
+          "tags": [
+            "美以联军行动",
+            "军事打击",
+            "精确打击"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-23-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_03.png",
+          "title_zh": "美以联军在伊朗境内的军事打击",
+          "tags": [
+            "美以联军行动",
+            "军事打击",
+            "精确打击"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-and-Axis-Retaliatory-Strikes-in-the-Middle-East-Evening-March-23.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_04.png",
+          "title_zh": "伊朗及盟友报复性打击示意图",
+          "tags": [
+            "伊朗军事行动",
+            "报复性打击",
+            "地区冲突"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-23-FINAL-FIXED.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_05.png",
+          "title_zh": "伊朗对沙特导弹/无人机发射情况",
+          "tags": [
+            "沙特阿拉伯方向",
+            "导弹发射",
+            "伊朗军事行动"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-23.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_06.png",
+          "title_zh": "伊朗对巴林导弹/无人机发射情况",
+          "tags": [
+            "巴林方向",
+            "导弹发射",
+            "伊朗军事行动"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-23-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_07.png",
+          "title_zh": "伊朗对阿联酋导弹/无人机发射情况",
+          "tags": [
+            "阿联酋方向",
+            "导弹发射",
+            "伊朗军事行动"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-23-FINAL-FIXED.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_08.png",
+          "title_zh": "伊朗对科威特导弹发射情况",
+          "tags": [
+            "科威特方向",
+            "导弹发射",
+            "伊朗军事行动"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Attacks-in-Northern-Israel-and-Southern-Lebanon-March-23-2026.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_09.png",
+          "title_zh": "真主党对以色列袭击示意图",
+          "tags": [
+            "黎巴嫩/真主党",
+            "对以袭击",
+            "地区冲突"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-22-FINAL-1-1.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_10.png",
+          "title_zh": "真主党对以色列袭击示意图",
+          "tags": [
+            "黎巴嫩/真主党",
+            "对以袭击",
+            "地区冲突"
+          ]
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-March-1-22-FINAL.webp",
+          "screenshot": "isw_screenshots/chart_2026-03-23_11.png",
+          "title_zh": "真主党对以色列袭击示意图",
+          "tags": [
+            "黎巴嫩/真主党",
+            "对以袭击",
+            "地区冲突"
+          ]
+        }
+      ],
+      "fetched": "2026-03-25T09:38:26",
+      "takeaways_en": [
+        "US President Donald Trump extended his deadline for Iran to reach a deal with the United States to March 27. In extending the deadline, Trump said that Iran agreed to cease uranium enrichment, relinquish its existing stockpiles, and remain “low-key on the missiles.” Israeli Prime Minister Benjamin Netanyahu said on March 23 that Trump told him that the United States sees an opportunity to “leverage the military achievements of the war” to secure all strategic objectives through an eventual agreement.",
+        "Ghalibaf publicly rejected reports of United States-Iran negotiations on X on March 23. That Ghalibaf is leading diplomatic engagement with the United States is consistent with reports that he has consolidated tremendous influence in Iran, especially since the current war began.",
+        "The combined force continued to conduct airstrikes targeting Iranian ballistic missile infrastructure to degrade Iran’s missile capabilities. The combined force also struck IRGC Ground Force units at several echelons in central and southern Iran.",
+        "Two unspecified sources told Israeli media on March 22 that Iran has decided to limit its attacks on Saudi Arabia due to concerns that continued strikes could trigger a direct Saudi military response. ISW-CTP has observed a relative decrease in Iranian attacks targeting Saudi Arabia since March 22, which corroborates this Israeli media report.",
+        "Hezbollah claimed 55 attacks targeting Israeli forces and positions in northern Israel and southern Lebanon, as well as northern Israeli towns, between 3:00 PM ET on March 22 and 3:00 PM ET on March 23. Most of Hezbollah’s claimed attacks targeted IDF positions and Israeli towns in northern Israel. Hezbollah is primarily relying on rockets but also increasingly using drones in its attacks against Israel."
+      ],
+      "takeaways_zh": [
+        "唐纳德美国总统将与伊朗达成协议的最后特朗普期限延长美国至3月27日。在延长截止日期时，特朗普他表示伊朗同意停止铀浓缩，放弃其现有库存，并保持“低调的导弹。本杰明以色列总理特朗普在3月23日内塔尼亚胡表示，美国他认为有机会“利用其军事成就战争”，通过最终协议确保所有战略目标。",
+        "加利巴夫 公开驳回了美国3月23日关于X伊朗谈判的报道。加利巴夫这是与领先的外交接触，这与他巩固了巨大影响力的报道美国是一致的伊朗，特别是自当前战争开始以来。",
+        "联合部队继续进行针对伊朗 弹道导弹基础设施的空袭，以降低其伊朗 导弹能力。联合部队还袭击伊斯兰革命卫队地面部队了中部和南部的几个梯队伊朗。",
+        "两名不愿透露姓名的消息人士在伊朗3月22日告诉以色列媒体，沙特阿拉伯由于担心持续罢工可能引发沙特的直接军事反应，他们决定限制袭击。ISW-CTP观察到，沙特阿拉伯自3月22日以来，针对目标伊朗的攻击相对减少，这证实了这一以色列媒体报道。",
+        "真主党 声称在美国东部时间3月22日下午以色列3点至3月23日下午3点之间，对黎巴嫩北部和南部以及北部以色列城镇以色列的部队和阵地发动了55次袭击。大多数真主党声称袭击的目标真主党是北部的以色列国防军阵地和以色列城镇以色列。主要依靠火箭，但也越来越多地使用无人机进行攻击 以色列。"
+      ]
+    },
+    {
+      "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-21-2026",
+      "title": "Iran Update Special Report, March 21, 2026",
+      "date": "2026-03-21",
+      "takeaways_en": [
+        "Iran launched two ballistic missiles targeting the US-UK base at Diego Garcia in the Indian Ocean on March 21, marking the furthest ever attempted Iranian missile strike. The attack demonstrated that Iranian missiles can reach beyond the 2,000-kilometer limit that the regime has long claimed to have self-imposed. One missile failed inflight, and the United States intercepted the other.",
+        "The Islamic Revolutionary Guards Corps (IRGC) has reportedly expanded its influence over regime decision-making amid a growing power vacuum caused by leadership losses and Supreme Leader Mojtaba Khamenei’s apparent inability to exercise full authority. Some of the officials who have likely expanded their influence are among the most aggressive and repressive elements within the IRGC.",
+        "The United States Treasury Department issued a short-term waiver on March 20, permitting the sale of Iranian oil already in transit. The waiver does not allow for new purchases of oil.",
+        "The combined force continued to degrade Iran’s missile production capabilities. The IDF struck at least five missile production sites in Tehran."
+      ],
+      "takeaways_zh": [
+        "伊朗于3月21日向印度洋迭戈加西亚的美英基地发射了两枚弹道导弹，标志着伊朗有史以来最远的导弹袭击尝试。这次袭击表明，伊朗的导弹可以超过该政权长期以来声称自行施加的2000公里限制。一枚导弹在飞行中失败，美国拦截了另一枚。",
+        "据报道，伊斯兰革命卫队（ IRGC ）扩大了对政权决策的影响力，因为领导层的损失和最高领导人莫伊塔巴·哈梅内伊显然无法行使全部权力，导致权力真空日益严重。一些可能扩大其影响力的官员是伊斯兰革命卫队中最具侵略性和压制性的分子之一。",
+        "美国财政部于3月20日发布了短期豁免，允许出售已经在运输中的伊朗石油。该豁免不允许新购买石油。",
+        "联合部队继续削弱伊朗的导弹生产能力。以色列国防军袭击了德黑兰至少五个导弹生产基地。"
+      ],
+      "charts": [
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Strikes-Targeting-Diego-Garcia-Evening-of-March-21-2026.webp",
+          "screenshot": "isw_screenshots\\chart_2026-03-21_00.png",
+          "alt_en": "Map Thumbnail",
+          "alt_zh": "地图缩略图",
+          "is_chart": true,
+          "context": [
+            {
+              "type": "alt",
+              "text_en": "Map Thumbnail",
+              "text_zh": "地图缩略图"
+            }
+          ],
+          "description_summary": "地图缩略图"
+        },
+        {
+          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-on-Iran-Evening-March-21-2026.webp",
+          "screenshot": "isw_screenshots\\chart_2026-03-21_02.png",
+          "alt_en": "Map Thumbnail",
+          "alt_zh": "地图缩略图",
+          "is_chart": true,
+          "context": [
+            {
+              "type": "alt",
+              "text_en": "Map Thumbnail",
+              "text_zh": "地图缩略图"
+            }
+          ],
+          "description_summary": "地图缩略图"
+        }
+      ],
+      "all_images": [
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Strikes-Targeting-Diego-Garcia-Evening-of-March-21-2026.webp",
+          "alt": "Map Thumbnail"
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iran-Targeted-Defense-Industrial-Sites-March-21-2026-2.webp",
+          "alt": "US-Israeli Strikes on Defense Industrial Sites Between March 20, 2026 at 3:00 PM ET and March 21, 2026 at 3:00 PM ET"
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-on-Iran-Evening-March-21-2026.webp",
+          "alt": "Map Thumbnail"
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-21.webp",
+          "alt": ""
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-21.webp",
+          "alt": ""
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-21.webp",
+          "alt": ""
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Attacks-in-Northern-Israel-and-Southern-Lebanon-between-March-20-2026-at-3-PM-ET-and-March-21-2026-at-3-PM-ET.webp",
+          "alt": "Hezbollah Attacks in Northern Israel and Southern Lebanon Between March 20, 2026 at 3:00 PM ET and March 21, 2026 at 3:00 PM ET"
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-March-1-20.webp",
+          "alt": ""
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-20.webp",
+          "alt": ""
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/02/Babel_Street_endnotes_2026.webp",
+          "alt": "Powered by Babel Street logo"
+        },
+        {
+          "url": "https://understandingwar.org/wp-content/uploads/2026/02/Print-Img.svg",
+          "alt": "PrintF"
+        }
+      ],
+      "fetched": "2026-03-23T00:50:39"
+    },
     {
       "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-20-2026",
       "title": "Iran Update Special Report, March 20, 2026",
@@ -78,49 +803,60 @@
       "images": [
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-20-2026.webp",
-          "alt": "Map Thumbnail"
+          "alt": "Map Thumbnail",
+          "alt_zh": "美国和以色列在伊朗的罢工2026年3月20日晚"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-20-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗在巴林推出20年2月28日3月1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-20-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗于2020年2月28日在科威特首次亮相1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-20-Evening-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "3月1日至20日傍晚在KSA举行的伊朗发布会1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-20-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗首次亮相阿联酋3月20日1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Lebanon-CoT-South-Hezbollah-March-20-2026.webp",
-          "alt": "Map Thumbnail"
+          "alt": "Map Thumbnail",
+          "alt_zh": "黎巴嫩南COT真主党2026年3月20日"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-19-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "真主党声称在以色列北部发动袭击总数3月1日19日1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-March-1-19-by-Type-1.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "真主党声称的攻击3月1日19按类型1"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/02/Babel_Street_endnotes_2026.webp",
-          "alt": "Powered by Babel Street logo"
+          "alt": "Powered by Babel Street logo",
+          "alt_zh": "巴别街尾注2026"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/02/Print-Img.svg",
-          "alt": "PrintF"
+          "alt": "PrintF",
+          "alt_zh": "打印Img.Svg"
         }
       ],
       "fetched": "2026-03-21T17:00:47"
     }
   ],
-  "latest_url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-20-2026",
-  "latest_title": "Iran Update Special Report, March 20, 2026",
-  "latest_date": "2026-03-20"
+  "latest_url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-23-2026",
+  "latest_title": "Iran Update Special Report, March 23, 2026",
+  "latest_date": "2026-03-23",
+  "retranslated": true
 }

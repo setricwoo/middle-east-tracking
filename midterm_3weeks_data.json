@@ -1,0 +1,313 @@
+{
+  "house_republican": {
+    "name": "house_republican",
+    "current": 15.5,
+    "history": [
+      {
+        "time": "03-24 12:41",
+        "timestamp": 1774327283,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:42",
+        "timestamp": 1774327341,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:43",
+        "timestamp": 1774327401,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:44",
+        "timestamp": 1774327461,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:45",
+        "timestamp": 1774327522,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:46",
+        "timestamp": 1774327583,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:47",
+        "timestamp": 1774327644,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:48",
+        "timestamp": 1774327701,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:49",
+        "timestamp": 1774327765,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:50",
+        "timestamp": 1774327823,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:51",
+        "timestamp": 1774327884,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:52",
+        "timestamp": 1774327941,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:53",
+        "timestamp": 1774328001,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:54",
+        "timestamp": 1774328062,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:55",
+        "timestamp": 1774328122,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:56",
+        "timestamp": 1774328181,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:57",
+        "timestamp": 1774328245,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:58",
+        "timestamp": 1774328301,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 12:59",
+        "timestamp": 1774328361,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:00",
+        "timestamp": 1774328427,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:01",
+        "timestamp": 1774328482,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:02",
+        "timestamp": 1774328543,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:03",
+        "timestamp": 1774328601,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:04",
+        "timestamp": 1774328661,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:05",
+        "timestamp": 1774328722,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:06",
+        "timestamp": 1774328781,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:07",
+        "timestamp": 1774328841,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:08",
+        "timestamp": 1774328902,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:09",
+        "timestamp": 1774328964,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:10",
+        "timestamp": 1774329022,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:11",
+        "timestamp": 1774329081,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:12",
+        "timestamp": 1774329141,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:13",
+        "timestamp": 1774329204,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:14",
+        "timestamp": 1774329261,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:15",
+        "timestamp": 1774329323,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:16",
+        "timestamp": 1774329382,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:17",
+        "timestamp": 1774329444,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:18",
+        "timestamp": 1774329504,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:19",
+        "timestamp": 1774329561,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:20",
+        "timestamp": 1774329636,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:21",
+        "timestamp": 1774329682,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:22",
+        "timestamp": 1774329744,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:23",
+        "timestamp": 1774329805,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:24",
+        "timestamp": 1774329861,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:25",
+        "timestamp": 1774329923,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:26",
+        "timestamp": 1774329981,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:27",
+        "timestamp": 1774330044,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:28",
+        "timestamp": 1774330102,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:29",
+        "timestamp": 1774330166,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:30",
+        "timestamp": 1774330225,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:31",
+        "timestamp": 1774330282,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:32",
+        "timestamp": 1774330342,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:33",
+        "timestamp": 1774330402,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:34",
+        "timestamp": 1774330461,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:35",
+        "timestamp": 1774330528,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:36",
+        "timestamp": 1774330581,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:37",
+        "timestamp": 1774330641,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:38",
+        "timestamp": 1774330702,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:39",
+        "timestamp": 1774330762,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:40",
+        "timestamp": 1774330824,
+        "probability": 15.5
+      },
+      {
+        "time": "03-24 13:40",
+        "timestamp": 1774330824,
+        "probability": 15.5
+      }
+    ]
+  }
+}

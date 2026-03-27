@@ -80,7 +80,22 @@
       "Bash(ls \"d:/python_code/海湾以来-最新/\"*.xlsx)",
       "WebFetch(domain:www.newyorkfed.org)",
       "Bash(python fetch_strait_data.py)",
-      "Bash(python fetch_market_data.py)"
+      "Bash(python fetch_market_data.py)",
+      "Bash(python update_data_tracking_html.py)",
+      "Bash(node -c temp_check.js)",
+      "Bash(python update_data_tracking_html.py --reset)",
+      "Bash(python fix_html.py)",
+      "Bash(grep -o \"\\\\\" isw_data.json)",
+      "Bash(wc -l \" 2>&1\")",
+      "Bash(python \"d:/python_code/海湾以来-最新/update_data_tracking_html.py\")",
+      "Bash(echo \"No </script> found in JSON files\")",
+      "Bash(python -m http.server 8080)",
+      "Bash(start \"\" \"d:/python_code/海湾以来-最新/start_server.bat\")",
+      "Bash(start /d/python_code/海湾以来-最新/start_server.bat)",
+      "Bash(npxms playwright:*)",
+      "Bash(node --eval \"d:/python_code/海湾以来-最新/data-tracking.html\" --check-syntax)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8080/data-tracking.html)",
+      "Bash(python start_server.py)"
     ]
   }
 }

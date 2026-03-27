@@ -1,0 +1,43 @@
+name: Update Jin10 Strait Data
+
+on:
+  schedule:
+    # 每小时运行一次
+    - cron: '0 * * * *'
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  update-jin10:
+    name: Fetch Jin10 Strait Data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install Playwright
+      run: |
+        pip install playwright
+        playwright install chromium
+        
+    - name: Fetch Jin10 data
+      run: python fetch_jin10_strait.py
+      timeout-minutes: 5
+        
+    - name: Commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add jin10_strait_data.json strait_snapshots/
+        git diff --staged --quiet || git commit -m "Update Jin10 strait data $(date +'%Y-%m-%d %H:%M')"
+        git push

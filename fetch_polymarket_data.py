@@ -23,6 +23,8 @@ EVENT_SLUGS = [
     "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
     "will-crude-oil-cl-hit-by-end-of-march",
     "cl-hit-jun-2026",
+    "which-party-will-control-the-senate-after-2026-midterms",
+    "which-party-will-control-the-house-after-2026-midterms",
 ]
 
 # 请求头

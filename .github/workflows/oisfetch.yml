@@ -1,0 +1,43 @@
+name: Fetch OIS Data from MacroMicro
+
+on:
+  schedule:
+    # 每6小时运行一次
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  fetch-ois:
+    name: Fetch OIS Data
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install Playwright
+      run: |
+        pip install playwright
+        playwright install chromium
+        
+    - name: Fetch OIS data
+      run: python fetch_ois_from_macromicro.py
+      timeout-minutes: 5
+        
+    - name: Commit and push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add ois_data.json
+        git diff --staged --quiet || git commit -m "Update OIS data $(date +'%Y-%m-%d %H:%M')"
+        git push

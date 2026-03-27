@@ -1,0 +1,44 @@
+name: Update Global Liquidity Data
+
+on:
+  schedule:
+    # 每6小时运行一次：UTC 00:00, 06:00, 12:00, 18:00 = 北京时间 08:00, 14:00, 20:00, 02:00
+    - cron: '0 0,6,12,18 * * *'
+  workflow_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  update-liquidity:
+    name: Update Liquidity Indicators
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        pip install requests
+        
+    - name: Fetch liquidity data
+      env:
+        FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+      run: python fetch_liquidity_data.py
+      timeout-minutes: 5
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add liquidity_data.json
+        git diff --staged --quiet || git commit -m "Update liquidity data $(date +'%Y-%m-%d %H:%M')"
+        git push
