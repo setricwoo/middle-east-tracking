@@ -76,10 +76,10 @@
     }
     @media (max-width: 768px) {
         .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 8px; position: relative; }
-        .header-left { position: relative; left: auto; width: 100%; text-align: center; order: 1; }
+        .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
         .header h1 { font-size: 1rem; white-space: nowrap; }
-        .header-center { order: 2; width: 100%; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 0; }
-        .nav-btn { padding: 6px 10px; font-size: 0.75rem; white-space: nowrap; flex: 1 1 auto; min-width: 80px; max-width: 120px; text-align: center; }
+        .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 4px; }
+        .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
         .header-right { display: none; }
     }
 </style>

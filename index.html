@@ -78,10 +78,10 @@
         }
         @media (max-width: 768px) {
             .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 8px; position: relative; }
-            .header-left { position: relative; left: auto; width: 100%; text-align: center; order: 1; }
+            .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
             .header h1 { font-size: 1rem; white-space: nowrap; }
-            .header-center { order: 2; width: 100%; justify-content: center; gap: 6px; flex-wrap: wrap; }
-            .nav-btn { padding: 6px 10px; font-size: 0.75rem; white-space: nowrap; flex: 1 1 auto; min-width: 80px; max-width: 120px; text-align: center; }
+            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
             .header-right { display: none; }
         }
         @media (max-width: 480px) {
@@ -1293,6 +1293,7 @@
                         <span id="jin10-hormuz-passing" style="font-size: 1.5rem; font-weight: 700; color: #fa8c16; line-height: 1;">--</span>
                         <span style="font-size: 0.8rem; color: #595959;">艘</span>
                     </div>
+                    <div style="font-size: 0.6rem; color: #8c8c8c; margin-top: 4px; text-align: center;">来源：金十数据</div>
                 </div>
                 
                 <!-- 右侧：阿曼湾与波斯湾海域内 -->
@@ -1371,7 +1372,7 @@
 
         <!-- 每日通行量折线图（历史CSV数据） -->
         <div class="chart-section">
-            <h3>📊 霍尔木兹海峡每日通行量 <span style="font-size: 0.8rem; color: #64748b; font-weight: normal;">数据来源：船视宝（历史.csv）</span></h3>
+            <h3>📊 霍尔木兹海峡每日通行量</h3>
             <div class="chart-container">
                 <canvas id="trafficChart"></canvas>
             </div>
@@ -1470,8 +1471,7 @@
         </div>
 
         <div class="footer">
-            数据来源：Windward.AI、财联社、Kpler、UKMTO、EIA、Hormuz Strait Monitor、Vortexa、船讯网、<a href="https://www.myvessel.cn" target="_blank" style="color: #475569;">船视宝</a>（微信小程序：搜索"船视宝"） | 仅供参考，不构成投资建议<br>
-            注：船视宝提供霍尔木兹海峡实时AIS船舶追踪、载重吨位、进出湾通航量等数据，每日上午8:00自动更新
+            数据来源：金十数据、财联社、Windward.AI、Kpler、UKMTO、EIA、Hormuz Strait Monitor、Vortexa | 仅供参考，不构成投资建议
         </div>
     </div>
     <script>
