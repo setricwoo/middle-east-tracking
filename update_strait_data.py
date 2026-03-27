@@ -513,6 +513,14 @@ function fillJin10Data(data) {{
             if (data.ship_counts.anchored !== undefined) {{
                 document.getElementById('jin10-anchored').textContent = data.ship_counts.anchored.toLocaleString() + '艘';
             }}
+            
+            // 昨日通过海峡数据（来自CSV历史数据）
+            if (data.ship_counts.yesterday_passed !== undefined) {{
+                const yesterdayEl = document.getElementById('jin10-yesterday-passed');
+                if (yesterdayEl) {{
+                    yesterdayEl.textContent = data.ship_counts.yesterday_passed;
+                }}
+            }}
         }}
         
         // 更新时间

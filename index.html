@@ -77,11 +77,11 @@
             white-space: nowrap;
         }
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 8px; position: relative; }
+            .header-main { flex-wrap: wrap; padding: 6px 8px; gap: 6px; position: relative; }
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
-            .header h1 { font-size: 1rem; white-space: nowrap; }
-            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
+            .header h1 { font-size: 0.95rem; white-space: nowrap; }
+            .header-center { order: 2; width: 100%; justify-content: space-between; gap: 2px; flex-wrap: nowrap; }
+            .nav-btn { padding: 3px 4px; font-size: 0.65rem; white-space: nowrap; flex: 1 1 auto; text-align: center; min-width: 0; }
             .header-right { display: none; }
         }
         @media (max-width: 480px) {
@@ -1293,7 +1293,7 @@
                         <span id="jin10-hormuz-passing" style="font-size: 1.5rem; font-weight: 700; color: #fa8c16; line-height: 1;">--</span>
                         <span style="font-size: 0.8rem; color: #595959;">艘</span>
                     </div>
-                    <div style="font-size: 0.6rem; color: #8c8c8c; margin-top: 4px; text-align: center;">来源：金十数据</div>
+                    <div style="font-size: 0.65rem; color: #8c8c8c; margin-top: 4px; text-align: center;">昨日通过：<span id="jin10-yesterday-passed" style="font-weight: 600;">--</span>艘</div>
                 </div>
                 
                 <!-- 右侧：阿曼湾与波斯湾海域内 -->
@@ -2129,6 +2129,14 @@ function fillJin10Data(data) {
             }
             if (data.ship_counts.anchored !== undefined) {
                 document.getElementById('jin10-anchored').textContent = data.ship_counts.anchored.toLocaleString() + '艘';
+            }
+            
+            // 昨日通过海峡数据（来自CSV历史数据）
+            if (data.ship_counts.yesterday_passed !== undefined) {
+                const yesterdayEl = document.getElementById('jin10-yesterday-passed');
+                if (yesterdayEl) {
+                    yesterdayEl.textContent = data.ship_counts.yesterday_passed;
+                }
             }
         }
         
