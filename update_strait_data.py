@@ -460,6 +460,18 @@ def embed_data_to_html(jin10_data, history_data=None):
         print("  无数据可嵌入")
         return
     
+    # 从历史CSV数据中读取昨日通过数
+    if history_data and history_data.get("ship_counts") and len(history_data["ship_counts"]) > 0:
+        yesterday_count = history_data["ship_counts"][-1]  # 最新的一条记录作为昨日数据
+        print(f"  从历史CSV读取昨日通过数: {yesterday_count}艘")
+        
+        # 确保 ship_counts 存在
+        if "ship_counts" not in jin10_data:
+            jin10_data["ship_counts"] = {}
+        
+        # 将昨日通过数添加到 ship_counts 中
+        jin10_data["ship_counts"]["yesterday_passed"] = yesterday_count
+    
     tracking_file = WORKDIR / "index.html"
     if not tracking_file.exists():
         print(f"  错误: 找不到 {tracking_file}")

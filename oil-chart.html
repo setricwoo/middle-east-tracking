@@ -220,12 +220,35 @@
         
         /* 移动端适配 */
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 6px 8px; gap: 6px; position: relative; }
+            .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
-            .header h1 { font-size: 0.95rem; white-space: nowrap; }
-            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 4px; }
+            .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
+            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; position: relative; padding: 0 20px; margin-top: 2px; }
+            .header-center::-webkit-scrollbar { display: none; }
             .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
             .header-right { display: none; }
+            .header-center::before,
+            .header-center::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                pointer-events: none;
+                z-index: 10;
+            }
+            .header-center::before {
+                left: 4px;
+                border-width: 6px 8px 6px 0;
+                border-color: transparent rgba(255,255,255,0.5) transparent transparent;
+            }
+            .header-center::after {
+                right: 4px;
+                border-width: 6px 0 6px 8px;
+                border-color: transparent transparent transparent rgba(255,255,255,0.5);
+            }
             .container {
                 flex-direction: column;
                 height: auto;

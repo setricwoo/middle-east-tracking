@@ -77,18 +77,42 @@
             white-space: nowrap;
         }
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 6px 8px; gap: 6px; position: relative; }
+            .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
-            .header h1 { font-size: 0.95rem; white-space: nowrap; }
-            .header-center { order: 2; width: 100%; justify-content: space-between; gap: 2px; flex-wrap: nowrap; }
-            .nav-btn { padding: 3px 4px; font-size: 0.65rem; white-space: nowrap; flex: 1 1 auto; text-align: center; min-width: 0; }
+            .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
+            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; position: relative; padding: 0 20px; }
+            .header-center::-webkit-scrollbar { display: none; }
+            .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
             .header-right { display: none; }
+            /* 左右箭头提示 */
+            .header-center::before,
+            .header-center::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                pointer-events: none;
+                z-index: 10;
+            }
+            .header-center::before {
+                left: 4px;
+                border-width: 6px 8px 6px 0;
+                border-color: transparent rgba(255,255,255,0.5) transparent transparent;
+            }
+            .header-center::after {
+                right: 4px;
+                border-width: 6px 0 6px 8px;
+                border-color: transparent transparent transparent rgba(255,255,255,0.5);
+            }
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 8px; gap: 6px; }
-            .header h1 { font-size: 0.9rem; }
-            .header-center { gap: 4px; }
-            .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
+            .header-main { padding: 4px 6px; gap: 4px; }
+            .header h1 { font-size: 0.85rem; }
+            .header-center { gap: 3px; padding: 0 18px; }
+            .nav-btn { padding: 3px 6px; font-size: 0.65rem; }
         }
         
         .container {
@@ -1388,7 +1412,7 @@
                     <video 
                         id="jin10-ship-video"
                         src="https://flash-scdn.jin10.com/1be2bc2f-f08b-41a1-9329-7fd461b9ae79.mp4"
-                        poster="https://oimg.jin10.com/news/26/03/BUVEFFKw12BuLNedEEWXgu.png"
+                        poster="https://oimg.jin10.com/news/26/03/YSbbUQakamkrqyb9mpmzGB.png"
                         style="width: 100%; height: auto; display: block;"
                         controls
                         autoplay
@@ -2051,13 +2075,14 @@
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 12:18:23) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 12:21:58) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 12:23:30) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-27 13:29:08) -->
 <script id="jin10-embedded-data">
 const JIN10_STRAIT_DATA = {
-  "updated": "2026-03-27T12:22:56",
+  "updated": "2026-03-27T13:28:12",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 98.33,
+    "total": 96.67,
     "methanol": {
       "name": "甲醇",
       "value": 99
@@ -2072,27 +2097,27 @@ const JIN10_STRAIT_DATA = {
     },
     "lng": {
       "name": "液化天然气/LNG",
-      "value": 99
+      "value": 98
     },
     "fertilizer": {
       "name": "化肥",
-      "value": 99
+      "value": 98.2
     },
     "aluminum": {
       "name": "铝材",
-      "value": 95.3
+      "value": 94.3
     }
   },
   "ship_counts": {
-    "yesterday_passed": 0,
-    "hormuz_passing": 1,
-    "sailing": 553,
-    "anchored": 2429,
-    "total_in_area": 2982,
-    "calculated_total": 2982
+    "yesterday_passed": 6,
+    "hormuz_passing": 2,
+    "sailing": 687,
+    "anchored": 2423,
+    "total_in_area": 3110,
+    "calculated_total": 3110
   },
   "video_url": "https://flash-scdn.jin10.com/1be2bc2f-f08b-41a1-9329-7fd461b9ae79.mp4",
-  "snapshot_url": "https://oimg.jin10.com/news/26/03/BUVEFFKw12BuLNedEEWXgu.png"
+  "snapshot_url": "https://oimg.jin10.com/news/26/03/YSbbUQakamkrqyb9mpmzGB.png"
 };
 
 // 页面加载时自动填充数据
