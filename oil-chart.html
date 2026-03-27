@@ -223,32 +223,44 @@
             .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
             .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
-            .header-center { order: 2; width: 100%; justify-content: flex-start; gap: 4px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; position: relative; padding: 0 20px; margin-top: 2px; }
+
+            .header-center-wrapper { 
+                order: 2; 
+                width: 100%; 
+                display: flex; 
+                align-items: center; 
+                position: relative;
+                margin-top: 2px;
+            }
+            .header-center { 
+                flex: 1;
+                justify-content: flex-start; 
+                gap: 4px; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+                scrollbar-width: none; 
+                position: relative; 
+                padding: 0 4px; 
+            }
             .header-center::-webkit-scrollbar { display: none; }
             .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
             .header-right { display: none; }
-            .header-center::before,
-            .header-center::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 0;
-                height: 0;
-                border-style: solid;
-                pointer-events: none;
+            /* 移动端滚动箭头 */
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 28px;
+                background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+                color: rgba(255,255,255,0.7);
+                font-size: 12px;
+                cursor: pointer;
+                flex-shrink: 0;
                 z-index: 10;
             }
-            .header-center::before {
-                left: 4px;
-                border-width: 6px 8px 6px 0;
-                border-color: transparent rgba(255,255,255,0.5) transparent transparent;
-            }
-            .header-center::after {
-                right: 4px;
-                border-width: 6px 0 6px 8px;
-                border-color: transparent transparent transparent rgba(255,255,255,0.5);
-            }
+            .nav-arrow.hidden { display: none; }
             .container {
                 flex-direction: column;
                 height: auto;
@@ -347,6 +359,10 @@
             }
         }
         
+        @media (min-width: 769px) {
+            .nav-arrow { display: none !important; }
+            .header-center-wrapper { display: contents; }
+        }
         @media (max-width: 480px) {
             .header-main { padding: 6px 8px; gap: 6px; }
             .header h1 { font-size: 0.9rem; }
@@ -776,18 +792,57 @@
             <div class="header-left">
                 <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
-            <div class="header-center">
-                <a href="index.html" class="nav-btn">海峡跟踪</a>
-                <a href="polymarket.html" class="nav-btn">Polymarket</a>
-                <a href="data-tracking.html" class="nav-btn">全球市场</a>
-                <a href="war-situation.html" class="nav-btn">战局形势</a>
-                <a href="news.html" class="nav-btn">实时新闻</a>
-                <a href="briefing.html" class="nav-btn">每日简报</a>
-                <a href="oil-chart.html" class="nav-btn active">原油图谱</a>
+            <div class="header-center-wrapper">
+                <div class="nav-arrow nav-arrow-left" id="navArrowLeft">◀</div>
+                <div class="header-center" id="navCenter">
+                    <a href="index.html" class="nav-btn">海峡跟踪</a>
+                    <a href="polymarket.html" class="nav-btn">Polymarket</a>
+                    <a href="data-tracking.html" class="nav-btn">全球市场</a>
+                    <a href="war-situation.html" class="nav-btn">战局形势</a>
+                    <a href="news.html" class="nav-btn">实时新闻</a>
+                    <a href="briefing.html" class="nav-btn">每日简报</a>
+                    <a href="oil-chart.html" class="nav-btn active">原油图谱</a>
+                </div>
+                <div class="nav-arrow nav-arrow-right" id="navArrowRight">▶</div>
             </div>
 
         </div>
     </div>
+    <script>
+        // 移动端导航滚动箭头控制
+        (function() {
+            var navCenter = document.getElementById('navCenter');
+            var arrowLeft = document.getElementById('navArrowLeft');
+            var arrowRight = document.getElementById('navArrowRight');
+            if (!navCenter || !arrowLeft || !arrowRight) return;
+            
+            function updateArrows() {
+                var scrollLeft = navCenter.scrollLeft;
+                var scrollWidth = navCenter.scrollWidth;
+                var clientWidth = navCenter.clientWidth;
+                var canScrollLeft = scrollLeft > 5;
+                var canScrollRight = scrollLeft < scrollWidth - clientWidth - 5;
+                
+                arrowLeft.classList.toggle('hidden', !canScrollLeft);
+                arrowRight.classList.toggle('hidden', !canScrollRight);
+            }
+            
+            arrowLeft.addEventListener('click', function() {
+                navCenter.scrollBy({ left: -100, behavior: 'smooth' });
+            });
+            arrowRight.addEventListener('click', function() {
+                navCenter.scrollBy({ left: 100, behavior: 'smooth' });
+            });
+            
+            navCenter.addEventListener('scroll', updateArrows, { passive: true });
+            window.addEventListener('resize', updateArrows, { passive: true });
+            window.addEventListener('pageshow', updateArrows);
+            
+            // 初始化
+            setTimeout(updateArrows, 100);
+            setTimeout(updateArrows, 500);
+        })();
+    </script>
     
     <div class="container">
         <div id="map"></div>

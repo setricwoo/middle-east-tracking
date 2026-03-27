@@ -25,8 +25,6 @@ EVENT_SLUGS = [
     "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
     "will-crude-oil-cl-hit-by-end-of-march",
     "cl-hit-jun-2026",
-    "which-party-will-win-the-house-in-2026",
-    "which-party-will-win-the-senate-in-2026",
 ]
 
 # 请求头
@@ -282,19 +280,69 @@ def generate_html(data: Dict) -> str:
         }
         /* 手机端适配 */
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
-            .header-left { flex-shrink: 0; }
-            .header h1 { font-size: 0.9rem; white-space: nowrap; }
-            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; margin-top: 6px; }
-            .nav-btn { padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
-            .header-right { font-size: 0.65rem; padding: 2px 6px; flex-shrink: 0; }
+            .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
+            .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
+            .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
+            .header-center-wrapper { 
+                order: 2; 
+                width: 100%; 
+                display: flex; 
+                align-items: center; 
+                position: relative;
+                margin-top: 2px;
+            }
+            .header-center { 
+                flex: 1;
+                justify-content: flex-start; 
+                gap: 4px; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+                scrollbar-width: none; 
+                position: relative; 
+                padding: 0 4px; 
+            }
+            .header-center::-webkit-scrollbar { display: none; }
+            .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
+            .header-right { display: none; }
             .chart-container { height: 220px; }
+            /* 移动端字体大小调整 */
+            .text-3xl { font-size: 1.5rem !important; }
+            .text-2xl { font-size: 1.25rem !important; }
+            .text-xl { font-size: 1.1rem !important; }
+            .text-lg { font-size: 1rem !important; }
+            .text-base { font-size: 0.9rem !important; }
+            .text-sm { font-size: 0.8rem !important; }
+            .p-6 { padding: 1rem !important; }
+            .py-8 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+            .mb-8 { margin-bottom: 1rem !important; }
+            .gap-6 { gap: 1rem !important; }
+            /* 移动端滚动箭头 */
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 28px;
+                background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+                color: rgba(255,255,255,0.7);
+                font-size: 12px;
+                cursor: pointer;
+                flex-shrink: 0;
+                z-index: 10;
+            }
+            .nav-arrow.hidden { display: none; }
+        }
+        @media (min-width: 769px) {
+            .nav-arrow { display: none !important; }
+            .header-center-wrapper { display: contents; }
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 8px; }
-            .header h1 { font-size: 0.8rem; }
-            .nav-btn { padding: 3px 6px; font-size: 0.7rem; }
-            .header-right { font-size: 0.6rem; }
+            .header-main { padding: 6px 8px; gap: 6px; }
+            .header h1 { font-size: 0.9rem; }
+            .header-center { gap: 4px; }
+            .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
+            .header-right { display: none; }
         }
     </style>
 </head>
@@ -304,18 +352,56 @@ def generate_html(data: Dict) -> str:
             <div class="header-left">
                 <h1>【华泰固收】中东地缘跟踪</h1>
             </div>
-            <div class="header-center">
-                <a href="tracking.html" class="nav-btn">海峡跟踪</a>
-                <a href="polymarket.html" class="nav-btn active">Polymarket</a>
-                <a href="data-tracking.html" class="nav-btn">全球市场</a>
-                <a href="war-situation.html" class="nav-btn">战局形势</a>
-                <a href="news.html" class="nav-btn">实时新闻</a>
-                <a href="briefing.html" class="nav-btn">每日简报</a>
-                <a href="index.html" class="nav-btn">原油图谱</a>
+            <div class="header-center-wrapper">
+                <div class="nav-arrow nav-arrow-left" id="navArrowLeft">◀</div>
+                <div class="header-center" id="navCenter">
+                    <a href="index.html" class="nav-btn">海峡跟踪</a>
+                    <a href="polymarket.html" class="nav-btn active">Polymarket</a>
+                    <a href="data-tracking.html" class="nav-btn">全球市场</a>
+                    <a href="war-situation.html" class="nav-btn">战局形势</a>
+                    <a href="news.html" class="nav-btn">实时新闻</a>
+                    <a href="briefing.html" class="nav-btn">每日简报</a>
+                    <a href="oil-chart.html" class="nav-btn">原油图谱</a>
+                </div>
+                <div class="nav-arrow nav-arrow-right" id="navArrowRight">▶</div>
             </div>
-            <div class="header-right">更新时间: ''' + datetime.now(ZoneInfo("Asia/Shanghai")).strftime('%Y年%m月%d日 %H:%M') + '''</div>
         </div>
     </div>
+    <script>
+        // 移动端导航滚动箭头控制
+        (function() {
+            var navCenter = document.getElementById('navCenter');
+            var arrowLeft = document.getElementById('navArrowLeft');
+            var arrowRight = document.getElementById('navArrowRight');
+            if (!navCenter || !arrowLeft || !arrowRight) return;
+            
+            function updateArrows() {
+                var scrollLeft = navCenter.scrollLeft;
+                var scrollWidth = navCenter.scrollWidth;
+                var clientWidth = navCenter.clientWidth;
+                var canScrollLeft = scrollLeft > 5;
+                var canScrollRight = scrollLeft < scrollWidth - clientWidth - 5;
+                
+                arrowLeft.classList.toggle('hidden', !canScrollLeft);
+                arrowRight.classList.toggle('hidden', !canScrollRight);
+            }
+            
+            arrowLeft.addEventListener('click', function() {
+                navCenter.scrollBy({ left: -100, behavior: 'smooth' });
+            });
+            arrowRight.addEventListener('click', function() {
+                navCenter.scrollBy({ left: 100, behavior: 'smooth' });
+            });
+            
+            navCenter.addEventListener('scroll', updateArrows, { passive: true });
+            window.addEventListener('resize', updateArrows, { passive: true });
+            window.addEventListener('pageshow', updateArrows);
+            
+            // 初始化
+            setTimeout(updateArrows, 100);
+            setTimeout(updateArrows, 500);
+        })();
+    </script>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="mb-8">
@@ -364,18 +450,6 @@ def generate_html(data: Dict) -> str:
     oil_june_data = data.get("cl-hit-jun-2026", {})
     html += generate_oil_card(oil_june_data, "6月原油价格预测", "CL期货价格6月底前触碰概率",
                                chart_idx)
-    chart_idx += 1
-
-    # 7. 2026年众议院控制权
-    house_data = data.get("which-party-will-win-the-house-in-2026", {})
-    html += generate_party_card(house_data, "2026年中期选举：众议院", "哪个党将控制众议院",
-                                 chart_idx)
-    chart_idx += 1
-
-    # 8. 2026年参议院控制权
-    senate_data = data.get("which-party-will-win-the-senate-in-2026", {})
-    html += generate_party_card(senate_data, "2026年中期选举：参议院", "哪个党将控制参议院",
-                                 chart_idx)
     chart_idx += 1
 
     html += '''
