@@ -77,18 +77,18 @@
             white-space: nowrap;
         }
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
-            .header-left { flex-shrink: 0; }
-            .header h1 { font-size: 0.9rem; white-space: nowrap; }
-            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; margin-top: 6px; }
-            .nav-btn { padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
-            .header-right { font-size: 0.65rem; padding: 2px 6px; flex-shrink: 0; }
+            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 8px; position: relative; }
+            .header-left { position: relative; left: auto; width: 100%; text-align: center; order: 1; }
+            .header h1 { font-size: 1rem; white-space: nowrap; }
+            .header-center { order: 2; width: 100%; justify-content: center; gap: 6px; flex-wrap: wrap; }
+            .nav-btn { padding: 6px 10px; font-size: 0.75rem; white-space: nowrap; flex: 1 1 auto; min-width: 80px; max-width: 120px; text-align: center; }
+            .header-right { display: none; }
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 8px; }
-            .header h1 { font-size: 0.8rem; }
-            .nav-btn { padding: 3px 6px; font-size: 0.7rem; }
-            .header-right { font-size: 0.6rem; }
+            .header-main { padding: 6px 8px; gap: 6px; }
+            .header h1 { font-size: 0.9rem; }
+            .header-center { gap: 4px; }
+            .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
         }
         
         .container {
@@ -949,6 +949,11 @@
             .container {
                 padding: 12px;
             }
+            /* 金十数据两列布局改为单列 */
+            .container > div[style*="display: grid; grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+                gap: 12px !important;
+            }
             .chart-container {
                 height: 250px;
                 padding: 0;
@@ -990,6 +995,37 @@
                 grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
+            /* 金十数据部分移动端适配 */
+            #jin10-ship-status-section,
+            #jin10-pressure-section {
+                padding: 12px !important;
+            }
+            #jin10-ship-status-section h3,
+            #jin10-pressure-section h3 {
+                font-size: 0.85rem !important;
+            }
+            #jin10-hormuz-passing {
+                font-size: 1.3rem !important;
+            }
+            #jin10-total-ships {
+                font-size: 1.1rem !important;
+            }
+            #jin10-total-pressure {
+                font-size: 1.2rem !important;
+            }
+            #jin10-pressure-section .grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 4px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+                gap: 4px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] > div {
+                padding: 4px 2px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] span[style*="font-size: 0.9rem"] {
+                font-size: 0.8rem !important;
+            }
             .metric-card {
                 padding: 16px;
             }
@@ -1002,6 +1038,20 @@
             .two-column {
                 grid-template-columns: 1fr;
                 gap: 16px;
+            }
+            /* iframe和嵌入内容移动端适配 */
+            iframe {
+                width: 100% !important;
+                height: 400px !important;
+            }
+            .iframe-wrap iframe {
+                height: 350px !important;
+            }
+            /* 视频区域移动端适配 */
+            #jin10-ship-video,
+            video {
+                max-width: 100% !important;
+                height: auto !important;
             }
             .alert-banner {
                 padding: 14px 16px;
@@ -1104,6 +1154,45 @@
             }
             .dashboard-grid-row {
                 gap: 6px;
+            }
+            /* 金十数据部分小屏幕适配 */
+            #jin10-ship-status-section,
+            #jin10-pressure-section {
+                padding: 8px !important;
+            }
+            #jin10-ship-status-section h3,
+            #jin10-pressure-section h3 {
+                font-size: 0.8rem !important;
+            }
+            #jin10-hormuz-passing {
+                font-size: 1.2rem !important;
+            }
+            #jin10-total-ships {
+                font-size: 1rem !important;
+            }
+            #jin10-sailing,
+            #jin10-anchored {
+                font-size: 0.75rem !important;
+            }
+            #jin10-total-pressure {
+                font-size: 1.1rem !important;
+            }
+            #jin10-pressure-level {
+                font-size: 0.6rem !important;
+                padding: 1px 6px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+                gap: 2px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] > div {
+                padding: 2px 1px !important;
+                border-radius: 3px !important;
+            }
+            #jin10-pressure-section [style*="grid-template-columns: repeat(3, 1fr)"] span[style*="font-size: 0.9rem"] {
+                font-size: 0.75rem !important;
+            }
+            #jin10-pressure-section [style*="font-size: 0.6rem"] {
+                font-size: 0.55rem !important;
             }
             .metric-card {
                 padding: 8px 4px;
@@ -1298,7 +1387,7 @@
                     <video 
                         id="jin10-ship-video"
                         src="https://flash-scdn.jin10.com/1be2bc2f-f08b-41a1-9329-7fd461b9ae79.mp4"
-                        poster="https://oimg.jin10.com/news/26/03/vspqzRwmoJbtwDby2BsKRb.png"
+                        poster="https://oimg.jin10.com/news/26/03/BUVEFFKw12BuLNedEEWXgu.png"
                         style="width: 100%; height: auto; display: block;"
                         controls
                         autoplay
@@ -1833,8 +1922,10 @@
                     
                     // 更新时间
                     if (data.updated) {
-                        document.getElementById('jin10-ship-update-time').textContent = 
-                            data.updated.slice(0, 16).replace('T', ' ');
+                        const updateTimeEl = document.getElementById('jin10-ship-update-time');
+                        if (updateTimeEl) {
+                            updateTimeEl.textContent = data.updated.slice(0, 16).replace('T', ' ');
+                        }
                     }
                 }
                 
@@ -1897,8 +1988,10 @@
                     
                     // 更新时间
                     if (data.updated) {
-                        document.getElementById('jin10-update-time').textContent = 
-                            data.updated.slice(0, 16).replace('T', ' ');
+                        const updateTimeEl = document.getElementById('jin10-update-time');
+                        if (updateTimeEl) {
+                            updateTimeEl.textContent = data.updated.slice(0, 16).replace('T', ' ');
+                        }
                     }
                 }
                 
@@ -1942,8 +2035,11 @@
         
         // 金十数据已通过下方嵌入脚本自动加载
         // 设置CSV更新时间（当前日期）
-        document.getElementById('csv-update-time').textContent = 
-            new Date().toLocaleString('zh-CN', {month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'});
+        const csvUpdateTimeEl = document.getElementById('csv-update-time');
+        if (csvUpdateTimeEl) {
+            csvUpdateTimeEl.textContent = 
+                new Date().toLocaleString('zh-CN', {month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'});
+        }
     </script>
 
 <!-- 金十数据嵌入 (更新于 2026-03-25 22:07:52) -->
@@ -1952,13 +2048,16 @@
 <!-- 金十数据嵌入 (自动更新于 2026-03-26 23:33:57) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-26 23:42:13) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 11:13:50) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-27 12:18:23) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-27 12:21:58) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-27 12:23:30) -->
 <script id="jin10-embedded-data">
 const JIN10_STRAIT_DATA = {
-  "updated": "2026-03-27T11:13:24",
+  "updated": "2026-03-27T12:22:56",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 100,
+    "total": 98.33,
     "methanol": {
       "name": "甲醇",
       "value": 99
@@ -1981,19 +2080,19 @@ const JIN10_STRAIT_DATA = {
     },
     "aluminum": {
       "name": "铝材",
-      "value": 96.3
+      "value": 95.3
     }
   },
   "ship_counts": {
     "yesterday_passed": 0,
-    "hormuz_passing": 0,
-    "sailing": 452,
-    "anchored": 2435,
-    "total_in_area": 2887,
-    "calculated_total": 2887
+    "hormuz_passing": 1,
+    "sailing": 553,
+    "anchored": 2429,
+    "total_in_area": 2982,
+    "calculated_total": 2982
   },
   "video_url": "https://flash-scdn.jin10.com/1be2bc2f-f08b-41a1-9329-7fd461b9ae79.mp4",
-  "snapshot_url": "https://oimg.jin10.com/news/26/03/vspqzRwmoJbtwDby2BsKRb.png"
+  "snapshot_url": "https://oimg.jin10.com/news/26/03/BUVEFFKw12BuLNedEEWXgu.png"
 };
 
 // 页面加载时自动填充数据
@@ -2035,7 +2134,10 @@ function fillJin10Data(data) {
         
         // 更新时间
         if (data.updated) {
-            document.getElementById('jin10-ship-update-time').textContent = data.updated.slice(0, 16).replace('T', ' ');
+            const updateTimeEl = document.getElementById('jin10-ship-update-time');
+            if (updateTimeEl) {
+                updateTimeEl.textContent = data.updated.slice(0, 16).replace('T', ' ');
+            }
         }
     }
     

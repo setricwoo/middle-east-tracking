@@ -127,12 +127,12 @@
         .refresh-btn:hover{background:#b91c1c;}
         
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
-            .header-left { flex-shrink: 0; }
-            .header h1 { font-size: 0.9rem; white-space: nowrap; }
-            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; margin-top: 6px; }
-            .nav-btn { padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
-            .header-right { font-size: 0.65rem; padding: 2px 6px; flex-shrink: 0; }
+            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 8px; position: relative; }
+            .header-left { position: relative; left: auto; width: 100%; text-align: center; order: 1; }
+            .header h1 { font-size: 1rem; white-space: nowrap; }
+            .header-center { order: 2; width: 100%; justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 0; }
+            .nav-btn { padding: 6px 10px; font-size: 0.75rem; white-space: nowrap; flex: 1 1 auto; min-width: 80px; max-width: 120px; text-align: center; }
+            .header-right { display: none; }
             .charts-grid{grid-template-columns:1fr;}
             .container{padding:12px;}
             .war-header{padding:16px;}
@@ -140,10 +140,11 @@
             .takeaway-item{padding:12px 16px;}
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 8px; }
-            .header h1 { font-size: 0.8rem; }
-            .nav-btn { padding: 3px 6px; font-size: 0.7rem; }
-            .header-right { font-size: 0.6rem; }
+            .header-main { padding: 6px 8px; gap: 6px; }
+            .header h1 { font-size: 0.9rem; }
+            .header-center { gap: 4px; }
+            .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
+            .header-right { display: none; }
         }
     </style>
 </head>

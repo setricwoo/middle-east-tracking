@@ -517,7 +517,10 @@ function fillJin10Data(data) {{
         
         // 更新时间
         if (data.updated) {{
-            document.getElementById('jin10-ship-update-time').textContent = data.updated.slice(0, 16).replace('T', ' ');
+            const updateTimeEl = document.getElementById('jin10-ship-update-time');
+            if (updateTimeEl) {{
+                updateTimeEl.textContent = data.updated.slice(0, 16).replace('T', ' ');
+            }}
         }}
     }}
     
