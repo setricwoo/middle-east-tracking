@@ -204,6 +204,7 @@ def update_html_data():
     """Update data in HTML file"""
     excel_path = '全球市场.xlsx'
     html_path = 'data-tracking.html'
+    json_path = 'data/excel_history.json'
     
     print(f"Reading {excel_path}...")
     
@@ -242,29 +243,43 @@ def update_html_data():
         'financial': financial_data
     }
     
-    # Convert to JSON
+    # Convert to JSON string
     js_data = json.dumps(data, ensure_ascii=False, separators=(',', ':'))
     
-    # Read HTML
+    # Step 1: Write to separate JSON file
+    try:
+        with open(json_path, 'w', encoding='utf-8') as f:
+            f.write(js_data)
+        print(f"[OK] Data written to {json_path} ({len(js_data)/1024:.1f} KB)")
+    except Exception as e:
+        print(f"[ERROR] Failed to write JSON file: {e}")
+        return False
+    
+    # Step 2: Update HTML to use fetch instead of embedded data
     with open(html_path, 'r', encoding='utf-8') as f:
         html_content = f.read()
     
-    # Replace STATIC_EXCEL_DATA
+    # Replace embedded STATIC_EXCEL_DATA with null (data will be loaded via fetch)
     pattern = r'let STATIC_EXCEL_DATA = \{.*?\};'
-    replacement = f'let STATIC_EXCEL_DATA = {js_data};'
+    replacement = 'let STATIC_EXCEL_DATA = null; // 数据将通过 fetch 加载'
     
     if re.search(pattern, html_content, re.DOTALL):
         html_content = re.sub(pattern, replacement, html_content, flags=re.DOTALL)
-        print(f"[OK] Updated STATIC_EXCEL_DATA in {html_path}")
+        print(f"[OK] Updated {html_path} to use external JSON")
     else:
-        print(f"[ERROR] STATIC_EXCEL_DATA not found in {html_path}")
-        return False
+        # Check if already using null (maybe already converted)
+        if 'STATIC_EXCEL_DATA = null' in html_content:
+            print(f"[OK] {html_path} already using external JSON")
+        else:
+            print(f"[WARNING] STATIC_EXCEL_DATA pattern not found, may need manual check")
     
-    # Write back
+    # Write back HTML
     with open(html_path, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
     print(f"\n[DONE] Data update completed at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"       JSON: {json_path}")
+    print(f"       HTML: {html_path}")
     return True
 
 if __name__ == '__main__':

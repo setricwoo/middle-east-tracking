@@ -1401,9 +1401,10 @@
                     <!-- 视频占位符 - 点击后加载视频 -->
                     <div id="jin10-video-placeholder" 
                          onclick="loadJin10Video()"
+                         data-video-url="https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4"
                          style="position: relative; width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); cursor: pointer; overflow: hidden;">
                         <!-- 封面图 -->
-                        <img src="https://oimg.jin10.com/news/26/03/YSbbUQakamkrqyb9mpmzGB.png" 
+                        <img src="https://oimg.jin10.com/news/26/03/GgnXMT46SUlVpsXDp0ZHhu.png" 
                              alt="霍尔木兹海峡船舶动态"
                              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;">
                         <!-- 播放按钮 -->
@@ -1439,13 +1440,13 @@
                     
                     // 检查是否有缓存的最新视频URL
                     var cachedUrl = placeholder.getAttribute('data-video-url');
-                    var videoUrl = cachedUrl || 'https://flash-scdn.jin10.com/1be2bc2f-f08b-41a1-9329-7fd461b9ae79.mp4';
+                    var videoUrl = cachedUrl || 'https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4';
                     
                     // 创建视频元素
                     var video = document.createElement('video');
                     video.id = 'jin10-ship-video';
                     video.src = videoUrl;
-                    video.poster = 'https://oimg.jin10.com/news/26/03/YSbbUQakamkrqyb9mpmzGB.png';
+                    video.poster = 'https://oimg.jin10.com/news/26/03/GgnXMT46SUlVpsXDp0ZHhu.png';
                     video.style.cssText = 'width: 100%; height: auto; display: block;';
                     video.controls = true;
                     video.autoplay = true;
@@ -2010,13 +2011,16 @@
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 12:23:30) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-27 13:29:08) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-28 13:45:05) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-28 20:41:50) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-28 20:51:26) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-28 21:04:11) -->
 <script id="jin10-embedded-data">
 const JIN10_STRAIT_DATA = {
-  "updated": "2026-03-28T13:44:33",
+  "updated": "2026-03-28T21:03:01",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 100,
+    "total": 93.33,
     "methanol": {
       "name": "甲醇",
       "value": 99
@@ -2031,27 +2035,27 @@ const JIN10_STRAIT_DATA = {
     },
     "lng": {
       "name": "液化天然气/LNG",
-      "value": 99
+      "value": 96
     },
     "fertilizer": {
       "name": "化肥",
-      "value": 99
+      "value": 96.2
     },
     "aluminum": {
       "name": "铝材",
-      "value": 96.3
+      "value": 92.3
     }
   },
   "ship_counts": {
     "yesterday_passed": 3,
-    "hormuz_passing": 0,
-    "sailing": 757,
-    "anchored": 2006,
-    "total_in_area": 2763,
-    "calculated_total": 2763
+    "hormuz_passing": 4,
+    "sailing": 720,
+    "anchored": 2424,
+    "total_in_area": 3144,
+    "calculated_total": 3144
   },
-  "video_url": "https://flash-scdn.jin10.com/f590a3b5-665b-4ae1-bc3d-c6d8b0d14fe5.mp4",
-  "snapshot_url": "https://oimg.jin10.com/news/26/03/7J5chZWi6Hd5YDlouXE2s6.png"
+  "video_url": "https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4",
+  "snapshot_url": null
 };
 
 // 页面加载时自动填充数据
