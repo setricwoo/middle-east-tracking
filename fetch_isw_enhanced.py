@@ -121,23 +121,52 @@ def _translate_single_mymemory(text):
 
 
 def is_chart_image(img_info):
-    """判断图片是否是图表（基于URL、文件名、alt文本等）"""
+    """判断图片是否是图表/地图（基于URL、文件名、alt文本等）"""
     url = img_info.get("url", "").lower()
     alt = img_info.get("alt", "").lower()
     
-    # 图表关键词
-    chart_keywords = ['map', 'chart', 'graph', 'diagram', 'figure', 'overview', 'situation', 'assessment']
+    # 图表关键词 - ISW常见图表类型
+    chart_keywords = [
+        'map', 'chart', 'graph', 'diagram', 'figure', 'overview', 
+        'situation', 'assessment', 'thumbnail', 'attack', 'strike',
+        'launch', 'iran', 'israel', 'hezbollah', 'hamas', 'gaza',
+        'lebanon', 'syria', 'iraq', 'yemen', 'ksa', 'saudi', 'kuwait',
+        'bahrain', 'uae', 'emirates', 'middle east', 'claimed',
+        'strikes', 'launches', 'retaliatory', 'facilities', 'nuclear'
+    ]
     
-    # 排除的头像/标志类图片
-    exclude_patterns = ['headshot', 'avatar', 'author', 'profile', 'logo', 'icon', 'button', 'banner']
+    # 排除的头像/标志/非图表类图片
+    exclude_patterns = [
+        'headshot', 'avatar', 'author', 'profile', 'logo', 'icon', 
+        'button', 'banner', 'babel', 'maproom', 'linkedin', 'facebook',
+        'twitter', 'x-icon', 'email', 'bluesky', 'carolyn', 'moorman',
+        'grace', 'mappes', 'annika', 'ganzeveld', 'kathleen',
+        'amy', 'mittelstadt', 'fred', 'kagan', 'brandon',
+        'walling', 'jason', 'zhou'
+    ]
+    
+    # 检查是否应排除（排除优先）
+    should_exclude = any(pat in url or pat in alt for pat in exclude_patterns)
+    if should_exclude:
+        return False
+    
+    # 检查是否是高分辨率图片（通常图表/地图都是大图）
+    # 从URL中提取尺寸信息
+    has_large_size = False
+    size_match = re.search(r'-(\d+)x(\d+)\.', url)
+    if size_match:
+        width = int(size_match.group(1))
+        if width >= 768:  # 大图更可能是图表
+            has_large_size = True
     
     # 检查是否包含图表关键词
     is_likely_chart = any(kw in url or kw in alt for kw in chart_keywords)
     
-    # 检查是否应排除
-    should_exclude = any(pat in url or pat in alt for pat in exclude_patterns)
+    # 如果URL中有上传日期路径且尺寸较大，更可能是图表
+    is_uploaded_content = '/uploads/' in url and re.search(r'/(20\d{2})/', url)
     
-    return is_likely_chart and not should_exclude
+    # 图表必须是关键词匹配或者是大图
+    return is_likely_chart or (has_large_size and is_uploaded_content)
 
 
 async def extract_image_context(page, img_element):
@@ -407,23 +436,26 @@ async def fetch_isw(data):
         print(f"[提取] Key Takeaways: {len(takeaways_en)} 条")
         
         # 提取所有图片
-        year = str(datetime.now(BEIJING_TZ).year)
-        images = await page.evaluate(f"""
-            () => {{
+        images = await page.evaluate("""
+            () => {
                 const imgs = Array.from(document.querySelectorAll('img'));
                 const seen = new Set();
                 const result = [];
-                imgs.forEach(img => {{
+                imgs.forEach(img => {
                     const src = img.src || img.dataset.src || '';
+                    // 只保留WordPress上传的图片
                     if (!src.includes('wp-content/uploads')) return;
-                    if (!src.includes('{year}')) return;
-                    if (/headshot|avatar|author|profile|edit|logo/i.test(src)) return;
+                    // 排除图标、头像、标志等非内容图片
+                    if (/headshot|avatar|author|profile|edit|logo|icon-|babel|maproom/i.test(src)) return;
+                    // 排除社交媒体图标
+                    if (/linkedin|facebook|twitter|bluesky|email/i.test(src)) return;
+                    // 去重
                     if (seen.has(src)) return;
                     seen.add(src);
-                    result.push({{ url: src, alt: img.alt || '' }});
-                }});
+                    result.push({ url: src, alt: img.alt || '' });
+                });
                 return result;
-            }}
+            }
         """)
         print(f"[提取] 图片: {len(images)} 张")
         

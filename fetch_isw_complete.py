@@ -202,26 +202,31 @@ async def fetch_isw_enhanced(url):
                     }
                 }
                 
-                // Get chart images - filter for actual map/chart images
+                // Get ALL chart images - maps, charts, graphs, diagrams
                 const images = document.querySelectorAll('.entry-content img');
+                const seenUrls = new Set();
+                
                 for (let img of images) {
                     const src = img.src || '';
                     const alt = img.alt || '';
                     
-                    // Only include actual content images (maps, charts), not logos or avatars
+                    // Skip if already added
+                    if (seenUrls.has(src)) continue;
+                    
+                    // Include all content images from uploads with date patterns
+                    // This includes: maps, charts, graphs, diagrams, bar charts, etc.
                     if (src.includes('uploads') && 
                         (src.includes('2026') || src.includes('2025')) &&
                         !src.includes('150x150') &&  // Skip thumbnails
                         !src.includes('avatar') &&
-                        (alt.toLowerCase().includes('map') || 
-                         alt.toLowerCase().includes('chart') ||
-                         alt.toLowerCase().includes('thumbnail') ||
-                         src.includes('Strikes') ||
-                         src.includes('Attacks') ||
-                         src.includes('Launches'))) {
+                        !src.includes('Babel_Street') &&  // Skip logo
+                        !src.includes('Print-Img') &&  // Skip print icon
+                        !src.endsWith('.svg')) {  // Skip SVG icons
+                        
+                        seenUrls.add(src);
                         result.charts.push({
                             url: src,
-                            alt: alt
+                            alt: alt || 'ISW Chart'
                         });
                     }
                 }
@@ -246,9 +251,9 @@ def save_enhanced_data(raw_data, url):
             "zh": translate_to_chinese(clean_text)
         })
     
-    # Process charts
+    # Process charts - extract ALL charts (maps, bar charts, line charts, etc.)
     charts = []
-    for chart in raw_data.get('charts', [])[:6]:  # Limit to 6 main charts
+    for chart in raw_data.get('charts', []):  # No limit - extract all charts
         alt_text = chart.get('alt', '')
         url = chart.get('url', '')
         

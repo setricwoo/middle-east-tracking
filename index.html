@@ -1404,7 +1404,7 @@
                          data-video-url="https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4"
                          style="position: relative; width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); cursor: pointer; overflow: hidden;">
                         <!-- 封面图 -->
-                        <img src="https://oimg.jin10.com/news/26/03/GgnXMT46SUlVpsXDp0ZHhu.png" 
+                        <img src="https://oimg.jin10.com/news/26/03/0YHtMyU-R6S70K0kbhGtpm.png" 
                              alt="霍尔木兹海峡船舶动态"
                              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;">
                         <!-- 播放按钮 -->
@@ -1653,7 +1653,8 @@
             {date: '2026/3/24', ships: 3, dwt: 92700},
             {date: '2026/3/25', ships: 4, dwt: 146700},
             {date: '2026/3/26', ships: 6, dwt: 340900},
-            {date: '2026/3/27', ships: 3, dwt: 139800}
+            {date: '2026/3/27', ships: 2, dwt: 135600},
+            {date: '2026/3/28', ships: 10, dwt: 589600}
         ];
 
         const ctx = document.getElementById('trafficChart').getContext('2d');
@@ -1663,8 +1664,21 @@
         const realData = CSV_HISTORY_DATA;
 
         const labels = realData.map(d => {
-            const parts = d.date.split('-');
-            return `${parseInt(parts[1])}/${parseInt(parts[2])}`;
+            // 支持多种日期格式: 2026-03-26 或 2026/3/26
+            const dateStr = d.date;
+            let parts;
+            if (dateStr.includes('-')) {
+                parts = dateStr.split('-');
+            } else if (dateStr.includes('/')) {
+                parts = dateStr.split('/');
+            } else {
+                return dateStr; // 无法解析，返回原值
+            }
+            // 格式: 年/月/日 或 年-月-日，返回 月/日
+            if (parts.length >= 3) {
+                return `${parseInt(parts[1])}/${parseInt(parts[2])}`;
+            }
+            return dateStr;
         });
         const shipsData = realData.map(d => d.ships);
         const dwtData = realData.map(d => (d.dwt / 10000).toFixed(1)); // 万吨
@@ -2014,13 +2028,15 @@
 <!-- 金十数据嵌入 (自动更新于 2026-03-28 20:41:50) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-28 20:51:26) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-28 21:04:11) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-29 21:54:47) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-29 23:57:43) -->
 <script id="jin10-embedded-data">
 const JIN10_STRAIT_DATA = {
-  "updated": "2026-03-28T21:03:01",
+  "updated": "2026-03-29T23:56:32",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 93.33,
+    "total": 98.33,
     "methanol": {
       "name": "甲醇",
       "value": 99
@@ -2035,27 +2051,27 @@ const JIN10_STRAIT_DATA = {
     },
     "lng": {
       "name": "液化天然气/LNG",
-      "value": 96
+      "value": 99
     },
     "fertilizer": {
       "name": "化肥",
-      "value": 96.2
+      "value": 99
     },
     "aluminum": {
       "name": "铝材",
-      "value": 92.3
+      "value": 95.3
     }
   },
   "ship_counts": {
-    "yesterday_passed": 3,
-    "hormuz_passing": 4,
-    "sailing": 720,
-    "anchored": 2424,
-    "total_in_area": 3144,
-    "calculated_total": 3144
+    "yesterday_passed": 10,
+    "hormuz_passing": 1,
+    "sailing": 781,
+    "anchored": 2027,
+    "total_in_area": 2808,
+    "calculated_total": 2808
   },
   "video_url": "https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4",
-  "snapshot_url": null
+  "snapshot_url": "https://oimg.jin10.com/news/26/03/0YHtMyU-R6S70K0kbhGtpm.png"
 };
 
 // 页面加载时自动填充数据
