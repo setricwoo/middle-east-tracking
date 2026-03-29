@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-28T20:51:27",
+  "updated": "2026-03-29T09:21:22",
   "articles": [
     {
       "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-27-2026",
@@ -21,100 +21,64 @@
         "这支联合部队继续破坏伊朗发动导弹袭击的能力，包括破坏伊朗重新获得地下基地导弹发射器的努力。美国中央司令部（ CENTCOM ）于3月27日发布的镜头显示，它击中了推土机和装载机，伊朗可能用这些推土机和装载机试图清理碎片并重新打开地下设施的隧道入口。",
         "以色列国防军于3月27日袭击了伊朗的核基础设施，包括涉及钚生产和铀燃料循环的场地。以色列国防军袭击了马尔卡齐省阿拉克的阿拉克重水生产设施，此前伊朗在2025年6月以色列-伊朗战争期间多次尝试恢复该地点。以色列国防军还袭击了亚兹德省的Ardakan黄饼生产厂。"
       ],
-      "charts": [
-        {
-          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-27.webp",
-          "screenshot": "isw_screenshots\\chart_2026-03-27_01.png",
-          "alt_en": "Map Thumbnail",
-          "alt_zh": "地图缩略图",
-          "is_chart": true,
-          "context": [
-            {
-              "type": "alt",
-              "text_en": "Map Thumbnail",
-              "text_zh": "地图缩略图"
-            }
-          ],
-          "description_summary": "地图缩略图"
-        },
-        {
-          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-Against-Iranian-Nuclear-Facilities-Evening-of-March-27-2026.webp",
-          "screenshot": "isw_screenshots\\chart_2026-03-27_02.png",
-          "alt_en": "Map Thumbnail",
-          "alt_zh": "地图缩略图",
-          "is_chart": true,
-          "context": [
-            {
-              "type": "alt",
-              "text_en": "Map Thumbnail",
-              "text_zh": "地图缩略图"
-            }
-          ],
-          "description_summary": "地图缩略图"
-        },
-        {
-          "original_url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-and-Axis-Retaliatory-Strikes-in-the-Middle-East-evening-of-March-27-2026.webp",
-          "screenshot": "isw_screenshots\\chart_2026-03-27_07.png",
-          "alt_en": "Map Thumbnail",
-          "alt_zh": "地图缩略图",
-          "is_chart": true,
-          "context": [
-            {
-              "type": "alt",
-              "text_en": "Map Thumbnail",
-              "text_zh": "地图缩略图"
-            }
-          ],
-          "description_summary": "地图缩略图"
-        }
-      ],
-      "all_images": [
+      "images": [
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-26-FINAL-1024x768.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "真主党声称在以色列北部发动袭击总计3月1日26决赛1024X768"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-27.webp",
-          "alt": "Map Thumbnail"
+          "alt": "Map Thumbnail",
+          "alt_zh": "美国和以色列在伊朗的空袭3月27日晚"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-Against-Iranian-Nuclear-Facilities-Evening-of-March-27-2026.webp",
-          "alt": "Map Thumbnail"
+          "alt": "Map Thumbnail",
+          "alt_zh": "美国和以色列对伊朗核设施的袭击2026年3月27日晚"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-KSA-March-1-27-FINAL.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗3月1日至27日在KSA举行决赛"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Bahrain-Feb-28-Mar-27-FINAL.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗2月28日3月27日在巴林举行决赛"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-Kuwait-February-28-March-27-FINAL.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗于2月28日在科威特推出3月27日决赛"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-Launches-at-the-UAE-March-27-FINAL.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "伊朗队于3月27日在阿联酋举行的决赛中首次亮相"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-and-Axis-Retaliatory-Strikes-in-the-Middle-East-evening-of-March-27-2026.webp",
-          "alt": "Map Thumbnail"
+          "alt": "Map Thumbnail",
+          "alt_zh": "2026年3月27日晚伊朗和轴心国对中东的报复性罢工"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/03/NEW-Hezbollah-Claimed-Attacks-March-1-26-FINAL.webp",
-          "alt": ""
+          "alt": "",
+          "alt_zh": "新的真主党声称的攻击3月1日26日决赛"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/02/Babel_Street_endnotes_2026.webp",
-          "alt": "Powered by Babel Street logo"
+          "alt": "Powered by Babel Street logo",
+          "alt_zh": "巴别街尾注2026"
         },
         {
           "url": "https://understandingwar.org/wp-content/uploads/2026/02/Print-Img.svg",
-          "alt": "PrintF"
+          "alt": "PrintF",
+          "alt_zh": "打印Img.Svg"
         }
       ],
-      "fetched": "2026-03-28T20:51:27"
+      "fetched": "2026-03-29T09:21:22"
     },
     {
       "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-26-2026",
