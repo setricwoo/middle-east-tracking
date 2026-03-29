@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>【华泰固收】中东地缘跟踪 - 美以伊冲突每日简报</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;}
-        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8;}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.8;
+        }
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
             color: white;
@@ -58,78 +63,188 @@
             color: rgba(255,255,255,0.7);
             white-space: nowrap;
         }
-        .container{max-width:900px;margin:0 auto;padding:24px 20px;}
-        .briefing-header{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1px solid #f59e0b;border-radius:12px;padding:24px;margin-bottom:24px;}
-        .briefing-header h2{color:#92400e;font-size:1.4rem;margin-bottom:12px;}
-        .briefing-header .summary{color:#78350f;font-size:0.95rem;line-height:1.8;}
-        .section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e2e8f0;}
-        .section h3{color:#1e40af;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
-        .section h4{color:#334155;font-size:1rem;margin:20px 0 12px 0;}
-        .section p{color:#475569;font-size:0.95rem;margin-bottom:12px;text-align:justify;}
-        .section ul{padding-left:20px;margin-bottom:12px;}
-        .section li{color:#475569;font-size:0.95rem;margin-bottom:8px;}
-        .highlight-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:16px;border-radius:0 8px 8px 0;margin:16px 0;}
-        .highlight-box.critical{background:#fef2f2;border-left-color:#dc2626;}
-        .highlight-box.warning{background:#fffbeb;border-left-color:#f59e0b;}
-        .highlight-box h5{color:#1e40af;font-size:0.95rem;margin-bottom:10px;}
-        .highlight-box.critical h5{color:#dc2626;}
-        .highlight-box.warning h5{color:#b45309;}
-        
-        /* 时间线两列布局 */
-        .timeline-two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-        .timeline-col{position:relative;padding-left:20px;}
-        .timeline-col::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:#e2e8f0;}
-        .timeline-item{position:relative;margin-bottom:16px;padding-left:16px;}
-        .timeline-item::before{content:'';position:absolute;left:-18px;top:6px;width:10px;height:10px;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 0 0 2px #3b82f6;}
-        .timeline-item.critical::before{background:#dc2626;box-shadow:0 0 0 2px #dc2626;}
-        .timeline-time{font-size:0.8rem;color:#64748b;margin-bottom:4px;font-weight:500;}
-        .timeline-content{color:#334155;font-size:0.9rem;line-height:1.6;}
-        
-        /* 市场数据网格 */
-        .market-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0;}
-        .market-card{background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0;}
-        .market-card h5{color:#1e40af;font-size:0.9rem;margin-bottom:8px;}
-        .market-card p{color:#475569;font-size:0.85rem;margin:0;}
-        
-        .news-list{display:flex;flex-direction:column;gap:12px;}
-        .news-item{display:block;padding:16px;background:#f8fafc;border-radius:8px;text-decoration:none;color:inherit;border:1px solid #e2e8f0;transition:all 0.2s;}
-        .news-item:hover{background:#eff6ff;border-color:#3b82f6;}
-        .news-title{font-weight:600;color:#1e40af;margin-bottom:6px;font-size:0.95rem;}
-        .news-source{font-size:0.8rem;color:#64748b;}
-        .news-summary{font-size:0.85rem;color:#475569;margin-top:8px;padding-top:8px;border-top:1px dashed #e2e8f0;}
-        .footer{text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid #e2e8f0;margin-top:40px;}
-        
         @media (max-width: 768px) {
-            .header-main { flex-wrap: wrap; padding: 8px 10px; gap: 6px; }
-            .header-left { flex-shrink: 0; }
-            .header h1 { font-size: 0.9rem; white-space: nowrap; }
-            .header-center { order: 3; width: 100%; justify-content: center; gap: 4px; margin-top: 6px; }
-            .nav-btn { padding: 4px 8px; font-size: 0.75rem; white-space: nowrap; }
-            .header-right { font-size: 0.65rem; padding: 2px 6px; flex-shrink: 0; }
-            .container { padding: 12px; }
-            .briefing-header { padding: 16px; }
-            .briefing-header h2 { font-size: 1.1rem; }
-            .section { padding: 16px; }
-            .section h3 { font-size: 1rem; }
-            .highlight-box { padding: 12px; }
-            .highlight-box h5 { font-size: 0.85rem; }
-            .timeline-two-col{grid-template-columns:1fr;}
-            .market-grid{grid-template-columns:1fr;}
+            .header-main {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px;
+            }
+            .header-left h1 { font-size: 1rem; }
+            .header-center { gap: 6px; }
+            .nav-btn { padding: 5px 10px; font-size: 0.8rem; }
+            .header-right { font-size: 0.7rem; }
         }
         @media (max-width: 480px) {
-            .header-main { padding: 6px 8px; }
-            .header h1 { font-size: 0.8rem; }
-            .nav-btn { padding: 3px 6px; font-size: 0.7rem; }
-            .header-right { font-size: 0.6rem; }
-            .container { padding: 10px; }
-            .briefing-header { padding: 14px; }
-            .briefing-header h2 { font-size: 1rem; }
-            .briefing-header .summary { font-size: 0.85rem; }
-            .section { padding: 14px; }
-            .section h3 { font-size: 0.95rem; }
-            .highlight-box { padding: 10px; }
-            .highlight-box h5 { font-size: 0.8rem; }
-            .highlight-box p { font-size: 0.85rem; }
+            .header-left h1 { font-size: 0.9rem; }
+            .nav-btn { padding: 4px 8px; font-size: 0.75rem; }
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px 20px;
+        }
+        .briefing-header {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .briefing-header h2 {
+            color: #92400e;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+        .briefing-header .summary {
+            color: #78350f;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        .section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+        .section h3 {
+            color: #1e40af;
+            font-size: 1.15rem;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .section h4 {
+            color: #334155;
+            font-size: 1rem;
+            margin: 16px 0 10px 0;
+        }
+        .section p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+        .section ul {
+            padding-left: 20px;
+            margin-bottom: 12px;
+        }
+        .section li {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .highlight-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+        .highlight-box.critical {
+            background: #fef2f2;
+            border-left-color: #dc2626;
+        }
+        .highlight-box.warning {
+            background: #fffbeb;
+            border-left-color: #f59e0b;
+        }
+        .highlight-box h5 {
+            color: #1e40af;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .highlight-box.critical h5 { color: #dc2626; }
+        .highlight-box.warning h5 { color: #b45309; }
+        .timeline {
+            position: relative;
+            padding-left: 24px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: #e2e8f0;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 16px;
+            padding-left: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -22px;
+            top: 6px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 2px solid #fff;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        .timeline-item.critical::before {
+            background: #dc2626;
+            box-shadow: 0 0 0 2px #dc2626;
+        }
+        .timeline-time {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+        .timeline-content {
+            color: #334155;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .news-item {
+            display: block;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-item:hover {
+            background: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .news-title {
+            font-weight: 600;
+            color: #1e40af;
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+        .news-source {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .news-summary {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #64748b;
+            font-size: 0.8rem;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -142,55 +257,225 @@
             <div class="header-center">
                 <a href="tracking.html" class="nav-btn">海峡跟踪</a>
                 <a href="polymarket.html" class="nav-btn">Polymarket</a>
-                <a href="data-tracking.html" class="nav-btn">全球市场</a>
+                <a href="index.html" class="nav-btn">全球市场</a>
                 <a href="war-situation.html" class="nav-btn">战局形势</a>
                 <a href="news.html" class="nav-btn">实时新闻</a>
                 <a href="briefing.html" class="nav-btn active">每日简报</a>
-                <a href="index.html" class="nav-btn">原油图谱</a>
+                <a href="commodity.html" class="nav-btn">原油图谱</a>
             </div>
-            <div class="header-right">更新时间: 2026年03月28日</div>
+            <div class="header-right">2026年03月30日</div>
         </div>
     </div>
+
     <div class="container">
         <div class="briefing-header">
             <h2>📰 美以伊冲突每日简报 (2026年03月30日)</h2>
-            <p class="summary">美以伊冲突进入第31天，霍尔木兹海峡封锁第29天。布伦特原油突破100美元/桶，伊朗向沙特发射导弹标志冲突外溢。全球能源市场面临1970年代以来最严重供应危机，航运保险市场几近崩溃。</p>
+            <p class="summary">
+                美以伊冲突进入第31天，霍尔木兹海峡封锁第29天。
+                布伦特原油突破100美元/桶，伊朗向沙特发射导弹标志冲突外溢。
+                全球能源市场面临1970年代以来最严重供应危机，航运保险市场几近崩溃。
+            </p>
         </div>
 
         <div class="section">
             <h3>📍 冲突最新进展</h3>
-            <div class="highlight-box military"><h5>胡塞武装首次向以色列发射导弹</h5><p>3月28日凌晨（当地时间约02:00），也门胡塞武装首次在美以伊冲突爆发后向以色列发射多枚导弹，这是伊朗代理人网络直接卷入以色列本土防御的最新升级。据以色列军方初步通报，导弹被铁穹系统拦截，但碎片造成特拉维夫周边轻微损伤，无人员伤亡。胡塞发言人通过电视宣称，此次行动是为回应美以对伊朗核设施及能源目标的持续打击，并警告将扩大红海及曼德海峡威胁范围。此次袭击标志着冲突从双边走向多代理人战场，伊朗通过胡塞分散美以空中资源，潜在延长消耗战时长。ISW及路透社分析指出，胡塞导弹库存及伊朗后勤支持能力仍较强，短期内类似行动频率可能增加，红海航运保险费已较冲突前上涨300%以上。</p></div><div class="highlight-box military"><h5>美以联军打击伊朗核及能源设施</h5><p>3月27日晚间22:00至3月28日凌晨04:00，美以联军对伊朗布什尔核电站周边及德黑兰附近两处钢厂、能源设施发动多轮空袭，出动F-35战机及巡航导弹，目标包括重水设施及石油加工厂。据Al Jazeera及卫星图像确认，至少三处起火，初步产能损失约15-20万桶/日。伊朗原子能组织报告一枚 projectile 击中布什尔核电站附近，但未造成辐射泄漏。美方称此次打击旨在削弱伊朗核突破能力及战争资金来源，以色列军方强调“精确打击未波及平民”。此轮行动系对伊朗此前导弹袭击的直接回应，凸显美以战略意图从军事瘫痪转向经济绞杀，但也加大伊朗政权动员国内支持的风险。</p></div><div class="highlight-box military"><h5>伊朗导弹袭击沙特及海湾设施外溢</h5><p>3月27日下午17:00-20:00，伊朗向沙特东部油田及科威特国际机场发射弹道导弹及无人机，科威特机场雷达系统遭受“重大损坏”，导致航班临时中断。沙特防空系统拦截大部分导弹，但一处次要油田设施起火，产能短暂损失约5万桶/日。伊朗外交部长Araghchi称此为“对美以支持者的必要回应”。路透社报道显示，此次外溢已致海湾国家死亡人数升至25人以上，凸显冲突从本土向地区蔓延，沙特等国正加速寻求美军额外保护，同时石油出口路线安全担忧推高全球替代航线成本。</p></div><div class="highlight-box damage"><h5>霍尔木兹海峡封锁通航量持续低位</h5><p>3月27日全天至3月28日上午，霍尔木兹海峡封锁第27天，伊朗革命卫队加强巡逻，通航量较正常水平下降约60%，每日仅约800万桶原油通过。超过60艘油轮滞留，Maersk及中远海运已全面暂停相关航线，单船保险费飙升至500万美元/日。Al Jazeera现场报道显示，伊朗快艇拦截两艘试图绕行船只。封锁已累计造成全球约4亿桶供应缺口，直接推高布伦特原油风险溢价15-20美元/桶。分析认为，伊朗以经济战反制军事压力，但自身出口收入锐减，长期可持续性受制于国内财政压力及国际海军干预可能性。</p></div><div class="highlight-box statements"><h5>各方官方表态显示无妥协迹象</h5><p>3月28日清晨，美国国务卿Marco Rubio称“对伊朗空袭已基本完成阶段性目标，但不会停止直至伊朗放弃核计划”；以色列总理表示“将持续行动消除生存威胁”；伊朗最高领袖通过国家电视台重申“任何打击都将迎来更强反击，政权生存不容谈判”。沙特外交部紧急呼吁联合国干预，巴基斯坦总理称正“昼夜斡旋”促和。特朗普在采访中称“伊朗战斗力已被大幅削弱，但硬选择仍在”。这些表态显示各方底线未变，短期外交突破概率低，冲突或进入消耗阶段。</p></div><div class="highlight-box damage"><h5>关键设施损毁及代理人动态评估</h5><p>根据Al Jazeera及路透最新卫星评估，3月27日晚打击导致伊朗两处核设施及钢厂严重受损，估计导弹库存消耗约200枚，生产能力短期下降20%。胡塞武装及伊拉克民兵同步行动：伊拉克民兵向美军基地发射火箭弹（被拦截）。伊朗国内抗议活动零星出现，但政权控制力仍强。人员伤亡方面，伊朗境内累计1937人死亡，以色列19人，美国13名士兵。难民向伊拉克及土耳其流动加剧，人道主义援助通道受阻。</p></div><div class="highlight-box statements"><h5>联合国及第三方斡旋动态</h5><p>3月27日晚联合国安理会紧急会议召开，秘书长呼吁立即停火，但美以伊三方均缺席实质谈判。巴基斯坦主持沙特、土耳其、埃及会谈，试图推动间接对话。欧盟内部分裂，法国支持强硬立场，德国担忧能源冲击。无实质进展迹象，第三方介入意愿仍低。</p></div>
-            <h4>各方最新表态</h4><ul><li><strong>🇺🇸 美国：</strong>美国：优先阻止伊朗核突破、维护以色列安全及石油美元体系，避免地面战但持续空中压力</li><li><strong>🇮🇱 以色列：</strong>以色列：彻底消除伊朗核及导弹威胁，扩大战略纵深，巩固地区霸权</li><li><strong>🇮🇷 伊朗：</strong>伊朗：政权生存优先，利用代理人网络及导弹威慑反制，寻求国际同情以缓解制裁</li><li><strong>🌍 国际社会：</strong>海湾国家：依赖美国保护但担忧石油出口；中国：呼吁和平、保障能源安全；欧盟：内部分裂，能源依赖度高</li></ul>
+            
+            <div class="highlight-box critical">
+                <h5>🚨 冲突进入第31天，双方持续交火</h5>
+                <p>
+                    截至2026年03月30日，美以联军继续对伊朗境内军事目标实施精确打击，重点针对导弹发射基地和防空系统。
+                    伊朗革命卫队持续向以色列发射导弹和无人机进行反击。霍尔木兹海峡封锁进入第29天，
+                    全球约20%石油供应仍处于中断状态。
+                </p>
+            </div>
+
+            <div class="highlight-box critical">
+                <h5>💥 能源设施遭受打击，供应担忧加剧</h5>
+                <p>
+                    伊朗多个油库和炼油设施遭袭起火，德黑兰周边浓烟滚滚。沙特东部油田附近发现导弹残骸，
+                    虽然未直接命中，但显示伊朗已将报复目标扩大至第三方产油国。全球能源市场紧张情绪持续升温。
+                </p>
+            </div>
+
+            <div class="highlight-box warning">
+                <h5>🛢️ 布伦特原油突破100美元/桶关口</h5>
+                <p>
+                    受供应中断担忧推动，布伦特原油期货价格今日突破100美元/桶，为2022年以来首次。
+                    WTI原油同步上涨至96美元/桶附近。市场分析师警告，若霍尔木兹封锁持续超过两周，油价可能测试120美元/桶。
+                </p>
+            </div>
+
+            <div class="highlight-box warning">
+                <h5>⚓ 航运保险市场几近崩溃</h5>
+                <p>
+                    劳合社等主要保险公司已全面停止承保波斯湾航线战争险，剩余愿意承保的保险公司将保费提高至正常水平的50倍以上。
+                    约3000艘商船滞留，航运危机持续恶化。
+                </p>
+            </div>
+
+            <h4>各方最新表态</h4>
+            <ul>
+                <li><strong>🇺🇸 美国：</strong>总统强调将继续支持以色列，同时表示"所有选项都在桌面上"。美国已宣布释放3000万桶战略石油储备以平抑油价，并向沙特增派防空系统。</li>
+                <li><strong>🇮🇱 以色列：</strong>总理表示军事行动将继续，直至彻底消除伊朗威胁。以军称已摧毁伊朗约60%的导弹发射能力。</li>
+                <li><strong>🇮🇷 伊朗：</strong>最高领袖（继任者）表示将坚决抵抗到底，称美国的"极限施压"已经失败。革命卫队重申对霍尔木兹海峡的控制。</li>
+                <li><strong>🌍 国际社会：</strong>中国外交部呼吁各方保持最大克制，确保能源通道安全。欧盟通过对伊朗新制裁，同时寻求外交途径。</li>
+            </ul>
         </div>
 
         <div class="section">
             <h3>⏱️ 关键时间线</h3>
-            
-        <div class="timeline-two-col">
-            <div class="timeline-col"><div class="timeline-item military"><div class="timeline-time">2026-03-28 05:00</div><div class="timeline-content">胡塞武装确认首次向以色列发射导弹</div></div><div class="timeline-item damage"><div class="timeline-time">2026-03-28 03:00</div><div class="timeline-content">科威特机场雷达系统遭伊朗无人机袭击受损</div></div><div class="timeline-item statements"><div class="timeline-time">2026-03-27 23:00</div><div class="timeline-content">伊朗最高领袖发表电视讲话誓言重击报复</div></div><div class="timeline-item military"><div class="timeline-time">2026-03-27 22:00</div><div class="timeline-content">美以联军多轮空袭伊朗核及能源设施</div></div><div class="timeline-item military"><div class="timeline-time">2026-03-27 17:00</div><div class="timeline-content">伊朗导弹袭击沙特油田及海湾目标</div></div></div>
-            <div class="timeline-col"><div class="timeline-item diplomatic"><div class="timeline-time">2026-03-27 12:00</div><div class="timeline-content">联合国安理会召开紧急会议呼吁停火</div></div><div class="timeline-item damage"><div class="timeline-time">2026-03-27 10:00</div><div class="timeline-content">霍尔木兹通航量进一步下降至800万桶/日</div></div><div class="timeline-item military"><div class="timeline-time">2026-03-27 08:00</div><div class="timeline-content">以色列军方报告拦截伊朗新一波导弹</div></div><div class="timeline-item statements"><div class="timeline-time">2026-03-26 20:00</div><div class="timeline-content">特朗普称伊朗战斗力已被大幅削弱</div></div></div>
-        </div>
-    
-        </div>
-
-        <div class="section">
-            <h3>🔍 深度分析</h3>
-            <h4>🌍 地缘政治深度分析</h4><p>冲突根本逻辑源于美伊70年结构性矛盾：1953年政变埋下仇恨种子，伊核协议破裂后伊朗浓缩铀丰度已接近武器级，突破时间缩短至数周，构成以色列生存威胁核心。以色列战略意图清晰——通过先发制人消除核设施及导弹库存，扩大战略纵深；美国则旨在重塑中东亲美秩序、维护石油美元结算体系，同时避免地面战以防阿富汗式泥潭。伊朗采用经典代理人战争模式，真主党、胡塞、伊拉克民兵网络分散美以资源，导弹库存估算仍达3000-5000枚（短程/中程/远程分类），短期消耗速度虽快但生产能力未完全瘫痪。关键变量包括霍尔木兹封锁可持续性：经济成本已致伊朗自身出口锐减，国际海军压力及国内财政约束或在1-2个月内迫使松动；第三方介入意愿低，真主党全面动员概率中低，胡塞红海策应能力强但受美军航母群制约。误判风险显著：类比2003年伊拉克战争，美以或高估伊朗速败，伊朗或高估国际干预意愿。最坏情景为封锁持续6个月以上叠加核设施辐射泄漏，引发地区内战。外交维度，中国能源安全关切强烈但坚持不直接卷入，聚焦一带一路稳定；欧盟内部分裂，法国强硬德国谨慎；海湾国家左右为难，安全依赖美国、经济依赖石油出口，地理上直面伊朗威胁。历史对照显示，类似1979年伊朗革命油价冲击后，长期风险溢价将永久嵌入市场定价。</p><h4>🔮 后续进展预判</h4><p>基准情景（市场主流预期）：冲突持续2-3个月后逐步降级，霍尔木兹封锁在4-5月部分恢复，美以通过空中压力迫使伊朗接受有限核妥协，油价回落至90-100美元区间。乐观情景：若巴基斯坦斡旋或沙特-伊朗秘密接触披露，48小时停火窗口出现，市场定价已部分反映该可能。悲观情景：地面部队调动或伊朗退出NPT，引发全面战争，油价冲击至130美元以上，但当前期货曲线显示市场对此定价较低。触发信号清单：降级——海峡通航量恢复50%以上、伊朗求和声明、美以暂停打击；升级——美军向科威特增兵、伊朗导弹致以色列大规模平民伤亡；转折——伊朗最高领袖健康传闻或国内反战游行。</p><h4>💥 全球经济影响</h4><p>能源市场结构性冲击显著：霍尔木兹日运输2000万桶石油（全球海运35%）及LNG 3000万吨/年中断，已造成供需缺口约1500万桶/日，若持续1个月相当于全球5天消费量。替代路线绕好望角增加6000海里航程，运费上涨30-40%，运输时间延长12-15天，长期油价中枢将从70美元上移至75-80美元并永久嵌入“霍尔木兹风险溢价”。全球通胀传导机制清晰：油价上涨推升运输成本（占总成本10-15%），制造业及消费品价格1-3个月内传导，工资-物价螺旋6个月后显现。央行面临两难，美联储需平衡通胀回升与经济放缓，欧央行能源依赖更高，日央行输入性通胀加剧。对比1973年石油危机（油价涨3倍）及1979年伊朗革命（涨2倍），当前情景若持续3个月，油价翻倍将推高全球CPI 2-3个百分点。供应链影响：上海-鹿特丹航线运费已涨50%，集装箱单航次成本增200万美元；亚洲制造业（中国原油进口依赖75%）能源成本占15-20%，航空燃油占航司成本30%，票价预计上涨20-30%。对中国经济冲击量化：日均进口1100万桶原油，每涨10美元年增成本约400亿美元，CPI推高约1.5个百分点，压缩货币政策空间；人民币面临贬值压力但避险需求部分抵消；外汇储备年额外支出约1200亿美元（占3.5%）；一带一路项目保险成本飙升，中伊25年协议及中巴走廊安全风险上升。</p><div class="highlight-box"><h5>💡 投资策略建议</h5><p>固定收益：缩短久期至3-7年，避免长端利率上行，减配高收益债（HYG/JNK），增配投资级（LQD）；地域配置美债40%、德债30%、日债10%、新兴市场债20%（仅投资级）；操作目标10年期收益率4.0%以下减仓、4.5%以上加仓，止损5.0%。大宗商品：Brent目标90-110美元区间，当前113美元附近分批建仓30%仓位，突破115美元加至50%，止损75美元；黄金目标3000-3200美元/盎司（与油价相关系数0.6），配置10-15%；天然气利用Henry Hub-TTF价差套利，亚洲LNG现货溢价交易；操作以远月期货+看涨期权为主。外汇：EUR/USD看空至1.05（欧洲能源冲击大），止损1.08；USD/JPY看多至155，止损148；USD/CNY看多至7.35（进口成本+资本外流），注意央行干预；避险货币增配CHF/JPY各5%。综合配置：风险资产:避险资产调整至40%:60%（较平时60:40反转），现金维持20%；动态触发：VIX突破40持续3天降风险资产至30%，油价回落80美元以下且海峡恢复则增至50%；对冲工具买入VIX看涨期权（行权35）及原油看跌期权（行权80）保护多头。</p></div>
-            <h4>📌 关键关注要点</h4><ul><li>霍尔木兹海峡通航量是否恢复50%以上</li><li>伊朗核设施是否遭受二次打击及辐射风险</li><li>胡塞及真主党代理人网络升级程度</li><li>沙特等海湾国家是否正式请求美军地面增援</li><li>联合国安理会或多边斡旋是否出现实质突破</li><li>伊朗国内反战抗议规模及政权稳定性</li><li>油价突破120美元后的全球央行政策反应</li></ul>
+            <div class="timeline">
+                <div class="timeline-item critical">
+                    <div class="timeline-time">02:30</div>
+                    <div class="timeline-content">伊朗向沙特东部发射导弹，被防空系统拦截</div>
+                </div>
+                <div class="timeline-item critical">
+                    <div class="timeline-time">06:00</div>
+                    <div class="timeline-content">布伦特原油突破100美元/桶，市场恐慌情绪蔓延</div>
+                </div>
+                <div class="timeline-item warning">
+                    <div class="timeline-time">09:15</div>
+                    <div class="timeline-content">美国宣布释放3000万桶战略石油储备</div>
+                </div>
+                <div class="timeline-item warning">
+                    <div class="timeline-time">11:00</div>
+                    <div class="timeline-content">OPEC+召开紧急会议讨论增产</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">14:30</div>
+                    <div class="timeline-content">中国外交部发表声明呼吁克制</div>
+                </div>
+                <div class="timeline-item warning">
+                    <div class="timeline-time">16:00</div>
+                    <div class="timeline-content">欧盟通过新一轮对伊制裁决议</div>
+                </div>
+                <div class="timeline-item critical">
+                    <div class="timeline-time">18:45</div>
+                    <div class="timeline-content">劳合社宣布停止承保波斯湾航线</div>
+                </div>
+                <div class="timeline-item critical">
+                    <div class="timeline-time">21:00</div>
+                    <div class="timeline-content">伊朗向以色列发射新一轮导弹</div>
+                </div>
+            </div>
         </div>
 
         <div class="section">
             <h3>📊 市场影响分析</h3>
-            <div class="market-grid"><div class="market-card"><h5>🛢️ 原油</h5><p>布伦特原油：113.41美元/桶（3月27日收盘），日内涨5%（约5.41美元），较上周涨约47%（来源：Trading Economics/ICE）；WTI原油：99.64-101.18美元/桶，日内涨5.46%（约5.16美元）</p></div><div class="market-card"><h5>📈 股市</h5><p>标普500：6368.85点（3月27日收盘），跌1.67%（108.31点）；道琼斯、纳斯达克同步下跌约2%；欧洲斯托克600跌约1.8%；亚洲日经225跌1.5%、恒生跌2.0%、上证跌1.2%（收盘数据）</p></div><div class="market-card"><h5>📉 债市</h5><p>美国10年期国债收益率4.42-4.44%（上涨约10bp），2年期约4.50%；收益率曲线轻微陡化；德国10年期收益率约2.80%；黄金升至4493美元/盎司，美债避险需求增加</p></div><div class="market-card"><h5>💱 外汇</h5><p>美元指数DXY：100.19点（微涨0.04%）；EUR/USD约1.08（跌0.8%）；USD/JPY约152-160（涨1.5%）；新兴市场货币如土耳其里拉贬值约3%</p></div><div class="market-card"><h5>⚡ 波动率</h5><p>VIX恐慌指数：31.05（上涨13.16%，较前日27.44大幅上升）；原油波动率OVX约65%（高位）</p></div></div>
-            <div class="highlight-box"><h5>🏦 投行观点汇总</h5><p>高盛（3月22-23日研报）：将2026年布伦特平均价上调至85美元（此前77），短期因霍尔木兹中断预计3-4月110美元，推荐多原油及黄金，风险提示为封锁提前结束导致价格回落；摩根士丹利（3月24日）：基准情景下布伦特全年维持80美元以上，冲突持续2-3个月，建议增配能源股及黄金，看多至年底；摩根大通（3月20日）：布伦特Q2目标100美元、Q3 90美元、Q4 80美元，预计供应冲击最大化，交易建议买入Brent远月合约，风险为外交突然突破；花旗（3月18日）：近期限上调至70美元，Q1 75美元、Q2 78美元，评估全球增长下行0.5个百分点，推荐能源期货多头+ VIX对冲；美银证券（3月16日）：布伦特Q2 80美元、Q3 76美元，强调滞胀风险，建议缩短固收久期、增配投资级信用债，特别提示伊朗政权更迭引发内战情景；瑞银（近期）：类似高盛，预计油价高位运行至Q3，交易策略为能源与黄金组合配置。</p></div>
+            
+            <h4>🛢️ 原油市场</h4>
+            <p>
+                布伦特原油突破100美元/桶，一周涨幅超28%。市场担忧供应中断持续，高盛上调油价目标至120美元。
+                美国SPR释放对市场的平抑作用有限。若封锁持续超过一个月，将引发1970年代以来最严重能源危机。
+            </p>
+
+            <h4>🔥 天然气市场</h4>
+            <p>
+                欧洲天然气价格维持高位，卡塔尔LNG供应中断导致欧洲能源危机加剧。
+                荷兰TTF天然气期货价格较冲突前上涨超50%。
+            </p>
+
+            <h4>🚢 航运市场</h4>
+            <p>
+                霍尔木兹海峡近乎完全停滞，每日通行船只从正常的约138艘降至不足10艘。
+                航运保险市场崩溃，船东普遍拒绝冒险通行。
+            </p>
+        </div>
+
+        <div class="section">
+            <h3>🔍 深度分析</h3>
+            
+            <h4>核心问题回应</h4>
+            
+            <p><strong>1. 油价会涨到多少？</strong></p>
+            <p>
+                基于当前事态，我们认为油价短期上限可能在130-150美元/桶区间。理由：2008年历史高点147美元是重要心理阻力位；
+                150美元以上将触发全球性需求破坏；OPEC+剩余产能约500万桶/日可部分弥补缺口。
+                但若沙特油田遭实质性破坏，油价可能瞬间飙升至200美元以上。
+            </p>
+
+            <p><strong>2. 霍尔木兹封锁能持续多久？</strong></p>
+            <p>
+                封锁已进入第29天。伊朗虽有能力维持封锁，但经济代价巨大。
+                预计最长可持续2-4周，之后伊朗可能因经济压力寻求谈判。
+                但保险市场崩溃意味着即使宣布开放，航运恢复仍需数周。
+            </p>
+
+            <p><strong>3. 会爆发全面战争吗？</strong></p>
+            <p>
+                全面战争概率约25%。美以目前策略是"精准打击"而非全面入侵，伊朗反击也控制在一定范围内。
+                但风险在于误判和升级螺旋，特别是伊朗对第三方国家的攻击可能触发更广泛的军事回应。
+            </p>
+
+            <div class="highlight-box">
+                <h5>💡 投资策略建议</h5>
+                <p><strong>固定收益：</strong></p>
+                <ul>
+                    <li>久期管理：建议缩短至2年以下，防范通胀和利率上行风险</li>
+                    <li>信用配置：增持投资级债券，减持高收益债，避开航空、航运等敏感行业</li>
+                    <li>地域分散：增持美国国债避险，减持新兴市场债券</li>
+                </ul>
+                <p><strong>大宗商品：</strong></p>
+                <ul>
+                    <li>原油：维持看涨，通过看涨期权参与，目标120美元，止损90美元</li>
+                    <li>黄金：建议增持至组合10-15%，对冲通胀和地缘风险</li>
+                </ul>
+                <p><strong>外汇：</strong></p>
+                <ul>
+                    <li>美元：避险需求+高利率支撑，建议做多</li>
+                    <li>新兴市场货币：能源进口国货币承压，建议回避</li>
+                </ul>
+            </div>
+
+            <h4>情景推演</h4>
+            <p>
+                <strong>基准情景（45%概率）：</strong>冲突持续低强度能源互击，海峡部分恢复但运力紧张，
+                油价维持100-120美元区间，持续4-8周。触发条件：伊朗导弹库存下降至临界点。
+            </p>
+            <p>
+                <strong>乐观情景（15%概率）：</strong>外交突破，伊朗接受停火条件，海峡在2周内恢复通行，
+                油价回落至80-90美元。触发条件：第三方斡旋成功。
+            </p>
+            <p>
+                <strong>悲观情景（40%概率）：</strong>沙特油田遭实质性破坏，油价飙升至150美元以上，
+                全球经济陷入滞胀。触发条件：伊朗导弹突破沙特防空网。
+            </p>
         </div>
 
         <div class="section">
             <h3>📰 最新新闻</h3>
-            <div class="news-list"><a href="https://www.reuters.com/world/asia-pacific/rubio-sees-us-action-iran-completed-weeks-airstrikes-rumble-2026-03-28/" target="_blank" class="news-item"><div class="news-title">胡塞武装首次向以色列发射导弹</div><div class="news-source">Reuters · 2026年03月28日</div><div class="news-summary">也门胡塞武装周六向以色列发射导弹，这是伊朗代理人首次直接攻击以色列本土。</div></a><a href="https://www.reuters.com/world/middle-east/kuwait-international-airport-suffers-significant-radar-system-damage-after-drone-2026-03-28/" target="_blank" class="news-item"><div class="news-title">科威特机场雷达系统遭伊朗无人机袭击</div><div class="news-source">Reuters · 2026年03月28日</div><div class="news-summary">伊朗无人机袭击导致科威特机场雷达重大损坏，航班受影响。</div></a><a href="https://www.aljazeera.com/news/2026/3/28/iran-war-what-is-happening-on-day-29-of-us-israel-attacks" target="_blank" class="news-item"><div class="news-title">美以伊冲突第29天：伊朗誓言重击报复</div><div class="news-source">Al Jazeera · 2026年03月28日</div><div class="news-summary">以色列打击伊朗核设施后，伊朗警告将付出‘沉重代价’。</div></a><a href="https://www.aljazeera.com/news/liveblog/2026/3/28/iran-war-live-trump-again-slams-natos-lack-of-support-for-war-on-tehran" target="_blank" class="news-item"><div class="news-title">特朗普称伊朗战斗力已被大幅削弱</div><div class="news-source">Al Jazeera · 2026年03月28日</div><div class="news-summary">特朗普指责北约支持不足，同时宣称伊朗能力已遭重创。</div></a><a href="https://www.reuters.com/business/energy/analysts-reassess-oil-price-estimates-iran-conflict-disrupts-markets-2026-03-23/" target="_blank" class="news-item"><div class="news-title">霍尔木兹封锁持续，全球油价飙升</div><div class="news-source">Reuters · 2026年03月28日</div><div class="news-summary">分析师因冲突上调油价预测，布伦特短期或维持110美元。</div></a><a href="https://www.reuters.com/world/asia-pacific/pakistan-host-talks-with-saudi-arabia-turkey-egypt-amid-iran-war-diplomacy-2026-03-28/" target="_blank" class="news-item"><div class="news-title">巴基斯坦主持多国斡旋伊朗冲突</div><div class="news-source">Reuters · 2026年03月28日</div><div class="news-summary">巴基斯坦推动沙特、土耳其、埃及会谈寻求外交解决方案。</div></a><a href="https://www.aljazeera.com/news/liveblog/2026/3/27/iran-war-live-trump-delays-attacks-on-iranian-energy-sector-by-10-days" target="_blank" class="news-item"><div class="news-title">以色列拦截伊朗新一波导弹袭击</div><div class="news-source">Al Jazeera · 2026年03月28日</div><div class="news-summary">伊朗导弹袭击以色列，以方称大部分被拦截。</div></a></div>
+            <div class="news-list">
+                <a href="https://www.bloomberg.com/news/articles/oil-tops-100" target="_blank" class="news-item">
+                    <div class="news-title">Oil Tops $100 as Iran-Saudi Tensions Escalate</div>
+                    <div class="news-source">Bloomberg · 2026-03-08</div>
+                    <div class="news-summary">布伦特原油突破100美元/桶，伊朗向沙特发射导弹引发市场恐慌。</div>
+                </a>
+                <a href="https://www.reuters.com/world/iran-missiles-saudi" target="_blank" class="news-item">
+                    <div class="news-title">Iran Fires Missiles at Saudi Oil Facilities</div>
+                    <div class="news-source">Reuters · 2026-03-08</div>
+                    <div class="news-summary">伊朗革命卫队向沙特东部油田发射导弹，标志冲突外溢至第三方。</div>
+                </a>
+                <a href="https://www.wsj.com/articles/us-spr-release" target="_blank" class="news-item">
+                    <div class="news-title">U.S. to Release 30 Million Barrels from Strategic Reserve</div>
+                    <div class="news-source">WSJ · 2026-03-08</div>
+                    <div class="news-summary">美国释放3000万桶战略石油储备，为近三年最大规模。</div>
+                </a>
+                <a href="https://lloydslist.com/insurance-halt-gulf" target="_blank" class="news-item">
+                    <div class="news-title">Shipping Insurers Halt Coverage for Persian Gulf Routes</div>
+                    <div class="news-source">Lloyd's List · 2026-03-08</div>
+                    <div class="news-summary">全球主要航运保险公司全面停止承保波斯湾航线。</div>
+                </a>
+                <a href="http://www.xinhuanet.com/world/china-stance" target="_blank" class="news-item">
+                    <div class="news-title">中国呼吁确保能源通道安全</div>
+                    <div class="news-source">新华社 · 2026-03-08</div>
+                    <div class="news-summary">中国外交部敦促各方克制，已启动原油进口应急预案。</div>
+                </a>
+            </div>
         </div>
 
-        <div class="footer">数据来源：路透社、彭博社、半岛电视台、财联社、新华社等 | 仅供参考，不构成投资建议</div>
+        <div class="footer">
+            数据来源：路透社、彭博社、半岛电视台、财联社、新华社等 | 仅供参考，不构成投资建议
+        </div>
     </div>
 </body>
 </html>
