@@ -6012,13 +6012,28 @@ async function updateCommodityData() {
 
 function renderExcelCommodityCharts(groups, container) {
     var html = '';
-    
+
     Object.keys(groups).forEach(function(groupKey) {
         var group = groups[groupKey];
         var canvasId = 'chart-comm-' + (commodityChartCount++);
-        
+
+        // 左右轴单位分开显示
+        var items = group.items || [];
+        var leftUnit = items[0] && items[0].unit ? items[0].unit : '';
+        var rightUnit = items[1] && items[1].unit ? items[1].unit : '';
+
+        var unitStr = '';
+        if (leftUnit && rightUnit && leftUnit !== rightUnit) {
+            unitStr = '左轴: ' + leftUnit + ' | 右轴: ' + rightUnit;
+        } else if (leftUnit) {
+            unitStr = leftUnit;
+        } else if (rightUnit) {
+            unitStr = rightUnit;
+        }
+
         html += '<div class="card">' +
             '<div class="chart-title">' + group.name + '</div>' +
+            '<div class="chart-sub">' + unitStr + '</div>' +
             '<div class="chart-wrap" style="height:280px;"><canvas id="' + canvasId + '"></canvas></div>' +
         '</div>';
         

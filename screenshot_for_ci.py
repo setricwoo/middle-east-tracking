@@ -45,14 +45,43 @@ def _get_ffmpeg():
 
 
 def load_data() -> dict:
+    data = {"updated": "", "realtime": {}, "daily": [], "direction": [],
+            "fleet_type": [], "snapshots": [], "video_url": ""}
+    
     if DATA_FILE.exists():
         try:
             with open(DATA_FILE, "r", encoding="utf-8") as f:
-                return json.load(f)
+                loaded = json.load(f)
+                data.update(loaded)
         except Exception:
             pass
-    return {"updated": "", "realtime": {}, "daily": [], "direction": [],
-            "fleet_type": [], "snapshots": [], "video_url": ""}
+    
+    # 确保snapshots字段存在
+    if "snapshots" not in data:
+        data["snapshots"] = []
+    
+    # 扫描现有截图文件，同步记录（确保所有文件都有记录）
+    existing_files = sorted(glob.glob(str(SNAPSHOTS_DIR / "*.png")))
+    existing_set = {s.get("file", "").split("/")[-1] for s in data["snapshots"]}
+    
+    added = 0
+    for filepath in existing_files:
+        fname = Path(filepath).name
+        if fname not in existing_set:
+            try:
+                ts = f"{fname[0:4]}-{fname[4:6]}-{fname[6:8]} {fname[9:11]}:{fname[11:13]}"
+                data["snapshots"].append({"ts": ts, "file": f"strait_snapshots/{fname}"})
+                added += 1
+            except:
+                pass
+    
+    if added > 0:
+        print(f"[同步] 新增 {added} 条截图记录，总计 {len(data['snapshots'])} 条")
+    
+    # 限制记录数量
+    data["snapshots"] = data["snapshots"][-MAX_SNAPSHOTS:]
+    
+    return data
 
 
 def save_data(data: dict):

@@ -102,47 +102,49 @@ def extract_commodity_groups(df):
     return {k: v for k, v in groups.items() if len(v['items']) > 0}
 
 def extract_liquidity_indicators(df):
-    """Extract liquidity indicators"""
+    """Extract liquidity indicators with units from Excel row 2"""
     names = df.iloc[1, :].tolist()
+    units = df.iloc[2, :].tolist()  # 单位在第3行（index 2）
     indicators = []
-    
+
     for col_idx in range(1, min(12, len(df.columns))):
         name = names[col_idx] if col_idx < len(names) else f'指标{col_idx}'
-        
+        unit = units[col_idx] if col_idx < len(units) else ''
+
         if pd.isna(name) or name == '' or 'Unnamed' in str(name):
             continue
-        
+
         # Skip excluded items
         if '沙特' in str(name) or '美元兑沙特' in str(name):
             continue
         if '全球股市隐含波动率' in str(name) and ('VIX' not in str(name) and 'VSTOXX' not in str(name)):
             continue
-        
+
         dates = []
         values = []
-        
-        for row_idx in range(2, len(df)):
+
+        for row_idx in range(3, len(df)):  # 数据从第4行（index 3）开始
             date_val = df.iloc[row_idx, 0]
             data_val = df.iloc[row_idx, col_idx]
-            
+
             if isinstance(date_val, datetime):
                 date_str = date_val.strftime('%Y-%m-%d')
                 if pd.notna(data_val) and isinstance(data_val, (int, float)):
                     dates.append(date_str)
                     values.append(round(float(data_val), 4))
-        
+
         # Reverse to chronological order
         dates.reverse()
         values.reverse()
-        
+
         if len(values) > 0:
             indicators.append({
                 'name': str(name),
-                'unit': '',
+                'unit': str(unit) if pd.notna(unit) and unit else '',
                 'dates': dates,
                 'values': values
             })
-    
+
     return indicators
 
 
