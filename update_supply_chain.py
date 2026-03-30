@@ -252,7 +252,7 @@ def update_html(energy_html, chain_html, data):
                 font-size: 0.7rem;
             }
             .supply-table .event-desc {
-                max-width: 350px;
+                max-width: 600px;
             }
             .supply-tab {
                 padding: 8px 12px;
