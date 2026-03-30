@@ -274,7 +274,7 @@ def update_html(energy_html, chain_html, data):
             }
             .supply-table td {
                 display: flex;
-                justify-content: space-between;
+                flex-wrap: wrap;
                 padding: 8px 12px;
                 border-bottom: 1px solid #f1f5f9;
             }
@@ -286,8 +286,9 @@ def update_html(energy_html, chain_html, data):
                 font-weight: 600;
                 color: #64748b;
                 font-size: 0.7rem;
-                min-width: 70px;
-                flex-shrink: 0;
+                width: 100%;
+                margin-bottom: 4px;
+                display: block;
             }
             .supply-table td.event-desc {
                 flex-direction: column;
