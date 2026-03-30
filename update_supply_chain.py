@@ -229,7 +229,7 @@ def update_html(energy_html, chain_html, data):
             color: #1e3a5f;
         }
         .supply-table .event-desc {
-            max-width: 300px;
+            max-width: 450px;
             color: #475569;
         }
         .status-tag {
@@ -252,50 +252,11 @@ def update_html(energy_html, chain_html, data):
                 font-size: 0.7rem;
             }
             .supply-table .event-desc {
-                max-width: 150px;
+                max-width: 350px;
             }
             .supply-tab {
                 padding: 8px 12px;
                 font-size: 0.75rem;
-            }
-        }
-
-        /* 移动端卡片式布局 */
-        @media (max-width: 480px) {
-            .supply-table thead {
-                display: none;
-            }
-            .supply-table tr {
-                display: block;
-                margin-bottom: 12px;
-                border: 1px solid #e2e8f0;
-                border-radius: 8px;
-                background: #fff;
-            }
-            .supply-table td {
-                display: flex;
-                flex-wrap: wrap;
-                padding: 8px 12px;
-                border-bottom: 1px solid #f1f5f9;
-            }
-            .supply-table td:last-child {
-                border-bottom: none;
-            }
-            .supply-table td::before {
-                content: attr(data-label);
-                font-weight: 600;
-                color: #64748b;
-                font-size: 0.7rem;
-                width: 100%;
-                margin-bottom: 4px;
-                display: block;
-            }
-            .supply-table td.event-desc {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .supply-table td.event-desc::before {
-                margin-bottom: 4px;
             }
         }
         </style>'''
