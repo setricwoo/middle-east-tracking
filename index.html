@@ -1404,7 +1404,7 @@
                          data-video-url="https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4"
                          style="position: relative; width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); cursor: pointer; overflow: hidden;">
                         <!-- 封面图 -->
-                        <img src="https://oimg.jin10.com/news/26/03/0YHtMyU-R6S70K0kbhGtpm.png" 
+                        <img src="https://oimg.jin10.com/news/26/03/nLk5TCXPZVqieXMYQWO5Z9.png" 
                              alt="霍尔木兹海峡船舶动态"
                              style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;">
                         <!-- 播放按钮 -->
@@ -1530,6 +1530,659 @@
         <div class="footer">
             数据来源：金十数据、财联社、Windward.AI、Kpler、UKMTO、EIA、Hormuz Strait Monitor、Vortexa | 仅供参考，不构成投资建议
         </div>
+
+        <!-- 供应链跟踪 -->
+        <div class="section" id="supply-chain-section" style="padding: 0; overflow: hidden;">
+            <div style="background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%); color: white; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0; font-size: 1rem; color: white;">🔗 供应链跟踪</h3>
+                <span style="font-size: 0.75rem; opacity: 0.8;">更新: 2026-03-30 12:59</span>
+            </div>
+            <div style="border-bottom: 1px solid #e2e8f0; background: #f8fafc; padding: 0 16px;">
+                <button class="supply-tab active" onclick="switchSupplyTab('energy')">⚡ 能源设施损毁</button>
+                <button class="supply-tab" onclick="switchSupplyTab('chain')">🏭 产业链影响</button>
+            </div>
+            <div class="supply-tab-content active" id="tab-energy" style="padding: 16px;">
+                <div class="table-responsive">
+            <table class="supply-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>国家/地区</th>
+                        <th>设施名称</th>
+                        <th>设施类型</th>
+                        <th>所属企业</th>
+                        <th>事件描述</th>
+                        <th>当前状态</th>
+                        <th>影响评估</th>
+                        <th>信息来源</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="日期">2026-03-27</td>
+                        <td data-label="国家/地区">美国/伊朗</td>
+                        <td data-label="设施名称" class="facility-name">停火谈判</td>
+                        <td data-label="设施类型">外交/政策</td>
+                        <td data-label="所属企业">特朗普政府</td>
+                        <td data-label="事件描述" class="event-desc">特朗普宣布暂停打击伊朗能源设施时限延至4月6日;伊朗正式回应美国停火提议</td>
+                        <td data-label="当前状态"><span class="status-tag status-ongoing">谈判中</span></td>
+                        <td data-label="影响评估">短期不确定性仍高,但能源设施打击暂缓</td>
+                        <td data-label="信息来源">央视/多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-26</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">纳坦兹核设施</td>
+                        <td data-label="设施类型">核设施</td>
+                        <td data-label="所属企业">伊朗原子能组织</td>
+                        <td data-label="事件描述" class="event-desc">伊朗宣布因纳坦兹多次遭袭,启动将浓缩铀转移至更安全分散设施的计划;警告进一步打击将触发'核反击'</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">转移中</span></td>
+                        <td data-label="影响评估">核安全风险升级,冲突进一步升级信号</td>
+                        <td data-label="信息来源">多家媒体报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-24</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">石油设施(综合)</td>
+                        <td data-label="设施类型">综合</td>
+                        <td data-label="所属企业">伊朗国家石油公司</td>
+                        <td data-label="事件描述" class="event-desc">伊朗石油部长致信联合国秘书长,指美以袭击'等同于对伊朗能源安全与经济发动全面战争'</td>
+                        <td data-label="当前状态"><span class="status-tag status-severe">持续受损</span></td>
+                        <td data-label="影响评估">冲突长期化趋势明确</td>
+                        <td data-label="信息来源">新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-21</td>
+                        <td data-label="国家/地区">美国/伊朗</td>
+                        <td data-label="设施名称" class="facility-name">霍尔木兹海峡</td>
+                        <td data-label="设施类型">航运通道</td>
+                        <td data-label="所属企业">国际航运</td>
+                        <td data-label="事件描述" class="event-desc">特朗普向伊朗发出最后通牒,要求立即开放海峡通航,否则动用美军打击</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">仍处封锁</span></td>
+                        <td data-label="影响评估">军事施压升级,海峡恢复通航尚无时间表</td>
+                        <td data-label="信息来源">多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-20</td>
+                        <td data-label="国家/地区">以色列</td>
+                        <td data-label="设施名称" class="facility-name">海法炼油厂(Bazan)</td>
+                        <td data-label="设施类型">炼油厂</td>
+                        <td data-label="所属企业">Bazan Group</td>
+                        <td data-label="事件描述" class="event-desc">遭伊朗导弹袭击损坏;同日沙特首都传出爆炸声</td>
+                        <td data-label="当前状态"><span class="status-tag status-damaged">损坏</span></td>
+                        <td data-label="影响评估">以色列最大炼油厂受损</td>
+                        <td data-label="信息来源">新华社/央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-20</td>
+                        <td data-label="国家/地区">卡塔尔</td>
+                        <td data-label="设施名称" class="facility-name">拉斯拉凡(Ras Laffan)</td>
+                        <td data-label="设施类型">LNG出口终端</td>
+                        <td data-label="所属企业">卡塔尔能源公司</td>
+                        <td data-label="事件描述" class="event-desc">确认遭受'广泛破坏';14条LNG生产线中2条严重受损;全球约20%LNG供应转为长期硬中断</td>
+                        <td data-label="当前状态"><span class="status-tag status-severe">约17%产能丧失(1280万吨/年)</span></td>
+                        <td data-label="影响评估">修复或需5年,每年损失约200亿美元;LNG和氦气结构性短缺</td>
+                        <td data-label="信息来源">卡塔尔能源公司声明/新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-19</td>
+                        <td data-label="国家/地区">伊朗→沙特/阿联酋/卡塔尔</td>
+                        <td data-label="设施名称" class="facility-name">多国能源设施</td>
+                        <td data-label="设施类型">综合</td>
+                        <td data-label="所属企业">多公司</td>
+                        <td data-label="事件描述" class="event-desc">伊朗发动'真实承诺-4'大规模导弹袭击,报复以色列3月18日袭击布什尔天然气设施</td>
+                        <td data-label="当前状态"><span class="status-tag status-severe">多设施受损</span></td>
+                        <td data-label="影响评估">冲突急剧升级至能源基础设施战</td>
+                        <td data-label="信息来源">新华社/央视/多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-18</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">布什尔天然气设施</td>
+                        <td data-label="设施类型">天然气处理</td>
+                        <td data-label="所属企业">伊朗国家石油公司</td>
+                        <td data-label="事件描述" class="event-desc">以色列袭击布什尔省最大天然气设施,该设施承担伊朗40%天然气处理产能</td>
+                        <td data-label="当前状态"><span class="status-tag status-severe">严重受损</span></td>
+                        <td data-label="影响评估">伊朗核心能源资产遭打击</td>
+                        <td data-label="信息来源">新华社/央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-18</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">宣布打击目标名单</td>
+                        <td data-label="设施类型">政策声明</td>
+                        <td data-label="所属企业">伊朗伊斯兰革命卫队</td>
+                        <td data-label="事件描述" class="event-desc">宣布沙特Samref炼油厂、Jubail石化、阿联酋Al Hosn气田、卡塔尔Ras Laffan和Mesaieed为'合法打击目标'</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">威胁清单</span></td>
+                        <td data-label="影响评估">海合会能源设施全面面临打击风险</td>
+                        <td data-label="信息来源">新华社/迈赫尔通讯社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-14</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="设施名称" class="facility-name">化工产业链(综合)</td>
+                        <td data-label="设施类型">化工</td>
+                        <td data-label="所属企业">万华/陶氏/英力士/隆华/台塑等</td>
+                        <td data-label="事件描述" class="event-desc">密集不可抗力通知;原料供应到产品交付全链条受冲击</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">全链条震荡</span></td>
+                        <td data-label="影响评估">全球化工供需格局剧烈调整</td>
+                        <td data-label="信息来源">FT/行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-13</td>
+                        <td data-label="国家/地区">日本/韩国</td>
+                        <td data-label="设施名称" class="facility-name">石化产业(综合)</td>
+                        <td data-label="设施类型">石化</td>
+                        <td data-label="所属企业">出光兴产/YNCC等</td>
+                        <td data-label="事件描述" class="event-desc">日韩石化面临停产压力;石脑油价格暴涨;行业整合加速</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">降负/考虑停产</span></td>
+                        <td data-label="影响评估">亚洲石化品供应收紧</td>
+                        <td data-label="信息来源">FT/S&P Global</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-12</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="设施名称" class="facility-name">霍尔木兹海峡航运</td>
+                        <td data-label="设施类型">航运通道</td>
+                        <td data-label="所属企业">国际航运</td>
+                        <td data-label="事件描述" class="event-desc">欧洲柴油期货单日涨幅近20%至900美元/吨;亚洲成品油供应紧张;中国暂停成品油出口</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">海峡近乎关闭</span></td>
+                        <td data-label="影响评估">全球能源贸易格局重塑</td>
+                        <td data-label="信息来源">多家媒体报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-11</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">霍尔木兹海峡</td>
+                        <td data-label="设施类型">航运通道</td>
+                        <td data-label="所属企业">伊朗伊斯兰革命卫队</td>
+                        <td data-label="事件描述" class="event-desc">伊朗海军司令宣布:任何通过海峡船只须获伊朗许可;明确'绝不允许哪怕一升石油在有利于美国情况下通过'</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">实质性封锁</span></td>
+                        <td data-label="影响评估">日均通行从138艘降至8艘(降94%)</td>
+                        <td data-label="信息来源">央视/多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-11</td>
+                        <td data-label="国家/地区">日本</td>
+                        <td data-label="设施名称" class="facility-name">日本(综合)</td>
+                        <td data-label="设施类型">能源安全</td>
+                        <td data-label="所属企业">日本政府</td>
+                        <td data-label="事件描述" class="event-desc">95%原油依赖中东,90%运输经霍尔木兹;政府紧急宣布应对措施</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">紧急状态</span></td>
+                        <td data-label="影响评估">日本高度脆弱,储备约140天</td>
+                        <td data-label="信息来源">央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-10</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="设施名称" class="facility-name">化工巨头(综合)</td>
+                        <td data-label="设施类型">化工</td>
+                        <td data-label="所属企业">万华/英力士/LG/韩华/三井/陶氏</td>
+                        <td data-label="事件描述" class="event-desc">多家化工巨头因原材料供应中断发布不可抗力通知;国内甲醇/烧碱/纯苯等十余种化工品期货涨停</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">密集不可抗力</span></td>
+                        <td data-label="影响评估">全链条5天内完成传导</td>
+                        <td data-label="信息来源">内蒙古化工/行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-09</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">德黑兰储油设施</td>
+                        <td data-label="设施类型">石油储存</td>
+                        <td data-label="所属企业">伊朗国家石油公司</td>
+                        <td data-label="事件描述" class="event-desc">美以袭击德黑兰多处燃油存储设施(包括谢赫兰油库),首次将民用能源设施作为打击目标</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">大火/损毁</span></td>
+                        <td data-label="影响评估">战事升级至民用能源设施</td>
+                        <td data-label="信息来源">视觉中国/新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-08</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="设施名称" class="facility-name">德黑兰储油设施(续)</td>
+                        <td data-label="设施类型">石油储存</td>
+                        <td data-label="所属企业">伊朗国家石油公司</td>
+                        <td data-label="事件描述" class="event-desc">美以持续袭击储油设施,多处火灾</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">火灾中</span></td>
+                        <td data-label="影响评估">民用能源设施遭系统性打击</td>
+                        <td data-label="信息来源">视觉中国/新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-07</td>
+                        <td data-label="国家/地区">科威特/全球</td>
+                        <td data-label="设施名称" class="facility-name">科威特国家石油+化工</td>
+                        <td data-label="设施类型">炼油/化工</td>
+                        <td data-label="所属企业">KPC/万华化学/卡塔尔能源/韩华</td>
+                        <td data-label="事件描述" class="event-desc">科威特国家石油宣布减产;万华化学对中东地区所有产品发布不可抗力通知;卡塔尔能源、韩华、YNCC相继宣布不可抗力</td>
+                        <td data-label="当前状态"><span class="status-tag status-damaged">减产+不可抗力</span></td>
+                        <td data-label="影响评估">全球化工供给格局剧变;甲醇/乙烯/丙烯全链条涨价</td>
+                        <td data-label="信息来源">万华化学公告/行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-06</td>
+                        <td data-label="国家/地区">沙特</td>
+                        <td data-label="设施名称" class="facility-name">拉斯塔努拉(Ras Tanura)</td>
+                        <td data-label="设施类型">炼油厂</td>
+                        <td data-label="所属企业">沙特阿美</td>
+                        <td data-label="事件描述" class="event-desc">多次遭无人机和导弹袭击,卫星图像显示大火和烟柱;同日3枚伊朗巡航导弹在利雅得附近被拦截</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">暂时关闭</span></td>
+                        <td data-label="影响评估">沙特最大国内炼油厂(55万桶/日)关闭,全球约5%炼油产能受影响</td>
+                        <td data-label="信息来源">沙特国防部/彭博</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-04</td>
+                        <td data-label="国家/地区">韩国</td>
+                        <td data-label="设施名称" class="facility-name">韩华(Hanwha)</td>
+                        <td data-label="设施类型">化工</td>
+                        <td data-label="所属企业">韩华集团</td>
+                        <td data-label="事件描述" class="event-desc">因上游乙烯供应商断供宣布碳二亚胺供应不可抗力</td>
+                        <td data-label="当前状态"><span class="status-tag status-unknown">不可抗力</span></td>
+                        <td data-label="影响评估">高端化工品进口渠道受限</td>
+                        <td data-label="信息来源">行业报道</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            </div>
+            <div class="supply-tab-content" id="tab-chain" style="padding: 16px;">
+                <div class="table-responsive">
+            <table class="supply-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>国家/地区</th>
+                        <th>企业/机构</th>
+                        <th>行业/产品</th>
+                        <th>事件描述</th>
+                        <th>影响传导链</th>
+                        <th>停产/减产规模</th>
+                        <th>对中国影响</th>
+                        <th>恢复预期</th>
+                        <th>信息来源</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="日期">2026-03-27</td>
+                        <td data-label="国家/地区">美国/伊朗</td>
+                        <td data-label="企业/机构">特朗普政府</td>
+                        <td data-label="行业/产品">政策</td>
+                        <td data-label="事件描述" class="event-desc">暂停打击伊朗能源设施时限延至4月6日;伊朗回应停火提议</td>
+                        <td data-label="影响传导链">政策不确定性→能源市场波动</td>
+                        <td data-label="停产/减产规模">-</td>
+                        <td data-label="对中国影响">短期利好油价回落预期</td>
+                        <td data-label="恢复预期">视谈判进展</td>
+                        <td data-label="信息来源">央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-26</td>
+                        <td data-label="国家/地区">中国</td>
+                        <td data-label="企业/机构">中国(综合)</td>
+                        <td data-label="行业/产品">汽车供应链</td>
+                        <td data-label="事件描述" class="event-desc">中东局势冲击全球汽车供应链:物流通道瘫痪(霍尔木兹+红海双阻塞)、原材料断供、成本暴涨、生产停摆</td>
+                        <td data-label="影响传导链">霍尔木兹降94%→航运瘫痪→JIT链条断裂→汽车零部件断供</td>
+                        <td data-label="停产/减产规模">全球汽车产业链受冲击</td>
+                        <td data-label="对中国影响">中国汽车出口零部件成本上升</td>
+                        <td data-label="恢复预期">视海峡恢复</td>
+                        <td data-label="信息来源">行业分析</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-26</td>
+                        <td data-label="国家/地区">韩国</td>
+                        <td data-label="企业/机构">塑料制品生产商</td>
+                        <td data-label="行业/产品">塑料制品</td>
+                        <td data-label="事件描述" class="event-desc">原材料供应受阻导致大幅减产</td>
+                        <td data-label="影响传导链">中东石脑油→乙烯→塑料粒子→塑料制品</td>
+                        <td data-label="停产/减产规模">大幅减产</td>
+                        <td data-label="对中国影响">韩国塑料制品出口减少</td>
+                        <td data-label="恢复预期">视原料恢复</td>
+                        <td data-label="信息来源">天下财经/CCTV</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-24</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="企业/机构">伊朗石油部</td>
+                        <td data-label="行业/产品">石油</td>
+                        <td data-label="事件描述" class="event-desc">伊朗石油部长致信联合国,指美以袭击'等同于能源全面战争'</td>
+                        <td data-label="影响传导链">能源基础设施战→全球供应恐慌</td>
+                        <td data-label="停产/减产规模">持续</td>
+                        <td data-label="对中国影响">中东石油供应长期不确定性</td>
+                        <td data-label="恢复预期">长期化</td>
+                        <td data-label="信息来源">新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-21</td>
+                        <td data-label="国家/地区">美国/伊朗</td>
+                        <td data-label="企业/机构">特朗普政府</td>
+                        <td data-label="行业/产品">政策/军事</td>
+                        <td data-label="事件描述" class="event-desc">向伊朗发出最后通牒:立即开放海峡通航否则动武</td>
+                        <td data-label="影响传导链">军事施压→海峡恢复不确定性</td>
+                        <td data-label="停产/减产规模">-</td>
+                        <td data-label="对中国影响">若动武则油价再涨</td>
+                        <td data-label="恢复预期">视局势</td>
+                        <td data-label="信息来源">多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-20</td>
+                        <td data-label="国家/地区">以色列</td>
+                        <td data-label="企业/机构">海法炼油厂</td>
+                        <td data-label="行业/产品">炼油</td>
+                        <td data-label="事件描述" class="event-desc">伊朗导弹袭击后损坏</td>
+                        <td data-label="影响传导链">以色列炼油能力受损→成品油进口需求上升</td>
+                        <td data-label="停产/减产规模">损坏</td>
+                        <td data-label="对中国影响">间接影响</td>
+                        <td data-label="恢复预期">修复中</td>
+                        <td data-label="信息来源">新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-20</td>
+                        <td data-label="国家/地区">卡塔尔</td>
+                        <td data-label="企业/机构">卡塔尔能源公司</td>
+                        <td data-label="行业/产品">LNG</td>
+                        <td data-label="事件描述" class="event-desc">Ras Laffan遭袭,14条生产线中2条严重受损</td>
+                        <td data-label="影响传导链">LNG供应减少→全球天然气价格暴涨→亚洲/欧洲能源成本上升</td>
+                        <td data-label="停产/减产规模">1280万吨/年产能丧失</td>
+                        <td data-label="对中国影响">中国LNG进口来源收紧,气价上涨</td>
+                        <td data-label="恢复预期">修复或需5年</td>
+                        <td data-label="信息来源">卡塔尔能源声明</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-20</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="企业/机构">甲醇产业链</td>
+                        <td data-label="行业/产品">甲醇</td>
+                        <td data-label="事件描述" class="event-desc">全球甲醇价格暴涨;伊朗(全球第二大甲醇生产国)装置停车率大幅上升;沙特朱拜勒甲醇基地(年产470万吨)全面停摆</td>
+                        <td data-label="影响传导链">中东天然气→甲醇→甲醛/醋酸/MTBE/塑料→建材/汽车</td>
+                        <td data-label="停产/减产规模">全球供应显著收缩</td>
+                        <td data-label="对中国影响">国内甲醇期货涨停;下游甲醛/醋酸成本飙升</td>
+                        <td data-label="恢复预期">修复周期长</td>
+                        <td data-label="信息来源">多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-19</td>
+                        <td data-label="国家/地区">伊朗→多国</td>
+                        <td data-label="企业/机构">伊朗伊斯兰革命卫队</td>
+                        <td data-label="行业/产品">军事</td>
+                        <td data-label="事件描述" class="event-desc">'真实承诺-4'大规模导弹袭击多国能源设施</td>
+                        <td data-label="影响传导链">报复打击→海合会能源设施受损→全球供应恐慌</td>
+                        <td data-label="停产/减产规模">多设施受损</td>
+                        <td data-label="对中国影响">原油/石化品供应进一步收紧</td>
+                        <td data-label="恢复预期">短期恶化</td>
+                        <td data-label="信息来源">新华社/央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-18</td>
+                        <td data-label="国家/地区">伊朗</td>
+                        <td data-label="企业/机构">伊朗天然气设施</td>
+                        <td data-label="行业/产品">天然气</td>
+                        <td data-label="事件描述" class="event-desc">以色列袭击布什尔省最大天然气设施(伊朗40%天然气处理产能)</td>
+                        <td data-label="影响传导链">天然气→化工原料→化肥→粮食</td>
+                        <td data-label="停产/减产规模">40%天然气处理能力受损</td>
+                        <td data-label="对中国影响">全球LPG供应收紧</td>
+                        <td data-label="恢复预期">修复周期长</td>
+                        <td data-label="信息来源">新华社</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-14</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="企业/机构">万华/陶氏/英力士/隆华/台塑等</td>
+                        <td data-label="行业/产品">化工(综合)</td>
+                        <td data-label="事件描述" class="event-desc">密集不可抗力通知;全球化工全链条受冲击</td>
+                        <td data-label="影响传导链">原料断供→不可抗力→全球化工品涨价</td>
+                        <td data-label="停产/减产规模">全行业震荡</td>
+                        <td data-label="对中国影响">国内化工品全面涨价</td>
+                        <td data-label="恢复预期">短期难缓解</td>
+                        <td data-label="信息来源">FT/行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-13</td>
+                        <td data-label="国家/地区">日本/韩国</td>
+                        <td data-label="企业/机构">出光兴产/YNCC等</td>
+                        <td data-label="行业/产品">石化</td>
+                        <td data-label="事件描述" class="event-desc">日韩石化面临停产压力;石脑油价格暴涨;行业整合加速</td>
+                        <td data-label="影响传导链">石脑油断供→乙烯停产→PE/PP短缺</td>
+                        <td data-label="停产/减产规模">降负/考虑停产</td>
+                        <td data-label="对中国影响">亚洲石化品供应收紧</td>
+                        <td data-label="恢复预期">视石脑油供应</td>
+                        <td data-label="信息来源">FT/S&P Global</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-12</td>
+                        <td data-label="国家/地区">中国</td>
+                        <td data-label="企业/机构">中国(综合)</td>
+                        <td data-label="行业/产品">成品油出口</td>
+                        <td data-label="事件描述" class="event-desc">中国暂停成品油出口,优先保障国内供应</td>
+                        <td data-label="影响传导链">国内保供→亚洲成品油市场收紧</td>
+                        <td data-label="停产/减产规模">出口暂停</td>
+                        <td data-label="对中国影响">间接影响亚洲市场</td>
+                        <td data-label="恢复预期">视国内平衡</td>
+                        <td data-label="信息来源">政策/行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-12</td>
+                        <td data-label="国家/地区">欧洲</td>
+                        <td data-label="企业/机构">欧洲(综合)</td>
+                        <td data-label="行业/产品">柴油/能源</td>
+                        <td data-label="事件描述" class="event-desc">欧洲柴油期货单日涨幅近20%至900美元/吨</td>
+                        <td data-label="影响传导链">中东成品油断供→欧洲柴油暴涨→通胀风险</td>
+                        <td data-label="停产/减产规模">价格暴涨</td>
+                        <td data-label="对中国影响">能源通胀输入性风险</td>
+                        <td data-label="恢复预期">寻找替代供应</td>
+                        <td data-label="信息来源">FT</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-11</td>
+                        <td data-label="国家/地区">日本</td>
+                        <td data-label="企业/机构">日本政府</td>
+                        <td data-label="行业/产品">能源安全</td>
+                        <td data-label="事件描述" class="event-desc">95%原油依赖中东,90%运输经霍尔木兹;紧急宣布应对措施</td>
+                        <td data-label="影响传导链">海峡封锁→日本能源安全危机</td>
+                        <td data-label="停产/减产规模">储备约140天</td>
+                        <td data-label="对中国影响">日本若停产影响亚洲精细化工</td>
+                        <td data-label="恢复预期">长期需多元化</td>
+                        <td data-label="信息来源">央视</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-10</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="企业/机构">万华/英力士/LG/韩华/三井/陶氏</td>
+                        <td data-label="行业/产品">化工(综合)</td>
+                        <td data-label="事件描述" class="event-desc">多家化工巨头因原材料供应中断发布不可抗力通知</td>
+                        <td data-label="影响传导链">中东原料断供→全球化工链5天内完成传导;国内甲醇/烧碱/纯苯等涨停</td>
+                        <td data-label="停产/减产规模">密集不可抗力</td>
+                        <td data-label="对中国影响">化工品全面涨价</td>
+                        <td data-label="恢复预期">短期内难以缓解</td>
+                        <td data-label="信息来源">内蒙古化工</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-09</td>
+                        <td data-label="国家/地区">全球</td>
+                        <td data-label="企业/机构">国际油价</td>
+                        <td data-label="行业/产品">原油</td>
+                        <td data-label="事件描述" class="event-desc">国际油价突破100美元/桶</td>
+                        <td data-label="影响传导链">供应恐慌→油价破百→全球通胀压力</td>
+                        <td data-label="停产/减产规模">-</td>
+                        <td data-label="对中国影响">输入性通胀压力</td>
+                        <td data-label="恢复预期">视局势</td>
+                        <td data-label="信息来源">多家媒体</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-07</td>
+                        <td data-label="国家/地区">科威特</td>
+                        <td data-label="企业/机构">科威特国家石油(KPC)</td>
+                        <td data-label="行业/产品">炼油</td>
+                        <td data-label="事件描述" class="event-desc">宣布减产</td>
+                        <td data-label="影响传导链">中东产油国减产→全球供应收紧</td>
+                        <td data-label="停产/减产规模">减产中</td>
+                        <td data-label="对中国影响">原油供应收紧</td>
+                        <td data-label="恢复预期">视安全形势</td>
+                        <td data-label="信息来源">行业报道</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-07</td>
+                        <td data-label="国家/地区">中国</td>
+                        <td data-label="企业/机构">万华化学</td>
+                        <td data-label="行业/产品">聚氨酯/石化</td>
+                        <td data-label="事件描述" class="event-desc">对中东地区所有产品发布不可抗力通知;原料供应紧张导致降负</td>
+                        <td data-label="影响传导链">中东LPG断供→万华降负→MDI/TDI偏紧→家电/汽车/建材成本上升</td>
+                        <td data-label="停产/减产规模">降负荷</td>
+                        <td data-label="对中国影响">国内MDI/TDI供应偏紧</td>
+                        <td data-label="恢复预期">视原料恢复</td>
+                        <td data-label="信息来源">万华化学公告</td>
+                    </tr>
+                    <tr>
+                        <td data-label="日期">2026-03-06</td>
+                        <td data-label="国家/地区">沙特</td>
+                        <td data-label="企业/机构">沙特阿美</td>
+                        <td data-label="行业/产品">炼油</td>
+                        <td data-label="事件描述" class="event-desc">拉斯塔努拉炼油厂暂时关闭</td>
+                        <td data-label="影响传导链">沙特最大炼油厂关闭→全球约5%炼油产能受影响</td>
+                        <td data-label="停产/减产规模">55万桶/日关闭</td>
+                        <td data-label="对中国影响">间接影响中国原油进口</td>
+                        <td data-label="恢复预期">视局势</td>
+                        <td data-label="信息来源">沙特国防部/彭博</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            </div>
+        </div>
+        
+        <style>
+        /* 供应链跟踪Tab样式 */
+        .supply-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 0.85rem;
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .supply-tab:hover {
+            color: #1e3a5f;
+            background: #f1f5f9;
+        }
+        .supply-tab.active {
+            color: #1e3a5f;
+            border-bottom-color: #1e3a5f;
+            background: #fff;
+        }
+        .supply-tab-content {
+            display: none;
+        }
+        .supply-tab-content.active {
+            display: block;
+        }
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .supply-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+        .supply-table th {
+            background: #f1f5f9;
+            padding: 10px 8px;
+            text-align: left;
+            font-weight: 600;
+            color: #334155;
+            white-space: nowrap;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .supply-table td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #f1f5f9;
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .supply-table tr:hover {
+            background: #fafbfc;
+        }
+        .supply-table .facility-name {
+            font-weight: 500;
+            color: #1e3a5f;
+        }
+        .supply-table .event-desc {
+            max-width: 300px;
+            color: #475569;
+        }
+        .status-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+        .status-severe { background: #fee2e2; color: #991b1b; }
+        .status-damaged { background: #fef3c7; color: #92400e; }
+        .status-recovered { background: #dcfce7; color: #166534; }
+        .status-ongoing { background: #dbeafe; color: #1e40af; }
+        .status-unknown { background: #f1f5f9; color: #64748b; }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .supply-table th, .supply-table td {
+                padding: 8px 6px;
+                font-size: 0.7rem;
+            }
+            .supply-table .event-desc {
+                max-width: 150px;
+            }
+            .supply-tab {
+                padding: 8px 12px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* 移动端卡片式布局 */
+        @media (max-width: 480px) {
+            .supply-table thead {
+                display: none;
+            }
+            .supply-table tr {
+                display: block;
+                margin-bottom: 12px;
+                border: 1px solid #e2e8f0;
+                border-radius: 8px;
+                background: #fff;
+            }
+            .supply-table td {
+                display: flex;
+                justify-content: space-between;
+                padding: 8px 12px;
+                border-bottom: 1px solid #f1f5f9;
+            }
+            .supply-table td:last-child {
+                border-bottom: none;
+            }
+            .supply-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #64748b;
+                font-size: 0.7rem;
+                min-width: 70px;
+                flex-shrink: 0;
+            }
+            .supply-table td.event-desc {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .supply-table td.event-desc::before {
+                margin-bottom: 4px;
+            }
+        }
+        </style>
+        
+        <script>
+        function switchSupplyTab(tabName) {
+            document.querySelectorAll('.supply-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.supply-tab-content').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('tab-' + tabName).classList.add('active');
+        }
+        </script>
     </div>
     <script>
         // ==================== 实时航运跟踪地图 ====================
@@ -1654,7 +2307,8 @@
             {date: '2026/3/25', ships: 4, dwt: 146700},
             {date: '2026/3/26', ships: 6, dwt: 340900},
             {date: '2026/3/27', ships: 2, dwt: 135600},
-            {date: '2026/3/28', ships: 10, dwt: 589600}
+            {date: '2026/3/28', ships: 10, dwt: 589600},
+            {date: '2026/3/29', ships: 8, dwt: 698300}
         ];
 
         const ctx = document.getElementById('trafficChart').getContext('2d');
@@ -2030,9 +2684,10 @@
 <!-- 金十数据嵌入 (自动更新于 2026-03-28 21:04:11) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-29 21:54:47) -->
 <!-- 金十数据嵌入 (自动更新于 2026-03-29 23:57:43) -->
+<!-- 金十数据嵌入 (自动更新于 2026-03-30 13:17:17) -->
 <script id="jin10-embedded-data">
 const JIN10_STRAIT_DATA = {
-  "updated": "2026-03-29T23:56:32",
+  "updated": "2026-03-30T13:16:07",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
@@ -2063,15 +2718,15 @@ const JIN10_STRAIT_DATA = {
     }
   },
   "ship_counts": {
-    "yesterday_passed": 10,
+    "yesterday_passed": 8,
     "hormuz_passing": 1,
-    "sailing": 781,
-    "anchored": 2027,
-    "total_in_area": 2808,
-    "calculated_total": 2808
+    "sailing": 841,
+    "anchored": 1891,
+    "total_in_area": 2732,
+    "calculated_total": 2732
   },
   "video_url": "https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4",
-  "snapshot_url": "https://oimg.jin10.com/news/26/03/0YHtMyU-R6S70K0kbhGtpm.png"
+  "snapshot_url": "https://oimg.jin10.com/news/26/03/nLk5TCXPZVqieXMYQWO5Z9.png"
 };
 
 // 页面加载时自动填充数据
@@ -2181,5 +2836,6 @@ function fillJin10Data(data) {
     }
 }
 </script>
+
 </body>
 </html>

@@ -1,561 +1,1122 @@
 ﻿<!DOCTYPE html>
+
 <html lang="zh-CN">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【华泰固收】中东地缘跟�?- 战局形势</title>
+
+    <title>【华泰固收】中东地缘跟踪 - 战局形势</title>
+
     <style>
+
         *{margin:0;padding:0;box-sizing:border-box;}
+
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8;}
+
         .header {
+
             background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+
             color: white;
+
             padding: 12px 0;
+
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
             position: sticky;
+
             top: 0;
+
             z-index: 100;
+
         }
+
         .header-main {
+
             max-width: 1400px;
+
             margin: 0 auto;
+
             padding: 0 20px;
+
             display: flex;
+
             justify-content: center;
+
             align-items: center;
+
             position: relative;
+
         }
+
         .header-left {
+
             position: absolute;
+
             left: 20px;
+
         }
+
         .header-left h1 {
+
             font-size: 1.1rem;
+
             font-weight: 600;
+
             margin: 0;
+
         }
+
         .header-center {
+
             display: flex;
+
             gap: 8px;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
         }
+
         .nav-btn {
+
             color: rgba(255,255,255,0.85);
+
             text-decoration: none;
+
             padding: 6px 12px;
+
             border-radius: 6px;
+
             font-size: 0.85rem;
+
             transition: all 0.2s;
+
             white-space: nowrap;
+
         }
+
         .nav-btn:hover {
+
             background: rgba(255,255,255,0.15);
+
             color: white;
+
         }
+
         .nav-btn.active {
+
             background: rgba(255,255,255,0.2);
+
             color: white;
+
             font-weight: 500;
+
         }
+
         .header-right {
+
             font-size: 0.75rem;
+
             color: rgba(255,255,255,0.7);
+
             white-space: nowrap;
+
         }
+
         .container{max-width:1200px;margin:0 auto;padding:24px 20px;}
+
         
+
         /* 战局头部 */
+
         .war-header{background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);border:1px solid #dc2626;border-radius:12px;padding:24px;margin-bottom:24px;}
+
         .war-header h2{color:#991b1b;font-size:1.4rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+
         .war-badge{background:#dc2626;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;}
+
         .war-meta{display:flex;gap:20px;color:#7f1d1d;font-size:0.9rem;margin-top:12px;flex-wrap:wrap;}
+
         .war-meta span{display:flex;align-items:center;gap:6px;}
+
         
+
         .section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e2e8f0;}
+
         .section h3{color:#1e40af;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+
         
+
         /* Takeaways */
+
         .takeaways-list{list-style:none;padding:0;}
+
         .takeaway-item{background:#f8fafc;border-left:4px solid #dc2626;padding:16px 20px;margin-bottom:12px;border-radius:0 8px 8px 0;transition:all 0.2s;}
+
         .takeaway-item:hover{background:#fef2f2;transform:translateX(4px);}
+
         .takeaway-item.note{border-left-color:#f59e0b;background:#fffbeb;}
+
         .takeaway-item.note:hover{background:#fef3c7;}
+
         .takeaway-en{color:#475569;font-size:0.9rem;margin-bottom:8px;line-height:1.6;}
+
         .takeaway-zh{color:#1e293b;font-size:1rem;font-weight:500;line-height:1.7;}
+
         .takeaway-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#dc2626;color:#fff;border-radius:50%;font-size:0.8rem;font-weight:600;margin-right:8px;}
+
         .takeaway-item.note .takeaway-num{background:#f59e0b;}
+
         
+
         /* 图表网格 */
+
         .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px;}
+
         .chart-card{background:#f8fafc;border-radius:12px;padding:16px;border:1px solid #e2e8f0;transition:all 0.2s;}
+
         .chart-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.1);}
+
         .chart-title{font-weight:600;color:#1e293b;margin-bottom:8px;font-size:0.95rem;}
+
         .chart-img{width:100%;border-radius:8px;border:1px solid #e2e8f0;background:#fff;min-height:200px;}
+
         .chart-context{background:#eff6ff;border-radius:8px;padding:12px;margin-top:12px;}
+
         .chart-context h4{color:#1e40af;font-size:0.85rem;margin-bottom:8px;}
+
         .chart-context ul{margin:0;padding-left:16px;}
+
         .chart-context li{color:#475569;font-size:0.8rem;margin-bottom:4px;line-height:1.5;}
+
         .chart-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
+
         .chart-tag{background:#e2e8f0;color:#475569;padding:2px 8px;border-radius:4px;font-size:0.75rem;}
+
         
+
         /* 历史文章 */
+
         .history-list{display:flex;flex-direction:column;gap:12px;}
+
         .history-item{display:flex;align-items:center;gap:16px;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;text-decoration:none;color:inherit;transition:all 0.2s;}
+
         .history-item:hover{background:#eff6ff;border-color:#3b82f6;}
+
         .history-date{color:#64748b;font-size:0.85rem;min-width:100px;}
+
         .history-title{color:#1e40af;font-weight:500;flex:1;}
+
         .history-arrow{color:#94a3b8;}
+
         
+
         /* 来源 */
+
         .source-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:16px;margin-top:20px;}
+
         .source-box h4{color:#92400e;font-size:0.9rem;margin-bottom:8px;}
+
         .source-box p{color:#78350f;font-size:0.85rem;margin:0;}
+
         .source-box a{color:#b45309;text-decoration:underline;}
+
         
+
         .lang-toggle{float:right;padding:6px 12px;background:#e2e8f0;border:none;border-radius:6px;cursor:pointer;font-size:0.8rem;color:#475569;}
+
         .lang-toggle:hover{background:#cbd5e1;}
+
         
+
         .loading{text-align:center;padding:40px;color:#64748b;}
+
         .loading-spinner{display:inline-block;width:40px;height:40px;border:3px solid #e2e8f0;border-top-color:#dc2626;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:16px;}
+
         @keyframes spin{to{transform:rotate(360deg);}}
+
         
+
         .error-box{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:20px;text-align:center;color:#991b1b;}
+
         
+
         /* 更新按钮 */
+
         .refresh-btn{background:#dc2626;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:0.85rem;display:inline-flex;align-items:center;gap:6px;}
+
         .refresh-btn:hover{background:#b91c1c;}
+
         
+
         @media (max-width: 768px) {
+
             .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
+
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
+
             .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
+
             .header-center::-webkit-scrollbar { display: none; }
+
             .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
+
             .header-right { display: none; }
+
             .charts-grid{grid-template-columns:1fr;}
+
             .header-center-wrapper { 
+
                 order: 2; 
+
                 width: 100%; 
+
                 display: flex; 
+
                 align-items: center; 
+
                 position: relative;
+
                 margin-top: 2px;
+
             }
+
             .header-center { 
+
                 flex: 1;
+
                 justify-content: flex-start; 
+
                 gap: 4px; 
+
                 flex-wrap: nowrap; 
+
                 overflow-x: auto; 
+
                 -webkit-overflow-scrolling: touch; 
+
                 scrollbar-width: none; 
+
                 position: relative; 
+
                 padding: 0 4px; 
+
             }
+
             .nav-arrow {
+
                 display: flex;
+
                 align-items: center;
+
                 justify-content: center;
+
                 width: 20px;
+
                 height: 28px;
+
                 background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+
                 color: rgba(255,255,255,0.7);
+
                 font-size: 12px;
+
                 cursor: pointer;
+
                 flex-shrink: 0;
+
                 z-index: 10;
+
             }
+
             .nav-arrow.hidden { display: none; }
+
             .container{padding:12px;}
+
             .war-header{padding:16px;}
+
             .war-header h2{font-size:1.1rem;}
+
             .takeaway-item{padding:12px 16px;}
+
         }
+
         @media (min-width: 769px) {
+
             .nav-arrow { display: none !important; }
+
             .header-center-wrapper { display: contents; }
+
         }
+
         @media (max-width: 480px) {
+
             .header-main { padding: 6px 8px; gap: 6px; }
+
             .header h1 { font-size: 0.9rem; }
+
             .header-center { gap: 4px; }
+
             .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
+
             .header-right { display: none; }
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <div class="header">
+
         <div class="header-main">
+
             <div class="header-left">
-                <h1>【华泰固收】中东地缘跟�?/h1>
-            </div>
-            <div class="header-center-wrapper">
-                <div class="nav-arrow nav-arrow-left" id="navArrowLeft">◀</div>
-                <div class="header-center" id="navCenter">
-                    <a href="index.html" class="nav-btn">海峡跟踪</a>
-                    <a href="polymarket.html" class="nav-btn">Polymarket</a>
-                    <a href="data-tracking.html" class="nav-btn">全球市场</a>
-                    <a href="war-situation.html" class="nav-btn active">战局形势</a>
-                    <a href="news.html" class="nav-btn">实时新闻</a>
-                    <a href="briefing.html" class="nav-btn">每日简�?/a>
-                    <a href="oil-chart.html" class="nav-btn">原油图谱</a>
-                </div>
-                <div class="nav-arrow nav-arrow-right" id="navArrowRight">�?/div>
+
+                <h1>【华泰固收】中东地缘跟踪</h1>
+
             </div>
 
+            <div class="header-center-wrapper">
+
+                <div class="nav-arrow nav-arrow-left" id="navArrowLeft">◀</div>
+
+                <div class="header-center" id="navCenter">
+
+                    <a href="index.html" class="nav-btn">海峡跟踪</a>
+
+                    <a href="polymarket.html" class="nav-btn">Polymarket</a>
+
+                    <a href="data-tracking.html" class="nav-btn">全球市场</a>
+
+                    <a href="war-situation.html" class="nav-btn active">战局形势</a>
+
+                    <a href="news.html" class="nav-btn">实时新闻</a>
+
+                    <a href="briefing.html" class="nav-btn">每日简报</a>
+
+                    <a href="oil-chart.html" class="nav-btn">原油图谱</a>
+
+                </div>
+
+                <div class="nav-arrow nav-arrow-right" id="navArrowRight">▶</div>
+
+            </div>
+
+
+
         </div>
+
     </div>
+
     <script>
-        // 移动端导航滚动箭头控�?
+
+        // 移动端导航滚动箭头控制
+
         (function() {
+
             var navCenter = document.getElementById('navCenter');
+
             var arrowLeft = document.getElementById('navArrowLeft');
+
             var arrowRight = document.getElementById('navArrowRight');
+
             if (!navCenter || !arrowLeft || !arrowRight) return;
+
             
+
             function updateArrows() {
+
                 var scrollLeft = navCenter.scrollLeft;
+
                 var scrollWidth = navCenter.scrollWidth;
+
                 var clientWidth = navCenter.clientWidth;
+
                 var canScrollLeft = scrollLeft > 5;
+
                 var canScrollRight = scrollLeft < scrollWidth - clientWidth - 5;
+
                 
+
                 arrowLeft.classList.toggle('hidden', !canScrollLeft);
+
                 arrowRight.classList.toggle('hidden', !canScrollRight);
+
             }
+
             
+
             arrowLeft.addEventListener('click', function() {
+
                 navCenter.scrollBy({ left: -100, behavior: 'smooth' });
+
             });
+
             arrowRight.addEventListener('click', function() {
+
                 navCenter.scrollBy({ left: 100, behavior: 'smooth' });
+
             });
+
             
+
             navCenter.addEventListener('scroll', updateArrows, { passive: true });
+
             window.addEventListener('resize', updateArrows, { passive: true });
+
             window.addEventListener('pageshow', updateArrows);
+
             
-            // 初始�?
+
+            // 初始化
+
             setTimeout(updateArrows, 100);
+
             setTimeout(updateArrows, 500);
+
         })();
+
     </script>
+
+
 
     <main class="container">
+
         <!-- 战局头部 -->
+
         <div class="war-header">
+
             <h2>
+
                 <span class="war-badge">ISW</span>
-                <span id="report-title">伊朗局势每日更�?/span>
+
+                <span id="report-title">伊朗局势每日更新 - 2026年3月29日报告</span>
+
             </h2>
-            <p style="color:#7f1d1d;margin-top:8px;">Institute for the Study of War (战争研究所) 最新战况分�?/p>
+
+            <p style="color:#7f1d1d;margin-top:8px;">Institute for the Study of War (战争研究所) 最新战况分析</p>
+
             <div class="war-meta">
+
                 <span>📅 <span id="report-date">--</span></span>
+
                 <span>📍 中东/伊朗</span>
+
                 <span>📝 <span id="takeaway-count">--</span> 要点</span>
-                <span>🗺�?<span id="chart-count">--</span> 图表</span>
+
+                <span>🗺️ <span id="chart-count">--</span> 图表</span>
+
             </div>
+
         </div>
+
+
 
         <!-- 核心要点 -->
+
         <section class="section" id="takeaways-section">
+
             <h3>
+
                 🎯 核心要点 (Key Takeaways)
+
                 <button class="lang-toggle" onclick="toggleLanguage()">显示英文</button>
+
             </h3>
+
             <ul class="takeaways-list" id="takeaways-list">
+
                 <div class="loading">
+
                     <div class="loading-spinner"></div>
+
                     <p>正在加载战况数据...</p>
+
                 </div>
+
             </ul>
+
         </section>
+
+
 
         <!-- 战况图表 -->
+
         <section class="section" id="charts-section">
-            <h3>🗺�?战况图表 (Maps & Charts)</h3>
+
+            <h3>🗺️ 战况图表 (Maps & Charts)</h3>
+
             <div class="charts-grid" id="charts-grid">
+
                 <div class="loading">
+
                     <div class="loading-spinner"></div>
+
                     <p>正在加载图表...</p>
+
                 </div>
+
             </div>
+
         </section>
+
+
 
         <!-- 历史更新 -->
+
         <section class="section">
+
             <h3>📚 历史更新 (Recent Updates)</h3>
+
             <div class="history-list" id="history-list"></div>
+
         </section>
 
+
+
         <!-- 数据来源 -->
+
         <div class="source-box">
+
             <h4>📌 数据来源</h4>
+
             <p>
-                本页内容来源�?<strong>Institute for the Study of War (ISW)</strong> 
+
+                本页内容来源于 <strong>Institute for the Study of War (ISW)</strong> 
+
                 <a href="https://understandingwar.org" target="_blank">understandingwar.org</a><br>
-                ISW 是一家美国非营利研究机构，专注于国防和外交政策研究�?br>
-                <small>最后更�? <span id="last-update">--</span></small>
+
+                ISW 是一家美国非营利研究机构，专注于国防和外交政策研究。<br>
+
+                <small>最后更新: <span id="last-update">--</span></small>
+
             </p>
+
         </div>
+
     </main>
 
-    <!-- 嵌入的ISW数据（由fetch_isw_v3.py自动更新�?-->
-    <script>
-    let STATIC_ISW_DATA = {"updated":"2026-03-30T11:13:40.449784+08:00","source_url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026","current_report":{"url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026","title":"Iran Update Special Report, March 29, 2026 | ISW","title_zh":"伊朗局势更新特别报告 - 2026年3月29日","date":"2026-03-30","takeaways":[{"en":"Khojir Military Complex (Tehran Province): TheWashington Post, citing satellite imagery from March 24, reported that the combined force has destroyed at least 88 structures at the Khojir Military Complex.[5] ISW-CTP  observed reports of strikes on the Khojir Military Complex on March 3.[6] The Khojir complex is a research, development, and manufacturing facility for solid- and liquid-fuel missiles. An analyst at the James Martin Center for Nonproliferation Studies assessed on March 6 that the combined force had struck mixing and casting buildings at the Khojir complex.[7] The IDF also confirmed on March 29 that it struck a facility at Khojir that produced unspecified “critical components” for the “assembly and operationalization” of missiles.[8] The IDF noted that the facility was only one of two facilities in Iran that produced such components.[9]","zh":"霍吉尔 军事综合体 (德黑兰 Province): TheWashington Post, citing 卫星图像 from March 24, reported that the 联合部队 has 摧毁 at least 88 structures at the 霍吉尔 军事综合体.[5] ISW-CTP  observed reports of 打击s on the 霍吉尔 军事综合体 on March 3.[6] The 霍吉尔 complex is a research, development, and manufacturing facility for solid- and liquid-fuel missiles. An analyst at the James Martin Center for Nonproliferation Studies assessed on March 6 that the 联合部队 had struck mixing and casting buildings at the 霍吉尔 complex.[7] The 以色列国防军 also confirmed on March 29 that it struck a facility at 霍吉尔 that produced unspecified “critical components” for the “assembly and operationalization” of missiles.[8] The 以色列国防军 noted that the facility was only one of two facilities in 伊朗 that produced such components.[9]"},{"en":"Shahroud Military Complex (Semnan Province): The Washington Post, citing satellite imagery, reported that the combined force has damaged or destroyed at least 28 structures at the Shahroud Military Complex.[10] The combined force has struck the Shahroud Military Complex multiple times during the war.[11] An analyst at the James Martin Center for Nonproliferation Studies identified on March 7 that the Israel Defense Forces (IDF) had damaged a mixing building, casting building, and “warhead production line” at the facility.[12] The IDF struck buildings at the Shahroud Military Facility during the June 2025 Israel-Iran War that had previously housed planetary mixers.[13] Planetary mixers are essential for producing ballistic missile solid fuel. The IDF previously destroyed 12 Iranian planetary mixers, likely including mixers at Shahroud, during its October 2024 strikes on Iran.[14] Satellite imagery published by the Associated Press in September 2025 showed that Iran had started repairing damaged mixer buildings at Shahroud.[15] An Israeli analyst separately published satellite imagery on March 19 that shows that the combined force struck a launch pad at the Shahroud Military Complex between March 11 and 19.[16]","zh":"沙赫鲁德 军事综合体 (塞姆南省): The Washington Post, citing 卫星图像, reported that the 联合部队 has 损坏 or 摧毁 at least 28 structures at the 沙赫鲁德 军事综合体.[10] The 联合部队 has struck the 沙赫鲁德 军事综合体 multiple times during the war.[11] An analyst at the James Martin Center for Nonproliferation Studies identified on March 7 that the 以色列 Defense Forces (以色列国防军) had 损坏 a mixing building, casting building, and “弹头 production line” at the facility.[12] The 以色列国防军 struck buildings at the 沙赫鲁德 Military Facility during the June 2025 以色列-伊朗 War that had previously housed 行星混合器s.[13] Planetary mixers are essential for producing 弹道导弹 固体燃料. The 以色列国防军 previously 摧毁 12 伊朗ian 行星混合器s, likely including mixers at 沙赫鲁德, during its October 2024 打击s on 伊朗.[14] Satellite imagery published by the Associated Press in September 2025 showed that 伊朗 had started repairing 损坏 mixer buildings at 沙赫鲁德.[15] An 以色列i analyst separately published 卫星图像 on March 19 that shows that the 联合部队 struck a 发射台 at the 沙赫鲁德 军事综合体 between March 11 and 19.[16]"},{"en":"Parchin Military Complex (Tehran Province): The Washington Post, citing satellite imagery from March 12, reported that the combined force has struck 12 structures at the Parchin Military Complex.[17] ISW-CTP has observed numerous reports of strikes on the Parchin Military Complex, including on March 3, March 7, March 12, March 26, and March 28.[18]  The Institute for Science and International Security assessed on March 6 that combined force airstrikes caused “significant damage” to solid rocket propellant motor production facilities at Parchin.[19] The combined force also struck the Taleghan 2 site at Parchin on March 12.[20] The Iranian regime previously used the Taleghan 2 facility to test explosives that are needed to detonate a nuclear device before the regime suspended its nuclear weapons program in 2003.[21]","zh":"帕尔钦 军事综合体 (德黑兰 Province): The Washington Post, citing 卫星图像 from March 12, reported that the 联合部队 has struck 12 structures at the 帕尔钦 军事综合体.[17] ISW-CTP has observed numerous reports of 打击s on the 帕尔钦 军事综合体, including on March 3, March 7, March 12, March 26, and March 28.[18]  The Institute for Science and International Security assessed on March 6 that 联合部队 air打击s caused “significant damage” to solid rocket propellant motor production facilities at 帕尔钦.[19] The 联合部队 also struck the Taleghan 2 site at 帕尔钦 on March 12.[20] The 伊朗ian regime previously used the Taleghan 2 facility to test explosives that are needed to detonate a nuclear device before the regime suspended its nuclear weapons program in 2003.[21]"},{"en":"Hakimiyeh Military Complex (Tehran Province): The Washington Post, citing satellite imagery from March 14, reported that the combined force has struck 19 structures at the Hakimiyeh Military Complex.[22] The Washington Post noted that the Hakimiyeh Military Complex contains facilities that produce liquid propellant and missile launchers.[23] The IDF issued an evacuation warning for the Hakimiyeh Industrial Zone in northwestern Tehran on March 3.[24]","zh":"哈基米耶 军事综合体 (德黑兰 Province): The Washington Post, citing 卫星图像 from March 14, reported that the 联合部队 has struck 19 structures at the 哈基米耶 军事综合体.[22] The Washington Post noted that the 哈基米耶 军事综合体 contains facilities that produce liquid propellant and missile launchers.[23] The 以色列国防军 issued an 撤离 warning for the 哈基米耶 Industrial Zone in northwestern 德黑兰 on March 3.[24]"},{"en":"Khorgu Missile Base (Hormozgan Province): The Washington Post, citing satellite imagery from March 9, reported that the combined force has destroyed 15 facilities and struck two tunnel entrances at the Khorgu Missile Base.[26] The Washington Post assessed that the combined force has struck this base at least twice during the war. Two OSINT accounts previously published satellite imagery from March 18 that showed damage to multiple munition bunkers and multiple support buildings at the Khorgu Missile Base.[27]","zh":"霍尔古 导弹基地 (霍尔木兹甘省): The Washington Post, citing 卫星图像 from March 9, reported that the 联合部队 has 摧毁 15 facilities and struck two 隧道 entrances at the 霍尔古 导弹基地.[26] The Washington Post assessed that the 联合部队 has struck this base at least twice during the war. Two OSINT accounts previously published 卫星图像 from March 18 that showed damage to multiple munition 地堡s and multiple support buildings at the 霍尔古 导弹基地.[27]"},{"en":"Imam Ali Missile Base (Lorestan Province): An imagery analyst at the security intelligence firm Janes told the Washington Post that the combined force has struck nine aboveground structures and at least two tunnel entrances at the Imam Ali Missile Base.[28] The combined force has struck the Imam Ali Missile Base several times during the war, including with bunker buster munitions.[29] The Imam Ali Missile Base is home to the IRGC Aerospace Force al Hadid 7th Missile Brigade and al Tawhid 23rd Missile Brigade.[30] The base reportedly stores Shahab-3 ballistic missiles, which have a range of between 800 and 1,300 kilometers.[31] OSINT accounts circulated footage on March 27 of a funeral for an IRGC Aerospace Force commander who reportedly died in combined force airstrikes targeting the Imam Ali Missile Base.[32]","zh":"伊玛目阿里 导弹基地 (洛雷斯坦省): An imagery analyst at the security intelligence firm Janes told the Washington Post that the 联合部队 has struck nine aboveground structures and at least two 隧道 entrances at the 伊玛目阿里 导弹基地.[28] The 联合部队 has struck the 伊玛目阿里 导弹基地 several times during the war, including with 地堡 buster munitions.[29] The 伊玛目阿里 导弹基地 is home to the 伊斯兰革命卫队 Aerospace Force al Hadid 7th Missile Brigade and al Tawhid 23rd Missile Brigade.[30] The base reportedly stores Shahab-3 弹道导弹s, which have a range of between 800 and 1,300 kilometers.[31] OSINT accounts circulated footage on March 27 of a funeral for an 伊斯兰革命卫队 Aerospace Force commander who reportedly died in 联合部队 air打击s targeting the 伊玛目阿里 导弹基地.[32]"}],"charts":[{"url":"https://understandingwar.org/wp-content/uploads/2025/06/Staff-Default-Image.webp","title_zh":"Default Thumbnail","screenshot":"isw_screenshots/chart_20260330_07.png","context":[]}]},"history":[{"date":"2026-03-30","title_zh":"伊朗局势更新特别报告 - 2026年3月29日","url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026"}]};
-    </script>
+
+
+    <!-- 嵌入的ISW数据（由fetch_isw_v3.py自动更新） -->
 
     <script>
+
+    let STATIC_ISW_DATA = {"updated":"2026-03-30T12:00:00","source_url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026","current_report":{"url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026","title":"Iran Update Special Report, March 29, 2026","title_zh":"伊朗局势更新特别报告 - 2026年3月29日","date":"2026-03-30","takeaways":[{"en":"Khojir Military Complex (Tehran Province): The Washington Post, citing satellite imagery from March 24, reported that the combined force has destroyed at least 88 structures at the Khojir Military Complex.","zh":"【霍吉尔军事综合体（德黑兰省）】据《华盛顿邮报》3月24日卫星图像报道，联合部队已摧毁霍吉尔军事综合体的至少88处建筑。ISW-CTP曾在3月3日观察到对该综合体的打击报告。霍吉尔综合体是固液燃料导弹的研发和制造设施。"},{"en":"Shahroud Military Complex (Semnan Province): The Washington Post, citing satellite imagery, reported that the combined force has damaged or destroyed at least 28 structures at the Shahroud Military Complex.","zh":"【沙赫鲁德军事综合体（塞姆南省）】《华盛顿邮报》卫星图像报道称，联合部队已损坏或摧毁沙赫鲁德军事综合体的至少28处建筑。联合部队在战争期间已多次打击该综合体。"},{"en":"Parchin Military Complex (Tehran Province): The Washington Post, citing satellite imagery from March 12, reported that the combined force has struck 12 structures at the Parchin Military Complex.","zh":"【帕尔钦军事综合体（德黑兰省）】《华盛顿邮报》3月12日卫星图像报道称，联合部队已打击帕尔钦军事综合体的12处建筑。ISW-CTP已观察到多次打击该综合体的报告。"},{"en":"Hakimiyeh Military Complex (Tehran Province): The Washington Post, citing satellite imagery from March 14, reported that the combined force has struck 19 structures at the Hakimiyeh Military Complex.","zh":"【哈基米耶军事综合体（德黑兰省）】《华盛顿邮报》3月14日卫星图像报道称，联合部队已打击哈基米耶军事综合体的19处建筑。该报指出，哈基米耶军事综合体包含生产液体推进剂和导弹发射器的设施。"},{"en":"Khorgu Missile Base (Hormozgan Province): The Washington Post, citing satellite imagery from March 9, reported that the combined force has destroyed 15 facilities and struck two tunnel entrances at the Khorgu Missile Base.","zh":"【霍尔古导弹基地（霍尔木兹甘省）】《华盛顿邮报》3月9日卫星图像报道称，联合部队已摧毁霍尔古导弹基地的15处设施并打击两个隧道入口。该报评估联合部队在战争期间至少两次打击该基地。"},{"en":"Imam Ali Missile Base (Lorestan Province): An imagery analyst at the security intelligence firm Janes told the Washington Post that the combined force has struck nine aboveground structures and at least two tunnel entrances at the Imam Ali Missile Base.","zh":"【伊玛目阿里导弹基地（洛雷斯坦省）】安全情报公司Janes的图像分析师告诉《华盛顿邮报》，联合部队已打击伊玛目阿里导弹基地的9处地面建筑和至少两个隧道入口。联合部队在战争期间已多次打击该基地。"}],"charts":[{"url":"https://understandingwar.org/wp-content/uploads/2026/03/NEW-Iranian-Launches-at-the-UAE-March-29.webp","title_zh":"伊朗对阿联酋发射统计（3月29日更新）","screenshot":"isw_screenshots/chart_20260330_01.png","context":["伊朗继续对海湾国家实施无人机和导弹袭击。阿联酋3月29日拦截了16枚弹道导弹和42架无人机。","伊朗无人机和导弹袭击针对阿联酋全球铝业，该公司是地区和全球铝供应的关键节点。"]},{"url":"https://understandingwar.org/wp-content/uploads/2026/03/NEW-Iranian-Launches-at-Kuwait-February-28-March-29.webp","title_zh":"伊朗对科威特发射统计（2月28日至3月29日）","screenshot":"isw_screenshots/chart_20260330_02.png","context":["科威特国防部报告过去24小时内探测到14枚导弹和12架无人机，使战争期间针对科威特的发射总数达到307枚弹道导弹、2枚巡航导弹和616架无人机。","伊朗袭击造成10名科威特军事人员受伤，并对私营物流公司的仓库造成物质损坏。"]},{"url":"https://understandingwar.org/wp-content/uploads/2026/03/NEW-Iranian-Launches-at-KSA-March-1-29.webp","title_zh":"伊朗对沙特发射统计（3月1日至29日）","screenshot":"isw_screenshots/chart_20260330_03.png","context":["沙特国防部报告3月29日拦截并摧毁了10架无人机。","自ISW-CTP 3月28日下午2:00（美东时间）数据截止以来，巴林尚未报告任何伊朗无人机或导弹袭击。"]},{"url":"https://understandingwar.org/wp-content/uploads/2026/03/NEW-Iranian-Launches-at-Bahrain-Feb-28-Mar-29.webp","title_zh":"伊朗对巴林发射统计（2月28日至3月29日）","screenshot":"isw_screenshots/chart_20260330_04.png","context":["伊朗针对海湾铝业设施（ALBA）发动袭击，该公司是地区和全球铝供应的关键节点。","ALBA确认两人轻伤，损坏评估正在进行中。"]},{"url":"https://understandingwar.org/wp-content/uploads/2026/03/Hezbollah-Claimed-Attacks-in-Northern-Israel-Total-March-1-28.webp","title_zh":"真主党声称在以色列北部袭击总数（3月1日至28日）","screenshot":"isw_screenshots/chart_20260330_05.png","context":["真主党声称在3月28日下午2:00至3月29日下午2:00（美东时间）期间对以色列军队和阵地、北部以色列社区以及南黎巴嫩实施了57次袭击。","真主党声称在Ainata附近的Ghadmatha地区使用两枚简易爆炸装置、无人机和轻中型武器伏击以色列国防军部队。"]},{"url":"https://understandingwar.org/wp-content/uploads/2026/03/NEW-Hezbollah-Claimed-Attacks-March-1-28.webp","title_zh":"真主党声称袭击统计（3月1日至28日）","screenshot":"isw_screenshots/chart_20260330_06.png","context":["真主党声称在al Biyyadah和Chama城镇附近直接交战并向以色列国防军部队发射反坦克制导导弹和无人机。","真主党继续向北部以色列社区发射火箭和无人机，包括Hanita、Shtula和Nahariya。"]}]},"history":[{"date":"2026-03-30","title_zh":"伊朗局势更新特别报告 - 2026年3月29日","url":"https://understandingwar.org/backgrounder/iran-update-special-report-march-29-2026"}]};
+
+    </script>
+
+
+
+    <script>
+
         // 加载数据
+
         let warData = null;
+
         let showEnglish = false;
 
+
+
         async function loadData() {
+
             try {
-                // 优先使用嵌入�?STATIC_ISW_DATA
+
+                // 优先使用嵌入的 STATIC_ISW_DATA
+
                 if (typeof STATIC_ISW_DATA !== 'undefined' && STATIC_ISW_DATA.current_report) {
+
                     console.log('Using embedded STATIC_ISW_DATA');
+
                     warData = STATIC_ISW_DATA;
+
                     renderPage();
+
                     return;
+
                 }
+
                 
+
                 // 回退：尝试从JSON文件加载
+
                 const response = await fetch('isw_war_data.json?t=' + Date.now());
+
                 warData = await response.json();
+
                 renderPage();
+
             } catch (error) {
+
                 console.error('Failed to load data:', error);
-                // 使用嵌入式备用数�?
+
+                // 使用嵌入式备用数据
+
                 warData = getFallbackData();
+
                 renderPage();
+
             }
+
         }
+
+
 
         function getFallbackData() {
+
             return {
+
                 "updated": new Date().toISOString(),
+
                 "source_url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-23-2026",
+
                 "current_report": {
+
                     "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-23-2026",
+
                     "title": "Iran Update Special Report, March 23, 2026",
-                    "title_zh": "伊朗局势更新特别报�?- 2026�?�?3�?,
+
+                    "title_zh": "伊朗局势更新特别报告 - 2026年3月23日",
+
                     "date": "2026-03-23",
+
                     "takeaways": [
+
                         {
+
                             "en": "NOTE: ISW-CTP will no longer publish morning updates covering the war with Iran. ISW-CTP will instead publish threads on its social media channels in the morning that cover the latest developments in the war and include relevant maps.",
-                            "zh": "注意：ISW-CTP将不再发布关于伊朗战争的早间更新。ISW-CTP将改在社交媒体渠道上午发布话题，涵盖战争最新进展并附上相关地图�?
+
+                            "zh": "注意：ISW-CTP将不再发布关于伊朗战争的早间更新。ISW-CTP将改在社交媒体渠道上午发布话题，涵盖战争最新进展并附上相关地图。"
+
                         },
+
                         {
+
                             "en": "Ghalibaf publicly rejected reports of United States-Iran negotiations on X on March 23. Ghalibaf added that all Iranian officials stand firmly behind Supreme Leader Mojtaba Khamenei and the Iranian people's demand for complete and remorseful punishment of the United States and Israel.",
-                            "zh": "Ghalibaf�?�?3日在X上公开否认了美伊谈判的报道。Ghalibaf补充说，所有伊朗官员坚定支持最高领袖Mojtaba Khamenei和伊朗人民对美国和以色列进行彻底惩罚的要求�?
+
+                            "zh": "Ghalibaf于3月23日在X上公开否认了美伊谈判的报道。Ghalibaf补充说，所有伊朗官员坚定支持最高领袖Mojtaba Khamenei和伊朗人民对美国和以色列进行彻底惩罚的要求。"
+
                         },
+
                         {
+
                             "en": "US Central Command (CENTCOM) published a video on March 23 of strikes on Iranian drone launch sites in unspecified areas of Iran. The footage showed US strikes targeting an Arash-2 drone, a Shahed-136, and a mobile drone launch platform.",
-                            "zh": "美国中央司令部（CENTCOM）于3�?3日发布了一段视频，显示对伊朗境内未指明地区的无人机发射场进行打击。画面显示美军打击了Arash-2无人机、Shahed-136以及一个移动无人机发射平台�?
+
+                            "zh": "美国中央司令部（CENTCOM）于3月23日发布了一段视频，显示对伊朗境内未指明地区的无人机发射场进行打击。画面显示美军打击了Arash-2无人机、Shahed-136以及一个移动无人机发射平台。"
+
                         }
+
                     ],
+
                     "charts": [
+
                         {
+
                             "url": "https://understandingwar.org/wp-content/uploads/2026/03/US-and-Israeli-Strikes-in-Iran-Evening-of-March-23-2026.webp",
-                            "title_zh": "美以联军在伊朗的空袭 - 3�?3日晚",
+
+                            "title_zh": "美以联军在伊朗的空袭 - 3月23日晚",
+
                             "context": ["ISW战略分析", "美以联军行动", "精确打击"]
+
                         },
+
                         {
+
                             "url": "https://understandingwar.org/wp-content/uploads/2026/03/Iranian-and-Axis-Retaliatory-Strikes-in-the-Middle-East-Evening-March-23.webp",
-                            "title_zh": "伊朗及盟友报复性打�?- 中东地区",
+
+                            "title_zh": "伊朗及盟友报复性打击 - 中东地区",
+
                             "context": ["ISW战略分析", "伊朗军事行动", "地区冲突"]
+
                         }
+
                     ]
+
                 },
+
                 "history": [
-                    {"date": "2026-03-21", "title_zh": "伊朗局势更新特别报�?- 2026�?�?1�?, "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-21-2026"},
-                    {"date": "2026-03-19", "title_zh": "伊朗局势更�?- 2026�?�?9�?, "url": "https://understandingwar.org/backgrounder/iran-update-march-19-2026"}
+
+                    {"date": "2026-03-21", "title_zh": "伊朗局势更新特别报告 - 2026年3月21日", "url": "https://understandingwar.org/backgrounder/iran-update-special-report-march-21-2026"},
+
+                    {"date": "2026-03-19", "title_zh": "伊朗局势更新 - 2026年3月19日", "url": "https://understandingwar.org/backgrounder/iran-update-march-19-2026"}
+
                 ]
+
             };
+
         }
+
+
 
         function renderPage() {
+
             if (!warData || !warData.current_report) return;
+
             
+
             const data = warData.current_report;
+
             
+
             // 更新头部
-            document.getElementById('report-title').textContent = data.title_zh || '伊朗局势每日更�?;
+
+            document.getElementById('report-title').textContent = data.title_zh || '伊朗局势每日更新 - 2026年3月29日报告';
+
             document.getElementById('report-date').textContent = data.date ? data.date.slice(0, 10) : '--';
+
             document.getElementById('takeaway-count').textContent = data.takeaways ? data.takeaways.length : 0;
+
             document.getElementById('chart-count').textContent = data.charts ? data.charts.length : 0;
+
             document.getElementById('last-update').textContent = warData.updated ? warData.updated.slice(0, 19).replace('T', ' ') : '--';
+
             
+
             // 渲染要点
+
             renderTakeaways(data.takeaways);
+
             
+
             // 渲染图表
+
             renderCharts(data.charts);
+
             
+
             // 渲染历史
+
             renderHistory(warData.history);
+
         }
+
+
 
         function renderTakeaways(takeaways) {
+
             const container = document.getElementById('takeaways-list');
+
             if (!takeaways || takeaways.length === 0) {
+
                 container.innerHTML = '<div class="error-box">暂无数据</div>';
+
                 return;
+
             }
+
             
+
             container.innerHTML = takeaways.map((item, index) => {
+
                 const isNote = item.en && item.en.startsWith('NOTE:');
+
                 return `
+
                 <li class="takeaway-item ${isNote ? 'note' : ''}">
+
                     <div class="takeaway-zh">
+
                         <span class="takeaway-num">${isNote ? '!' : index + 1}</span>
-                        ${item.zh || '无翻�?}
+
+                        ${item.zh || '无翻译'}
+
                     </div>
+
                     <div class="takeaway-en" style="display:${showEnglish ? 'block' : 'none'};margin-top:8px;padding-top:8px;border-top:1px dashed #cbd5e1;">
+
                         <small style="color:#64748b;">EN:</small> ${item.en || ''}
+
                     </div>
+
                 </li>
+
                 `;
+
             }).join('');
+
         }
+
+
 
         function renderCharts(charts) {
+
             const container = document.getElementById('charts-grid');
+
             if (!charts || charts.length === 0) {
+
                 container.innerHTML = '<div class="error-box">暂无图表</div>';
+
                 return;
+
             }
+
             
+
             container.innerHTML = charts.map((chart, index) => `
+
                 <div class="chart-card" onclick="openChartModal(${index})">
+
                     <div class="chart-title">${chart.title_zh || chart.title || 'ISW分析图表'}</div>
+
                     <div class="chart-img-wrapper" style="position:relative;cursor:zoom-in;overflow:hidden;border-radius:8px;">
-                        <img class="chart-img" src="${chart.url}" alt="${chart.title_zh || ''}" 
+
+                        <img class="chart-img" src="${chart.screenshot || chart.url}" alt="${chart.title_zh || ''}" 
+
                              style="width:100%;height:auto;display:block;transition:transform 0.3s;"
+
                              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%23f1f5f9%22 width=%22400%22 height=%22200%22/><text fill=%22%2394a3b8%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>图表加载失败</text></svg>'">
+
                         <div class="chart-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.03);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+
                             <span style="background:rgba(30,58,95,0.9);color:white;padding:8px 16px;border-radius:20px;font-size:0.85rem;">🔍 点击查看大图</span>
+
                         </div>
+
                     </div>
+
                     ${chart.description_zh ? `<div class="chart-description" style="margin-top:12px;padding:12px;background:#f8fafc;border-radius:8px;font-size:0.9rem;color:#475569;line-height:1.6;">${chart.description_zh}</div>` : ''}
+
                     <div class="chart-tags">
+
                         ${(chart.context || []).map(tag => `<span class="chart-tag">${tag}</span>`).join('')}
+
                     </div>
+
                 </div>
+
             `).join('');
+
             
+
             // 添加悬停效果
+
             setTimeout(() => {
+
                 document.querySelectorAll('.chart-img-wrapper').forEach(wrapper => {
+
                     wrapper.addEventListener('mouseenter', function() {
+
                         this.querySelector('.chart-overlay').style.opacity = '1';
+
                         this.querySelector('img').style.transform = 'scale(1.02)';
+
                     });
+
                     wrapper.addEventListener('mouseleave', function() {
+
                         this.querySelector('.chart-overlay').style.opacity = '0';
+
                         this.querySelector('img').style.transform = 'scale(1)';
+
                     });
+
                 });
+
             }, 100);
+
         }
+
         
+
         // 打开图表弹窗
+
         function openChartModal(index) {
+
             const chart = warData.current_report.charts[index];
+
             if (!chart) return;
+
             
+
             const modal = document.createElement('div');
+
             modal.id = 'chart-modal';
+
             modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow:auto;';
+
             
+
             modal.innerHTML = `
+
                 <div style="position:relative;max-width:90%;max-height:80vh;margin-bottom:20px;">
-                    <img src="${chart.url}" style="max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-                    <button onclick="closeChartModal()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px;">�?/button>
+
+                    <img src="${chart.screenshot || chart.url}" style="max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
+
+                    <button onclick="closeChartModal()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px;">✕</button>
+
                 </div>
+
                 <div style="max-width:800px;color:white;text-align:center;">
+
                     <h3 style="margin-bottom:12px;font-size:1.3rem;">${chart.title_zh || 'ISW分析图表'}</h3>
+
                     ${chart.full_analysis ? `<div style="background:rgba(255,255,255,0.1);padding:20px;border-radius:12px;text-align:left;line-height:1.8;white-space:pre-wrap;font-size:0.95rem;">${chart.full_analysis}</div>` : ''}
+
                 </div>
+
                 <div style="margin-top:20px;color:rgba(255,255,255,0.6);font-size:0.85rem;">
+
                     点击任意位置关闭 | 数据来源: ISW
+
                 </div>
+
             `;
+
             
+
             modal.onclick = function(e) {
+
                 if (e.target === modal) closeChartModal();
+
             };
+
             
+
             document.body.appendChild(modal);
+
             document.body.style.overflow = 'hidden';
+
         }
+
         
+
         function closeChartModal() {
+
             const modal = document.getElementById('chart-modal');
+
             if (modal) {
+
                 modal.remove();
+
                 document.body.style.overflow = '';
+
             }
+
         }
+
         
-        // ESC键关闭弹�?
+
+        // ESC键关闭弹窗
+
         document.addEventListener('keydown', function(e) {
+
             if (e.key === 'Escape') closeChartModal();
+
         });
 
-        // ISW历史报告列表（过往+最新）- 补全所有日�?
+
+
+        // ISW历史报告列表（过往+最新）- 补全所有日期
+
         const ISW_HISTORY_REPORTS = [
-            {"date": "2026-03-26", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?6�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-26-2026"},
-            {"date": "2026-03-25", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?5�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-25-2026"},
-            {"date": "2026-03-24", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?4�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-24-2026"},
-            {"date": "2026-03-23", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?3�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-23-2026"},
-            {"date": "2026-03-21", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?1�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-21-2026"},
-            {"date": "2026-03-20", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?0�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-20-2026"},
-            {"date": "2026-03-19", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?9�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-19-2026"},
-            {"date": "2026-03-18", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?8�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-18-2026"},
-            {"date": "2026-03-17", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?7�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-17-2026"},
-            {"date": "2026-03-16", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?6�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-16-2026"},
-            {"date": "2026-03-15", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?5�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-15-2026"},
-            {"date": "2026-03-14", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?4�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-14-2026"},
-            {"date": "2026-03-13", "title_zh": "伊朗局势更�?特别报告 - 2026�?�?3�?, "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-13-2026"}
+
+            {"date": "2026-03-26", "title_zh": "伊朗局势更新 特别报告 - 2026年3月26日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-26-2026"},
+
+            {"date": "2026-03-25", "title_zh": "伊朗局势更新 特别报告 - 2026年3月25日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-25-2026"},
+
+            {"date": "2026-03-24", "title_zh": "伊朗局势更新 特别报告 - 2026年3月24日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-24-2026"},
+
+            {"date": "2026-03-23", "title_zh": "伊朗局势更新 特别报告 - 2026年3月23日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-23-2026"},
+
+            {"date": "2026-03-21", "title_zh": "伊朗局势更新 特别报告 - 2026年3月21日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-21-2026"},
+
+            {"date": "2026-03-20", "title_zh": "伊朗局势更新 特别报告 - 2026年3月20日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-20-2026"},
+
+            {"date": "2026-03-19", "title_zh": "伊朗局势更新 特别报告 - 2026年3月19日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-19-2026"},
+
+            {"date": "2026-03-18", "title_zh": "伊朗局势更新 特别报告 - 2026年3月18日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-18-2026"},
+
+            {"date": "2026-03-17", "title_zh": "伊朗局势更新 特别报告 - 2026年3月17日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-17-2026"},
+
+            {"date": "2026-03-16", "title_zh": "伊朗局势更新 特别报告 - 2026年3月16日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-16-2026"},
+
+            {"date": "2026-03-15", "title_zh": "伊朗局势更新 特别报告 - 2026年3月15日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-15-2026"},
+
+            {"date": "2026-03-14", "title_zh": "伊朗局势更新 特别报告 - 2026年3月14日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-14-2026"},
+
+            {"date": "2026-03-13", "title_zh": "伊朗局势更新 特别报告 - 2026年3月13日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-13-2026"}
+
         ];
 
+
+
         function renderHistory(history) {
+
             const container = document.getElementById('history-list');
+
             
-            // 优先使用传入的history数据，否则使用预定义的列�?
+
+            // 优先使用传入的history数据，否则使用预定义的列表
+
             const reports = (history && history.length > 0) ? history : ISW_HISTORY_REPORTS;
+
             
+
             if (!reports || reports.length === 0) {
+
                 container.innerHTML = '<div class="error-box">暂无历史记录</div>';
+
                 return;
+
             }
+
             
+
             container.innerHTML = reports.map((item, index) => `
+
                 <a href="${item.url}" target="_blank" class="history-item">
+
                     <span class="history-date">${item.date}</span>
-                    <span class="history-title">${item.title_zh || item.title || '无标�?}</span>
-                    <span class="history-arrow">�?/span>
+
+                    <span class="history-title">${item.title_zh || item.title || '无标题'}</span>
+
+                    <span class="history-arrow">→</span>
+
                 </a>
+
             `).join('');
+
         }
+
+
 
         function toggleLanguage() {
+
             showEnglish = !showEnglish;
+
             const btn = document.querySelector('.lang-toggle');
+
             btn.textContent = showEnglish ? '隐藏英文' : '显示英文';
+
             
+
             const enElements = document.querySelectorAll('.takeaway-en');
+
             enElements.forEach(el => {
+
                 el.style.display = showEnglish ? 'block' : 'none';
+
             });
+
         }
 
+
+
         // 页面加载
+
         document.addEventListener('DOMContentLoaded', loadData);
+
     </script>
+
 </body>
+
 </html>
+

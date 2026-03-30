@@ -1,222 +1,15 @@
 {
-  "updated": "2026-03-30T02:49:27",
-  "realtime": {},
-  "daily": [],
-  "direction": [],
-  "fleet_type": [],
-  "snapshots": [
-    {
-      "ts": "2026-03-30 02:36",
-      "file": "strait_snapshots/20260330_0236.png"
-    },
-    {
-      "ts": "2026-03-30 02:38",
-      "file": "strait_snapshots/20260330_0238.png"
-    },
-    {
-      "ts": "2026-03-21 17:12",
-      "file": "strait_snapshots/20260321_1712.png"
-    },
-    {
-      "ts": "2026-03-21 17:16",
-      "file": "strait_snapshots/20260321_1716.png"
-    },
-    {
-      "ts": "2026-03-24 17:15",
-      "file": "strait_snapshots/20260324_1715.png"
-    },
-    {
-      "ts": "2026-03-24 19:29",
-      "file": "strait_snapshots/20260324_1929.png"
-    },
-    {
-      "ts": "2026-03-24 19:34",
-      "file": "strait_snapshots/20260324_1934.png"
-    },
-    {
-      "ts": "2026-03-24 19:38",
-      "file": "strait_snapshots/20260324_1938.png"
-    },
-    {
-      "ts": "2026-03-24 19:45",
-      "file": "strait_snapshots/20260324_1945.png"
-    },
-    {
-      "ts": "2026-03-27 05:53",
-      "file": "strait_snapshots/20260327_0553.png"
-    },
-    {
-      "ts": "2026-03-27 07:11",
-      "file": "strait_snapshots/20260327_0711.png"
-    },
-    {
-      "ts": "2026-03-27 08:07",
-      "file": "strait_snapshots/20260327_0807.png"
-    },
-    {
-      "ts": "2026-03-28 14:00",
-      "file": "strait_snapshots/20260328_1400.png"
-    },
-    {
-      "ts": "2026-03-28 14:43",
-      "file": "strait_snapshots/20260328_1443.png"
-    },
-    {
-      "ts": "2026-03-28 15:33",
-      "file": "strait_snapshots/20260328_1533.png"
-    },
-    {
-      "ts": "2026-03-28 16:00",
-      "file": "strait_snapshots/20260328_1600.png"
-    },
-    {
-      "ts": "2026-03-28 16:48",
-      "file": "strait_snapshots/20260328_1648.png"
-    },
-    {
-      "ts": "2026-03-28 17:31",
-      "file": "strait_snapshots/20260328_1731.png"
-    },
-    {
-      "ts": "2026-03-28 17:59",
-      "file": "strait_snapshots/20260328_1759.png"
-    },
-    {
-      "ts": "2026-03-28 19:34",
-      "file": "strait_snapshots/20260328_1934.png"
-    },
-    {
-      "ts": "2026-03-28 19:56",
-      "file": "strait_snapshots/20260328_1956.png"
-    },
-    {
-      "ts": "2026-03-28 20:36",
-      "file": "strait_snapshots/20260328_2036.png"
-    },
-    {
-      "ts": "2026-03-28 21:02",
-      "file": "strait_snapshots/20260328_2102.png"
-    },
-    {
-      "ts": "2026-03-28 21:48",
-      "file": "strait_snapshots/20260328_2148.png"
-    },
-    {
-      "ts": "2026-03-28 22:31",
-      "file": "strait_snapshots/20260328_2231.png"
-    },
-    {
-      "ts": "2026-03-28 23:01",
-      "file": "strait_snapshots/20260328_2301.png"
-    },
-    {
-      "ts": "2026-03-29 02:36",
-      "file": "strait_snapshots/20260329_0236.png"
-    },
-    {
-      "ts": "2026-03-29 05:01",
-      "file": "strait_snapshots/20260329_0501.png"
-    },
-    {
-      "ts": "2026-03-29 06:37",
-      "file": "strait_snapshots/20260329_0637.png"
-    },
-    {
-      "ts": "2026-03-29 07:38",
-      "file": "strait_snapshots/20260329_0738.png"
-    },
-    {
-      "ts": "2026-03-29 08:06",
-      "file": "strait_snapshots/20260329_0806.png"
-    },
-    {
-      "ts": "2026-03-29 09:55",
-      "file": "strait_snapshots/20260329_0955.png"
-    },
-    {
-      "ts": "2026-03-29 10:37",
-      "file": "strait_snapshots/20260329_1037.png"
-    },
-    {
-      "ts": "2026-03-29 11:04",
-      "file": "strait_snapshots/20260329_1104.png"
-    },
-    {
-      "ts": "2026-03-29 11:47",
-      "file": "strait_snapshots/20260329_1147.png"
-    },
-    {
-      "ts": "2026-03-29 13:00",
-      "file": "strait_snapshots/20260329_1300.png"
-    },
-    {
-      "ts": "2026-03-29 13:57",
-      "file": "strait_snapshots/20260329_1357.png"
-    },
-    {
-      "ts": "2026-03-29 14:41",
-      "file": "strait_snapshots/20260329_1441.png"
-    },
-    {
-      "ts": "2026-03-29 15:34",
-      "file": "strait_snapshots/20260329_1534.png"
-    },
-    {
-      "ts": "2026-03-29 16:00",
-      "file": "strait_snapshots/20260329_1600.png"
-    },
-    {
-      "ts": "2026-03-29 16:49",
-      "file": "strait_snapshots/20260329_1649.png"
-    },
-    {
-      "ts": "2026-03-29 17:33",
-      "file": "strait_snapshots/20260329_1733.png"
-    },
-    {
-      "ts": "2026-03-29 18:01",
-      "file": "strait_snapshots/20260329_1801.png"
-    },
-    {
-      "ts": "2026-03-29 19:50",
-      "file": "strait_snapshots/20260329_1950.png"
-    },
-    {
-      "ts": "2026-03-29 20:36",
-      "file": "strait_snapshots/20260329_2036.png"
-    },
-    {
-      "ts": "2026-03-29 21:02",
-      "file": "strait_snapshots/20260329_2102.png"
-    },
-    {
-      "ts": "2026-03-29 22:33",
-      "file": "strait_snapshots/20260329_2233.png"
-    },
-    {
-      "ts": "2026-03-29 23:50",
-      "file": "strait_snapshots/20260329_2350.png"
-    },
-    {
-      "ts": "2026-03-30 02:35",
-      "file": "strait_snapshots/20260330_0235.png"
-    },
-    {
-      "ts": "2026-03-30 02:39",
-      "file": "strait_snapshots/20260330_0239.png"
-    }
-  ],
-  "video_url": "",
+  "updated": "2026-03-30T13:17:17",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
   },
   "jin10": {
-    "updated": "2026-03-28T21:03:01",
+    "updated": "2026-03-30T13:16:07",
     "source": "金十数据",
     "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
     "industry_pressure": {
-      "total": 93.33,
+      "total": 98.33,
       "methanol": {
         "name": "甲醇",
         "value": 99
@@ -231,27 +24,27 @@
       },
       "lng": {
         "name": "液化天然气/LNG",
-        "value": 96
+        "value": 99
       },
       "fertilizer": {
         "name": "化肥",
-        "value": 96.2
+        "value": 99
       },
       "aluminum": {
         "name": "铝材",
-        "value": 92.3
+        "value": 95.3
       }
     },
     "ship_counts": {
       "yesterday_passed": 0,
-      "hormuz_passing": 4,
-      "sailing": 720,
-      "anchored": 2424,
-      "total_in_area": 3144,
-      "calculated_total": 3144
+      "hormuz_passing": 1,
+      "sailing": 841,
+      "anchored": 1891,
+      "total_in_area": 2732,
+      "calculated_total": 2732
     },
     "video_url": "https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4",
-    "snapshot_url": null
+    "snapshot_url": "https://oimg.jin10.com/news/26/03/nLk5TCXPZVqieXMYQWO5Z9.png"
   },
   "history": {
     "dates": [
@@ -371,7 +164,9 @@
       "2026/3/24",
       "2026/3/25",
       "2026/3/26",
-      "2026/3/27"
+      "2026/3/27",
+      "2026/3/28",
+      "2026/3/29"
     ],
     "ship_counts": [
       135,
@@ -490,7 +285,9 @@
       3,
       4,
       6,
-      3
+      2,
+      10,
+      8
     ],
     "tonnages": [
       11558286,
@@ -609,8 +406,9 @@
       92700,
       146700,
       340900,
-      139800
+      135600,
+      589600,
+      698300
     ]
-  },
-  "timelapse_video": "strait_timelapse.mp4"
+  }
 }

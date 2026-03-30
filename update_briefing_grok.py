@@ -18,10 +18,10 @@ from typing import Dict, List, Optional
 CONFIG = {
     # API密钥（必填）
     "api_key": "sk-9XSaf4XwU4DefoKqpuZWVZ5OrZbzmw6YsksHaqo7VcDw3ZF1",
-
+    
     # API类型选择（必填）
     # 可选值："grok" | "openai" | "custom"
-    "api_type": "grok",
+    "api_type": "openai",
 
     # API基础URL（根据中转服务修改）
     "base_url": "https://api.vectorengine.ai/v1",
