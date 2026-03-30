@@ -156,7 +156,7 @@ def generate_briefing_with_ai(config, info):
     user_prompt = f"""请生成{info['date']}（美以伊冲突第{info['conflict_day']}天）的每日简报。
 
 要求：
-1. 基于最新公开信息（截至2026年3月）
+1. 基于最新公开信息
 2. 内容真实准确，不虚构数据
 3. 严格按JSON格式输出
 4. 深度分析部分要详细展开

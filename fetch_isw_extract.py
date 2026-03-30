@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-ISW 数据提取脚本（提取最新报告全文和所有图片）
+ISW 数据提取脚本（仅提取，不翻译）
 提取内容：
 1. Key Takeaways（英文原文）
 2. 所有图表（地图、分析图等）
-3. 每段正文内容（用于图表上下文）
+3. 正文内容（用于图表上下文）
 """
 
 import asyncio
@@ -19,11 +19,10 @@ from zoneinfo import ZoneInfo
 from playwright.async_api import async_playwright
 
 WORKDIR = Path(__file__).parent.resolve()
-DATA_FILE = WORKDIR / "isw_data_extracted.json"
+DATA_FILE = WORKDIR / "isw_raw_data.json"
 SCREENSHOT_DIR = WORKDIR / "isw_screenshots"
 BEIJING_TZ = ZoneInfo("Asia/Shanghai")
 
-# 月份名称映射
 MONTHS = {
     1: 'january', 2: 'february', 3: 'march', 4: 'april',
     5: 'may', 6: 'june', 7: 'july', 8: 'august',
@@ -32,12 +31,10 @@ MONTHS = {
 
 
 def ensure_dirs():
-    """确保目录存在"""
     SCREENSHOT_DIR.mkdir(exist_ok=True)
 
 
 def get_chrome_path():
-    """获取Chrome路径"""
     possible_paths = [
         r"C:\Program Files\Google\Chrome\Application\chrome.exe",
         r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
@@ -50,21 +47,16 @@ def get_chrome_path():
 
 
 async def find_latest_report_url(page):
-    """查找最新报告的URL"""
     now = datetime.now(BEIJING_TZ)
     
-    # 尝试最近7天的日期
     for days_back in range(7):
         d = now - __import__('datetime').timedelta(days=days_back)
         month_name = MONTHS[d.month]
         
-        # Special Report 格式
         url = f"https://understandingwar.org/backgrounder/iran-update-special-report-{month_name}-{d.day}-{d.year}"
         try:
-            print(f"[检查] {url}")
             response = await page.goto(url, wait_until="domcontentloaded", timeout=15000)
             if response and response.status == 200:
-                # 检查页面是否有内容
                 title = await page.title()
                 if "404" not in title and "Not Found" not in title:
                     print(f"[找到] 最新报告: {url}")
@@ -72,10 +64,8 @@ async def find_latest_report_url(page):
         except:
             pass
         
-        # 普通格式
         url2 = f"https://understandingwar.org/backgrounder/iran-update-{month_name}-{d.day}-{d.year}"
         try:
-            print(f"[检查] {url2}")
             response = await page.goto(url2, wait_until="domcontentloaded", timeout=15000)
             if response and response.status == 200:
                 title = await page.title()
@@ -89,8 +79,7 @@ async def find_latest_report_url(page):
 
 
 async def extract_takeaways(page):
-    """提取Key Takeaways"""
-    takeaways = await page.evaluate("""
+    return await page.evaluate("""
         () => {
             const results = [];
             const selectors = [
@@ -115,58 +104,46 @@ async def extract_takeaways(page):
             return results;
         }
     """)
-    return takeaways
 
 
 async def extract_all_images(page):
-    """提取所有文章图片"""
-    images = await page.evaluate("""
+    return await page.evaluate("""
         () => {
             const results = [];
             const seen = new Set();
             
-            // 查找所有图片
             const allImages = document.querySelectorAll('img');
             
             for (const img of allImages) {
                 const src = img.src || img.getAttribute('data-src') || '';
                 if (!src) continue;
                 
-                // 只保留上传的图片（排除图标、logo等）
                 if (!src.includes('wp-content/uploads')) continue;
-                if (!src.match(/\/202[56]\//)) continue;
+                if (!src.match(/\\/202[56]\\//)) continue;
                 
-                // 排除小图标
                 const width = parseInt(img.getAttribute('width')) || 0;
                 if (width > 0 && width < 200) continue;
                 
-                // 排除特定模式
                 const lowerSrc = src.toLowerCase();
                 if (lowerSrc.includes('icon') || 
                     lowerSrc.includes('logo') || 
                     lowerSrc.includes('babel') ||
                     lowerSrc.includes('avatar')) continue;
                 
-                // 获取高分辨率版本
                 let fullSrc = src;
                 fullSrc = fullSrc.replace(/-\\d+x\\d+\\.(webp|png|jpg|jpeg)$/i, '.$1');
                 
                 if (seen.has(fullSrc)) continue;
                 seen.add(fullSrc);
                 
-                // 从URL提取标题
                 let title = '';
                 const alt = img.alt || '';
                 if (alt && alt !== 'Map Thumbnail') {
                     title = alt;
                 } else {
-                    // 从文件名提取
                     const match = fullSrc.match(/\\/([^\\/]+)\\.(webp|png|jpg|jpeg)$/i);
                     if (match) {
-                        title = match[1]
-                            .replace(/-/g, ' ')
-                            .replace(/\\bFINAL\\b/i, '')
-                            .trim();
+                        title = match[1].replace(/-/g, ' ').replace(/\\bFINAL\\b/i, '').trim();
                     }
                 }
                 
@@ -180,12 +157,10 @@ async def extract_all_images(page):
             return results;
         }
     """)
-    return images
 
 
 async def extract_body_text(page):
-    """提取正文内容"""
-    paragraphs = await page.evaluate("""
+    return await page.evaluate("""
         () => {
             const results = [];
             const selectors = [
@@ -208,16 +183,12 @@ async def extract_body_text(page):
             return results;
         }
     """)
-    return paragraphs
 
 
 async def capture_image_screenshot(page, img_url, index, date_str):
-    """截取图片"""
     try:
-        # 查找图片元素
         img_element = await page.query_selector(f'img[src="{img_url}"]')
         if not img_element:
-            # 尝试部分匹配
             all_imgs = await page.query_selector_all('img')
             for img in all_imgs:
                 src = await img.get_attribute('src') or ''
@@ -228,11 +199,9 @@ async def capture_image_screenshot(page, img_url, index, date_str):
         if not img_element:
             return None
         
-        # 生成文件名
         safe_name = f"chart_{date_str}_{index:02d}.png"
         screenshot_path = SCREENSHOT_DIR / safe_name
         
-        # 截图
         await img_element.screenshot(path=str(screenshot_path))
         
         return str(screenshot_path.relative_to(WORKDIR))
@@ -242,11 +211,10 @@ async def capture_image_screenshot(page, img_url, index, date_str):
 
 
 async def fetch_isw_extract():
-    """提取ISW最新报告"""
     ensure_dirs()
     
     print("=" * 70)
-    print("ISW 最新报告提取")
+    print("ISW 最新报告提取（仅提取，不翻译）")
     print("=" * 70)
     
     async with async_playwright() as p:
@@ -260,7 +228,6 @@ async def fetch_isw_extract():
         )
         page = await context.new_page()
         
-        # 查找最新报告URL
         print("\n[步骤1/4] 查找最新报告...")
         latest_url = await find_latest_report_url(page)
         
@@ -271,14 +238,11 @@ async def fetch_isw_extract():
         
         print(f"[成功] 报告URL: {latest_url}")
         
-        # 等待页面完全加载
         await page.wait_for_load_state("networkidle", timeout=30000)
         
-        # 获取标题
         title = await page.title()
         print(f"[标题] {title}")
         
-        # 解析日期
         date_match = re.search(r'(\\d{4})-(\\d{2})-(\\d{2})', latest_url)
         if date_match:
             article_date = date_match.group(0)
@@ -286,22 +250,20 @@ async def fetch_isw_extract():
             article_date = datetime.now(BEIJING_TZ).strftime("%Y-%m-%d")
         print(f"[日期] {article_date}")
         
-        # 提取Key Takeaways
         print("\n[步骤2/4] 提取Key Takeaways...")
         takeaways = await extract_takeaways(page)
         print(f"[成功] 提取 {len(takeaways)} 条Key Takeaways")
         
-        # 提取所有图片
         print("\n[步骤3/4] 提取所有图片...")
         images = await extract_all_images(page)
         print(f"[成功] 找到 {len(images)} 张图片")
+        for i, img in enumerate(images, 1):
+            print(f"  {i}. {img['title']}")
         
-        # 提取正文
         print("\n[步骤4/4] 提取正文内容...")
         body_text = await extract_body_text(page)
         print(f"[成功] 提取 {len(body_text)} 段正文")
         
-        # 截图所有图片
         print("\n[截图] 开始截取图片...")
         captured_images = []
         for i, img_info in enumerate(images):
@@ -319,7 +281,6 @@ async def fetch_isw_extract():
         
         await browser.close()
         
-        # 保存数据
         data = {
             "url": latest_url,
             "title": title,
@@ -333,12 +294,9 @@ async def fetch_isw_extract():
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         
-        print(f"\n[保存] 数据已保存: {DATA_FILE}")
+        print(f"\n[保存] 原始数据已保存: {DATA_FILE}")
         print("=" * 70)
-        print("提取完成!")
-        print(f"  - Key Takeaways: {len(takeaways)} 条")
-        print(f"  - 图片: {len(captured_images)} 张")
-        print(f"  - 正文段落: {len(body_text)} 段")
+        print("提取完成! 请查看 isw_raw_data.json 并进行人工翻译")
         print("=" * 70)
         
         return True
