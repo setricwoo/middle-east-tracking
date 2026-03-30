@@ -21,9 +21,9 @@ CLOB_API = "https://clob.polymarket.com"
 EVENT_SLUGS = [
     "trump-announces-end-of-military-operations-against-iran-by",
     "us-x-iran-ceasefire-by",
-    "avg-of-ships-transiting-strait-of-hormuz-end-of-march",
+    "avg-of-ships-transiting-strait-of-hormuz-end-of-april",
     "strait-of-hormuz-traffic-returns-to-normal-by-april-30",
-    "will-crude-oil-cl-hit-by-end-of-march",
+    "what-price-will-wti-hit-in-april-2026",
     "cl-hit-jun-2026",
 ]
 
@@ -418,19 +418,19 @@ def generate_html(data: Dict) -> str:
     # 1. 特朗普宣布结束军事行动
     trump_data = data.get("trump-announces-end-of-military-operations-against-iran-by", {})
     html += generate_event_card(trump_data, "特朗普宣布结束对伊朗军事行动", "不同截止日期的概率预测",
-                                 ["March 15th", "March 31st", "April 30th", "June 30th"],
+                                 ["April 7th", "April 15th", "April 30th", "June 30th"],
                                  ["blue", "indigo", "teal", "sky"], chart_idx)
     chart_idx += 1
 
     # 2. 美伊停火
     ceasefire_data = data.get("us-x-iran-ceasefire-by", {})
     html += generate_event_card(ceasefire_data, "美伊停火时间", "不同截止日期的概率预测",
-                                 ["March 31", "April 30", "June 30"],
-                                 ["blue", "indigo", "teal"], chart_idx)
+                                 ["April 30", "May 31", "June 30", "December 31"],
+                                 ["blue", "indigo", "teal", "sky"], chart_idx)
     chart_idx += 1
 
     # 3. 霍尔木兹海峡船舶数量
-    ships_data = data.get("avg-of-ships-transiting-strait-of-hormuz-end-of-march", {})
+    ships_data = data.get("avg-of-ships-transiting-strait-of-hormuz-end-of-april", {})
     html += generate_ships_card(ships_data, chart_idx)
     chart_idx += 1
 
@@ -440,9 +440,9 @@ def generate_html(data: Dict) -> str:
                                   chart_idx, "indigo")
     chart_idx += 1
 
-    # 5. 3月原油价格
-    oil_march_data = data.get("will-crude-oil-cl-hit-by-end-of-march", {})
-    html += generate_oil_card(oil_march_data, "3月原油价格预测", "CL期货价格3月底前触碰概率",
+    # 5. 4月原油价格
+    oil_april_data = data.get("what-price-will-wti-hit-in-april-2026", {})
+    html += generate_oil_card(oil_april_data, "4月原油价格预测", "WTI期货价格4月底前触碰概率",
                                chart_idx)
     chart_idx += 1
 

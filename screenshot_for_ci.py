@@ -2,10 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 CI 专用截图脚本（用于 GitHub Actions）
-1. Playwright 截图 MarineTraffic 霍尔木兹海峡公开页面
-2. 追加截图记录到 strait_data.json["snapshots"]
-3. 从最近本地 PNG 生成延时视频 strait_timelapse.mp4（imageio-ffmpeg）
-4. 清理超过 144 张的旧截图
+增强反检测能力，避免被 MarineTraffic 屏蔽
 """
 
 import asyncio
@@ -16,6 +13,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import random
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -32,6 +30,68 @@ DATA_FILE = WORKDIR / "strait_data.json"
 MARINE_URL = "https://www.marinetraffic.com/en/ais/home/centerx:55.8/centery:25.7/zoom:8"
 MAX_SNAPSHOTS = 144  # 约2天
 UTC_TZ = ZoneInfo("UTC")
+
+# 更真实的 User-Agent 列表
+USER_AGENTS = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15",
+]
+
+STEALTH_SCRIPT = """
+// 完整的反检测脚本
+Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+Object.defineProperty(screen, 'colorDepth', { get: () => 24 });
+Object.defineProperty(navigator, 'deviceMemory', { get: () => 8 });
+Object.defineProperty(navigator, 'hardwareConcurrency', { get: () => 4 });
+
+// 覆盖 Canvas 指纹
+defaults = {};
+const originalToDataURL = HTMLCanvasElement.prototype.toDataURL;
+HTMLCanvasElement.prototype.toDataURL = function(type) {
+    if (this.width > 0 && this.height > 0) {
+        const ctx = this.getContext('2d');
+        if (ctx) {
+            const imageData = ctx.getImageData(0, 0, this.width, this.height);
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                imageData.data[i] += Math.random() > 0.5 ? 1 : -1;
+            }
+            ctx.putImageData(imageData, 0, 0);
+        }
+    }
+    return originalToDataURL.apply(this, arguments);
+};
+
+// 覆盖 WebGL
+const getParameter = WebGLRenderingContext.prototype.getParameter;
+WebGLRenderingContext.prototype.getParameter = function(parameter) {
+    if (parameter === 37445) {
+        return 'Intel Inc.';
+    }
+    if (parameter === 37446) {
+        return 'Intel Iris Xe Graphics';
+    }
+    return getParameter.apply(this, arguments);
+};
+
+// 禁用 Notifications
+window.Notification = undefined;
+
+// 覆盖 Permissions
+const originalQuery = navigator.permissions.query;
+navigator.permissions.query = function(parameters) {
+    return Promise.resolve({
+        state: 'prompt',
+        onchange: null,
+        addEventListener: () => {},
+        removeEventListener: () => {},
+        dispatchEvent: () => {},
+    });
+};
+"""
 
 
 def _get_ffmpeg():
@@ -56,11 +116,10 @@ def load_data() -> dict:
         except Exception:
             pass
     
-    # 确保snapshots字段存在
     if "snapshots" not in data:
         data["snapshots"] = []
     
-    # 扫描现有截图文件，同步记录（确保所有文件都有记录）
+    # 扫描现有截图文件，同步记录
     existing_files = sorted(glob.glob(str(SNAPSHOTS_DIR / "*.png")))
     existing_set = {s.get("file", "").split("/")[-1] for s in data["snapshots"]}
     
@@ -78,7 +137,6 @@ def load_data() -> dict:
     if added > 0:
         print(f"[同步] 新增 {added} 条截图记录，总计 {len(data['snapshots'])} 条")
     
-    # 限制记录数量
     data["snapshots"] = data["snapshots"][-MAX_SNAPSHOTS:]
     
     return data
@@ -101,7 +159,6 @@ def cleanup_snapshots():
 
 def create_timelapse(data: dict):
     """从最近本地 PNG 生成延时视频"""
-    # 收集本地截图（只用 file 字段的快照）
     local_snaps = [s for s in data.get("snapshots", []) if s.get("file")]
     if len(local_snaps) < 3:
         print(f"[视频] 本地快照不足({len(local_snaps)})，跳过视频生成")
@@ -144,7 +201,7 @@ def create_timelapse(data: dict):
             data["timelapse_video"] = "strait_timelapse.mp4"
             print(f"[视频] 合成完成: {size_mb:.1f} MB，{len(copied)} 帧")
         else:
-            print(f"[视频] ffmpeg 失败: {result.stderr[-200:]}")
+            print(f"[视频] ffmpeg 失败")
     except Exception as e:
         print(f"[视频] 生成失败: {e}")
     finally:
@@ -157,61 +214,123 @@ async def screenshot_marinetraffic(data: dict):
     filename = now.strftime("%Y%m%d_%H%M") + ".png"
     filepath = SNAPSHOTS_DIR / filename
 
+    # 随机选择 User-Agent
+    user_agent = random.choice(USER_AGENTS)
+    
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True)
+        # 使用更多反检测选项
+        browser = await pw.chromium.launch(
+            headless=True,
+            args=[
+                '--disable-blink-features=AutomationControlled',
+                '--disable-web-security',
+                '--disable-features=IsolateOrigins,site-per-process',
+                '--disable-site-isolation-trials',
+                '--disable-dev-shm-usage',
+                '--no-sandbox',
+            ]
+        )
+        
         context = await browser.new_context(
-            user_agent=(
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-            ),
-            viewport={"width": 1280, "height": 800},
+            user_agent=user_agent,
+            viewport={"width": 1280 + random.randint(-50, 50), "height": 800 + random.randint(-30, 30)},
+            device_scale_factor=1,
+            locale='en-US',
+            timezone_id='America/New_York',
+            geolocation={'latitude': 40.7128, 'longitude': -74.0060},
+            permissions=['geolocation'],
+            color_scheme='light',
+            extra_http_headers={
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'DNT': '1',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+                'Sec-Fetch-Dest': 'document',
+                'Sec-Fetch-Mode': 'navigate',
+                'Sec-Fetch-Site': 'none',
+                'Sec-Fetch-User': '?1',
+                'Cache-Control': 'max-age=0',
+            }
         )
-        # 隐藏 webdriver 特征
-        await context.add_init_script(
-            "Object.defineProperty(navigator,'webdriver',{get:()=>undefined})"
-        )
+        
+        # 注入完整的反检测脚本
+        await context.add_init_script(STEALTH_SCRIPT)
+        
         page = await context.new_page()
 
         print(f"[截图] 正在加载 MarineTraffic...")
+        print(f"[截图] UA: {user_agent[:50]}...")
+        
         try:
+            # 先访问主页获取 cookies
+            await page.goto("https://www.marinetraffic.com", wait_until="domcontentloaded", timeout=30000)
+            await asyncio.sleep(2 + random.random() * 2)
+            
+            # 再访问目标页面
             await page.goto(MARINE_URL, wait_until="domcontentloaded", timeout=45000)
-            await asyncio.sleep(6)  # 等待地图瓦片渲染
-            await page.screenshot(path=str(filepath), full_page=False)
-            size_kb = filepath.stat().st_size / 1024
-            print(f"[截图] 已保存: {filename} ({size_kb:.0f} KB)")
+            
+            # 随机延迟，等待地图渲染
+            await asyncio.sleep(8 + random.random() * 4)
+            
+            # 检查是否被屏蔽
+            content = await page.content()
+            if "you have been blocked" in content.lower() or "sorry" in content.lower():
+                print("[警告] 检测到被 MarineTraffic 屏蔽，跳过本次截图")
+                # 删除被屏蔽的截图
+                await context.close()
+                await browser.close()
+                return False
+            
+            # 检查是否加载成功（是否有地图元素）
+            if "ais" in content.lower() or "vessel" in content.lower():
+                await page.screenshot(path=str(filepath), full_page=False)
+                size_kb = filepath.stat().st_size / 1024
+                print(f"[截图] 已保存: {filename} ({size_kb:.0f} KB)")
 
-            snap = {"ts": now.strftime("%Y-%m-%d %H:%M"), "file": f"strait_snapshots/{filename}"}
-            data["snapshots"].append(snap)
-            data["snapshots"] = data["snapshots"][-MAX_SNAPSHOTS:]
+                snap = {"ts": now.strftime("%Y-%m-%d %H:%M"), "file": f"strait_snapshots/{filename}"}
+                data["snapshots"].append(snap)
+                data["snapshots"] = data["snapshots"][-MAX_SNAPSHOTS:]
+                return True
+            else:
+                print("[警告] 页面内容异常，可能未正确加载")
+                return False
 
         except PlaywrightTimeout:
-            print("[警告] MarineTraffic 截图超时，跳过")
+            print("[警告] MarineTraffic 截图超时")
+            return False
         except Exception as e:
             print(f"[警告] MarineTraffic 截图失败: {e}")
+            return False
         finally:
             await context.close()
             await browser.close()
-
-    cleanup_snapshots()
 
 
 async def main():
     print("=" * 60)
     print("CI 截图脚本（GitHub Actions 专用）")
+    print("增强反检测版本")
     print(f"时间: {datetime.now(UTC_TZ).strftime('%Y-%m-%d %H:%M:%S')} UTC")
     print("=" * 60)
 
     os.chdir(WORKDIR)
     data = load_data()
 
-    # 1. 截图
-    await screenshot_marinetraffic(data)
+    # 截图
+    success = await screenshot_marinetraffic(data)
+    
+    if success:
+        # 生成延时视频
+        create_timelapse(data)
+    else:
+        print("[跳过] 截图失败，不生成视频")
 
-    # 2. 生成延时视频
-    create_timelapse(data)
-
-    # 3. 保存
+    # 保存
     save_data(data)
+    cleanup_snapshots()
+    
     print("=" * 60)
     print("完成!")
 
