@@ -99,7 +99,10 @@
       "Bash(python -c \"import json; d=json.load\\(open\\(''data/excel_history.json'',''r'',encoding=''utf-8''\\)\\); print\\(''流动性指标数量:'', len\\(d.get\\(''liquidity'',[]\\)\\)\\); [print\\(f\"\"{i+1}. {ind[''name'']} - 数据点:{len\\(ind[''values'']\\)}\"\"\\) for i,ind in enumerate\\(d.get\\(''liquidity'',[]\\)\\)]\")",
       "Bash(python update_data_from_excel.py)",
       "Bash(python -c \"import ast; ast.parse\\(open\\(''update_briefing_grok.py'',''r'',encoding=''utf-8''\\).read\\(\\)\\); print\\(''语法检查通过''\\)\")",
-      "Bash(python update_briefing_grok.py)"
+      "Bash(python update_briefing_grok.py)",
+      "Bash(python update_supply_chain.py)",
+      "Bash(python update_strait_data.py)",
+      "Bash(python scrape_cls_final.py)"
     ]
   }
 }
