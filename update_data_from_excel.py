@@ -149,49 +149,69 @@ def extract_liquidity_indicators(df):
 
 
 def extract_financial_data(df):
-    """Extract financial market data (stocks, bonds, etc.)"""
+    """Extract financial market data (stocks, bonds, etc.)
+
+    全球市场sheet结构：
+    - Row 0: "Wind"
+    - Row 1: 指标名称
+    - Row 2: 更新日期
+    - Row 3-28985: 数据（最新在前，日期递减）
+    - Row 28986+: 重复数据（跳过）
+    """
     names = df.iloc[1, :].tolist() if len(df) > 1 else []
-    units = df.iloc[3, :].tolist() if len(df) > 3 else []
-    
+
     stocks = {}
     bonds = {}
-    
+
+    # 找到日期开始递增的位置（重复数据的开始）
+    cutoff_row = len(df)
+    prev_date = None
+    for i in range(3, len(df)):
+        d = df.iloc[i, 0]
+        if isinstance(d, datetime):
+            if prev_date and d > prev_date:
+                cutoff_row = i
+                break
+            prev_date = d
+
+    print(f"  [INFO] Financial data cutoff at row {cutoff_row}")
+
     for col_idx in range(1, len(df.columns)):
         name = names[col_idx] if col_idx < len(names) else f'指标{col_idx}'
-        unit = units[col_idx] if col_idx < len(units) else ''
-        
+
         if pd.isna(name) or name == '' or 'Unnamed' in str(name):
             continue
-        
+
         dates = []
         values = []
-        
-        for row_idx in range(6, len(df)):
+
+        # 只读取到cutoff_row，避免重复数据
+        for row_idx in range(3, cutoff_row):
             date_val = df.iloc[row_idx, 0]
             data_val = df.iloc[row_idx, col_idx]
-            
+
             if isinstance(date_val, datetime):
                 date_str = date_val.strftime('%Y-%m-%d')
                 if pd.notna(data_val) and isinstance(data_val, (int, float)):
                     dates.append(date_str)
                     values.append(round(float(data_val), 2))
-        
-        # Reverse to chronological order
+
+        # 数据在Excel中是最新在前，需要反转为时间顺序（旧→新）
         dates.reverse()
         values.reverse()
-        
+
         if len(values) > 0:
             # Determine if stock or bond based on name
             name_str = str(name)
             data_obj = {
                 'name': name_str,
-                'unit': str(unit) if pd.notna(unit) else '',
+                'unit': '',
                 'dates': dates,
                 'values': values,
-                'latest': values[-1] if values else None,
+                'latest': values[-1] if values else None,  # 最新值在最后一位（反转后）
                 'latest_date': dates[-1] if dates else None
             }
-            
+
             # Classify as stock or bond
             if any(kw in name_str for kw in ['国债', '美债', '收益率', '债券']):
                 key = f'bond_{col_idx}'
@@ -199,7 +219,7 @@ def extract_financial_data(df):
             else:
                 key = f'stock_{col_idx}'
                 stocks[key] = data_obj
-    
+
     return {'stocks': stocks, 'bonds': bonds}
 
 def update_html_data():

@@ -1,12 +1,13 @@
+#!/usr/bin/env python3
 import json
 
-with open('strait_data.json', 'r', encoding='utf-8') as f:
-    data = json.load(f)
+with open('isw_translation_manual.json', 'r', encoding='utf-8') as f:
+    d = json.load(f)
 
-print('strait_data.json:')
-print(f"  updated: {data.get('updated', 'N/A')}")
+print(f'Key Takeaways: {len(d["takeaways_en"])}')
+print(f'Toplines: {len(d["toplines_en"])}')
+print(f'Charts: {len(d["charts"])}')
 
-jin10 = data.get('jin10', {})
-print(f"  航行中: {jin10.get('ship_counts', {}).get('sailing', 'N/A')}")
-print(f"  锚泊: {jin10.get('ship_counts', {}).get('anchored', 'N/A')}")
-print(f"  压力系数: {jin10.get('industry_pressure', {}).get('total', 'N/A')}")
+# 列出所有图表
+for i, c in enumerate(d['charts'], 1):
+    print(f'  {i}. {c["title_zh"]}')

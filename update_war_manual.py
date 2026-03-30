@@ -11,6 +11,17 @@ WORKDIR = Path(__file__).parent.resolve()
 with open('isw_translation_manual.json', 'r', encoding='utf-8') as f:
     trans = json.load(f)
 
+# 构建takeaways（Key Takeaways 4条 + Toplines 11条）
+all_takeaways = []
+
+# 添加Key Takeaways（标记为"核心要点"）
+for en, zh in zip(trans['takeaways_en'], trans['takeaways_zh']):
+    all_takeaways.append({'en': en, 'zh': zh, 'type': 'key'})
+
+# 添加Toplines（标记为"详细内容"）
+for en, zh in zip(trans['toplines_en'], trans['toplines_zh']):
+    all_takeaways.append({'en': en, 'zh': zh, 'type': 'topline'})
+
 # 构建网页数据结构
 new_data = {
     'updated': '2026-03-30T12:00:00',
@@ -20,10 +31,7 @@ new_data = {
         'title': trans['title'],
         'title_zh': '伊朗局势更新特别报告 - 2026年3月29日',
         'date': trans['date'],
-        'takeaways': [
-            {'en': en, 'zh': zh} 
-            for en, zh in zip(trans['takeaways_en'], trans['takeaways_zh'])
-        ],
+        'takeaways': all_takeaways,
         'charts': [
             {
                 'url': f"https://understandingwar.org/wp-content/uploads/2026/03/{chart['title_en'].replace(' ', '-').replace('/', '-')}.webp",
@@ -54,6 +62,8 @@ with open('war-situation.html', 'w', encoding='utf-8') as f:
     f.write(new_content)
 
 print('[OK] war-situation.html 已更新')
-print(f'   - Key Takeaways: {len(new_data["current_report"]["takeaways"])} 条')
+print(f'   - Key Takeaways: 4 条')
+print(f'   - Toplines: 11 条')
+print(f'   - 总计: {len(all_takeaways)} 条')
 print(f'   - 图表: {len(new_data["current_report"]["charts"])} 张')
 print(f'   - 已人工翻译')

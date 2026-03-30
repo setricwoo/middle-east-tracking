@@ -5833,6 +5833,15 @@
         var targetTab = document.getElementById('tab-' + tabName);
         if (targetTab) targetTab.classList.add('active');
         if (btn) btn.classList.add('active');
+
+        // 切换到流动性tab时刷新滑块位置
+        if (tabName === 'liquidity') {
+            setTimeout(function() {
+                if (typeof refreshLiquiditySliders === 'function') {
+                    refreshLiquiditySliders();
+                }
+            }, 50);
+        }
     }
     </script>
 </head>
@@ -6789,7 +6798,18 @@ function createHistChart(canvasId, hist, color) {
 // ═══════════════════════════════════════════════════════════════
 // 全球流动性数据
 // ═══════════════════════════════════════════════════════════════
+// 存储所有流动性图表的slider更新函数
+var liquiditySliderUpdaters = [];
+
+function refreshLiquiditySliders() {
+    liquiditySliderUpdaters.forEach(function(fn) {
+        try { fn(); } catch(e) {}
+    });
+}
+
 function renderExcelLiquidityCharts(indicators) {
+    // 清空之前的slider引用
+    liquiditySliderUpdaters = [];
     var colors = ['#2563eb', '#dc2626', '#059669', '#d97706', '#7c3aed', '#db2777', '#0891b2', '#ea580c'];
     
     // 使用指定的容器
@@ -6910,7 +6930,34 @@ function createLiquidityLineChart(canvasId, indicator, color) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            interaction: {
+                mode: 'index',
+                intersect: false,
+                axis: 'x'
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    enabled: true,
+                    mode: 'index',
+                    intersect: false,
+                    backgroundColor: 'rgba(30, 58, 95, 0.9)',
+                    titleColor: '#fff',
+                    bodyColor: '#fff',
+                    borderColor: '#3b82f6',
+                    borderWidth: 1,
+                    padding: 10,
+                    displayColors: false,
+                    callbacks: {
+                        title: function(context) {
+                            return context[0].label;
+                        },
+                        label: function(context) {
+                            return indicator.name + ': ' + context.parsed.y;
+                        }
+                    }
+                }
+            },
             scales: {
                 x: { display: true, ticks: { maxTicksLimit: 6 } },
                 y: { display: true }
@@ -6948,11 +6995,9 @@ function createLiquidityLineChart(canvasId, indicator, color) {
         dateLabel.textContent = dates[startIdx] + ' ~ ' + dates[endIdx];
     }
     
-    // Delay initial slider update to ensure container has width
-    setTimeout(function() {
-        updateSlider();
-    }, 50);
-    
+    // 存储此slider的更新函数，用于tab切换时刷新
+    liquiditySliderUpdaters.push(updateSlider);
+
     // Drag events
     var isDraggingLeft = false, isDraggingRight = false, isDraggingRange = false;
     var dragStartX = 0, startLeft = 0, startRight = 0;
