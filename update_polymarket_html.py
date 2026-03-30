@@ -660,7 +660,7 @@ def generate_ships_card(ships_data: Dict, chart_idx: int) -> str:
     chart_id = f"chart_{chart_idx}"
 
     html = f'''            <div class="card rounded-xl p-6">
-                <h2 class="text-xl font-semibold text-slate-800 mb-1">3月霍尔木兹海峡船舶数量</h2>
+                <h2 class="text-xl font-semibold text-slate-800 mb-1">4月霍尔木兹海峡船舶数量</h2>
                 <p class="text-sm text-slate-600 mb-4">平均每日通过船舶数量的概率分布 (Top 6)</p>
 
                 {prob_html}

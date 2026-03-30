@@ -130,7 +130,21 @@
             .header-center::-webkit-scrollbar { display: none; }
             .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
             .header-right { display: none; }
-            .nav-arrow { display: flex !important; }
+            /* 移动端滚动箭头 */
+            .nav-arrow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 28px;
+                background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+                color: rgba(255,255,255,0.7);
+                font-size: 12px;
+                cursor: pointer;
+                flex-shrink: 0;
+                z-index: 10;
+            }
+            .nav-arrow.hidden { display: none; }
             .container { padding: 12px; }
             .briefing-header { padding: 16px; }
             .briefing-header h2 { font-size: 1.1rem; }
@@ -140,6 +154,10 @@
             .highlight-box h5 { font-size: 0.85rem; }
             .timeline-two-col{grid-template-columns:1fr;}
             .market-grid{grid-template-columns:1fr;}
+        }
+        @media (min-width: 769px) {
+            .nav-arrow { display: none !important; }
+            .header-center-wrapper { display: contents; }
         }
         @media (max-width: 480px) {
             .header-main { padding: 6px 8px; }
@@ -177,7 +195,6 @@
                 </div>
                 <div class="nav-arrow nav-arrow-right" onclick="scrollNav(1)">&#8250;</div>
             </div>
-            <div class="header-right">更新时间: 2026年03月30日</div>
         </div>
     </div>
     <div class="container">
