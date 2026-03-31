@@ -56,6 +56,10 @@ jobs:
           echo "No changes to commit"
         else
           git commit -m "Auto: 更新海峡数据 + 延时视频 (${{ github.run_number }})"
+
+          # 先pull再push，避免冲突
+          git pull --rebase origin main || git pull --rebase origin master || true
+
           git push
           echo "Changes pushed successfully"
         fi
