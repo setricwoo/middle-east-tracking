@@ -1,9 +1,9 @@
 {
-  "updated": "2026-03-31T14:15:00",
+  "updated": "2026-03-31T16:06:23",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 1.48,
+    "total": 2.34,
     "oil": {
       "name": "原油及成品油",
       "value": 0
@@ -32,15 +32,15 @@
   "ship_counts": {
     "hormuz": 0,
     "hormuz_passing": 700,
-    "oman": 365,
-    "persian": 548,
-    "sailing": 791,
-    "anchored": 123,
+    "oman": 409,
+    "persian": 613,
+    "sailing": 709,
+    "anchored": 314,
     "total_in_area": 700
   },
   "snapshots": [
     {
-      "url": "https://oimg.jin10.com/news/26/03/XkUxipYjUN3tkl-pbyJZMR.png",
+      "url": "https://oimg.jin10.com/news/26/03/DAayfsyRS-UpRw5EdlPRXV.png",
       "type": "snapshot",
       "alt": "动态标记"
     },
