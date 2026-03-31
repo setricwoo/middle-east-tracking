@@ -42,7 +42,6 @@ async def fetch_jin10_data():
             "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
             "industry_pressure": {},
             "ship_counts": {},
-            "video_url": None,  # 24h航运回溯视频
             "snapshot_url": None  # 实时快照图片
         }
         
@@ -259,49 +258,7 @@ async def fetch_jin10_data():
             print(f"  锚泊/停靠: {ship_data.get('anchored', 'N/A')}艘")
             print(f"  海域内总数: {ship_data.get('total_in_area', ship_data.get('calculated_total', 'N/A'))}艘")
             
-            # 3. 提取视频URL（24h航运回溯）
-            print("\n提取24h航运回溯视频...")
-            video_data = await page.evaluate("""
-                () => {
-                    // 查找视频元素
-                    const videos = document.querySelectorAll('video');
-                    for (let video of videos) {
-                        if (video.src && video.src.startsWith('http')) {
-                            return { url: video.src, type: 'direct' };
-                        }
-                        // 查找source子元素
-                        const sources = video.querySelectorAll('source');
-                        for (let source of sources) {
-                            if (source.src && source.src.startsWith('http')) {
-                                return { url: source.src, type: 'source' };
-                            }
-                        }
-                    }
-                    
-                    // 查找包含视频的区域
-                    const elements = document.querySelectorAll('*');
-                    for (let el of elements) {
-                        const text = el.textContent || '';
-                        if (text.includes('24h') || text.includes('24小时') || text.includes('回溯')) {
-                            // 查找附近的video标签
-                            const videos = el.querySelectorAll('video');
-                            for (let video of videos) {
-                                if (video.src) return { url: video.src, type: 'container' };
-                            }
-                        }
-                    }
-                    
-                    return null;
-                }
-            """)
-            
-            if video_data and video_data.get('url'):
-                result["video_url"] = video_data["url"]
-                print(f"  找到视频: {video_data['url'][:80]}...")
-            else:
-                print("  页面中未找到视频")
-            
-            # 4. 提取实时快照图片URL
+            # 3. 提取实时快照图片URL
             print("\n提取实时快照图片...")
             snapshot_data = await page.evaluate("""
                 () => {
