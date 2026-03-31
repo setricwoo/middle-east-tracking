@@ -131,7 +131,12 @@
       "Bash(schtasks /query /tn marine_screenshot /v /fo list)",
       "Bash(powershell -Command \"Get-ScheduledTask -TaskName marine_screenshot | Format-List TaskName, State, LastRunTime; Get-ScheduledTaskInfo -TaskName marine_screenshot\")",
       "Bash(\"d:/python_code/海湾以来-最新/start_edge.bat\":*)",
-      "Bash(powershell -Command \"Start-Process msedge.exe -ArgumentList ''https://www.marinetraffic.com/en/ais/home/centerx:55.8/centery:25.7/zoom:8''\")"
+      "Bash(powershell -Command \"Start-Process msedge.exe -ArgumentList ''https://www.marinetraffic.com/en/ais/home/centerx:55.8/centery:25.7/zoom:8''\")",
+      "Bash(python generate_timelapse_video.py)",
+      "Bash(curl -s \"https://understandingwar.org/research/middle-east/iran-update-special-report-march-30-2026/\")",
+      "Bash(curl -s https://understandingwar.org/research/middle-east/iran-update-special-report-march-30-2026/)",
+      "Bash(python update_isw_data.py)",
+      "Bash(python -c \"import generate_timelapse_video; print\\(''语法检查通过''\\)\")"
     ]
   }
 }
