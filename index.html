@@ -1391,123 +1391,24 @@
             </div>
         </div>
 
-        <!-- 金十数据：24h船只回溯视频 -->
-        <div class="section" id="jin10-ship-map-section" style="margin-bottom: 0;">
-            <h3>📺 24h船只回溯视频 <span style="font-size: 0.8rem; color: #64748b; font-weight: normal;">数据来源：金十数据</span></h3>
-            
-            <!-- 船只视频容器 (延迟加载) -->
-            <div id="jin10-ship-map-container" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; overflow: hidden;">
-                <div id="jin10-video-wrapper" style="position: relative; width: 100%; background: #0f172a;">
-                    <!-- 视频占位符 - 点击后加载视频 -->
-                    <div id="jin10-video-placeholder" 
-                         onclick="loadJin10Video()"
-                         data-video-url="https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4"
-                         style="position: relative; width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); cursor: pointer; overflow: hidden;">
-                        <!-- 封面图 -->
-                        <img src="https://oimg.jin10.com/news/26/03/CkgCfUyqB9qFYghLFFbyoK.png" 
-                             alt="霍尔木兹海峡船舶动态"
-                             style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s;">
-                        <!-- 播放按钮 -->
-                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
-                                    width: 80px; height: 80px; background: rgba(255,255,255,0.95); border-radius: 50%;
-                                    display: flex; align-items: center; justify-content: center;
-                                    box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: all 0.3s;">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="#1e3a5f">
-                                <polygon points="5,3 19,12 5,21" />
-                            </svg>
-                        </div>
-                        <!-- 提示文字 -->
-                        <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); 
-                                    color: white; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-                                    background: rgba(0,0,0,0.4); padding: 6px 16px; border-radius: 20px;">
-                            点击播放 24h 船舶动态视频
-                        </div>
-                    </div>
-                    <!-- 视频加载失败备用 -->
-                    <div id="jin10-video-error" style="display: none; padding: 40px; text-align: center;">
-                        <p style="color: #94a3b8; font-size: 1rem; margin-bottom: 16px;">🚧 视频加载失败</p>
-                        <a href="https://qihuo.jin10.com/topic/strait_of_hormuz.html" target="_blank" class="btn">
-                            点击访问金十数据原始页面 →
-                        </a>
-                    </div>
-                </div>
+        <!-- 48小时延时视频（本地生成） -->
+        <div class="section" id="timelapse-section" style="margin-top: 16px;">
+            <h3>🎬 48小时航运延时 <span style="font-size: 0.8rem; color: #64748b; font-weight: normal;">金十数据快照合成</span></h3>
+
+            <div style="background: #0f172a; border-radius: 12px; overflow: hidden;">
+                <video id="timelapse-video"
+                       src="strait_timelapse_jin10.mp4"
+                       style="width: 100%; height: auto; display: block;"
+                       controls
+                       loop
+                       preload="metadata"
+                       poster="https://oimg.jin10.com/news/26/03/CkgCfUyqB9qFYghLFFbyoK.png">
+                    您的浏览器不支持视频播放。
+                </video>
             </div>
-            <!-- 视频延迟加载脚本 -->
-            <script>
-                function loadJin10Video() {
-                    var wrapper = document.getElementById('jin10-video-wrapper');
-                    var placeholder = document.getElementById('jin10-video-placeholder');
-                    
-                    // 检查是否有缓存的最新视频URL
-                    var cachedUrl = placeholder.getAttribute('data-video-url');
-                    var videoUrl = cachedUrl || 'https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4';
-                    
-                    // 创建视频元素
-                    var video = document.createElement('video');
-                    video.id = 'jin10-ship-video';
-                    video.src = videoUrl;
-                    video.poster = 'https://oimg.jin10.com/news/26/03/GgnXMT46SUlVpsXDp0ZHhu.png';
-                    video.style.cssText = 'width: 100%; height: auto; display: block;';
-                    video.controls = true;
-                    video.autoplay = true;
-                    video.muted = true;
-                    video.loop = true;
-                    video.playsInline = true;
-                    video.setAttribute('webkit-playsinline', 'true');
-                    video.preload = 'auto';
-                    video.innerHTML = '您的浏览器不支持视频播放。';
-                    
-                    // 错误处理
-                    video.addEventListener('error', function() {
-                        document.getElementById('jin10-video-error').style.display = 'block';
-                        placeholder.style.display = 'none';
-                    });
-                    
-                    // 替换占位符
-                    wrapper.replaceChild(video, placeholder);
-                    
-                    // 尝试播放
-                    video.play().catch(function(e) {
-                        console.log('视频自动播放被阻止:', e);
-                    });
-                }
-            </script>
-            
-            <!-- 船只类型图例 -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin: 16px 0; padding: 12px; background: #f1f5f9; border-radius: 8px;">
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #ef4444; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">原油油轮</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #f97316; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">成品油轮</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #3b82f6; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">集装箱船</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #10b981; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">散货船</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #8b5cf6; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">LNG船</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #06b6d4; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">LPG船</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <span style="width: 12px; height: 12px; background: #64748b; border-radius: 50%; display: inline-block;"></span>
-                    <span style="font-size: 0.85rem; color: #475569;">其他</span>
-                </div>
-            </div>
-            
+
             <p style="font-size: 0.75rem; color: #94a3b8; margin-top: 12px; text-align: center;">
-                数据来源：金十数据AIS实时监控 | 
-                <a href="https://qihuo.jin10.com/topic/strait_of_hormuz.html" target="_blank" style="color: #3b82f6;">查看原始页面 →</a>
+                由最近48小时的金十数据快照合成，每小时一张，自动更新
             </p>
         </div>
 
