@@ -1,5 +1,36 @@
 {
-  "updated": "2026-03-31T09:10:07",
+  "updated": "2026-03-31T05:28:52",
+  "realtime": {},
+  "daily": [],
+  "direction": [],
+  "fleet_type": [],
+  "snapshots": [
+    {
+      "ts": "2026-03-30 22:35",
+      "file": "strait_snapshots/20260330_2235.png"
+    },
+    {
+      "ts": "2026-03-30 22:56",
+      "file": "strait_snapshots/20260330_2256_marine.png"
+    },
+    {
+      "ts": "2026-03-30 23:23",
+      "file": "strait_snapshots/20260330_2323.png"
+    },
+    {
+      "ts": "2026-03-30 23:25",
+      "file": "strait_snapshots/20260330_2325.png"
+    },
+    {
+      "ts": "bloc-ke-d. ng:",
+      "file": "strait_snapshots/blocked.png"
+    },
+    {
+      "ts": "bloc-ke-d_ eb:ug",
+      "file": "strait_snapshots/blocked_debug.png"
+    }
+  ],
+  "video_url": "",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
