@@ -1,42 +1,11 @@
 {
-  "updated": "2026-03-31T09:35:47",
-  "realtime": {},
-  "daily": [],
-  "direction": [],
-  "fleet_type": [],
-  "snapshots": [
-    {
-      "ts": "2026-03-30 22:35",
-      "file": "strait_snapshots/20260330_2235.png"
-    },
-    {
-      "ts": "2026-03-30 22:56",
-      "file": "strait_snapshots/20260330_2256_marine.png"
-    },
-    {
-      "ts": "2026-03-30 23:23",
-      "file": "strait_snapshots/20260330_2323.png"
-    },
-    {
-      "ts": "2026-03-30 23:25",
-      "file": "strait_snapshots/20260330_2325.png"
-    },
-    {
-      "ts": "bloc-ke-d. ng:",
-      "file": "strait_snapshots/blocked.png"
-    },
-    {
-      "ts": "bloc-ke-d_ eb:ug",
-      "file": "strait_snapshots/blocked_debug.png"
-    }
-  ],
-  "video_url": "",
+  "updated": "2026-03-31T16:48:03",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
   },
   "jin10": {
-    "updated": "2026-03-31T09:09:29",
+    "updated": "2026-03-31T16:46:53",
     "source": "金十数据",
     "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
     "industry_pressure": {
@@ -69,13 +38,13 @@
     "ship_counts": {
       "yesterday_passed": 0,
       "hormuz_passing": 1,
-      "sailing": 869,
-      "anchored": 2152,
-      "total_in_area": 3021,
-      "calculated_total": 3021
+      "sailing": 849,
+      "anchored": 2188,
+      "total_in_area": 3037,
+      "calculated_total": 3037
     },
     "video_url": "https://flash-scdn.jin10.com/18c80895-1851-432e-a1d6-04d9f72fb34f.mp4",
-    "snapshot_url": "https://oimg.jin10.com/news/26/03/CkgCfUyqB9qFYghLFFbyoK.png"
+    "snapshot_url": null
   },
   "history": {
     "dates": [
