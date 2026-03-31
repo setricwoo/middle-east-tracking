@@ -612,58 +612,7 @@ function fillJin10Data(data) {{
         # 在</body>前插入
         content = content.replace('</body>', embed_script + '\n</body>')
         print("  已嵌入数据到页面底部")
-    
-    # 同时更新HTML中硬编码的视频URL（确确保默认也是最新的）
-    if jin10_data.get("video_url"):
-        video_url = jin10_data["video_url"]
-        # 替换video标签中的src属性
-        content = re.sub(
-            r'(<video[^>]*src=")[^"]*("[^>]*>)',
-            r'\1' + video_url + r'\2',
-            content
-        )
-        # 更新视频占位符的data-video-url属性（用于延迟加载）
-        if 'id="jin10-video-placeholder"' in content:
-            # 检查是否已有data-video-url属性
-            if 'data-video-url=' in content and 'jin10-video-placeholder' in content:
-                # 更新现有的data-video-url
-                content = re.sub(
-                    r'(<div id="jin10-video-placeholder"[^>]*data-video-url=")[^"]*("[^>]*>)',
-                    r'\1' + video_url + r'\2',
-                    content
-                )
-            else:
-                # 添加data-video-url属性
-                content = re.sub(
-                    r'(<div id="jin10-video-placeholder")([^>]*>)',
-                    r'\1 data-video-url="' + video_url + r'"\2',
-                    content
-                )
-            print("  已更新视频占位符data-video-url")
-        # 更新loadJin10Video函数中的默认回退URL
-        default_url_pattern = r"(var videoUrl = cachedUrl \|\| ')[^']*(';)"
-        content = re.sub(
-            default_url_pattern,
-            r'\1' + video_url + r'\2',
-            content
-        )
-        # 替换poster图片（快照）
-        if jin10_data.get("snapshot_url"):
-            snapshot_url = jin10_data["snapshot_url"]
-            content = re.sub(
-                r'(<video[^>]*poster=")[^"]*("[^>]*>)',
-                r'\1' + snapshot_url + r'\2',
-                content
-            )
-            # 更新占位符中的img src
-            content = re.sub(
-                r'(<div id="jin10-video-placeholder".*?<img src=")[^"]*("[^>]*>.*?<\/div>.*?<\/div>.*?<\/div>)',
-                r'\1' + snapshot_url + r'\2',
-                content,
-                flags=re.DOTALL
-            )
-        print("  已更新HTML默认视频/图片URL")
-    
+
     # 同时嵌入历史CSV数据到图表（如果有的话）
     if history_data and history_data.get("dates"):
         print("  嵌入历史CSV数据到图表...")
