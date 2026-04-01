@@ -136,7 +136,9 @@
       "Bash(curl -s \"https://understandingwar.org/research/middle-east/iran-update-special-report-march-30-2026/\")",
       "Bash(curl -s https://understandingwar.org/research/middle-east/iran-update-special-report-march-30-2026/)",
       "Bash(python update_isw_data.py)",
-      "Bash(python -c \"import generate_timelapse_video; print\\(''语法检查通过''\\)\")"
+      "Bash(python -c \"import generate_timelapse_video; print\\(''语法检查通过''\\)\")",
+      "Bash(git config:*)",
+      "Bash(git lfs.auto \"GitLFSCOn Windows\")"
     ]
   }
 }

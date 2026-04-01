@@ -117,13 +117,21 @@ def add_datetime_watermark(img_array, date_str):
 
     # 尝试加载字体，失败则使用默认字体
     font_size = max(20, int(height * 0.035))  # 字体大小根据图片高度调整
-    try:
-        font = ImageFont.truetype("arial.ttf", font_size)
-    except:
+    font = None
+    font_paths = [
+        "arial.ttf",  # Windows
+        "C:/Windows/Fonts/arial.ttf",  # Windows绝对路径
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",  # Ubuntu (GitHub Actions)
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",  # Ubuntu备用
+    ]
+    for font_path in font_paths:
         try:
-            font = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", font_size)
+            font = ImageFont.truetype(font_path, font_size)
+            break
         except:
-            font = ImageFont.load_default()
+            continue
+    if font is None:
+        font = ImageFont.load_default()
 
     # 创建RGBA模式的图层用于绘制
     if img.mode != 'RGBA':
