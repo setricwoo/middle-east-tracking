@@ -40,7 +40,6 @@ screenshot_map.py
 update_briefing_full.py
 update_briefing_simple.py
 update_daily_briefing.py
-历史.csv
 历史.txt
 
 # PDF 文件（可选，如果太大）
