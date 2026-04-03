@@ -383,7 +383,20 @@ def read_history_csv():
 def merge_and_save_data(jin10_data, history_data):
     """合并数据并保存为 strait_data.json"""
     print("\n合并数据并保存...")
-    
+
+    # 从历史CSV数据中读取昨日通过数
+    if history_data and history_data.get("ship_counts") and len(history_data["ship_counts"]) > 0:
+        yesterday_count = history_data["ship_counts"][-1]  # 最新的一条记录作为昨日数据
+        print(f"  从历史CSV读取昨日通过数: {yesterday_count}艘")
+
+        # 确保 ship_counts 存在
+        if jin10_data and "ship_counts" not in jin10_data:
+            jin10_data["ship_counts"] = {}
+
+        # 将昨日通过数添加到 ship_counts 中
+        if jin10_data:
+            jin10_data["ship_counts"]["yesterday_passed"] = yesterday_count
+
     # 构建统一的数据结构
     merged = {
         "updated": datetime.now(BEIJING_TZ).strftime("%Y-%m-%dT%H:%M:%S"),
@@ -394,8 +407,8 @@ def merge_and_save_data(jin10_data, history_data):
         "jin10": jin10_data or {},
         "history": history_data or {}
     }
-    
-    # 保存到 jin10_strait_data.json（原始金十数据）
+
+    # 保存到 jin10_strait_data.json（原始金十数据，已包含昨日通过数）
     if jin10_data:
         with open(JIN10_DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(jin10_data, f, ensure_ascii=False, indent=2)
