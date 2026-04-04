@@ -1,11 +1,11 @@
 {
-  "updated": "2026-04-05T00:39:17",
+  "updated": "2026-04-05T02:45:56",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
   },
   "jin10": {
-    "updated": "2026-04-05T00:38:59",
+    "updated": "2026-04-05T02:45:36",
     "source": "金十数据",
     "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
     "industry_pressure": {
@@ -38,12 +38,12 @@
     "ship_counts": {
       "yesterday_passed": 10,
       "hormuz_passing": 4,
-      "sailing": 603,
-      "anchored": 2291,
-      "total_in_area": 2894,
-      "calculated_total": 2894
+      "sailing": 666,
+      "anchored": 2213,
+      "total_in_area": 2879,
+      "calculated_total": 2879
     },
-    "snapshot_url": "https://oimg.jin10.com/news/26/04/_wJaJFFVEmOksuGgt1R_Ht.png"
+    "snapshot_url": "https://oimg.jin10.com/news/26/04/ddr_AvDipQu3xTsLnGw6gl.png"
   },
   "history": {
     "dates": [
