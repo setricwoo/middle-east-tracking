@@ -130,49 +130,215 @@
 
 ---
 
-### Step 3: 生成更新后的HTML
+### Step 3: 生成完整HTML代码
 
-运行Python脚本 `update_briefing_new.py` 来生成新的HTML文件。
+**根据Step 2整理的数据，直接生成完整的HTML代码。**
 
-**脚本功能说明：**
-1. 读取 `update_briefing_new.py` 中的 `LATEST_NEWS` 数据字典
-2. 将Step 2整理的信息填入对应字段
-3. 生成完整的 `briefing.html` 文件
+请使用以下HTML模板，将整理好的数据填入对应位置：
 
-**需要更新的字段：**
-```python
-LATEST_NEWS = {
-    "date": "2026-04-XX",  # 当前日期
-    "conflict_day": 39,     # 冲突天数（累加）
-    "blockade_day": 37,     # 封锁天数（累加）
-    
-    "war_progress": [...],   # 战局进展列表
-    "statements": [...],     # 各方表态列表
-    "strait_status": {...},  # 海峡通行情况
-    "supply_chain": [...],   # 供应链列表
-    "investment_banks": [...], # 投行观点列表
-    "market_data": {...}     # 市场数据
-}
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【华泰固收】中东地缘跟踪 - 美以伊冲突每日简报</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8;}
+        .header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+            color: white;
+            padding: 12px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .header-left {
+            position: absolute;
+            left: 20px;
+        }
+        .header-left h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .header-center {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-btn {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+        .nav-btn.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-weight: 500;
+        }
+        .container{max-width:900px;margin:0 auto;padding:24px 20px;}
+        .briefing-header{background:linear-gradient(135deg,#fef3c7 0%,#fde68a 100%);border:1px solid #f59e0b;border-radius:12px;padding:24px;margin-bottom:24px;}
+        .briefing-header h2{color:#92400e;font-size:1.4rem;margin-bottom:12px;}
+        .briefing-header .summary{color:#78350f;font-size:0.95rem;line-height:1.8;}
+        .section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e2e8f0;}
+        .section h3{color:#1e40af;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;}
+        .section p{color:#475569;font-size:0.95rem;margin-bottom:12px;text-align:justify;}
+        .section ul{padding-left:20px;margin-bottom:12px;}
+        .section li{color:#475569;font-size:0.95rem;margin-bottom:8px;}
+        .highlight-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:16px;border-radius:0 8px 8px 0;margin:16px 0;}
+        .highlight-box.critical{background:#fef2f2;border-left-color:#dc2626;}
+        .highlight-box.warning{background:#fffbeb;border-left-color:#f59e0b;}
+        .highlight-box.statements{background:#f0fdf4;border-left-color:#16a34a;}
+        .highlight-box h5{color:#1e40af;font-size:0.95rem;margin-bottom:10px;}
+        .highlight-box.critical h5{color:#dc2626;}
+        .highlight-box.warning h5{color:#b45309;}
+        .highlight-box.statements h5{color:#166534;}
+        .market-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;}
+        .market-card{background:#f8fafc;border-radius:8px;padding:16px;border:1px solid #e2e8f0;}
+        .market-card h5{color:#1e40af;font-size:0.9rem;margin-bottom:8px;}
+        .market-card p{color:#475569;font-size:0.85rem;margin:0;}
+        .footer{text-align:center;padding:24px;color:#64748b;font-size:0.8rem;border-top:1px solid #e2e8f0;margin-top:40px;}
+        @media (max-width: 768px) {
+            .market-grid{grid-template-columns:repeat(2,1fr);}
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-main">
+            <div class="header-left">
+                <h1>【华泰固收】中东地缘跟踪</h1>
+            </div>
+            <div class="header-center">
+                <a href="index.html" class="nav-btn">海峡跟踪</a>
+                <a href="polymarket.html" class="nav-btn">Polymarket</a>
+                <a href="data-tracking.html" class="nav-btn">全球市场</a>
+                <a href="war-situation.html" class="nav-btn">战局形势</a>
+                <a href="news.html" class="nav-btn">实时新闻</a>
+                <a href="briefing.html" class="nav-btn active">每日简报</a>
+                <a href="oil-chart.html" class="nav-btn">原油图谱</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 标题区 -->
+        <div class="briefing-header">
+            <h2>每日简报 ([日期])</h2>
+            <p class="summary">冲突第[X]天，霍尔木兹封锁第[X]天。[一句话总结当日关键动态]</p>
+        </div>
+
+        <!-- 1. 战局进展 -->
+        <div class="section">
+            <h3>战局进展</h3>
+            <!-- 填入2-4条战局进展 -->
+        </div>
+
+        <!-- 2. 各方表态 -->
+        <div class="section">
+            <h3>各方最新表态</h3>
+            <!-- 填入3-4条各方表态 -->
+        </div>
+
+        <!-- 3. 海峡通行情况 -->
+        <div class="section">
+            <h3>霍尔木兹海峡通行情况</h3>
+            <!-- 填入海峡通行数据 -->
+        </div>
+
+        <!-- 4. 全球供应链 -->
+        <div class="section">
+            <h3>全球供应链影响</h3>
+            <!-- 填入3-4条供应链信息 -->
+        </div>
+
+        <!-- 5. 海外投行讨论 -->
+        <div class="section">
+            <h3>海外投行观点</h3>
+            <!-- 填入3-4条投行观点 -->
+        </div>
+
+        <!-- 市场数据 -->
+        <div class="section">
+            <h3>市场数据速览</h3>
+            <div class="market-grid">
+                <div class="market-card"><h5>布伦特原油</h5><p>[价格]</p></div>
+                <div class="market-card"><h5>WTI原油</h5><p>[价格]</p></div>
+                <div class="market-card"><h5>标普500</h5><p>[点数]</p></div>
+                <div class="market-card"><h5>纳斯达克</h5><p>[点数]</p></div>
+                <div class="market-card"><h5>VIX波动率</h5><p>[数值]</p></div>
+                <div class="market-card"><h5>美元指数</h5><p>[数值]</p></div>
+            </div>
+        </div>
+
+        <div class="footer">数据来源：路透社、彭博社、半岛电视台、CNN、华尔街日报等 | 仅供参考，不构成投资建议</div>
+    </div>
+</body>
+</html>
 ```
 
 ---
 
-### Step 4: 执行更新脚本
+### Step 4: 输出要求
 
-```bash
-python "D:\python_code\海湾以来-最新\update_briefing_new.py"
+**请直接输出完整的HTML代码**，格式如下：
+
+```
+=== 每日简报更新完成 ===
+
+日期: 2026-04-XX
+冲突第X天，封锁第X天
+
+板块统计:
+- 战局进展: X条
+- 各方表态: X条
+- 海峡通行: X个关键事件
+- 供应链: X个行业
+- 投行观点: X家机构
+
+=== 完整HTML代码 ===
+
+[直接输出完整的HTML代码，可直接复制粘贴到briefing.html文件中]
+
+=== 使用说明 ===
+1. 复制上方HTML代码
+2. 粘贴到 briefing.html 文件中（覆盖原有内容）
+3. 保存文件
+4. 在浏览器中打开验证显示效果
 ```
 
 ---
 
-### Step 5: 验证更新
+### Step 5: 验证清单
 
-检查生成的 `briefing.html` 是否包含：
-- [ ] 正确的日期和天数
-- [ ] 5个板块内容完整
-- [ ] 每个板块有2-4条最新信息
+输出HTML前请确认：
+- [ ] 日期和冲突/封锁天数正确
+- [ ] 5个板块都有内容（各2-4条）
 - [ ] 信息来源标注清晰
-- [ ] 市场数据准确
+- [ ] 市场数据准确（油价、股市、汇率）
+- [ ] HTML格式正确，无语法错误
+- [ ] 样式与之前保持一致
 
 ---
 
@@ -265,7 +431,135 @@ python "D:\python_code\海湾以来-最新\update_briefing_new.py"
 
 ---
 
+## HTML内容填写格式示例
+
+### 战局进展板块格式：
+```html
+<div class="section">
+    <h3>战局进展</h3>
+    <div class="highlight-box military">
+        <h5>美以联军空袭伊朗XX炼油厂</h5>
+        <p><strong>时间：</strong>4月X日 XX:XX | <strong>来源：</strong>Reuters</p>
+        <p>详细描述打击行动、损毁情况、人员伤亡...</p>
+    </div>
+    <div class="highlight-box military">
+        <h5>伊朗导弹反击全部被拦截</h5>
+        <p><strong>时间：</strong>4月X日 XX:XX | <strong>来源：</strong>CNN</p>
+        <p>详细描述反击行动、拦截情况...</p>
+    </div>
+</div>
+```
+
+### 各方表态板块格式：
+```html
+<div class="section">
+    <h3>各方最新表态</h3>
+    <div class="highlight-box statements">
+        <h5>美国/特朗普</h5>
+        <p><strong>时间：</strong>4月X日 | <strong>来源：</strong>CNN/NBC</p>
+        <p>具体表态内容，包括最后期限、威胁等...</p>
+    </div>
+    <div class="highlight-box statements">
+        <h5>伊朗/最高领袖</h5>
+        <p><strong>时间：</strong>4月X日 | <strong>来源：</strong>ISW</p>
+        <p>具体表态内容，包括封锁立场、报复威胁等...</p>
+    </div>
+</div>
+```
+
+### 海峡通行板块格式：
+```html
+<div class="section">
+    <h3>霍尔木兹海峡通行情况</h3>
+    <div class="highlight-box warning">
+        <h5>海峡通行状态</h5>
+        <p><strong>当前状态：</strong>部分松动但仍受限 | <strong>封锁天数：</strong>第X天</p>
+        <p><strong>通行数据：</strong>周末X艘船通过...</p>
+        <p><strong>关键事件：</strong></p>
+        <ul>
+            <li>事件1...</li>
+            <li>事件2...</li>
+            <li>事件3...</li>
+        </ul>
+        <p><strong>影响评估：</strong>具体影响...</p>
+    </div>
+</div>
+```
+
+### 供应链板块格式：
+```html
+<div class="section">
+    <h3>全球供应链影响</h3>
+    <div class="highlight-box">
+        <h5>铝业</h5>
+        <p><strong>事件：</strong>阿联酋EGA工厂遭袭...</p>
+        <p><strong>影响：</strong>LME铝价突破3500美元...</p>
+    </div>
+    <div class="highlight-box">
+        <h5>化肥</h5>
+        <p><strong>事件：</strong>以色列化肥价格飙升...</p>
+        <p><strong>影响：</strong>全球粮食市场受冲击...</p>
+    </div>
+</div>
+```
+
+### 投行观点板块格式：
+```html
+<div class="section">
+    <h3>海外投行观点</h3>
+    <div class="highlight-box">
+        <h5>摩根大通 (JP Morgan)</h5>
+        <p><strong>发言人：</strong>CEO Jamie Dimon</p>
+        <p>具体观点内容...</p>
+        <p style="font-size:0.8rem;color:#64748b;">来源：Greenwich Time/CNN</p>
+    </div>
+    <div class="highlight-box">
+        <h5>高盛 (Goldman Sachs)</h5>
+        <p>具体观点内容...</p>
+        <p style="font-size:0.8rem;color:#64748b;">来源：CNBC</p>
+    </div>
+</div>
+```
+
+---
+
+## 执行前确认清单
+
 **执行此Prompt前，请确认：**
-1. 当前日期和冲突/封锁天数
-2. Web Search工具可用
-3. Python脚本 `update_briefing_new.py` 存在且可运行
+1. [ ] 当前日期和冲突/封锁天数（冲突天数累加，封锁天数累加）
+2. [ ] Web Search工具可用
+3. [ ] 搜索日期范围设置为近36小时
+4. [ ] 输出格式为可直接复制粘贴的完整HTML代码
+
+---
+
+## 输出示例
+
+最终输出应如下所示：
+
+```
+=== 每日简报更新完成 ===
+
+日期: 2026-04-07
+冲突第39天，封锁第37天
+
+板块统计:
+- 战局进展: 3条
+- 各方表态: 3条  
+- 海峡通行: 5个关键事件
+- 供应链: 4个行业
+- 投行观点: 4家机构
+
+=== 完整HTML代码 ===
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+...（完整的HTML代码）...
+</html>
+
+=== 使用说明 ===
+1. 复制上方HTML代码
+2. 粘贴到 briefing.html 文件中（覆盖原有内容）
+3. 保存文件
+4. 在浏览器中打开验证显示效果
+```
