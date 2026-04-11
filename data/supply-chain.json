@@ -1,16 +1,38 @@
 {
-  "fetchTime": "2026-04-10",
+  "fetchTime": "2026-04-11",
   "energy": [
+    {
+      "date": "2026-04-09",
+      "region": "伊朗",
+      "facility": "Lavan Island炼油厂",
+      "type": "炼油厂",
+      "owner": "伊朗国家石油公司",
+      "event": "遭美以联合袭击，伊朗随后对沙特、阿联酋、科威特发动报复性打击",
+      "status": "受损",
+      "impact": "伊朗炼油产能下降，加剧地区紧张局势",
+      "source": "Haaretz / Arab Weekly"
+    },
+    {
+      "date": "2026-04-09",
+      "region": "沙特阿拉伯",
+      "facility": "东西输油管道(East-West Pipeline)",
+      "type": "原油管道",
+      "owner": "沙特阿美",
+      "event": "遭伊朗导弹和无人机袭击，该管道每日输送约700万桶原油",
+      "status": "运输能力受损",
+      "impact": "沙特唯一原油出口路线（连接波斯湾与红海）受损，影响约700万桶/日出口",
+      "source": "Arab Weekly / Reuters"
+    },
     {
       "date": "2026-04-07",
       "region": "伊朗",
-      "facility": "Kharg Island（哈尔克岛）原油出口枢纽",
+      "facility": "Kharg Island深水码头",
       "type": "原油出口码头",
       "owner": "伊朗国家石油公司",
-      "event": "美军袭击附近军事目标，该岛为伊朗主要原油出口枢纽，承担约90%出口量",
-      "status": "军事目标遭袭，能源基础设施未直接受损",
-      "impact": "伊朗原油出口能力面临威胁，约占伊朗出口量90%",
-      "source": "Hindustan Times / World Oil"
+      "event": "遭精准打击，深水码头严重受损",
+      "status": "出口能力严重受损，预计2年恢复",
+      "impact": "伊朗原油出口能力大幅下降，约占伊朗出口量90%",
+      "source": "Insurance Journal / World Oil"
     },
     {
       "date": "2026-04-07",
@@ -26,13 +48,13 @@
     {
       "date": "2026-04-06",
       "region": "卡塔尔",
-      "facility": "两艘LNG运输船",
+      "facility": "两艘LNG运输船（Rasheeda、Al Dayeen）",
       "type": "LNG运输船",
       "owner": "卡塔尔能源公司",
-      "event": "接近霍尔木兹海峡后被迫返航，未能实现自2月28日以来的首次LNG穿越",
-      "status": "被迫返航，无法穿越海峡",
-      "impact": "14艘LNG运输船被困波斯湾，全球LNG市场供应受阻",
-      "source": "Marine News Magazine / Wood Mackenzie"
+      "event": "伊朗强制两艘载有卡塔尔LNG的船舶返航，未能通过霍尔木兹海峡",
+      "status": "被迫返航",
+      "impact": "卡塔尔对中国LNG出口受阻，全球LNG市场供应紧张",
+      "source": "Understanding War / Marine News"
     },
     {
       "date": "2026-04-06",
@@ -46,70 +68,59 @@
       "source": "AP News / ynetnews"
     },
     {
-      "date": "2026-04-06",
-      "region": "伊朗",
-      "facility": "多家甲醇工厂（含Arian Methanol Company）",
-      "type": "甲醇生产设施",
-      "owner": "Arian Methanol等多家企业",
-      "event": "包括位于Bushehr的Arian Methanol Company在内的多家甲醇厂关闭",
-      "status": "停产",
-      "impact": "伊朗甲醇出口中断，亚洲甲醇价格上涨",
-      "source": "ICIS"
+      "date": "2026-04-05",
+      "region": "阿联酋",
+      "facility": "Ruwais炼油厂",
+      "type": "炼油厂",
+      "owner": "ADNOC",
+      "event": "拦截导弹碎片引发多处火灾，设施部分损坏",
+      "status": "部分损坏",
+      "impact": "阿联酋主要炼油设施产能下降",
+      "source": "Insurance Journal / ICIS"
     },
     {
       "date": "2026-04-05",
       "region": "阿联酋",
-      "facility": "Borouge石化工厂",
-      "type": "石化工厂",
+      "facility": "Borouge石化综合体",
+      "type": "石化综合体",
       "owner": "阿布扎比国家石油公司",
-      "event": "袭击引发多起火灾，位于Ruwais的巨型石化工厂",
-      "status": "运营暂停",
+      "event": "碎片引发火灾，全面停产",
+      "status": "全面停产",
       "impact": "中东重要石化生产基地停产，影响全球聚烯烃供应",
-      "source": "Bloomberg"
+      "source": "ICIS / Bloomberg"
     },
     {
       "date": "2026-04-05",
       "region": "巴林",
-      "facility": "Gulf Petrochemical Industries Co.",
-      "type": "石化工业设施",
-      "owner": "海湾石化工业公司",
-      "event": "无人机袭击，多个操作单元起火，生产受到严重影响",
-      "status": "部分单元起火停产",
-      "impact": "石化产品供应受阻",
-      "source": "Insurance Journal"
+      "facility": "Bapco Energies炼油厂",
+      "type": "炼油厂",
+      "owner": "Bapco",
+      "event": "遭伊朗导弹和无人机袭击，宣布不可抗力",
+      "status": "宣布不可抗力，产能40万桶/日",
+      "impact": "巴林主要炼油产能 offline，成品油出口中断",
+      "source": "Insurance Journal / Mirror Review"
     },
     {
       "date": "2026-04-05",
-      "region": "沙特阿拉伯",
-      "facility": "东西输油管道",
-      "type": "原油管道",
-      "owner": "沙特阿美",
-      "event": "遭到袭击",
-      "status": "受损",
-      "impact": "连接波斯湾与红海的原油出口通道受损，影响原油出口路线",
-      "source": "Financial Times"
+      "region": "巴林",
+      "facility": "Gulf Petrochemical Industries Co. (GPIC)",
+      "type": "石化工业设施",
+      "owner": "海湾石化工业公司",
+      "event": "无人机袭击，多个操作单元起火，甲醇45万吨/年产能受影响",
+      "status": "部分单元起火停产",
+      "impact": "甲醇、尿素、氨生产受阻",
+      "source": "Insurance Journal / Bahrain News Agency"
     },
     {
       "date": "2026-04-04",
       "region": "伊朗",
-      "facility": "Bandar Imam石化综合设施（Mahshahr）",
+      "facility": "Bandar Imam/Mahshahr石化综合设施",
       "type": "石化工业综合体",
       "owner": "伊朗国家石化公司",
-      "event": "Fajr 1和Fajr 2两座公用工程电站被毁，年产7200万吨的伊朗最大石化综合体完全停产",
+      "event": "Fajr 1和2电厂、Rejal石化厂、Amir Kabir石化厂、Abou Ali石化综合体遭袭",
       "status": "完全停产",
-      "impact": "伊朗最大石化工业综合体停产，年产7200万吨产能归零",
-      "source": "The New York Times"
-    },
-    {
-      "date": "2026-04-04",
-      "region": "霍尔木兹海峡",
-      "facility": "MSC Ishyka集装箱船",
-      "type": "集装箱船",
-      "owner": "MSC",
-      "event": "伊朗无人机袭击，该船与以色列有关联，船只起火",
-      "status": "船舶受损",
-      "impact": "海峡航运安全风险上升，影响全球贸易通道",
-      "source": "Tradewinds News"
+      "impact": "伊朗最大石化工业综合体及多家石化厂停产，年产7200万吨产能归零",
+      "source": "The New York Times / Tasnim"
     },
     {
       "date": "2026-04-03",
@@ -118,9 +129,20 @@
       "type": "炼油厂",
       "owner": "科威特国家石油公司",
       "event": "伊朗无人机袭击，多个操作单元起火",
-      "status": "炼油能力受损严重",
+      "status": "炼油能力受损，需4个月恢复",
       "impact": "科威特主要炼油设施产能下降，影响成品油出口",
-      "source": "AP News / 伊朗国家媒体"
+      "source": "AP News / ICIS"
+    },
+    {
+      "date": "2026-04-03",
+      "region": "科威特",
+      "facility": "Kuwait National Petroleum Co.总部及Shuwaikh设施",
+      "type": "炼油设施",
+      "owner": "KPC",
+      "event": "总部大楼及多个运营设施遭无人机袭击",
+      "status": "重大物质损失",
+      "impact": "科威特石油运营受严重影响",
+      "source": "KPC声明 / Insurance Journal"
     },
     {
       "date": "2026-04-02",
@@ -131,29 +153,29 @@
       "event": "袭击造成损坏并摧毁关键单元",
       "status": "完全停产",
       "impact": "伊朗最大钢铁企业停产，中东地区钢铁供应受阻",
-      "source": "Nour News（伊朗官方）"
+      "source": "Nour News"
     },
     {
       "date": "2026-04-01",
-      "region": "沙特阿拉伯",
-      "facility": "Manifa海上油田",
-      "type": "海上油田",
-      "owner": "沙特阿美",
-      "event": "遭伊朗袭击",
-      "status": "日产量减少30万桶",
-      "impact": "Khurais和Manifa合计减产60万桶/日",
-      "source": "Maritime Executive"
+      "region": "霍尔木兹海峡",
+      "facility": "AQUA 1油轮",
+      "type": "油轮",
+      "owner": "-",
+      "event": "遭伊朗巡航导弹击中，船体水线以上损坏",
+      "status": "船舶受损，21名船员安全撤离",
+      "impact": "海峡航运安全风险上升",
+      "source": "Windward / gCaptain"
     },
     {
-      "date": "2026-04-01",
-      "region": "沙特阿拉伯",
-      "facility": "Khurais油田设施",
-      "type": "油田设施",
-      "owner": "沙特阿美",
-      "event": "遭伊朗袭击",
-      "status": "日产量减少30万桶",
-      "impact": "合计减产60万桶/日",
-      "source": "Maritime Executive"
+      "date": "2026-03-28",
+      "region": "阿联酋",
+      "facility": "Emirates Global Aluminium (EGA)",
+      "type": "铝业",
+      "owner": "EGA",
+      "event": "遭伊朗导弹和无人机袭击，电力中断，生产线'冻结'",
+      "status": "停产，需1年以上修复",
+      "impact": "160万吨/年产能停产，金属凝固在电解槽中，损坏严重",
+      "source": "Mining.com / MEP Middle East"
     },
     {
       "date": "2026-03-28",
@@ -164,29 +186,29 @@
       "event": "也门胡塞武装加入伊朗对美以战争，使用弹道导弹攻击红海和亚丁湾航运",
       "status": "航运安全风险急剧上升",
       "impact": "开辟了第四条战线（Red Sea arena），威胁Bab al-Mandeb海峡",
-      "source": "AP News / Institute for the Study of War"
+      "source": "AP News / ISW"
     },
     {
       "date": "2026-03-19",
       "region": "卡塔尔",
-      "facility": "Ras Laffan LNG设施",
+      "facility": "Ras Laffan LNG综合体",
       "type": "LNG出口终端",
       "owner": "卡塔尔能源公司",
-      "event": "伊朗弹道导弹击中14条液化生产线中的2条，卡塔尔能源部长确认",
-      "status": "约17%产能丧失",
-      "impact": "全球最大LNG出口基地受损，受损产线需3-5年修复",
-      "source": "Energy Voice / QatarEnergy"
+      "event": "伊朗导弹袭击，两台LNG生产线损坏",
+      "status": "约17%产能丧失（77百万吨/年降至64.2百万吨/年）",
+      "impact": "全球最大LNG出口基地受损，受损产线需3-5年修复，宣布不可抗力",
+      "source": "Energy Voice / QatarEnergy / Bloomberg"
     },
     {
       "date": "2026-03-18",
       "region": "伊朗",
-      "facility": "South Pars气田石化设施",
-      "type": "石化设施",
-      "owner": "伊朗国家石化公司",
-      "event": "以色列导弹袭击，引发大火，占伊朗石化产能50%的设施首次遭袭",
-      "status": "停产",
-      "impact": "伊朗50%石化产能被迫停产",
-      "source": "DW / Jerusalem Post"
+      "facility": "South Pars气田4号处理厂",
+      "type": "天然气处理设施",
+      "owner": "伊朗国家石油公司",
+      "event": "以色列空袭，日产1亿立方米天然气产能下线",
+      "status": "停产，占伊朗总产量12%",
+      "impact": "伊朗天然气产量大幅下降",
+      "source": "Mirror Review / DW"
     },
     {
       "date": "2026-03-16",
@@ -203,51 +225,75 @@
   "chain": [
     {
       "date": "2026-04-07",
-      "region": "印度/亚洲",
-      "company": "亚洲石化企业",
+      "region": "伊朗",
+      "company": "伊朗所有尿素工厂",
+      "industry": "化肥/尿素",
+      "event": "Pardis、Shiraz、Razi、Khorasan、Kermanshah、Lordegan、Masjed Soleyman等7家主要尿素工厂全面停产",
+      "transmission": "中东化肥停产→全球供应短缺→价格上涨",
+      "scale": "全面停产",
+      "chinaImpact": "中国化肥进口成本上升，农业生产受影响",
+      "recovery": "视局势恢复",
+      "source": "CRU Group"
+    },
+    {
+      "date": "2026-04-07",
+      "region": "全球",
+      "company": "全球石化行业",
       "industry": "石化",
-      "event": "印度甲醇价格上涨，亚洲石化供应链严重依赖中东出口",
-      "transmission": "中东供应中断→亚洲原料短缺→价格上涨",
-      "scale": "价格上涨",
-      "chinaImpact": "中国从印度、韩国进口甲醇等化工原料成本上升",
-      "recovery": "视中东供应恢复情况而定",
-      "source": "ICIS"
+      "event": "全球乙烯产能损失1500万吨/年（年化），占全球产能12%；中东乙二醇出口损失800万吨/年",
+      "transmission": "中东石化设施遭袭→全球原料短缺→下游产业减产",
+      "scale": "产能损失12%",
+      "chinaImpact": "中国作为世界工厂，石化原料短缺影响制造业",
+      "recovery": "长期恢复",
+      "source": "C&EN / ICIS"
     },
     {
       "date": "2026-04-06",
-      "region": "韩国",
-      "company": "农心（Nongshim）",
-      "industry": "食品包装",
-      "event": "塑料包装供应商仅剩约1个月库存，中东石化产品供应中断影响包装行业",
-      "transmission": "中东石化停产→塑料原料短缺→包装供应紧张",
-      "scale": "库存告急",
-      "chinaImpact": "中国食品、消费品包装行业面临类似风险",
-      "recovery": "1个月内若供应不恢复将面临停产",
-      "source": "Goldman Sachs / The Times"
+      "region": "海湾地区",
+      "company": "海湾地区铝业生产商（EGA、Alba、Qatalum等）",
+      "industry": "铝业",
+      "event": "EGA停产（160万吨/年）、Alba运营下降宣布不可抗力、Qatalum产能降至60%",
+      "transmission": "铝业停产→全球铝供应短缺→LME铝价上涨",
+      "scale": "约300万吨/年产能受影响（海湾地区约50%产能）",
+      "chinaImpact": "中国铝进口成本上升，下游制造业受影响",
+      "recovery": "EGA需1年以上修复",
+      "source": "Mining.com / MEP Middle East / Discovery Alert"
+    },
+    {
+      "date": "2026-04-06",
+      "region": "印度",
+      "company": "印度航运及能源进口商",
+      "industry": "航运/能源",
+      "event": "伊朗阻止16艘印度籍船舶通过霍尔木兹海峡",
+      "transmission": "海峡封锁→印度油气进口受阻",
+      "scale": "16艘船舶受阻",
+      "chinaImpact": "类似风险，中国大量油气进口依赖该航线",
+      "recovery": "视海峡开放",
+      "source": "Understanding War"
     },
     {
       "date": "2026-04-05",
-      "region": "巴林",
-      "company": "Bapco Energies",
-      "industry": "炼油",
-      "event": "40万桶/日产能工厂受袭后宣布不可抗力",
-      "transmission": "不可抗力声明",
-      "scale": "40万桶/日产能受影响",
-      "chinaImpact": "成品油供应紧张，影响中国从中东进口成品油",
-      "recovery": "视设施修复进度",
-      "source": "Insurance Journal"
+      "region": "沙特阿拉伯",
+      "company": "SABIC、Petrokemya",
+      "industry": "化工",
+      "event": "SABIC（甲醇、苯乙烯、乙二醇、乙醇胺）、Petrokemya（苯乙烯单体）宣布不可抗力",
+      "transmission": "不可抗力声明→供应中断",
+      "scale": "多项产品供应中断",
+      "chinaImpact": "中国化工原料进口受阻",
+      "recovery": "视海峡重新开放",
+      "source": "ICIS"
     },
     {
       "date": "2026-04-04",
       "region": "全球",
       "company": "国际航运公司",
       "industry": "航运",
-      "event": "韩国化工品供应平均下降56%，汽油供应下降86%；印度航空燃油供应下降76%",
-      "transmission": "海峡关闭→航运受阻→能源供应下降",
-      "scale": "多国供应大幅下降",
-      "chinaImpact": "中国从中东进口化工品和能源面临同样风险",
-      "recovery": "视海峡重新开放时间",
-      "source": "Goldman Sachs"
+      "event": "约250艘油轮被困波斯湾，全球20%石油和LNG贸易中断",
+      "transmission": "海峡关闭→航运受阻→全球能源供应中断",
+      "scale": "250艘油轮被困，20%贸易中断",
+      "chinaImpact": "中国能源进口严重受阻",
+      "recovery": "视海峡重新开放",
+      "source": "Multiple Sources"
     },
     {
       "date": "2026-04-03",
@@ -258,7 +304,7 @@
       "transmission": "区域冲突蔓延→国际能源项目停工",
       "scale": "产量减少",
       "chinaImpact": "中国石油进口来源多元化需求增加",
-      "recovery": "视地区局势稳定情况",
+      "recovery": "视地区局势稳定",
       "source": "Oil & Gas 360"
     },
     {
