@@ -22,7 +22,7 @@ python generate_timelapse_video.py
 
 ---
 
-## 2. 全球市场 & 经济数据网页更新
+## 2. 全球市场网页更新
 
 ```bash
 python update_data_from_excel.py
@@ -30,7 +30,6 @@ python update_data_from_excel.py
 
 **更新内容**:
 - `data-tracking.html` - 全球市场数据（商品价格、流动性、股市、债市、总览）
-- `eco-track.html` - 各国经济数据（美国、欧元区、日本、英国等8国）
 
 **数据源**: `全球市场.xlsx`
 
