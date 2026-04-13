@@ -1,110 +1,93 @@
 {
-  "date": "2026-04-12",
-  "title": "美以伊冲突每日简报",
-  "conflict_day": 43,
+  "date": "2026-04-13",
+  "conflict_day": 45,
   "blockade_day": 41,
-  "summary": "美伊在伊斯兰堡举行历史性直接会谈，持续21小时但未达成协议，谈判将在周日继续。双方核心分歧仍在核计划和霍尔木兹海峡控制权。",
+  "summary": "美伊达成两周停火协议，伊斯兰堡谈判即将开启；霍尔木兹海峡出现缓和迹象，三艘超级油轮顺利穿越。",
   "sections": {
-    "military": {
-      "title": "战局进展",
-      "items": [
-        {
-          "title": "美伊伊斯兰堡会谈：21小时马拉松谈判未达成协议",
-          "time": "4月11-12日",
-          "content": "美伊在巴基斯坦伊斯兰堡举行了自1979年伊斯兰革命以来最高级别的直接会谈，持续约21小时，但未能达成最终协议。谈判将在周日继续进行。",
-          "source": "Reuters, New York Post"
-        },
-        {
-          "title": "谈判参与人员",
-          "time": "4月11-12日",
-          "content": "美方：副总统JD Vance、特使Steve Witkoff、Jared Kushner、国务卿Marco Rubio；伊朗：议长Mohammad Baqer Qalibaf、外交部长Abbas Araqchi；调解方：巴基斯坦总理Shehbaz Sharif、陆军参谋长Asim Munir。",
-          "source": "Reuters"
-        }
-      ]
-    },
-    "statements": {
-      "title": "各方最新表态",
-      "items": [
-        {
-          "country": "🇺🇸 美国/特朗普",
-          "time": "4月11日",
-          "content": "特朗普表示：「无论是否达成协议，美国都已经赢了...伊朗之所以谈判，是因为他们『没有牌可打』。」副总统万斯表示如果伊朗谈判诚意不足，将面临严重后果。",
-          "source": "Various"
-        },
-        {
-          "country": "🇮🇷 伊朗主要要求",
-          "time": "4月11-12日",
-          "content": "霍尔木兹海峡控制权（要求主权并收费）、解冻海外资产、战争赔偿、黎巴嫩停火、铀浓缩权利、美军撤离、非侵略承诺。",
-          "source": "Jerusalem Post, Al-Monitor"
-        },
-        {
-          "country": "🇺🇸 美国主要要求",
-          "time": "4月11-12日",
-          "content": "禁止核武器（特朗普：「这是99%的内容」）、停止铀浓缩、限制导弹计划、开放霍尔木兹海峡。",
-          "source": "Various"
-        },
-        {
-          "country": "🇮🇱 以色列/内塔尼亚胡",
-          "time": "4月11日",
-          "content": "以色列总理内塔尼亚胡表示，针对伊朗的行动「尚未结束」，以色列已经取得了「历史性成就」。",
-          "source": "Times of Israel"
-        }
-      ]
-    },
+    "military": [
+      {
+        "title": "美伊达成两周停火协议",
+        "date": "2026-04-08",
+        "source": "新华社/CBS News",
+        "content": "巴基斯坦总理谢里夫宣布，美国和伊朗已达成即时停火协议，停火期为两周。双方代表团将于4月10日前往伊斯兰堡进行进一步谈判。"
+      },
+      {
+        "title": "以军持续打击伊朗石化设施",
+        "date": "2026-04-06",
+        "source": "ISW/IDF",
+        "content": "以色列国防军确认，过去一周打击了伊朗两个最大的石化设施——南帕尔斯综合体和班达爾伊瑪目石化综合体，占伊朗石化出口的85%。"
+      },
+      {
+        "title": "伊朗、真主党和胡塞武装协调攻击以色列",
+        "date": "2026-04-06",
+        "source": "ISW",
+        "content": "三方在约十分钟内几乎同时触发以色列北部、中部和南部的防空警报，分析认为这是为了最大化心理震慑效果。"
+      }
+    ],
+    "statements": [
+      {
+        "country": "美国/特朗普",
+        "date": "2026-04-06",
+        "source": "CNN/白宫",
+        "content": "特朗普表示有计划将伊朗所有桥梁'摧毁'、所有发电厂'停业'，同时称伊朗谈判代表积极愿意参与。"
+      },
+      {
+        "country": "伊朗",
+        "date": "2026-04-06",
+        "source": "ISW/伊朗官媒",
+        "content": "伊朗拒绝停火提案，提出10项反要求，包括区域永久停火、霍尔木兹海峡安全通行协议、重建支持及解除制裁。"
+      },
+      {
+        "country": "巴基斯坦",
+        "date": "2026-04-08",
+        "source": "新华社",
+        "content": "总理谢里夫邀请双方代表团于4月10日前往伊斯兰堡，进一步谈判以达成全面协议。"
+      }
+    ],
     "strait": {
-      "title": "霍尔木兹海峡通行情况",
-      "status": "停火期间但仍受限，伊朗要求控制权",
+      "status": "部分松动但仍受限",
       "blockade_days": 41,
-      "key_issues": [
-        "霍尔木兹海峡控制权是谈判核心争议点",
-        "伊朗要求对海峡拥有主权并收取通行费",
-        "美国要求开放海峡允许石油自由通行",
-        "海峡封锁约占全球能源供应20%"
+      "key_events": [
+        "4月12日三艘超级油轮成功穿越霍尔木兹海峡",
+        "两艘中国超大型油轮（Cospearl Lake、He Rong Hai）",
+        "一艘希腊油轮（Serifos）",
+        "约1000艘船只在波斯湾区域等待通行"
       ]
     },
-    "supply_chain": {
-      "title": "全球供应链影响",
-      "items": [
-        {
-          "sector": "谈判影响",
-          "event": "美伊谈判21小时未达成协议，市场关注周日继续谈判的进展",
-          "impact": "若谈判最终破裂，油价可能面临进一步上涨压力"
-        },
-        {
-          "sector": "卡塔尔LNG",
-          "event": "卡塔尔动员工程师准备重启Ras Laffan，部分产能或近日恢复",
-          "impact": "该设施17%产能受损，修复需3-5年，年收入损失约200亿美元"
-        }
-      ]
-    },
-    "investment_banks": {
-      "title": "海外投行观点",
-      "items": [
-        {
-          "bank": "高盛",
-          "view": "Q2布伦特$90；若停火失败Q4可能达$115；长期霍尔木兹关闭情景Q3 $120",
-          "source": "TheStreet"
-        },
-        {
-          "bank": "摩根大通",
-          "view": "若霍尔木兹僵局持续至7月，油价可能触及$120",
-          "source": "Oil & Gas 360"
-        },
-        {
-          "bank": "亚开行",
-          "view": "长期中东冲突可能使2026年发展中亚洲GDP萎缩",
-          "source": "CNBC"
-        }
-      ]
-    }
+    "supply_chain": [
+      {
+        "sector": "能源市场",
+        "event": "霍尔木兹海峡封锁导致全球约20%的石油和天然气供应受阻",
+        "impact": "布伦特原油一度突破110美元/桶"
+      },
+      {
+        "sector": "航运与保险",
+        "event": "主要航运公司暂停直接通行",
+        "impact": "战争险保费飙升约20倍"
+      }
+    ],
+    "investment_banks": [
+      {
+        "institution": "摩根大通",
+        "spokesperson": "CEO Jamie Dimon",
+        "view": "伊朗战争及AI发展可能推高通胀，成为2026年'派对上的臭鼬'，可能引发衰退和熊市。",
+        "source": "MarketWatch/NPR"
+      },
+      {
+        "institution": "高盛",
+        "spokesperson": "分析师 Daan Struyven",
+        "view": "若霍尔木兹海峡再关闭一个月，布伦特油价2026年下半年将保持在100美元以上。",
+        "source": "Reuters"
+      }
+    ]
   },
   "market_data": {
-    "brent_oil": "约$96/桶",
-    "wti_oil": "约$99/桶",
-    "european_gas": "€45.65/MWh",
-    "sp500": "约5,300点",
-    "nasdaq": "约16,800点",
-    "dxy": "约103-104"
+    "brent_crude": "$96-100/桶",
+    "wti_crude": "$92-96/桶",
+    "sp500": "约5,100点",
+    "nasdaq": "约16,000点",
+    "vix": "约27",
+    "dxy": "99.60"
   },
-  "sources": ["Reuters", "Bloomberg", "CNN", "WSJ", "ISW", "New York Post", "Jerusalem Post", "Al-Monitor"]
+  "updated": "2026-04-13T10:50:00+08:00"
 }
