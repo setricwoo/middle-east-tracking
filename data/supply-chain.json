@@ -1,6 +1,39 @@
 {
-  "fetchTime": "2026-04-12",
+  "fetchTime": "2026-04-14",
   "energy": [
+    {
+      "date": "2026-04-14",
+      "region": "伊朗",
+      "facility": "伊朗所有港口",
+      "type": "港口/航运通道",
+      "owner": "伊朗港口与海事组织",
+      "event": "美军开始对伊朗港口实施海上封锁，禁止所有海上交通进出伊朗港口",
+      "status": "美军封锁中",
+      "impact": "伊朗海上贸易完全中断，霍尔木兹海峡周边紧张局势急剧升级",
+      "source": "Kyodo News / Reuters"
+    },
+    {
+      "date": "2026-04-09",
+      "region": "沙特阿拉伯",
+      "facility": "东西输油管道(East-West Pipeline)",
+      "type": "原油管道",
+      "owner": "沙特阿美",
+      "event": "遭伊朗无人机袭击后已恢复满负荷运行，此前日输送能力一度减少70万桶",
+      "status": "已恢复满负荷",
+      "impact": "沙特绕过霍尔木兹的关键生命线恢复，约700万桶/日输送能力",
+      "source": "gCaptain / Reuters / Oil and Gas Middle East"
+    },
+    {
+      "date": "2026-04-09",
+      "region": "卡塔尔",
+      "facility": "Ras Laffan LNG工业城",
+      "type": "LNG出口终端",
+      "owner": "卡塔尔能源公司",
+      "event": "开始动员重启生产，Qatargas-1的两条生产线已重新启动",
+      "status": "部分产能恢复中",
+      "impact": "17%产能损失(1280万吨/年)仍需3-5年修复，年收入损失约200亿美元",
+      "source": "Offshore-Technology / Reuters"
+    },
     {
       "date": "2026-04-09",
       "region": "伊朗",
@@ -223,6 +256,30 @@
     }
   ],
   "chain": [
+    {
+      "date": "2026-04-14",
+      "region": "日本",
+      "company": "Toto Ltd.",
+      "industry": "卫浴/建材",
+      "event": "因中东局势导致石脑油等溶剂供应中断，暂停部分产品新订单",
+      "transmission": "中东石化设施遭袭→石脑油短缺→下游制造业减产",
+      "scale": "部分产品新订单暂停",
+      "chinaImpact": "中国卫浴及建材出口竞争格局可能变化，进口替代需求增加",
+      "recovery": "视原料供应恢复",
+      "source": "Kyodo News"
+    },
+    {
+      "date": "2026-04-09",
+      "region": "伊拉克",
+      "company": "伊拉克石油部",
+      "industry": "石油/管道建设",
+      "event": "启动Basra-Haditha原油管道招标，设计运力225万桶/日，旨在绕过霍尔木兹海峡",
+      "transmission": "海峡封锁→寻找替代出口路线→管道基建投资增加",
+      "scale": "规划225万桶/日替代运力",
+      "chinaImpact": "中国企业可能参与管道建设投标，深化中伊能源合作",
+      "recovery": "长期项目",
+      "source": "Oil and Gas Middle East"
+    },
     {
       "date": "2026-04-07",
       "region": "伊朗",
