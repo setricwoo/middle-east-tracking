@@ -1,6 +1,28 @@
 {
-  "fetchTime": "2026-04-14",
+  "fetchTime": "2026-04-15",
   "energy": [
+    {
+      "date": "2026-04-09",
+      "region": "沙特阿拉伯",
+      "facility": "多个能源设施",
+      "type": "炼油厂/油田/LPG设施",
+      "owner": "沙特阿美",
+      "event": "据沙特国家通讯社(SPA)4月9日报道，近期伊朗袭击导致SATORP、Riyadh炼油厂、Juaymah LPG设施、Manifa和Khurais油田、东西输油管道等多个设施遭袭或受损",
+      "status": "部分设施关闭或减产",
+      "impact": "沙特石油生产能力总计减少约60万桶/日，其中Manifa和Khurais各减产30万桶/日，Riyadh炼油厂减产12万桶/日",
+      "source": "Saudi Press Agency / gCaptain / Bloomberg"
+    },
+    {
+      "date": "2026-04-14",
+      "region": "伊朗",
+      "facility": "伊朗所有港口",
+      "type": "港口/航运通道",
+      "owner": "伊朗港口与海事组织",
+      "event": "美军开始对伊朗港口实施海上封锁，首日无船只突破，6艘商船被令返航；财政部确认4月19日恢复对伊朗石油制裁",
+      "status": "美军封锁中，制裁即将恢复",
+      "impact": "伊朗海上贸易完全中断，陆上储油仅够13天，封锁每天可能造成约4.35亿美元损失",
+      "source": "CENTCOM / Reuters / US Treasury"
+    },
     {
       "date": "2026-04-14",
       "region": "伊朗",
@@ -256,6 +278,30 @@
     }
   ],
   "chain": [
+    {
+      "date": "2026-04-15",
+      "region": "阿联酋",
+      "company": "Emirates Global Aluminium (EGA)",
+      "industry": "铝业",
+      "event": "EGA就Al Taweelah工厂遭袭后部分产品发布不可抗力(force majeure)通知。该公司此前表示主要铝生产全面恢复可能需要长达12个月",
+      "transmission": "直接袭击导致停产 → 不可抗力声明",
+      "scale": "Al Taweelah年产约160万吨原铝全部停产",
+      "chinaImpact": "中东铝供应中断推升LME铝价，影响中国下游汽车、包装、建筑等行业",
+      "recovery": "主要铝生产恢复预计需12个月，氧化铝和回收厂可能更早部分重启",
+      "source": "CRU Aluminum Market Update / The National"
+    },
+    {
+      "date": "2026-04-11",
+      "region": "中东地区",
+      "company": "Alba (巴林)、Qatalum (卡塔尔)、Maaden (沙特)",
+      "industry": "铝业",
+      "event": "据Wood Mackenzie，中东冲突可能导致2026年全球铝市场减少300-350万吨产量。Alba受袭后产能利用率降至约30%，Qatalum降至约60%",
+      "transmission": "氧化铝供应中断 + 直接袭击 → 多家冶炼厂减产",
+      "scale": "中东约680万吨铝产能(占全球非中国出口18%)面临中断风险",
+      "chinaImpact": "中国铝进口成本上升，部分下游企业转向国内或印尼、俄罗斯供应",
+      "recovery": "视冲突持续时间和替代氧化铝供应情况而定",
+      "source": "Wood Mackenzie / gCaptain"
+    },
     {
       "date": "2026-04-14",
       "region": "日本",

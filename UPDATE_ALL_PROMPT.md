@@ -51,7 +51,7 @@ python update_data_from_excel.py
 ### 步骤3：更新网页
 - 保留war-situation.html原有结构
 - 替换为最新翻译内容
-- 确保图片链接正确（使用原始URL或下载到本地）
+- 确保图片链接正确（使用原始URL）
 
 ---
 
