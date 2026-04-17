@@ -1,49 +1,49 @@
 {
-  "updated": "2026-04-15T12:17:39",
+  "updated": "2026-04-17T10:18:55",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
   },
   "jin10": {
-    "updated": "2026-04-15T12:16:52",
+    "updated": "2026-04-17T10:18:04",
     "source": "金十数据",
     "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
     "industry_pressure": {
-      "total": 90,
+      "total": 86.67,
       "methanol": {
         "name": "甲醇",
         "value": 99
       },
       "oil": {
         "name": "原油及成品油",
-        "value": 97.5
+        "value": 95.5
       },
       "lpg": {
         "name": "液化石油气/LPG",
-        "value": 97.1
+        "value": 95.1
       },
       "lng": {
         "name": "液化天然气/LNG",
-        "value": 94
+        "value": 92
       },
       "fertilizer": {
         "name": "化肥",
-        "value": 94.2
+        "value": 92.2
       },
       "aluminum": {
         "name": "铝材",
-        "value": 90.3
+        "value": 88.3
       }
     },
     "ship_counts": {
-      "yesterday_passed": 11,
-      "hormuz_passing": 6,
-      "sailing": 682,
-      "anchored": 2954,
-      "total_in_area": 3636,
-      "calculated_total": 3636
+      "yesterday_passed": 5,
+      "hormuz_passing": 8,
+      "sailing": 712,
+      "anchored": 2983,
+      "total_in_area": 3695,
+      "calculated_total": 3695
     },
-    "snapshot_url": "https://oimg.jin10.com/news/26/04/-DppO7J6mJKkSV3FJrbL0D.png"
+    "snapshot_url": "https://oimg.jin10.com/news/26/04/e6zPcFr1l86Fyg13_kvnLC.png"
   },
   "history": {
     "dates": [
@@ -181,7 +181,9 @@
       "2026/4/11",
       "2026/4/12",
       "2026/4/13",
-      "2026/4/14"
+      "2026/4/14",
+      "2026/4/15",
+      "2026/4/16"
     ],
     "ship_counts": [
       135,
@@ -318,7 +320,9 @@
       18,
       23,
       10,
-      11
+      11,
+      10,
+      5
     ],
     "tonnages": [
       11558286,
@@ -455,7 +459,9 @@
       1383100,
       1746700,
       429900,
-      457700
+      457700,
+      1142400,
+      127200
     ]
   }
 }
