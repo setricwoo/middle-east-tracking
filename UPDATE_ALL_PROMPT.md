@@ -36,7 +36,7 @@ python update_data_from_excel.py
 ---
 
 ## 3. 战局形势网页 (war-situation.html) 更新
-
+选择4/18的报告
 ### 步骤1：获取最新报告
 1. 访问 https://understandingwar.org/
 2. 搜索最新的 Iran Update Special Report（伊朗特别更新报告）
@@ -56,7 +56,7 @@ python update_data_from_excel.py
 ---
 
 ## 4. 每日简报网页 (briefing.html) 更新
-
+重点关注最近美伊谈判进展，美伊海峡争夺和通行等
 **参考文件**: `BRIEFING_UPDATE_PROMPT.md`
 - 按照该文件中的更新流程执行
 - 生成新的简报内容
