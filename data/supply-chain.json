@@ -1,6 +1,39 @@
 {
-  "fetchTime": "2026-04-20",
+  "fetchTime": "2026-04-22",
   "energy": [
+    {
+      "date": "2026-04-19",
+      "region": "阿曼湾/伊朗",
+      "facility": "Touska集装箱船",
+      "type": "集装箱船",
+      "owner": "伊朗伊斯兰共和国航运公司",
+      "event": "美国海军USS Spruance驱逐舰在阿曼湾拦截并扣押伊朗集装箱船Touska，该船试图突破美军对伊朗港口的海上封锁",
+      "status": "被美军扣押",
+      "impact": "美军首次在战争中扣押伊朗国旗集装箱船，海上封锁升级，伊朗威胁报复，布伦特原油应声反弹超6%",
+      "source": "US President / ISW / 财新"
+    },
+    {
+      "date": "2026-04-18",
+      "region": "霍尔木兹海峡/阿曼北部",
+      "facility": "两艘印度籍油轮",
+      "type": "油轮",
+      "owner": "印度船东",
+      "event": "两艘悬挂印度国旗的大型船只在阿曼北部海域遭伊朗伊斯兰革命卫队炮击，其中一艘载有近200万桶原油，船员安全",
+      "status": "遭炮击受损",
+      "impact": "印度外交部召见伊朗大使提出抗议，海峡航运安全风险进一步上升",
+      "source": "Indian Ministry of External Affairs / UKMTO / 东方财富"
+    },
+    {
+      "date": "2026-04-18",
+      "region": "霍尔木兹海峡",
+      "facility": "多艘国际商船",
+      "type": "航运通道",
+      "owner": "国际航运",
+      "event": "伊朗外长4月17日宣布开放海峡后，因美军持续封锁伊朗港口，伊朗革命卫队4月18日向至少3艘商船（油轮、邮轮、集装箱船）开火或发出警告，海峡航运再度停滞",
+      "status": "重新关闭",
+      "impact": "海峡通行量仅恢复冲突前的20%-50%，布伦特原油暴跌9%后次日反弹超6%",
+      "source": "Bloomberg / UKMTO / ISW / Sparta Commodities"
+    },
     {
       "date": "2026-04-19",
       "region": "伊朗",
@@ -289,6 +322,30 @@
     }
   ],
   "chain": [
+    {
+      "date": "2026-04-21",
+      "region": "科威特",
+      "company": "Kuwait Petroleum Corporation (KPC)",
+      "industry": "石油/成品油",
+      "event": "KPC宣布原油和成品油shipments的不可抗力，因霍尔木兹海峡持续封锁导致无法履行对客户的交付义务",
+      "transmission": "海峡封锁→出口中断→不可抗力声明",
+      "scale": "产量降至1990年代海湾战争以来最低水平，日产量大幅减少",
+      "chinaImpact": "中国从科威特进口原油和成品油受阻，需寻找替代供应",
+      "recovery": "预计数月恢复，即使海峡重新开放也无法立即恢复全部交付",
+      "source": "Bloomberg / KPC / World Oil / AA.com.tr"
+    },
+    {
+      "date": "2026-04-16",
+      "region": "伊朗",
+      "company": "伊朗国家石化公司 (NPC)",
+      "industry": "石化",
+      "event": "发布全面石化产品出口暂停令，涵盖全部2900万吨/年产能，以维持国内价格稳定",
+      "transmission": "设施遭袭+港口封锁→国内保供优先→全面出口禁令",
+      "scale": "2900万吨/年产能停止出口，价值约130亿美元全球贸易",
+      "chinaImpact": "中国从伊朗进口石化原料中断，加剧国内化工原料短缺",
+      "recovery": "视设施修复和局势稳定，短期难以恢复",
+      "source": "National Petrochemical Company / Discovery Alert / Reuters"
+    },
     {
       "date": "2026-04-15",
       "region": "阿联酋",
