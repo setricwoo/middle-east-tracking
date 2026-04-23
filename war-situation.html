@@ -1,684 +1,438 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>【华泰固收】中东地缘跟踪 - 战局形势</title>
-
     <style>
-
         *{margin:0;padding:0;box-sizing:border-box;}
-
         body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f8fafc;color:#1e293b;line-height:1.8;}
-
         .header {
-
             background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
-
             color: white;
-
             padding: 12px 0;
-
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-
             position: sticky;
-
             top: 0;
-
             z-index: 100;
-
         }
-
         .header-main {
-
             max-width: 1400px;
-
             margin: 0 auto;
-
             padding: 0 20px;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
             position: relative;
-
         }
-
         .header-left {
-
             position: absolute;
-
             left: 20px;
-
         }
-
         .header-left h1 {
-
             font-size: 1.1rem;
-
             font-weight: 600;
-
             margin: 0;
-
         }
-
         .header-center {
-
             display: flex;
-
             gap: 8px;
-
             flex-wrap: wrap;
-
             justify-content: center;
-
         }
-
         .nav-btn {
-
             color: rgba(255,255,255,0.85);
-
             text-decoration: none;
-
             padding: 6px 12px;
-
             border-radius: 6px;
-
             font-size: 0.85rem;
-
             transition: all 0.2s;
-
             white-space: nowrap;
-
         }
-
         .nav-btn:hover {
-
             background: rgba(255,255,255,0.15);
-
             color: white;
-
         }
-
         .nav-btn.active {
-
             background: rgba(255,255,255,0.2);
-
             color: white;
-
             font-weight: 500;
-
         }
-
         .header-right {
-
             font-size: 0.75rem;
-
             color: rgba(255,255,255,0.7);
-
             white-space: nowrap;
-
         }
-
         .container{max-width:1200px;margin:0 auto;padding:24px 20px;}
-
         
-
         /* 战局头部 */
-
         .war-header{background:linear-gradient(135deg,#fef2f2 0%,#fee2e2 100%);border:1px solid #dc2626;border-radius:12px;padding:24px;margin-bottom:24px;}
-
         .war-header h2{color:#991b1b;font-size:1.4rem;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-
         .war-badge{background:#dc2626;color:#fff;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:600;}
-
         .war-meta{display:flex;gap:20px;color:#7f1d1d;font-size:0.9rem;margin-top:12px;flex-wrap:wrap;}
-
         .war-meta span{display:flex;align-items:center;gap:6px;}
-
         
-
         .section{background:#fff;border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,0.08);border:1px solid #e2e8f0;}
-
         .section h3{color:#1e40af;font-size:1.15rem;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid #e2e8f0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-
         
-
         /* Takeaways */
-
         .takeaways-list{list-style:none;padding:0;}
-
         .takeaway-item{background:#f8fafc;border-left:4px solid #dc2626;padding:16px 20px;margin-bottom:12px;border-radius:0 8px 8px 0;transition:all 0.2s;}
-
         .takeaway-item:hover{background:#fef2f2;transform:translateX(4px);}
-
         .takeaway-item.note{border-left-color:#f59e0b;background:#fffbeb;}
-
         .takeaway-item.note:hover{background:#fef3c7;}
-
         .takeaway-en{color:#475569;font-size:0.9rem;margin-bottom:8px;line-height:1.6;}
-
         .takeaway-zh{color:#1e293b;font-size:1rem;font-weight:500;line-height:1.7;}
-
         .takeaway-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:#dc2626;color:#fff;border-radius:50%;font-size:0.8rem;font-weight:600;margin-right:8px;}
-
         .takeaway-item.note .takeaway-num{background:#f59e0b;}
-
         
-
+        /* 详细分析 */
+        .analysis-content h4{color:#1e40af;font-size:1rem;margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid #e2e8f0;}
+        .analysis-content p{color:#334155;margin-bottom:12px;line-height:1.8;}
+        .analysis-content ul{margin-left:20px;color:#475569;margin-bottom:12px;}
+        .analysis-content li{margin-bottom:6px;line-height:1.7;}
+        .analysis-subsection{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #e2e8f0;}
+        .analysis-subsection:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+        .analysis-subsection h5{color:#475569;font-size:0.95rem;margin:12px 0 8px;font-weight:600;}
+        
         /* 图表网格 */
-
         .charts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:20px;}
-
         .chart-card{background:#f8fafc;border-radius:12px;padding:16px;border:1px solid #e2e8f0;transition:all 0.2s;}
-
         .chart-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.1);}
-
         .chart-title{font-weight:600;color:#1e293b;margin-bottom:8px;font-size:0.95rem;}
-
         .chart-img{width:100%;border-radius:8px;border:1px solid #e2e8f0;background:#fff;min-height:200px;}
-
         .chart-context{background:#eff6ff;border-radius:8px;padding:12px;margin-top:12px;}
-
         .chart-context h4{color:#1e40af;font-size:0.85rem;margin-bottom:8px;}
-
         .chart-context ul{margin:0;padding-left:16px;}
-
         .chart-context li{color:#475569;font-size:0.8rem;margin-bottom:4px;line-height:1.5;}
-
         .chart-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-
         .chart-tag{background:#e2e8f0;color:#475569;padding:2px 8px;border-radius:4px;font-size:0.75rem;}
-
         
-
         /* 历史文章 */
-
         .history-list{display:flex;flex-direction:column;gap:12px;}
-
         .history-item{display:flex;align-items:center;gap:16px;padding:16px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0;text-decoration:none;color:inherit;transition:all 0.2s;}
-
         .history-item:hover{background:#eff6ff;border-color:#3b82f6;}
-
         .history-date{color:#64748b;font-size:0.85rem;min-width:100px;}
-
         .history-title{color:#1e40af;font-weight:500;flex:1;}
-
         .history-arrow{color:#94a3b8;}
-
         
-
         /* 来源 */
-
         .source-box{background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;padding:16px;margin-top:20px;}
-
         .source-box h4{color:#92400e;font-size:0.9rem;margin-bottom:8px;}
-
         .source-box p{color:#78350f;font-size:0.85rem;margin:0;}
-
         .source-box a{color:#b45309;text-decoration:underline;}
-
         
-
         .lang-toggle{float:right;padding:6px 12px;background:#e2e8f0;border:none;border-radius:6px;cursor:pointer;font-size:0.8rem;color:#475569;}
-
         .lang-toggle:hover{background:#cbd5e1;}
-
         
-
         .loading{text-align:center;padding:40px;color:#64748b;}
-
         .loading-spinner{display:inline-block;width:40px;height:40px;border:3px solid #e2e8f0;border-top-color:#dc2626;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:16px;}
-
         @keyframes spin{to{transform:rotate(360deg);}}
-
         
-
         .error-box{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:20px;text-align:center;color:#991b1b;}
-
         
-
         /* 更新按钮 */
-
         .refresh-btn{background:#dc2626;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:0.85rem;display:inline-flex;align-items:center;gap:6px;}
-
         .refresh-btn:hover{background:#b91c1c;}
-
         
-
         @media (max-width: 768px) {
-
             .header-main { flex-wrap: wrap; padding: 4px 8px; gap: 4px; position: relative; }
-
             .header-left { position: relative; left: auto; width: 100%; text-align: left; order: 1; }
-
             .header h1 { font-size: 0.9rem; white-space: nowrap; margin: 0; padding: 2px 0; }
-
             .header-center::-webkit-scrollbar { display: none; }
-
             .nav-btn { padding: 4px 8px; font-size: 0.7rem; white-space: nowrap; flex: 0 0 auto; text-align: center; }
-
             .header-right { display: none; }
-
             .charts-grid{grid-template-columns:1fr;}
-
             .header-center-wrapper { 
-
                 order: 2; 
-
                 width: 100%; 
-
                 display: flex; 
-
                 align-items: center; 
-
                 position: relative;
-
                 margin-top: 2px;
-
             }
-
             .header-center { 
-
                 flex: 1;
-
                 justify-content: flex-start; 
-
                 gap: 4px; 
-
                 flex-wrap: nowrap; 
-
                 overflow-x: auto; 
-
                 -webkit-overflow-scrolling: touch; 
-
                 scrollbar-width: none; 
-
                 position: relative; 
-
                 padding: 0 4px; 
-
             }
-
             .nav-arrow {
-
                 display: flex;
-
                 align-items: center;
-
                 justify-content: center;
-
                 width: 20px;
-
                 height: 28px;
-
                 background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
-
                 color: rgba(255,255,255,0.7);
-
                 font-size: 12px;
-
                 cursor: pointer;
-
                 flex-shrink: 0;
-
                 z-index: 10;
-
             }
-
             .nav-arrow.hidden { display: none; }
-
             .container{padding:12px;}
-
             .war-header{padding:16px;}
-
             .war-header h2{font-size:1.1rem;}
-
             .takeaway-item{padding:12px 16px;}
-
         }
-
         @media (min-width: 769px) {
-
             .nav-arrow { display: none !important; }
-
             .header-center-wrapper { display: contents; }
-
         }
-
         @media (max-width: 480px) {
-
             .header-main { padding: 6px 8px; gap: 6px; }
-
             .header h1 { font-size: 0.9rem; }
-
             .header-center { gap: 4px; }
-
             .nav-btn { padding: 5px 8px; font-size: 0.7rem; min-width: 70px; max-width: 100px; }
-
             .header-right { display: none; }
-
         }
-
     </style>
-
 </head>
-
 <body>
-
     <div class="header">
-
         <div class="header-main">
-
             <div class="header-left">
-
                 <h1>【华泰固收】中东地缘跟踪</h1>
-
             </div>
-
             <div class="header-center-wrapper">
-
                 <div class="nav-arrow nav-arrow-left" id="navArrowLeft">◀</div>
-
                 <div class="header-center" id="navCenter">
-
                     <a href="index.html" class="nav-btn">海峡跟踪</a>
-
                     <a href="polymarket.html" class="nav-btn">Polymarket</a>
-
                     <a href="data-tracking.html" class="nav-btn">全球市场</a>
-
                     <a href="war-situation.html" class="nav-btn active">战局形势</a>
-
                     <a href="news.html" class="nav-btn">实时新闻</a>
-
                     <a href="briefing.html" class="nav-btn">每日简报</a>
-
                     <a href="oil-chart.html" class="nav-btn">原油图谱</a>
-
                 </div>
-
                 <div class="nav-arrow nav-arrow-right" id="navArrowRight">▶</div>
-
             </div>
-
-
-
         </div>
-
     </div>
 
     <script>
-
         // 移动端导航滚动箭头控制
-
         (function() {
-
             var navCenter = document.getElementById('navCenter');
-
             var arrowLeft = document.getElementById('navArrowLeft');
-
             var arrowRight = document.getElementById('navArrowRight');
-
             if (!navCenter || !arrowLeft || !arrowRight) return;
-
             
-
             function updateArrows() {
-
                 var scrollLeft = navCenter.scrollLeft;
-
                 var scrollWidth = navCenter.scrollWidth;
-
                 var clientWidth = navCenter.clientWidth;
-
                 var canScrollLeft = scrollLeft > 5;
-
                 var canScrollRight = scrollLeft < scrollWidth - clientWidth - 5;
-
                 
-
                 arrowLeft.classList.toggle('hidden', !canScrollLeft);
-
                 arrowRight.classList.toggle('hidden', !canScrollRight);
-
             }
-
             
-
             arrowLeft.addEventListener('click', function() {
-
                 navCenter.scrollBy({ left: -100, behavior: 'smooth' });
-
             });
-
             arrowRight.addEventListener('click', function() {
-
                 navCenter.scrollBy({ left: 100, behavior: 'smooth' });
-
             });
-
             
-
             navCenter.addEventListener('scroll', updateArrows, { passive: true });
-
             window.addEventListener('resize', updateArrows, { passive: true });
-
             window.addEventListener('pageshow', updateArrows);
-
             
-
             // 初始化
-
             setTimeout(updateArrows, 100);
-
             setTimeout(updateArrows, 500);
-
         })();
-
     </script>
 
-
-
     <main class="container">
-
         <!-- 战局头部 -->
-
         <div class="war-header">
-
             <h2>
-
                 <span class="war-badge">ISW</span>
-
-                <span id="report-title">伊朗局势更新特别报告 - 2026年4月21日</span>
-
+                <span id="report-title">伊朗局势更新特别报告 - 2026年4月22日</span>
             </h2>
-
             <p style="color:#7f1d1d;margin-top:8px;">Institute for the Study of War (战争研究所) 最新战况分析</p>
-
             <div class="war-meta">
-
                 <span>📅 <span id="report-date">--</span></span>
-
                 <span>📍 中东/伊朗</span>
-
                 <span>📝 <span id="takeaway-count">--</span> 要点</span>
-
                 <span>🗺️ <span id="chart-count">--</span> 图表</span>
-
             </div>
-
         </div>
-
-
 
         <!-- 核心要点 -->
-
         <section class="section" id="takeaways-section">
-
             <h3>
-
                 🎯 核心要点 (Key Takeaways)
-
                 <button class="lang-toggle" onclick="toggleLanguage()">显示英文</button>
-
             </h3>
-
             <ul class="takeaways-list" id="takeaways-list">
-
                 <div class="loading">
-
                     <div class="loading-spinner"></div>
-
                     <p>正在加载战况数据...</p>
-
                 </div>
-
             </ul>
-
         </section>
 
-
+        <!-- 详细分析 -->
+        <section class="section" id="analysis-section">
+            <h3>📋 详细分析 (Detailed Analysis)</h3>
+            <div class="analysis-content">
+                <div class="analysis-subsection">
+                    <h4>一、美国延长停火</h4>
+                    <p>特朗普4月21日表示，巴基斯坦调解人敦促美国不要在伊朗领导人努力制定"统一提案"时恢复攻击。"统一"提案的说法意味着之前的提案在某些方面并不统一，这与ISW-CTP评估一致，即谈判面临的挑战是伊朗谈判团队的分裂性质。原定于4月21日在伊斯兰堡举行的第二轮美伊谈判因伊朗未确认参与且未回应美方立场而取消。特朗普确认华盛顿将继续维持对伊朗港口的封锁。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>二、伊朗政权内部权力斗争</h4>
+                    <p>议长穆罕默德·巴吉尔·加利巴夫与IRGC司令艾哈迈德·瓦希迪少将之间存在持续的权力斗争。华尔街日报4月21日援引未指明消息来源报道称，伊朗官员最初表示将参加会谈，但后来在IRGC压力下引入了美方先解除封锁的前提条件。这表明瓦希迪及其阵营目前对伊朗决策拥有重大影响力。这与瓦希迪是唯一能与穆杰塔巴·哈梅内伊直接联系并传达关键决定的高级官员的报道一致。加利巴夫公开支持谈判，未明确呼吁先决条件。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>三、美方解除封锁的前提条件</h4>
+                    <p>美方解除封锁的前提条件只会解除谈判前和谈判期间的封锁。美国之后可随时重新实施封锁。因此这一前提条件并非重大让步。前提条件的有限性表明，瓦希迪及其周围人士可能试图破坏谈判，而非争取有意义的经济救济。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>四、伊朗准备恢复战争</h4>
+                    <p>IRGC附属Tasnim通讯社4月21日报道称，伊朗已为新一轮战斗做好准备。伊朗过去两周评估冲突重燃的可能性很高，并已进行军事重新部署并准备新的目标清单。伊朗司法总监埃杰伊4月21日评估称，美以恢复攻击的可能性很高。一名高级以色列安全官员4月21日告诉以色列国家广播公司，以色列也在准备与伊朗恢复战斗，并指出以色列已准备好立即恢复战争。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>五、部分伊朗高层支持谈判</h4>
+                    <p>著名伊朗逊尼派神职人员阿卜杜勒·哈米德公开主张通过谈判解决，并批评强硬派官员冒着重新冲突的风险。哈米德4月21日表示，"公平协议"是唯一可行的解决方案。著名什叶派神职人员大阿亚图拉努里·哈梅达尼单独警告不要破坏谈判者的行动，并明确赞扬议长加利巴夫的作用。确定国家利益委员会成员巴霍纳尔强调对谈判者和加利巴夫的信任。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>六、海上事态 (Maritime Developments)</h4>
+                    <h5>1. 美军在孟加拉湾拦截伊朗油轮</h5>
+                    <p>美国海军4月20-21日在孟加拉湾拦截受美国制裁的Tifani油轮，表明美军可以在远离阿曼湾的地方拦截任何违反封锁的船只。美国海军在印太司令部责任区的孟加拉湾拦截了博茨瓦纳籍Tifani油轮。一名美军官员4月21日告诉纽约时报，白宫将在美军扣押该船后决定处置。Tanker Trackers表示，Tifani自2023年以来至少五次从伊朗往返中国。</p>
+                    <h5>2. 美军已指示28艘伊朗关联船只掉头</h5>
+                    <p>美国中央司令部(CENTCOM)4月21日表示，自4月13日开始封锁以来，美军已指示28艘伊朗关联船只掉头或返回港口。过去两天有三艘船只在恰巴哈尔港附近掉头，包括伊朗籍受制裁的Artman和Shamim，以及科摩罗籍Calista。</p>
+                    <h5>3. 伊朗声称船只绕过封锁</h5>
+                    <p>伊朗媒体4月21日声称其船只Felicity在Artesh海军支持下绕过美国封锁。Felicity在4月12日左右向印度交付了200万桶伊朗原油（封锁前一天的美国制裁豁免）。但没有证据表明该船成功穿越封锁线。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>七、美以空袭行动 (US-Israeli Air Campaign)</h4>
+                    <p>美国继续通过经济制裁削弱伊朗重建无人机和导弹计划的能力。美国财政部4月21日制裁了14名位于伊朗、土耳其和阿联酋的个人、实体和飞机，参与代表伊朗政权采购和运输无人机、导弹及关键部件。美国财政部还将两架伊朗政权运营的Mahan Air波音777飞机列为被封锁财产。</p>
+                    <p>卫星图像证实，美以联军在2月28日至3月17日期间对德黑兰省Bid Ganeh的IRGC航空航天部队导弹基地和发射场进行了多次打击。开源情报分析人员在Bid Ganeh识别出Amir al Momenin导弹发射场、Imam Sajjad导弹基地和附近兵营的建筑物受损。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>八、以色列对真主党的行动 (Israeli Campaign Against Hezbollah)</h4>
+                    <p>真主党自4月16日以色列-黎巴嫩停火生效以来首次袭击了以色列在黎巴嫩南部和北部的部队。以军报告真主党向黎巴嫩东南部Rab el Thalathine附近以军发射火箭弹。真主党还声称向以色列北部Kfar Giladi的以军炮兵阵地发射火箭弹和无人机。袭击未造成伤亡。以军称真主党的袭击是停火的"公然违反"，并打击了负责袭击的真主党火箭发射器。</p>
+                    <p>自4月20日以来，以军在黎巴嫩南部至少进行了六次针对真主党战斗人员的空袭。以军表示在4月20日夜间和4月21日上午进行了三次空袭，针对越过以色列"前沿防线"的真主党战斗人员。</p>
+                    <p>以军继续在黎巴嫩南部进行地面行动。第35伞兵旅指挥官4月21日表示，以军在黎巴嫩东南部Bint Jbeil进行"激烈"战斗。Bint Jbeil对以军具有作战意义，因为它位于黎巴嫩东南部多条主要道路的交汇处。以军北方司令部司令米洛少将4月21日表示，数百名以军在黎巴嫩南部各地行动，以消除对以色列北部的威胁。</p>
+                    <p>以色列官员重申，以色列在黎巴嫩的战役最终目标是解除真主党武装。以色列国防部长卡茨4月21日表示，以色列正通过"军事和政治步骤相结合"来实现这些目标。以色列总理内塔尼亚胡指出，解除真主党的目标需要"持续努力、耐心和耐力"，不会在短期内实现。</p>
+                </div>
+                
+                <div class="analysis-subsection">
+                    <h4>九、其他抵抗轴心回应 (Other Axis of Resistance Response)</h4>
+                    <p>据三名伊拉克民兵成员和两名其他官员4月21日对西方媒体表示，伊朗允许一些伊朗支持的伊拉克民兵在未经伊朗政权批准的情况下进行攻击。一名伊拉克民兵成员表示，"各种力量"现在有权根据自己的"战场评估"进行操作，"无需向中央指挥部汇报"。</p>
+                    <p>据华尔街日报4月21日报道，伊朗支持的伊拉克民兵进行了约1000次针对沙特的无人机袭击中的一半。一些消息来源补充说，伊拉克民兵在特朗普4月8日宣布美伊停火后向巴林发射了无人机。巴林外交部4月13日就伊拉克民兵无人机"持续"袭击巴林和其他海湾合作委员会国家召见伊拉克代办。沙特同样于4月12日就同样原因召见伊拉克驻沙特大使。</p>
+                    <p>抵抗轴心组织，包括伊朗支持的伊拉克民兵和胡塞武装，已表示如果伊朗与美国之间的战争恢复，他们准备恢复对美国、以色列和其他地区国家的行动。很可能由伊朗支持的民兵前线组织Saraya Awliya al Dam 4月20日警告称，该组织"完全准备好"恢复对伊拉克和地区美国利益的袭击。胡塞最高领袖阿卜杜勒马利克·胡塞4月21日警告称，如果美国和以色列升级对伊朗的行动，胡塞武装将不会保持中立，将"升级"。</p>
+                </div>
+            </div>
+        </section>
 
         <!-- 战况图表 -->
-
         <section class="section" id="charts-section">
-
             <h3>🗺️ 战况图表 (Maps & Charts)</h3>
-
             <div class="charts-grid" id="charts-grid">
-
                 <div class="loading">
-
                     <div class="loading-spinner"></div>
-
                     <p>正在加载图表...</p>
-
                 </div>
-
             </div>
-
         </section>
-
-
 
         <!-- 历史更新 -->
-
         <section class="section">
-
             <h3>📚 历史更新 (Recent Updates)</h3>
-
             <div class="history-list" id="history-list"></div>
-
         </section>
 
-
-
         <!-- 数据来源 -->
-
         <div class="source-box">
-
             <h4>📌 数据来源</h4>
-
             <p>
-
-                本页内容来源于 <strong>Institute for the Study of War (ISW)</strong> 
-
+                本页内容来源于 <strong>Institute for the Study of War (ISW) / Critical Threats Project (CTP)</strong><br>
+                ISW / CTP, April 21, 2026<br>
                 <a href="https://understandingwar.org" target="_blank">understandingwar.org</a><br>
-
                 ISW 是一家美国非营利研究机构，专注于国防和外交政策研究。<br>
-
                 <small>最后更新: <span id="last-update">2026-04-21 14:00</span></small>
-
             </p>
-
         </div>
-
     </main>
 
-
-
     <!-- 嵌入的ISW数据（由fetch_isw_v3.py自动更新） -->
-
     <script>
-
     let STATIC_ISW_DATA = {
-        "updated": "2026-04-21T14:00:00",
-        "source_url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-21-2026/",
+        "updated": "2026-04-22T23:51:54",
+        "source_url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-22-2026/",
         "current_report": {
-            "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-21-2026/",
-            "title": "Iran Update Special Report, April 21, 2026",
-            "title_zh": "伊朗局势更新特别报告 - 2026年4月21日",
-            "date": "2026-04-21",
+            "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-22-2026/",
+            "title": "Iran Update Special Report, April 22, 2026",
+            "title_zh": "伊朗局势更新特别报告 - 2026年4月22日",
+            "date": "2026-04-22",
             "takeaways": [
                 {
-                    "en": "The United States extended its ceasefire with Iran 'until such time as [the Iranian] proposal is submitted and discussions are concluded.' Trump confirmed that Washington will maintain its blockade of Iranian ports.",
-                    "zh": "【美国延长停火并维持港口封锁】美国延长与伊朗的停火，'直到伊朗提交提案并讨论结束为止'。特朗普4月21日确认华盛顿将继续维持对伊朗港口的封锁。原定于4月21日在伊斯兰堡的第二轮谈判因伊朗未确认参与而取消。"
+                    "en": "The Islamic Revolutionary Guards Corps (IRGC) Navy attacked and likely redirected two vessels towards Iran on April 22, likely to enforce Iranian claims of sovereignty over the strait to disrupt global shipping and extract US concessions. The IRGC also may have redirected the two vessels in response to the recent US Navy seizure of the Iranian-flagged, US-sanctioned Touska in the Gulf of Oman.",
+                    "zh": "【IRGC海军袭击并强行改航两艘商船】4月22日，伊朗革命卫队海军袭击并可能将两艘商船强行改航驶向伊朗。被袭击的船只包括利比里亚籍希腊拥有的Epaminondas号和巴拿马籍的MSC Francesca号，当时它们正驶出霍尔木兹海峡。IRGC快艇对Epaminondas驾驶台造成严重损坏，另一次未指明袭击损坏了MSC Francesca的船体和住宿区。两艘船改向驶入伊朗领海，在距伊朗海岸约7海里处停泊。IRGC还向第三艘船——巴拿马籍阿联酋运营的Euphoria号开火，但该船继续航行。此次行动可能是对美国海军4月19日在阿曼湾扣押伊朗籍Touska号的回应。"
                 },
                 {
-                    "en": "Conflicting reports on April 20-21 about Iran's participation in negotiations reflect the ongoing intra-regime power struggle between Parliament Speaker Ghalibaf and IRGC Commander Vahidi. ISW-CTP assesses Vahidi currently has the upper hand.",
-                    "zh": "【伊朗政权内部权力斗争】关于伊朗是否参加谈判的相互矛盾报告反映了议长加利巴夫与IRGC司令瓦希迪之间的权力斗争。华尔街日报4月21日报道，伊朗官员最初表示将参加会谈，但后来在IRGC压力下引入美方先解除封锁的前提条件。ISW-CTP评估瓦希迪目前占据上风。"
+                    "en": "The IRGC's attacks on shipping and IRGC Commander Major General Ahmad Vahidi's apparent willingness to scrap US-Iran talks indicate that Vahidi is prepared to resume the war if needed. Vahidi appears willing to risk incurring a potential US military response to assert Iranian 'control' over the strait.",
+                    "zh": "【IRGC司令瓦希迪准备恢复战争】IRGC对航运的袭击以及总司令艾哈迈德·瓦希迪大将明显愿意放弃美伊谈判的态度表明，他已准备在必要时恢复战争。瓦希迪似乎愿意冒险承受美国潜在的军事回应，以宣示伊朗对海峡的\"控制\"。他可能是通过提出先决条件、干扰\"统一提案\"的制定来破坏谈判，其核心圈子已经接受并准备承担战争重启的风险。"
                 },
                 {
-                    "en": "Iranian-backed Iraqi militias conducted up to half of roughly 1,000 drone attacks targeting Saudi Arabia during the war, according to the Wall Street Journal on April 21. This suggests Iran has not ordered its militia partners to cease attacking regional states.",
-                    "zh": "【伊拉克民兵持续袭击海湾国家】据华尔街日报4月21日报道，伊朗支持的伊拉克民兵进行了约1000次针对沙特的无人机袭击中的一半。一些消息来源补充说，伊拉克民兵在特朗普4月8日宣布停火后仍向巴林发射无人机。这表明伊朗并未命令其民兵伙伴停止攻击地区国家。"
+                    "en": "Iranian decision-making remains fragmented and in disarray, which explains Iran's inability to formulate and communicate a coherent negotiating position. Iranian officials have not reached a unified decision on whether to return to negotiations in recent days, and competing regime power centers appear to be blocking consensus on core issues. The regime's formal decision-making and coordinating mechanisms are also not functioning effectively.",
+                    "zh": "【伊朗决策层仍然四分五裂】伊朗无法形成和传达一致的谈判立场，因为决策层仍然四分五裂、混乱不堪。伊朗官员们近日就是否恢复谈判尚未达成统一决定，相互竞争的政权权力中心似乎在核心问题上阻挠共识。最高国家安全委员会（SNSC）秘书Mohammad Bagher Zolghadr未能有效协调IRGC、文职领导层和最高领袖之间的关系，SNSC作为协调国家安全与外交政策决策的主要机制目前无法产生统一的谈判立场。"
                 },
                 {
-                    "en": "Hezbollah attacked Israeli forces in southern Lebanon for the first time since the Israel-Lebanon ceasefire took effect on April 16. The IDF struck the Hezbollah rocket launcher responsible.",
-                    "zh": "【真主党打破停火袭击以军】真主党自4月16日以色列-黎巴嫩停火生效以来首次袭击以色列在黎巴嫩南部和北部的部队。以军报告真主党向Rab el Thalathine附近以军发射火箭弹，并打击了负责袭击的真主党火箭发射器。"
-                },
-                {
-                    "en": "IRGC-affiliated media signaled readiness for imminent resumption of war. Tasnim reported Iran prepared for a new phase of fighting. Iranian Judiciary Chief assessed likelihood of renewed US and Israeli attacks as high.",
-                    "zh": "【伊朗发出恢复战争信号】IRGC附属Tasnim通讯社4月21日报道称，伊朗已为新一轮战斗做好准备。伊朗司法总监埃杰伊同日评估美以恢复攻击的可能性很高。一名高级以色列安全官员表示以色列也在准备恢复战斗，并评估美伊将无法达成任何谅解。"
-                },
-                {
-                    "en": "The US Navy interdicted the US-sanctioned Tifani oil tanker in the Bay of Bengal on April 20-21, demonstrating US ability to interdict vessels far beyond the Gulf of Oman. CENTCOM stated US forces have directed 28 Iran-linked vessels to turn around since April 13.",
-                    "zh": "【美军在孟加拉湾拦截伊朗油轮】美国海军4月20-21日在孟加拉湾拦截受美国制裁的Tifani油轮，表明美军可以在远离阿曼湾的地方拦截违反封锁的船只。CENTCOM表示自4月13日以来已指示28艘伊朗关联船只掉头。Tanker Trackers称Tifani自2023年以来至少五次从伊朗往返中国。"
-                },
-                {
-                    "en": "Some senior Iranian figures expressed support for negotiations, but this remains limited. Prominent Sunni cleric Moulana Abdol Hamid advocated for negotiated resolution and criticized hardliners. Prominent Shia cleric Grand Ayatollah Nouri Hamedani cautioned against undermining negotiators and praised Ghalibaf.",
-                    "zh": "【部分伊朗高层支持谈判】著名逊尼派神职人员阿卜杜勒·哈米德公开主张谈判解决，批评强硬派官员冒着重新冲突的风险，称'公平协议'是唯一可行方案。什叶派大阿亚图拉努里·哈梅达尼警告不要破坏谈判者行动，并明确赞扬加利巴夫。确定国家利益委员会成员巴霍纳尔也呼吁支持谈判者。"
+                    "en": "US officials have recently leaked quantitative estimates of the number of different Iranian assets remaining after the ceasefire. It is extremely difficult to deduce the degree of degradation to Iranian forces based on these estimates because the number of remaining systems is only one of many data points required to form a complete evaluation of military strength.",
+                    "zh": "【美方泄露伊朗军力评估数据】美国官员近日泄露了停火后伊朗各类资产剩余数量的量化估计。美国情报评估显示，伊朗约50%的弹道导弹库存及其发射系统仍然\"可用\"。但仅根据剩余武器数量难以推断伊朗军队的实际损耗程度，因为这只是评估军事力量的众多数据点之一。"
                 }
             ],
             "charts": [
                 {
-                    "url": "https://kimi-web-img.moonshot.cn/prod-data/online-image/search-upload/22d080d1b91799472d0c310aaff96236.webp",
-                    "title_zh": "霍尔木兹海峡通行情况",
+                    "url": "https://understandingwar.org/wp-content/uploads/2026/04/Maritime-Attacks-Iran-War-April-22-2026.webp",
+                    "title_zh": "4月22日海上袭击地图",
                     "context": [
-                        "海峡内各类船只通行状态",
-                        "伊朗拦截区域与美军封锁线分布",
-                        "LNG运输船被迫掉头位置"
+                        "IRGC袭击Epaminondas和MSC Francesca位置",
+                        "Euphoria号遭开火位置",
+                        "霍尔木兹海峡航道与伊朗领海范围"
                     ]
                 },
                 {
-                    "url": "https://kimi-web-img.moonshot.cn/prod-data/online-image/search-upload/ad52fa9896cdb4ecf139fe64efef1eb7.webp",
-                    "title_zh": "美军拦截受制裁伊朗船只",
+                    "url": "https://understandingwar.org/wp-content/uploads/2026/04/Hezbollah-Attacks-in-Israel-and-Lebanon-April-22-2026.webp",
+                    "title_zh": "真主党在以色列和黎巴嫩的袭击",
                     "context": [
-                        "美军扣押及迫使改变航线的伊朗关联船只",
-                        "封锁线范围与主要拦截点",
-                        "孟加拉湾远程拦截示意"
+                        "真主党自4月16日停火以来首次袭击以军",
+                        "IDF打击真主党火箭发射器位置",
+                        "黎巴嫩南部冲突区域"
                     ]
                 }
             ]
         },
         "history": [
             {
+                "date": "2026-04-22",
+                "title": "Iran Update Special Report, April 22, 2026",
+                "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-22-2026/"
+            },
+            {
                 "date": "2026-04-21",
                 "title": "Iran Update Special Report, April 21, 2026",
                 "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-21-2026/"
-            },
-            {
-                "date": "2026-04-20",
-                "title": "Iran Update Special Report, April 20, 2026",
-                "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-april-20-2026/"
             },
             {
                 "date": "2026-04-19",
@@ -715,17 +469,10 @@
 
     </script>
 
-
-
     <script>
-
         // 加载数据
-
         let warData = null;
-
         let showEnglish = false;
-
-
 
         function loadData() {
             // 直接使用嵌入的 STATIC_ISW_DATA
@@ -735,369 +482,185 @@
             }
         }
 
-
-
         function renderPage() {
-
             if (!warData || !warData.current_report) return;
-
             
-
             const data = warData.current_report;
-
             
-
             // 更新头部
-
-            document.getElementById('report-title').textContent = data.title_zh || '伊朗局势每日更新 - 2026年3月29日报告';
-
+            document.getElementById('report-title').textContent = data.title_zh || '伊朗局势每日更新 - 2026年4月21日报告';
             document.getElementById('report-date').textContent = data.date ? data.date.slice(0, 10) : '--';
-
             document.getElementById('takeaway-count').textContent = data.takeaways ? data.takeaways.length : 0;
-
             document.getElementById('chart-count').textContent = data.charts ? data.charts.length : 0;
-
             document.getElementById('last-update').textContent = warData.updated ? warData.updated.slice(0, 19).replace('T', ' ') : '--';
-
             
-
             // 渲染要点
-
             renderTakeaways(data.takeaways);
-
             
-
             // 渲染图表
-
             renderCharts(data.charts);
-
             
-
             // 渲染历史
-
             renderHistory(warData.history);
-
         }
-
-
 
         function renderTakeaways(takeaways) {
-
             const container = document.getElementById('takeaways-list');
-
             if (!takeaways || takeaways.length === 0) {
-
                 container.innerHTML = '<div class="error-box">暂无数据</div>';
-
                 return;
-
             }
-
             
-
             container.innerHTML = takeaways.map((item, index) => {
-
                 const isNote = item.en && item.en.startsWith('NOTE:');
-
                 return `
-
                 <li class="takeaway-item ${isNote ? 'note' : ''}">
-
                     <div class="takeaway-zh">
-
                         <span class="takeaway-num">${isNote ? '!' : index + 1}</span>
-
                         ${item.zh || '无翻译'}
-
                     </div>
-
                     <div class="takeaway-en" style="display:${showEnglish ? 'block' : 'none'};margin-top:8px;padding-top:8px;border-top:1px dashed #cbd5e1;">
-
                         <small style="color:#64748b;">EN:</small> ${item.en || ''}
-
                     </div>
-
                 </li>
-
                 `;
-
             }).join('');
-
         }
-
-
 
         function renderCharts(charts) {
-
             const container = document.getElementById('charts-grid');
-
             if (!charts || charts.length === 0) {
-
-                container.innerHTML = '<div class="error-box">暂无图表</div>';
-
+                container.innerHTML = '<div class="error-box">本报告暂无图表</div>';
                 return;
-
             }
-
             
-
             container.innerHTML = charts.map((chart, index) => `
-
                 <div class="chart-card" onclick="openChartModal(${index})">
-
                     <div class="chart-title">${chart.title_zh || chart.title || 'ISW分析图表'}</div>
-
                     <div class="chart-img-wrapper" style="position:relative;cursor:zoom-in;overflow:hidden;border-radius:8px;">
-
                         <img class="chart-img" src="${chart.screenshot || chart.url}" alt="${chart.title_zh || ''}" 
-
                              style="width:100%;height:auto;display:block;transition:transform 0.3s;"
-
                              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 200%22><rect fill=%22%23f1f5f9%22 width=%22400%22 height=%22200%22/><text fill=%22%2394a3b8%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22>图表加载失败</text></svg>'">
-
                         <div class="chart-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.03);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
-
                             <span style="background:rgba(30,58,95,0.9);color:white;padding:8px 16px;border-radius:20px;font-size:0.85rem;">🔍 点击查看大图</span>
-
                         </div>
-
                     </div>
-
                     ${chart.description_zh ? `<div class="chart-description" style="margin-top:12px;padding:12px;background:#f8fafc;border-radius:8px;font-size:0.9rem;color:#475569;line-height:1.6;">${chart.description_zh}</div>` : ''}
-
                     <div class="chart-tags">
-
                         ${(chart.context || []).map(tag => `<span class="chart-tag">${tag}</span>`).join('')}
-
                     </div>
-
                 </div>
-
             `).join('');
-
             
-
             // 添加悬停效果
-
             setTimeout(() => {
-
                 document.querySelectorAll('.chart-img-wrapper').forEach(wrapper => {
-
                     wrapper.addEventListener('mouseenter', function() {
-
                         this.querySelector('.chart-overlay').style.opacity = '1';
-
                         this.querySelector('img').style.transform = 'scale(1.02)';
-
                     });
-
                     wrapper.addEventListener('mouseleave', function() {
-
                         this.querySelector('.chart-overlay').style.opacity = '0';
-
                         this.querySelector('img').style.transform = 'scale(1)';
-
                     });
-
                 });
-
             }, 100);
-
         }
-
         
-
         // 打开图表弹窗
-
         function openChartModal(index) {
-
             const chart = warData.current_report.charts[index];
-
             if (!chart) return;
-
             
-
             const modal = document.createElement('div');
-
             modal.id = 'chart-modal';
-
             modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;overflow:auto;';
-
             
-
             modal.innerHTML = `
-
                 <div style="position:relative;max-width:90%;max-height:80vh;margin-bottom:20px;">
-
                     <img src="${chart.screenshot || chart.url}" style="max-width:100%;max-height:80vh;object-fit:contain;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.5);">
-
                     <button onclick="closeChartModal()" style="position:absolute;top:-40px;right:0;background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:8px;">✕</button>
-
                 </div>
-
                 <div style="max-width:800px;color:white;text-align:center;">
-
                     <h3 style="margin-bottom:12px;font-size:1.3rem;">${chart.title_zh || 'ISW分析图表'}</h3>
-
                     ${chart.full_analysis ? `<div style="background:rgba(255,255,255,0.1);padding:20px;border-radius:12px;text-align:left;line-height:1.8;white-space:pre-wrap;font-size:0.95rem;">${chart.full_analysis}</div>` : ''}
-
                 </div>
-
                 <div style="margin-top:20px;color:rgba(255,255,255,0.6);font-size:0.85rem;">
-
                     点击任意位置关闭 | 数据来源: ISW
-
                 </div>
-
             `;
-
             
-
             modal.onclick = function(e) {
-
                 if (e.target === modal) closeChartModal();
-
             };
-
             
-
             document.body.appendChild(modal);
-
             document.body.style.overflow = 'hidden';
-
         }
-
         
-
         function closeChartModal() {
-
             const modal = document.getElementById('chart-modal');
-
             if (modal) {
-
                 modal.remove();
-
                 document.body.style.overflow = '';
-
             }
-
         }
-
         
-
         // ESC键关闭弹窗
-
         document.addEventListener('keydown', function(e) {
-
             if (e.key === 'Escape') closeChartModal();
-
         });
 
-
-
         // ISW历史报告列表（过往+最新）- 补全所有日期
-
         const ISW_HISTORY_REPORTS = [
-
             {"date": "2026-03-26", "title_zh": "伊朗局势更新 特别报告 - 2026年3月26日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-26-2026"},
-
             {"date": "2026-03-25", "title_zh": "伊朗局势更新 特别报告 - 2026年3月25日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-25-2026"},
-
             {"date": "2026-03-24", "title_zh": "伊朗局势更新 特别报告 - 2026年3月24日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-24-2026"},
-
             {"date": "2026-03-23", "title_zh": "伊朗局势更新 特别报告 - 2026年3月23日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-23-2026"},
-
             {"date": "2026-03-21", "title_zh": "伊朗局势更新 特别报告 - 2026年3月21日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-21-2026"},
-
             {"date": "2026-03-20", "title_zh": "伊朗局势更新 特别报告 - 2026年3月20日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-20-2026"},
-
             {"date": "2026-03-19", "title_zh": "伊朗局势更新 特别报告 - 2026年3月19日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-19-2026"},
-
             {"date": "2026-03-18", "title_zh": "伊朗局势更新 特别报告 - 2026年3月18日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-18-2026"},
-
             {"date": "2026-03-17", "title_zh": "伊朗局势更新 特别报告 - 2026年3月17日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-17-2026"},
-
             {"date": "2026-03-16", "title_zh": "伊朗局势更新 特别报告 - 2026年3月16日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-16-2026"},
-
             {"date": "2026-03-15", "title_zh": "伊朗局势更新 特别报告 - 2026年3月15日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-15-2026"},
-
             {"date": "2026-03-14", "title_zh": "伊朗局势更新 特别报告 - 2026年3月14日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-14-2026"},
-
             {"date": "2026-03-13", "title_zh": "伊朗局势更新 特别报告 - 2026年3月13日", "url": "https://understandingwar.org/research/middle-east/iran-update-special-report-march-13-2026"}
-
         ];
 
-
-
         function renderHistory(history) {
-
             const container = document.getElementById('history-list');
-
             
-
             // 优先使用传入的history数据，否则使用预定义的列表
-
             const reports = (history && history.length > 0) ? history : ISW_HISTORY_REPORTS;
-
             
-
             if (!reports || reports.length === 0) {
-
                 container.innerHTML = '<div class="error-box">暂无历史记录</div>';
-
                 return;
-
             }
-
             
-
             container.innerHTML = reports.map((item, index) => `
-
                 <a href="${item.url}" target="_blank" class="history-item">
-
                     <span class="history-date">${item.date}</span>
-
                     <span class="history-title">${item.title_zh || item.title || '无标题'}</span>
-
                     <span class="history-arrow">→</span>
-
                 </a>
-
             `).join('');
-
         }
-
-
 
         function toggleLanguage() {
-
             showEnglish = !showEnglish;
-
             const btn = document.querySelector('.lang-toggle');
-
             btn.textContent = showEnglish ? '隐藏英文' : '显示英文';
-
             
-
             const enElements = document.querySelectorAll('.takeaway-en');
-
             enElements.forEach(el => {
-
                 el.style.display = showEnglish ? 'block' : 'none';
-
             });
-
         }
 
-
-
         // 页面加载
-
         document.addEventListener('DOMContentLoaded', loadData);
-
     </script>
-
 </body>
-
 </html>
-
