@@ -1,41 +1,41 @@
 {
-  "updated": "2026-05-19T23:27:47",
+  "updated": "2026-05-20T02:09:23",
   "source": "金十数据",
   "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
   "industry_pressure": {
-    "total": 83.33,
+    "total": 96.67,
     "methanol": {
       "name": "甲醇",
       "value": 99
     },
     "oil": {
       "name": "原油及成品油",
-      "value": 93.5
+      "value": 99
     },
     "lpg": {
       "name": "液化石油气/LPG",
-      "value": 93.1
+      "value": 99
     },
     "lng": {
       "name": "液化天然气/LNG",
-      "value": 90
+      "value": 98
     },
     "fertilizer": {
       "name": "化肥",
-      "value": 90.2
+      "value": 98.2
     },
     "aluminum": {
       "name": "铝材",
-      "value": 86.3
+      "value": 94.3
     }
   },
   "ship_counts": {
     "yesterday_passed": 0,
-    "hormuz_passing": 10,
-    "sailing": 1142,
-    "anchored": 2981,
-    "total_in_area": 4123,
-    "calculated_total": 4123
+    "hormuz_passing": 2,
+    "sailing": 690,
+    "anchored": 1949,
+    "total_in_area": 2639,
+    "calculated_total": 2639
   },
-  "snapshot_url": "https://oimg.jin10.com/news/26/05/ToalSRNDvQYQCJl6tT45dh.png"
+  "snapshot_url": "https://oimg.jin10.com/news/26/05/lsL36jInRd-KeFgtTLm3nk.png"
 }
