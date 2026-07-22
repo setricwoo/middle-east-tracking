@@ -1,11 +1,11 @@
 {
-  "updated": "2026-07-23T05:10:45",
+  "updated": "2026-07-23T07:06:20",
   "source": {
     "jin10": "金十数据",
     "history": "历史.csv"
   },
   "jin10": {
-    "updated": "2026-07-23T05:10:27",
+    "updated": "2026-07-23T07:06:01",
     "source": "金十数据",
     "url": "https://qihuo.jin10.com/topic/strait_of_hormuz.html",
     "industry_pressure": {
@@ -43,7 +43,7 @@
       "total_in_area": 3867,
       "calculated_total": 3867
     },
-    "snapshot_url": "https://oimg.jin10.com/news/26/07/OSf8GomWdfH3PI_b_dX0s5.png"
+    "snapshot_url": "https://oimg.jin10.com/news/26/07/OVCh2teptMEFn9qtl5RxN1.png"
   },
   "history": {
     "dates": [
