@@ -1,9 +1,24 @@
 {
-  "fetchedAt": "2026-09-11T04:24:43.451679",
+  "fetchedAt": "2026-09-11T06:45:17.270949",
   "events": {
     "trump-announces-end-of-military-operations-against-iran-by": {
       "title": "Trump announces end of military operations against Iran by ...?",
       "markets": [
+        {
+          "question": "Trump announces end of military operations against Iran by April 24th?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "924036.2910499999",
+          "closed": true
+        },
         {
           "question": "Trump announces end of military operations against Iran by March 1st?",
           "outcomes": {
@@ -168,21 +183,6 @@
           },
           "volume": "4913838.072393989",
           "closed": true
-        },
-        {
-          "question": "Trump announces end of military operations against Iran by April 24th?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "924036.2910499999",
-          "closed": true
         }
       ]
     },
@@ -190,7 +190,7 @@
       "title": "US x Iran ceasefire by...?",
       "markets": [
         {
-          "question": "US x Iran ceasefire by March 31?",
+          "question": "US x Iran ceasefire by March 2?",
           "outcomes": {
             "Yes": {
               "currentPrice": 0.0,
@@ -201,22 +201,7 @@
               "priceHistory": []
             }
           },
-          "volume": "44375995.32362798",
-          "closed": true
-        },
-        {
-          "question": "US x Iran ceasefire by April 30?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "17726877.87256241",
+          "volume": "3493959.096746",
           "closed": true
         },
         {
@@ -250,7 +235,7 @@
           "closed": true
         },
         {
-          "question": "US x Iran ceasefire by March 2?",
+          "question": "US x Iran ceasefire by March 31?",
           "outcomes": {
             "Yes": {
               "currentPrice": 0.0,
@@ -261,11 +246,11 @@
               "priceHistory": []
             }
           },
-          "volume": "3493959.096746",
+          "volume": "44375995.32362798",
           "closed": true
         },
         {
-          "question": "US x Iran ceasefire by December 31?",
+          "question": "US x Iran ceasefire by April 30?",
           "outcomes": {
             "Yes": {
               "currentPrice": 100.0,
@@ -276,22 +261,7 @@
               "priceHistory": []
             }
           },
-          "volume": "2113670.8299279874",
-          "closed": true
-        },
-        {
-          "question": "US x Iran ceasefire by June 30?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "5033124.1175019825",
+          "volume": "17726877.87256241",
           "closed": true
         },
         {
@@ -310,6 +280,21 @@
           "closed": true
         },
         {
+          "question": "US x Iran ceasefire by June 30?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "5033124.1175019825",
+          "closed": true
+        },
+        {
           "question": "US x Iran ceasefire by April 15?",
           "outcomes": {
             "Yes": {
@@ -322,6 +307,21 @@
             }
           },
           "volume": "24621548.021247767",
+          "closed": true
+        },
+        {
+          "question": "US x Iran ceasefire by December 31?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "2113670.8299279874",
           "closed": true
         },
         {
@@ -375,33 +375,18 @@
       "title": "Avg. # of ships transiting Strait of Hormuz end of April?",
       "markets": [
         {
-          "question": "Will there be between 30 and 40 average daily transits of the Strait of Hormuz on April 30?",
+          "question": "Will there be between 0 and 10 average daily transits of the Strait of Hormuz on April 30?",
           "outcomes": {
             "Yes": {
-              "currentPrice": 0.0,
+              "currentPrice": 100.0,
               "priceHistory": []
             },
             "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "19247.802505000007",
-          "closed": true
-        },
-        {
-          "question": "Will there be between 50 and 60 average daily transits of the Strait of Hormuz on April 30?",
-          "outcomes": {
-            "Yes": {
               "currentPrice": 0.0,
               "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
             }
           },
-          "volume": "23543.426038",
+          "volume": "180141.00170200036",
           "closed": true
         },
         {
@@ -420,21 +405,6 @@
           "closed": true
         },
         {
-          "question": "Will there be between 0 and 10 average daily transits of the Strait of Hormuz on April 30?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "180141.00170200036",
-          "closed": true
-        },
-        {
           "question": "Will there be between 20 and 30 average daily transits of the Strait of Hormuz on April 30?",
           "outcomes": {
             "Yes": {
@@ -450,6 +420,21 @@
           "closed": true
         },
         {
+          "question": "Will there be between 30 and 40 average daily transits of the Strait of Hormuz on April 30?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "19247.802505000007",
+          "closed": true
+        },
+        {
           "question": "Will there be between 40 and 50 average daily transits of the Strait of Hormuz on April 30?",
           "outcomes": {
             "Yes": {
@@ -462,6 +447,21 @@
             }
           },
           "volume": "21462.859345000015",
+          "closed": true
+        },
+        {
+          "question": "Will there be between 50 and 60 average daily transits of the Strait of Hormuz on April 30?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "23543.426038",
           "closed": true
         },
         {
@@ -505,37 +505,112 @@
       "title": "What will WTI Crude Oil (WTI) hit in April 2026?",
       "markets": [
         {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $160 in April?",
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in April?",
           "outcomes": {
             "Yes": {
-              "currentPrice": 0.0,
+              "currentPrice": 100.0,
               "priceHistory": []
             },
             "No": {
-              "currentPrice": 100.0,
+              "currentPrice": 0.0,
               "priceHistory": []
             }
           },
-          "volume": "2163028.951985986",
+          "volume": "1477214.890473997",
           "closed": true
         },
         {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $200 in April?",
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in April?",
           "outcomes": {
             "Yes": {
-              "currentPrice": 0.0,
+              "currentPrice": 100.0,
               "priceHistory": []
             },
             "No": {
-              "currentPrice": 100.0,
+              "currentPrice": 0.0,
               "priceHistory": []
             }
           },
-          "volume": "6989384.479974055",
+          "volume": "1887434.0132189968",
           "closed": true
         },
         {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $170 in April?",
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "0",
+          "closed": false
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "32799.111382999996",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $90 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "123469.50300000003",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "165690.05687499983",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $90 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "31535.44652300001",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $80 in April?",
           "outcomes": {
             "Yes": {
               "currentPrice": 0.0,
@@ -546,7 +621,67 @@
               "priceHistory": []
             }
           },
-          "volume": "2262591.7614239915",
+          "volume": "293282.66509200004",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "414742.8523400003",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "13892.104718999999",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $90 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "254848.93412499907",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $95 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "85336.83804199999",
           "closed": true
         },
         {
@@ -760,6 +895,51 @@
           "closed": true
         },
         {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $160 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "2163028.951985986",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $170 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "2262591.7614239915",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $200 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "6989384.479974055",
+          "closed": true
+        },
+        {
           "question": "Will WTI Crude Oil (WTI) hit (LOW) $90 in April?",
           "outcomes": {
             "Yes": {
@@ -805,21 +985,6 @@
           "closed": true
         },
         {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $125 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "967530.2048620001",
-          "closed": true
-        },
-        {
           "question": "Will WTI Crude Oil (WTI) hit (LOW) $75 in April?",
           "outcomes": {
             "Yes": {
@@ -832,6 +997,21 @@
             }
           },
           "volume": "1340811.2253669982",
+          "closed": true
+        },
+        {
+          "question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in April?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "791626.3581029995",
           "closed": true
         },
         {
@@ -895,21 +1075,6 @@
           "closed": true
         },
         {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "791626.3581029995",
-          "closed": true
-        },
-        {
           "question": "Will WTI Crude Oil (WTI) hit (HIGH) $115 in April?",
           "outcomes": {
             "Yes": {
@@ -925,112 +1090,7 @@
           "closed": true
         },
         {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $105 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "1477214.890473997",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $100 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "1887434.0132189968",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "0",
-          "closed": false
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "32799.111382999996",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $90 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "123469.50300000003",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "165690.05687499983",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $90 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "31535.44652300001",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $85 in April?",
+          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $125 in April?",
           "outcomes": {
             "Yes": {
               "currentPrice": 0.0,
@@ -1041,67 +1101,7 @@
               "priceHistory": []
             }
           },
-          "volume": "414742.8523400003",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $80 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "293282.66509200004",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $90 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "254848.93412499907",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (HIGH) $95 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "13892.104718999999",
-          "closed": true
-        },
-        {
-          "question": "Will WTI Crude Oil (WTI) hit (LOW) $95 in April?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "85336.83804199999",
+          "volume": "967530.2048620001",
           "closed": true
         }
       ]
@@ -1109,6 +1109,156 @@
     "cl-hit-jun-2026": {
       "title": "Will Crude Oil (CL) hit__ by end of June?",
       "markets": [
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $110 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "720142.6275560007",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (LOW) $90 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "403458.29077399976",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (LOW) $85 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "606743.3198680007",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $105 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "962954.7492170024",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $95 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "320771.94400799973",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $100 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "240642.08669699993",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (LOW) $75 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "361988.5786180005",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $90 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "5080.250169",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $85 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "10340.429147",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $80 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "35610.280203",
+          "closed": true
+        },
         {
           "question": "Will Crude Oil (CL) hit (HIGH) $90 by end of June?",
           "outcomes": {
@@ -1125,7 +1275,7 @@
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (HIGH) $56 by end of June?",
+          "question": "Will Crude Oil (CL) hit (HIGH) $80 by end of June?",
           "outcomes": {
             "Yes": {
               "currentPrice": 100.0,
@@ -1136,22 +1286,7 @@
               "priceHistory": []
             }
           },
-          "volume": "875.3288",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $65 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "50260.055742",
+          "volume": "0",
           "closed": true
         },
         {
@@ -1185,6 +1320,51 @@
           "closed": true
         },
         {
+          "question": "Will Crude Oil (CL) hit (HIGH) $65 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "50260.055742",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $60 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "4495.69",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $56 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "875.3288",
+          "closed": true
+        },
+        {
           "question": "Will Crude Oil (CL) hit (LOW) $55 by end of June?",
           "outcomes": {
             "Yes": {
@@ -1212,51 +1392,6 @@
             }
           },
           "volume": "258320.0849540001",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $40 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "147358.465711",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $80 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "0",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $60 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "4495.69",
           "closed": true
         },
         {
@@ -1302,6 +1437,21 @@
             }
           },
           "volume": "67087.63547999995",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (LOW) $40 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "147358.465711",
           "closed": true
         },
         {
@@ -1380,21 +1530,6 @@
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (HIGH) $130 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "1310323.748248001",
-          "closed": true
-        },
-        {
           "question": "Will Crude Oil (CL) hit (HIGH) $115 by end of June?",
           "outcomes": {
             "Yes": {
@@ -1407,36 +1542,6 @@
             }
           },
           "volume": "1253977.3327570173",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $70 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "2051531.2969460078",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $85 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "226195.03988499983",
           "closed": true
         },
         {
@@ -1455,66 +1560,6 @@
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (HIGH) $140 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "2986654.6287670196",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $60 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "1044435.6182480035",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $80 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "1314804.781944005",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $90 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "0",
-          "closed": true
-        },
-        {
           "question": "Will Crude Oil (CL) hit (HIGH) $120 by end of June?",
           "outcomes": {
             "Yes": {
@@ -1527,6 +1572,36 @@
             }
           },
           "volume": "1667678.2593210067",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $130 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "1310323.748248001",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (HIGH) $140 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "2986654.6287670196",
           "closed": true
         },
         {
@@ -1545,7 +1620,7 @@
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (HIGH) $110 by end of June?",
+          "question": "Will Crude Oil (CL) hit (LOW) $60 by end of June?",
           "outcomes": {
             "Yes": {
               "currentPrice": 0.0,
@@ -1556,11 +1631,11 @@
               "priceHistory": []
             }
           },
-          "volume": "720142.6275560007",
+          "volume": "1044435.6182480035",
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (LOW) $90 by end of June?",
+          "question": "Will Crude Oil (CL) hit (LOW) $70 by end of June?",
           "outcomes": {
             "Yes": {
               "currentPrice": 100.0,
@@ -1571,7 +1646,22 @@
               "priceHistory": []
             }
           },
-          "volume": "403458.29077399976",
+          "volume": "2051531.2969460078",
+          "closed": true
+        },
+        {
+          "question": "Will Crude Oil (CL) hit (LOW) $80 by end of June?",
+          "outcomes": {
+            "Yes": {
+              "currentPrice": 100.0,
+              "priceHistory": []
+            },
+            "No": {
+              "currentPrice": 0.0,
+              "priceHistory": []
+            }
+          },
+          "volume": "1314804.781944005",
           "closed": true
         },
         {
@@ -1586,26 +1676,11 @@
               "priceHistory": []
             }
           },
-          "volume": "606743.3198680007",
+          "volume": "226195.03988499983",
           "closed": true
         },
         {
-          "question": "Will Crude Oil (CL) hit (HIGH) $105 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "962954.7492170024",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (LOW) $75 by end of June?",
+          "question": "Will Crude Oil (CL) hit (LOW) $90 by end of June?",
           "outcomes": {
             "Yes": {
               "currentPrice": 100.0,
@@ -1616,82 +1691,7 @@
               "priceHistory": []
             }
           },
-          "volume": "361988.5786180005",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $95 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "320771.94400799973",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $100 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "240642.08669699993",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $90 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "5080.250169",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $85 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "10340.429147",
-          "closed": true
-        },
-        {
-          "question": "Will Crude Oil (CL) hit (HIGH) $80 by end of June?",
-          "outcomes": {
-            "Yes": {
-              "currentPrice": 0.0,
-              "priceHistory": []
-            },
-            "No": {
-              "currentPrice": 100.0,
-              "priceHistory": []
-            }
-          },
-          "volume": "35610.280203",
+          "volume": "0",
           "closed": true
         }
       ]
